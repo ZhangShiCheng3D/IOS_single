@@ -220,7 +220,7 @@ struct HabitFormView: View {
                 currentCount: existingCount
             )
         }
-        WidgetDataBridge.sync(from: modelContext)
+        // Widget 同步已统一收敛在 HabitViewModel 内（createHabit / update）。
         dismiss()
     }
 }

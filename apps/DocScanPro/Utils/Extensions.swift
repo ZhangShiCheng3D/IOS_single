@@ -31,16 +31,26 @@ extension Color {
 // MARK: - Date 格式化
 
 extension Date {
-    /// 友好的相对/绝对日期展示（用于文档列表）。
-    var documentListDisplay: String {
+    /// 复用 DateFormatter（初始化开销大），避免在列表逐行渲染时反复创建。
+    private static let timeOnlyFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        if Calendar.current.isDateInToday(self) {
-            formatter.dateFormat = "HH:mm"
-            return formatter.string(from: self)
-        }
+        formatter.dateFormat = "HH:mm"
+        return formatter
+    }()
+
+    private static let mediumDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
-        return formatter.string(from: self)
+        return formatter
+    }()
+
+    /// 友好的相对/绝对日期展示（用于文档列表）。
+    var documentListDisplay: String {
+        if Calendar.current.isDateInToday(self) {
+            return Date.timeOnlyFormatter.string(from: self)
+        }
+        return Date.mediumDateFormatter.string(from: self)
     }
 }
 
@@ -59,19 +69,5 @@ extension String {
     /// 去除首尾空白后是否为空。
     var isBlank: Bool {
         trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-    }
-}
-
-// MARK: - View 条件修饰
-
-extension View {
-    /// 条件性地应用一个变换，便于链式书写。
-    @ViewBuilder
-    func applyIf<Content: View>(_ condition: Bool, transform: (Self) -> Content) -> some View {
-        if condition {
-            transform(self)
-        } else {
-            self
-        }
     }
 }

@@ -26,7 +26,10 @@ struct HabitGridApp: App {
             let configuration = ModelConfiguration(
                 schema: schema,
                 isStoredInMemoryOnly: false,
-                cloudKitDatabase: .none // 默认纯本地；如需 CloudKit 改为 .automatic
+                // 默认纯本地。⚠️ 若要改为 .automatic 开启 CloudKit 同步，必须先去掉
+                // Habit.id 上的 @Attribute(.unique)（CloudKit 不支持唯一约束，否则运行时崩溃），
+                // 并确认所有关系均有默认值/可选。
+                cloudKitDatabase: .none
             )
             modelContainer = try ModelContainer(for: schema, configurations: [configuration])
         } catch {

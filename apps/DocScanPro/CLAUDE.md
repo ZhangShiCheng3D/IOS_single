@@ -49,6 +49,7 @@ DocScanPro/
 5. 大二进制（图像）用 `@Attribute(.externalStorage)`，保持数据库轻量。
 
 ## 待办 / 可扩展
-- App Store Connect 配置真实 Product ID 与 `Configuration.storekit` 本地测试文件。
-- 补充 1024×1024 AppIcon 实际图像。
+- 工程文件：仓库不含 `.xcodeproj`。在 macOS 上用根目录 `project.yml` 经 `xcodegen generate` 生成后再构建。
+- 在 App Store Connect 配置与 `ProductID.pro` 一致的真实 Product ID（本地已有 `Configuration.storekit` 测试文件）。
+- 失败页重试 UI：`ScannedPage.isOCRProcessed` 现已能区分「识别失败」（false）与「已识别但无文字」，可据此在详情页提示重跑。
 - 可选：iCloud 备份开关（需在 UI 明确告知用户，默认关闭以守住隐私承诺）。

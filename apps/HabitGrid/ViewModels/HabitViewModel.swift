@@ -33,14 +33,14 @@ final class HabitViewModel {
         if let existing = habit.entries.first(where: { $0.day == day }) {
             context.delete(existing)
             habit.entries.removeAll { $0.day == day }
-            saveAndSync(habit)
+            saveAndSync()
             Haptics.selection()
             return false
         } else {
             let entry = HabitEntry(day: day, intensity: 1, habit: habit)
             context.insert(entry)
             habit.entries.append(entry)
-            saveAndSync(habit)
+            saveAndSync()
             Haptics.tap()
 
             // 若达成新的最长连续纪录，给予成功反馈。
@@ -62,7 +62,7 @@ final class HabitViewModel {
             context.insert(entry)
             habit.entries.append(entry)
         }
-        saveAndSync(habit)
+        saveAndSync()
         Haptics.tap()
     }
 
@@ -115,14 +115,14 @@ final class HabitViewModel {
             reminderTime: reminderTime
         )
         context.insert(habit)
-        save()
+        saveAndSync()
         scheduleReminderIfNeeded(for: habit)
         return habit
     }
 
     /// 应用对已存在习惯的编辑。
     func update(_ habit: Habit) {
-        save()
+        saveAndSync()
         scheduleReminderIfNeeded(for: habit)
     }
 
@@ -130,7 +130,7 @@ final class HabitViewModel {
     func delete(_ habit: Habit) {
         NotificationManager.shared.cancelReminder(habitID: habit.id)
         context.delete(habit)
-        save()
+        saveAndSync()
     }
 
     /// 重新排序：把习惯数组的当前顺序写回 sortOrder。
@@ -138,7 +138,7 @@ final class HabitViewModel {
         for (index, habit) in habits.enumerated() {
             habit.sortOrder = index
         }
-        save()
+        saveAndSync()
     }
 
     // MARK: - 提醒
@@ -167,8 +167,9 @@ final class HabitViewModel {
         }
     }
 
-    /// 保存并同步 Widget 数据。
-    private func saveAndSync(_ habit: Habit) {
+    /// 保存并同步 Widget 数据。所有写操作（打卡、增删改、排序）统一经此出口，
+    /// 保证 App Group 快照与库内数据始终一致（见 CLAUDE.md：写库后同步 Widget）。
+    private func saveAndSync() {
         save()
         WidgetDataBridge.sync(from: context)
     }

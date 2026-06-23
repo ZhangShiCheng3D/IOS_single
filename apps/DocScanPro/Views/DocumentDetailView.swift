@@ -43,7 +43,7 @@ struct DocumentDetailView: View {
             ShareSheet(items: [item.url])
         }
         .sheet(isPresented: $isShowingPaywall) {
-            PaywallView(triggeringFeature: .ocr)
+            PaywallView()
         }
         .sheet(isPresented: $isShowingOrganize) {
             OrganizeDocumentView(document: document)

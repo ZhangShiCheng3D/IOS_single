@@ -89,6 +89,8 @@ enum HabitStatistics {
     ) -> Int {
         var streak = 0
         var cursor = today
+        // 最早一条打卡记录，作为回溯停止边界（循环外算一次，避免 O(n²)）。
+        let earliest = completedDays.min()
 
         // 如果今天是计划日但未打卡，从昨天开始评估（今天尚有机会完成）。
         if frequency.isScheduled(on: cursor, calendar: calendar),
@@ -109,7 +111,7 @@ enum HabitStatistics {
             }
             cursor = cursor.adding(days: -1, calendar: calendar)
             // 越过最早记录则停止。
-            if let earliest = completedDays.min(), cursor < earliest {
+            if let earliest, cursor < earliest {
                 break
             }
         }

@@ -92,7 +92,8 @@ final class ScanWorkflowViewModel: ObservableObject {
             } catch {
                 // OCR 为尽力而为的便捷功能：单页失败不阻断整体流程，
                 // 也不弹出阻断式错误（扫描已成功保存，用户可在详情页重跑 OCR）。
-                page.isOCRProcessed = true
+                // 失败页保持 isOCRProcessed = false，以便与「已识别但无文字」区分、支持后续重试。
+                page.isOCRProcessed = false
             }
             ocrProgress = Double(index + 1) / Double(pages.count)
         }

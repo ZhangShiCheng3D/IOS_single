@@ -91,9 +91,10 @@ extension ScanDocument {
     func matches(query: String) -> Bool {
         guard !query.isEmpty else { return true }
         let needle = query.lowercased()
+        // 先比对廉价字段（标题、标签），最后才计算并比对开销较大的全文 combinedText。
         if title.lowercased().contains(needle) { return true }
-        if combinedText.lowercased().contains(needle) { return true }
         if tags.contains(where: { $0.name.lowercased().contains(needle) }) { return true }
+        if combinedText.lowercased().contains(needle) { return true }
         return false
     }
 }

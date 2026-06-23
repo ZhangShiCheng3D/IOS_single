@@ -62,9 +62,20 @@ struct PDFExporter {
     }
 
     /// 将 PDF 数据写入临时目录，返回可用于分享的文件 URL。
+    /// 每次导出写入独立子目录，避免同名文档相互覆盖；文件名清理非法字符。
     static func writeTemporaryPDF(_ data: Data, fileName: String) throws -> URL {
-        let safeName = fileName.replacingOccurrences(of: "/", with: "-")
-        let url = FileManager.default.temporaryDirectory
+        let illegal = CharacterSet(charactersIn: "/\\:?%*|\"<>").union(.controlCharacters)
+        let cleaned = fileName
+            .components(separatedBy: illegal)
+            .joined(separator: "-")
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+        let safeName = cleaned.isEmpty ? "Document" : cleaned
+
+        let directory = FileManager.default.temporaryDirectory
+            .appendingPathComponent("PDFExport-\(UUID().uuidString)", isDirectory: true)
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+
+        let url = directory
             .appendingPathComponent(safeName)
             .appendingPathExtension("pdf")
         try data.write(to: url, options: .atomic)
@@ -86,18 +97,36 @@ struct PDFExporter {
     }
 
     /// 以极低不透明度绘制文本层，使 PDF 文本可选中 / 可搜索。
+    /// 文本层不可见，「能放下全部文字」比「易读」更重要：因此自适应缩小字号，
+    /// 直到整段 OCR 文本在可绘制区域内不被裁剪（`draw(in:)` 会静默截断溢出内容）。
     private static func drawSearchableText(_ text: String, in rect: CGRect) {
+        let inset = rect.insetBy(dx: 18, dy: 18)
         let paragraph = NSMutableParagraphStyle()
         paragraph.lineBreakMode = .byWordWrapping
 
-        let attributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 10),
-            // 几乎不可见，但仍被 PDFKit 索引为可选中文本。
-            .foregroundColor: UIColor.black.withAlphaComponent(0.01),
-            .paragraphStyle: paragraph
-        ]
+        // 从常规字号逐步缩小，直到文本高度可容纳于绘制区域内。
+        let maxFontSize: CGFloat = 11
+        let minFontSize: CGFloat = 4
+        var fontSize = maxFontSize
+        var attributes: [NSAttributedString.Key: Any] = [:]
 
-        let inset = rect.insetBy(dx: 24, dy: 24)
+        while fontSize >= minFontSize {
+            attributes = [
+                .font: UIFont.systemFont(ofSize: fontSize),
+                // 几乎不可见，但仍被 PDFKit 索引为可选中文本。
+                .foregroundColor: UIColor.black.withAlphaComponent(0.01),
+                .paragraphStyle: paragraph
+            ]
+            let bounding = (text as NSString).boundingRect(
+                with: CGSize(width: inset.width, height: .greatestFiniteMagnitude),
+                options: [.usesLineFragmentOrigin, .usesFontLeading],
+                attributes: attributes,
+                context: nil
+            )
+            if bounding.height <= inset.height { break }
+            fontSize -= 1
+        }
+
         (text as NSString).draw(in: inset, withAttributes: attributes)
     }
 }

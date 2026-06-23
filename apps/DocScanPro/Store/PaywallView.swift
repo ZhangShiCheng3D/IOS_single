@@ -13,9 +13,6 @@ struct PaywallView: View {
     @EnvironmentObject private var purchaseManager: PurchaseManager
     @Environment(\.dismiss) private var dismiss
 
-    /// 触发付费墙的功能场景，用于个性化标题。
-    var triggeringFeature: PremiumFeature? = nil
-
     @State private var isPurchasing = false
     @State private var showRestoreResult = false
     @State private var isShowingPrivacy = false
@@ -231,6 +228,6 @@ private struct PaywallFeatureRow: View {
 }
 
 #Preview {
-    PaywallView(triggeringFeature: .ocr)
+    PaywallView()
         .environmentObject(PurchaseManager.shared)
 }

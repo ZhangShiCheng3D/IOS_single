@@ -32,8 +32,6 @@ enum OCRError: LocalizedError {
 struct OCRResult: Sendable {
     /// 识别出的完整文本。
     let text: String
-    /// 识别到的文本块数量。
-    let observationCount: Int
 }
 
 /// 本地 OCR 服务。使用 actor 隔离，保证并发安全。
@@ -64,7 +62,7 @@ actor OCRService {
                 }
 
                 guard let observations = request.results as? [VNRecognizedTextObservation] else {
-                    continuation.resume(returning: OCRResult(text: "", observationCount: 0))
+                    continuation.resume(returning: OCRResult(text: ""))
                     return
                 }
 
@@ -80,9 +78,7 @@ actor OCRService {
                     .compactMap { $0.topCandidates(1).first?.string }
 
                 let text = lines.joined(separator: "\n")
-                continuation.resume(
-                    returning: OCRResult(text: text, observationCount: observations.count)
-                )
+                continuation.resume(returning: OCRResult(text: text))
             }
 
             // accurate 模式精度更高，适合文档场景；languageCorrection 提升中文准确率。

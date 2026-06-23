@@ -43,7 +43,7 @@ struct OrganizeDocumentView: View {
                 }
             }
             .sheet(isPresented: $isShowingPaywall) {
-                PaywallView(triggeringFeature: .unlimitedOrganization)
+                PaywallView()
             }
         }
     }
@@ -83,6 +83,7 @@ struct OrganizeDocumentView: View {
                         }
                     }
                 }
+                .onDelete(perform: deleteTags)
             }
         }
     }
@@ -152,8 +153,29 @@ struct OrganizeDocumentView: View {
         guard !name.isEmpty else { return }
         let tag = Tag(name: name, colorHex: selectedColorHex)
         modelContext.insert(tag)
+
+        // 新建后自动关联到当前文档（这是用户的预期）；尊重免费版标签上限，
+        // 超限则仅创建不关联，并引导升级。
+        if purchaseManager.isUnlocked(.unlimitedOrganization) || document.tags.count < freeTagLimit {
+            document.tags.append(tag)
+            document.updatedAt = .now
+        } else {
+            isShowingPaywall = true
+        }
+
         try? modelContext.save()
         newTagName = ""
+        Haptics.selectionChanged()
+    }
+
+    /// 删除标签（从所有文档解除关联，关系规则为 .nullify）。
+    private func deleteTags(at offsets: IndexSet) {
+        for index in offsets {
+            modelContext.delete(tags[index])
+        }
+        document.updatedAt = .now
+        try? modelContext.save()
+        Haptics.tapMedium()
     }
 }
 

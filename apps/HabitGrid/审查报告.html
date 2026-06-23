@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HabitGrid 系统性审查报告</title>
+<style>
+  :root{
+    --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#e6edf3;
+    --muted:#9198a1; --green:#39d353; --blue:#58a6ff; --amber:#e3b341;
+    --red:#f85149; --purple:#bc8cff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);
+    font-family:-apple-system,"PingFang SC","Microsoft YaHei",Segoe UI,sans-serif;
+    line-height:1.7;padding:40px 20px}
+  .wrap{max-width:960px;margin:0 auto}
+  h1{font-size:30px;margin:0 0 6px;font-weight:800}
+  h2{font-size:21px;margin:40px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+  .sub{color:var(--muted);margin-bottom:28px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:20px 0}
+  .stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px}
+  .stat .n{font-size:26px;font-weight:800}
+  .stat .l{color:var(--muted);font-size:13px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;
+    padding:16px 18px;margin:14px 0}
+  .card.high{border-left:4px solid var(--red)}
+  .card.med{border-left:4px solid var(--amber)}
+  .card.low{border-left:4px solid var(--blue)}
+  .card.good{border-left:4px solid var(--green)}
+  .tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;
+    margin-right:8px;vertical-align:middle}
+  .t-high{background:rgba(248,81,73,.16);color:var(--red)}
+  .t-med{background:rgba(227,179,65,.16);color:var(--amber)}
+  .t-low{background:rgba(88,166,255,.16);color:var(--blue)}
+  .t-good{background:rgba(57,211,83,.16);color:var(--green)}
+  .card h3{margin:0 0 8px;font-size:16px;display:flex;align-items:center}
+  .card p{margin:6px 0;color:#c9d1d9}
+  code{background:#21262d;padding:1px 6px;border-radius:5px;font-size:13px;
+    font-family:"SF Mono",Consolas,monospace;color:var(--purple)}
+  .loc{color:var(--muted);font-size:13px}
+  .fix{background:#0d2818;border:1px solid #1a4029;border-radius:8px;padding:10px 12px;margin-top:10px;font-size:14px}
+  .fix b{color:var(--green)}
+  ul{margin:6px 0 6px 0;padding-left:20px}
+  li{margin:4px 0;color:#c9d1d9}
+  .verdict{background:linear-gradient(135deg,rgba(57,211,83,.10),rgba(88,166,255,.06));
+    border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-top:14px}
+  footer{margin-top:50px;color:var(--muted);font-size:13px;text-align:center;
+    border-top:1px solid var(--border);padding-top:20px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>HabitGrid · 系统性审查报告</h1>
+  <div class="sub">极简习惯打卡（像素格子风）· SwiftUI + SwiftData · 买断制单机 iOS App<br>
+  审查日期：2026-06-23 · 范围：全部 28 个 Swift 源文件 + 工程配置 · 审查人：Claude</div>
+
+  <div class="grid">
+    <div class="stat"><div class="n">28</div><div class="l">Swift 源文件</div></div>
+    <div class="stat"><div class="n">0</div><div class="l">阻断级缺陷</div></div>
+    <div class="stat"><div class="n">1</div><div class="l">功能性 Bug（中）</div></div>
+    <div class="stat"><div class="n">9</div><div class="l">改进项（低/潜在）</div></div>
+    <div class="stat"><div class="n">A−</div><div class="l">总体质量评级</div></div>
+  </div>
+
+  <h2>一、总体结论</h2>
+  <div class="verdict">
+    代码质量<b style="color:var(--green)">高于同类单机 App 平均水平</b>：架构清晰、Swift 6 严格并发处理到位、
+    StoreKit 2 流程完整、统计纯函数可测、中英本地化完全对齐、上架合规要素齐备。
+    <b>无崩溃级或安全级缺陷。</b>核心需要修的只有 <b style="color:var(--amber)">1 个功能性 Bug</b>——
+    删除习惯后 Widget 不刷新；其余均为健壮性/一致性/上架细节层面的低优先改进。可在修掉 Bug #1 后放心装配进 Xcode 工程。
+  </div>
+
+  <h2>二、需要修复的问题</h2>
+
+  <div class="card med">
+    <h3><span class="tag t-med">中 · 功能性 Bug</span>删除习惯后 Widget 残留</h3>
+    <p class="loc">ViewModels/HabitViewModel.swift:130 <code>delete(_:)</code></p>
+    <p><code>delete()</code> 只调用了 <code>save()</code>，<b>没有调用 <code>WidgetDataBridge.sync</code></b>。
+    打卡（<code>saveAndSync</code>）、新建/编辑（在 HabitFormView 里补了 sync）都会刷新小组件，唯独删除不会——
+    被删的习惯会在主屏小组件里一直残留，直到下一次任意打卡或冷启动 App 才消失。</p>
+    <p>这同时违反了 CLAUDE.md 的明文约定：<i>「业务写操作集中在 HabitViewModel，写库后调用 WidgetDataBridge.sync」</i>。</p>
+    <div class="fix"><b>修复：</b>在 <code>delete()</code> 的 <code>save()</code> 之后追加一行
+    <code>WidgetDataBridge.sync(from: context)</code>（与 <code>saveAndSync</code> 同款）。</div>
+  </div>
+
+  <div class="card low">
+    <h3><span class="tag t-low">低 · 一致性</span>Widget 同步逻辑分散，未真正「集中在 ViewModel」</h3>
+    <p class="loc">HabitViewModel.swift（createHabit/update/delete/persistOrder） vs HabitFormView.swift:223</p>
+    <p>当前 sync 调用散落三处：打卡在 VM 内，新建/编辑靠 View 层 <code>HabitFormView.save()</code> 补救，删除/排序则完全缺失。
+    与设计约定不符，且容易在后续新增写路径时再次漏同步（Bug #1 正是这样产生的）。</p>
+    <div class="fix"><b>建议：</b>把 <code>WidgetDataBridge.sync</code> 统一收敛到 VM 的
+    <code>createHabit / update / delete / persistOrder</code> 内部，移除 View 层的那次调用，形成单一约束点。</div>
+  </div>
+
+  <div class="card low">
+    <h3><span class="tag t-low">低 · 死代码</span><code>persistOrder</code> 从未被调用</h3>
+    <p class="loc">HabitViewModel.swift:137 · ContentView 的 <code>ForEach</code> 无 <code>.onMove</code></p>
+    <p>排序 API 已实现但列表没有任何重排序入口，<code>sortOrder</code> 实际永远等于创建顺序。
+    要么补上拖拽重排 UI（<code>.onMove</code> + 同步），要么按「精准改动」原则暂时保留并标注 TODO（不建议本次删除）。</p>
+  </div>
+
+  <div class="card low">
+    <h3><span class="tag t-low">低 · 性能</span>当前连续天数计算存在 O(n²)</h3>
+    <p class="loc">Utils/HabitStatistics.swift:112 <code>currentStreak</code></p>
+    <p>回溯 while 循环里每次迭代都重算一遍 <code>completedDays.min()</code>。数据量小时无感，但属无谓开销。</p>
+    <div class="fix"><b>修复：</b>把 <code>let earliest = completedDays.min()</code> 提到循环外计算一次。</div>
+  </div>
+
+  <div class="card low">
+    <h3><span class="tag t-low">低 · 上架细节</span>通知用了 <code>.timeSensitive</code> 但未声明对应能力</h3>
+    <p class="loc">Utils/NotificationManager.swift:66 · HabitGrid.entitlements</p>
+    <p><code>content.interruptionLevel = .timeSensitive</code> 需要 Time Sensitive Notifications 能力。
+    entitlements 未声明 <code>com.apple.developer.usernotifications.time-sensitive</code>，系统会静默降级为普通通知——不报错，但达不到「专注模式下也提醒」的预期效果。</p>
+    <div class="fix"><b>修复：</b>在 Xcode 为主 Target 添加该能力；否则把级别降为 <code>.active</code> 以免误导。</div>
+  </div>
+
+  <div class="card low">
+    <h3><span class="tag t-low">低 · 潜在地雷</span>CloudKit 开关与 <code>@Attribute(.unique)</code> 不兼容</h3>
+    <p class="loc">Models/Habit.swift:50 · HabitGridApp.swift:29 注释</p>
+    <p>入口注释写着「如需 CloudKit 改为 <code>.automatic</code>」，但 <code>Habit.id</code> 用了
+    <code>@Attribute(.unique)</code>，而 CloudKit <b>不支持唯一约束</b>。谁照注释一改就会运行时崩溃。
+    当前默认 <code>.none</code> 安全，但这是个埋给未来自己的坑。</p>
+    <div class="fix"><b>建议：</b>把注释改为明确警告，或预先去掉 <code>.unique</code>（靠 UUID 天然唯一）以便随时启用同步。</div>
+  </div>
+
+  <div class="card low">
+    <h3><span class="tag t-low">低 · 健壮性</span>每日唯一性仅靠应用层保证</h3>
+    <p class="loc">Models/HabitEntry.swift · 无 (habit, day) 复合唯一约束</p>
+    <p>「每习惯每天一条」全靠 <code>entries.first(where:)</code> 在写前查重。当前所有写操作都在
+    <code>@MainActor</code> 单线程，安全；但缺数据库级兜底，未来若引入后台导入/同步易产生重复日键。属可接受的现状风险，记录备查。</p>
+  </div>
+
+  <div class="card low">
+    <h3><span class="tag t-low">低 · 细节</span>次要不一致与 cosmetic</h3>
+    <ul>
+      <li><b>默认值不一致：</b><code>Habit.weeklyTarget</code> 默认 7，<code>HabitFormView</code> 默认 5（无功能影响，建议统一）。</li>
+      <li><b>成功触感偏频繁：</b>toggleCheckIn 中 <code>currentStreak == longestStreak</code> 在首次打卡及每次平/刷新纪录时都会触发 <code>Haptics.success()</code>，体感上可能略密。</li>
+      <li><b>周首硬编码：</b>热力图固定周日为周首（GitHub 风格，符合设计），但 <code>thisWeekCount</code>「本周」对周一为周首的地区语义略偏；建议加注释说明是有意为之。</li>
+    </ul>
+  </div>
+
+  <h2>三、值得肯定的地方</h2>
+
+  <div class="card good">
+    <h3><span class="tag t-good">优秀</span>Swift 6 严格并发处理到位</h3>
+    <p>所有有状态管理类（PurchaseManager / NotificationManager / HabitViewModel）均 <code>@MainActor</code> 隔离；
+    <code>listenForTransactions</code> 用普通 <code>Task</code> 继承隔离而非 detached、并用 <code>[weak self]</code> 避免捕获非 Sendable 的 self——细节正确，看得出对并发模型有理解。</p>
+  </div>
+
+  <div class="card good">
+    <h3><span class="tag t-good">优秀</span>StoreKit 2 流程完整且经得起边界</h3>
+    <p>购买的 success / userCancelled / pending / 未验证(<code>checkVerified</code>) / 撤销(<code>revocationDate</code>) 分支全覆盖；
+    本地 UserDefaults 缓存 <code>isPro</code> 保证离线与启动瞬间 UI 即时正确；<code>currentEntitlements</code> 重算授权。付费墙、主题锁、3 个习惯免费上限形成闭环。</p>
+  </div>
+
+  <div class="card good">
+    <h3><span class="tag t-good">优秀</span>统计逻辑纯函数化、可测试、防御充分</h3>
+    <p><code>HabitStatistics</code> 与 SwiftData 完全解耦，输入纯日期集合；连续/最长/完成率/本周计数分别独立；
+    回溯循环都设了 4000/8000 的安全上限防坏数据死循环。「今天没打卡不惩罚连续」的处理符合产品直觉。</p>
+  </div>
+
+  <div class="card good">
+    <h3><span class="tag t-good">优秀</span>本地化与上架合规</h3>
+    <p>中/英两份 <code>Localizable.strings</code> 键集<b>完全对齐</b>（逐条核对，含全部 <code>%lld / %@</code> 占位）；
+    隐私政策 App 内可离线访问、条款指向 Apple 标准 EULA、<code>ITSAppUsesNonExemptEncryption=false</code> 已声明、健康分类正确——上架要素齐备。</p>
+  </div>
+
+  <div class="card good">
+    <h3><span class="tag t-good">优秀</span>组件复用与架构清晰</h3>
+    <p><code>HeatmapView</code> 不持有数据、只收 <code>intensity</code> 闭包 + palette，在列表行/详情/导出卡三处复用；
+    每个习惯用自身颜色经 <code>Color.heatLevels</code> 在 HSB 空间生成同色系四级深浅，实现正确；
+    Widget 经 App Group 快照解耦 SwiftData、次日 0 点刷新 timeline，边界考虑周到。</p>
+  </div>
+
+  <h2>四、修复优先级建议</h2>
+  <div class="card">
+    <p><b>立即修（影响功能）：</b>#1 删除习惯同步 Widget。一行代码，必修。</p>
+    <p><b>顺手修（提升一致性，低成本）：</b>#2 收敛 sync 到 VM、#4 提取 <code>min()</code>、#5 通知能力或降级、#6 CloudKit 注释警告。</p>
+    <p><b>记录备查（暂不动）：</b>#3 排序死代码、#7 唯一性约束、#8 各项 cosmetic——按「精准改动」原则不在本次顺手重构。</p>
+  </div>
+
+  <footer>
+    本报告由系统性审查生成 · 覆盖代码正确性 / 架构合规 / 并发安全 / 内购 / 本地化 / 上架合规六个维度<br>
+    未发现安全漏洞与数据丢失风险 · 建议修复 Bug #1 后进入 Xcode 工程装配
+  </footer>
+
+</div>
+</body>
+</html>

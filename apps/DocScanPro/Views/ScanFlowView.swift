@@ -48,7 +48,7 @@ struct ScanFlowView: View {
             }
         }
         .sheet(isPresented: $isShowingPaywall) {
-            PaywallView(triggeringFeature: .ocr)
+            PaywallView()
         }
         .alert(
             "common.error",
@@ -94,9 +94,11 @@ struct ScanFlowView: View {
     // MARK: - Logic
 
     private func handleScanned(_ images: [UIImage]) {
-        // 批量扫描为专业版功能：免费版仅保留首页，并提示升级。
+        // 批量扫描为专业版功能：免费版仅保留首页，并在保存后引导升级，
+        // 而非静默丢弃多余页面。
         var pagesToSave = images
-        if !purchaseManager.isUnlocked(.batchScan), images.count > freePageLimit {
+        let trimmedForBatchLimit = !purchaseManager.isUnlocked(.batchScan) && images.count > freePageLimit
+        if trimmedForBatchLimit {
             pagesToSave = Array(images.prefix(freePageLimit))
         }
 
@@ -115,6 +117,10 @@ struct ScanFlowView: View {
 
             if let document {
                 phase = .done(document)
+                // 因免费版页数上限被裁剪：在结果页之上弹出付费墙，告知批量扫描为专业版功能。
+                if trimmedForBatchLimit {
+                    isShowingPaywall = true
+                }
             } else if viewModel.errorMessage == nil {
                 // 无错误（例如用户取消或空结果）才直接关闭；有错误时由 alert 关闭。
                 dismiss()
