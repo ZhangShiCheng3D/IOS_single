@@ -34,6 +34,15 @@ struct ColorPalette: Identifiable, Hashable {
         let idx = min(intensity, levels.count) - 1
         return Color(hex: levels[idx]) ?? accent
     }
+
+    // LocalizedStringKey 不遵守 Hashable，无法自动合成；按稳定 id 手写。
+    static func == (lhs: ColorPalette, rhs: ColorPalette) -> Bool {
+        lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 }
 
 extension ColorPalette {

@@ -40,7 +40,7 @@ final class PurchaseManager {
     /// 本地缓存键（StoreKit 校验失败时的离线兜底）。
     private let unlockCacheKey = "cleanalbum.isPro"
 
-    private var updatesTask: Task<Void, Never>?
+    private nonisolated(unsafe) var updatesTask: Task<Void, Never>?
 
     init() {
         // 启动时先读缓存，避免冷启动闪现"未解锁"。

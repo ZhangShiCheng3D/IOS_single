@@ -1,0 +1,215 @@
+/* OneWord — Japanese localization */
+
+/* App */
+"app.name" = "OneWord";
+
+/* Tabs */
+"tab.today" = "今日";
+"tab.calendar" = "カレンダー";
+"tab.trends" = "傾向";
+"tab.settings" = "設定";
+
+/* Common */
+"common.save" = "保存";
+"common.cancel" = "キャンセル";
+"common.delete" = "削除";
+"common.edit" = "編集";
+"common.close" = "閉じる";
+"common.ok" = "OK";
+
+/* Today */
+"today.streakTitle" = "連続記録";
+"today.days" = "日";
+"today.entriesTotal" = "件";
+"today.recorded" = "今日のひとこと";
+"today.prompt" = "今日のひとことは？";
+"today.promptSubtitle" = "一文と、ひとつの気分。それだけでOK。";
+"today.recordButton" = "今日を記録";
+"today.recent" = "最近の記録";
+
+/* Editor */
+"editor.title" = "今日";
+"editor.placeholder" = "今日のことを一文で…";
+"editor.howFeeling" = "今の気分は？";
+"editor.addPhoto" = "写真を追加";
+"editor.changePhoto" = "写真を変更";
+"editor.removePhoto" = "写真を削除";
+"editor.aiPreview" = "オンデバイス分析";
+"editor.onDeviceNote" = "分析はすべてこの端末内で行われます。データは外部に送信されません。";
+
+/* Detail */
+"detail.moodAnalysis" = "気分の分析";
+"detail.keywords" = "キーワード";
+"detail.deleteTitle" = "この記録を削除しますか？";
+"detail.deleteMessage" = "この操作は取り消せません。";
+
+/* Calendar */
+"calendar.legend" = "気分の色";
+
+/* Trends */
+"trends.week" = "週";
+"trends.month" = "月";
+"trends.year" = "年";
+"trends.range" = "期間";
+"trends.moodOverTime" = "気分の推移";
+"trends.summary" = "サマリー";
+"trends.entries" = "記録数";
+"trends.dominant" = "最も多い気分";
+"trends.topThemes" = "よく出るテーマ";
+"trends.empty" = "この期間の記録はまだありません。";
+"trends.lockedTitle" = "AIインサイトを解除";
+"trends.lockedSubtitle" = "気分の傾向、よく出るテーマ、自動生成される1年のふり返り — すべてこの端末内で分析されます。";
+"trends.unlock" = "インサイトを解除";
+
+/* Year review */
+"year.title" = "1年のふり返り";
+"year.select" = "年";
+"year.yourYear" = "今年をひとことで";
+"year.distribution" = "気分の内訳";
+"year.standout" = "印象的な日";
+"year.brightest" = "いちばん晴れやかな日";
+"year.toughest" = "いちばんつらかった日";
+"year.empty" = "この年の記録はまだありません。";
+"year.narrative" = "%1$@年は %2$@ 件を記録し、最長で %3$@ 日連続でした。今年は %4$@ 傾向で、最もよく出たテーマは %5$@ でした。これからのひとことに乾杯。";
+
+/* Accessibility */
+"a11y.delete" = "削除";
+"a11y.passcodeProgress" = "入力したパスコードの桁数";
+"a11y.previousMonth" = "前の月";
+"a11y.nextMonth" = "次の月";
+"a11y.photo" = "添付された写真";
+
+/* Settings */
+"settings.aiInsights" = "AIインサイト";
+"settings.unlockAI" = "AIインサイトを解除";
+"settings.premiumActive" = "AIインサイト解除済み";
+"settings.restore" = "購入を復元";
+"settings.privacy" = "プライバシー";
+"settings.appLock" = "アプリロック";
+"settings.biometrics" = "Face ID / Touch ID";
+"settings.changePasscode" = "パスコードを変更";
+"settings.privacyFooter" = "OneWordを開くときにパスコードまたはFace IDを要求します。";
+"settings.data" = "データ";
+"settings.export" = "日記を書き出す";
+"settings.exportFooter" = "すべての記録をMarkdownまたはJSONで書き出せます。データはあなたのものです。";
+"settings.about" = "情報";
+"settings.version" = "バージョン";
+"settings.privacyPolicy" = "プライバシーポリシー";
+"settings.terms" = "利用規約";
+"settings.privacyPromise" = "完全オフライン。アカウント・サーバー・トラッキングなし。";
+
+/* Paywall */
+"paywall.title" = "AIインサイトを解除";
+"paywall.subtitle" = "あなたの気分をより深く理解 — すべてこの端末内で分析されます。";
+"paywall.feature.trends.title" = "気分の傾向";
+"paywall.feature.trends.subtitle" = "週・月・年ごとのチャート。";
+"paywall.feature.insights.title" = "スマートな要約";
+"paywall.feature.insights.subtitle" = "オンデバイスの感情・テーマ分析。";
+"paywall.feature.year.title" = "1年のふり返り";
+"paywall.feature.year.subtitle" = "自動生成される今年のストーリー。";
+"paywall.feature.keywords.title" = "キーワード抽出";
+"paywall.feature.keywords.subtitle" = "あなたにとって大切なことを見える化。";
+"paywall.unlock" = "永続的に解除";
+"paywall.oneTime" = "買い切り。サブスクリプションなし。";
+"paywall.restore" = "復元";
+"paywall.loading" = "読み込み中…";
+"paywall.legal" = "お支払いはApple IDに請求されます。これは買い切りの非消耗型アイテムです。";
+"paywall.terms" = "利用規約";
+"paywall.privacy" = "プライバシーポリシー";
+
+/* Privacy policy (in-app) */
+"privacy.heading" = "あなたの言葉は端末内にとどまります";
+"privacy.s1.title" = "収集する情報";
+"privacy.s1.body" = "何も収集しません。OneWordにはアカウントもサーバーもなく、ネットワーク通信を一切行いません。記録・写真・気分の分析がこの端末から外に出ることはありません。";
+"privacy.s2.title" = "オンデバイス分析";
+"privacy.s2.body" = "感情スコアリングとキーワード抽出は、AppleのNaturalLanguageフレームワークを使ってすべてiPhone内で実行されます。テキストがアップロードされることはありません。";
+"privacy.s3.title" = "データはあなたの管理下に";
+"privacy.s3.body" = "いつでもすべてをMarkdownまたはJSONで書き出せ、アプリを削除すればすべてのデータが完全に消去されます。任意のパスコードとFace IDで日記を非公開に保てます。";
+"privacy.s4.title" = "購入について";
+"privacy.s4.body" = "任意のAIインサイトの解除は、App Storeを通じてAppleが処理します。OneWordがお支払い情報を見ることはありません。";
+"privacy.updated" = "最終更新：2026年6月。";
+
+/* Lock */
+"lock.prompt" = "パスコードを入力";
+"lock.wrong" = "パスコードが違います";
+"lock.useBiometrics" = "Face ID / Touch IDを使う";
+"lock.biometricReason" = "日記のロックを解除";
+
+/* Passcode setup */
+"passcode.create" = "パスコードを作成";
+"passcode.confirm" = "パスコードを確認";
+"passcode.mismatch" = "パスコードが一致しません。もう一度お試しください。";
+
+/* Export */
+"export.markdown" = "Markdown（.md）";
+"export.json" = "JSONバックアップ（.json）";
+"export.entriesCount" = "件";
+"export.error" = "書き出しに失敗しました。もう一度お試しください。";
+
+/* Store errors */
+"store.error.load" = "商品を読み込めませんでした。";
+"store.error.purchase" = "購入に失敗しました。";
+"store.error.restore" = "復元に失敗しました。";
+"store.error.pending" = "購入は承認待ちです。";
+
+/* Sentiment names */
+"sentiment.veryPositive" = "とても良い";
+"sentiment.positive" = "良い";
+"sentiment.neutral" = "ふつう";
+"sentiment.negative" = "沈みがち";
+"sentiment.veryNegative" = "つらい";
+
+/* Mood emoji names */
+"mood.joyful" = "うれしい";
+"mood.good" = "good";
+"mood.calm" = "おだやか";
+"mood.loved" = "愛を感じる";
+"mood.grateful" = "感謝";
+"mood.neutral" = "ふつう";
+"mood.tired" = "疲れた";
+"mood.thoughtful" = "考えごと";
+"mood.uneasy" = "もやもや";
+"mood.sad" = "かなしい";
+"mood.angry" = "怒り";
+"mood.anxious" = "不安";
+
+/* Theme tags */
+"tag.work" = "仕事";
+"tag.family" = "家族";
+"tag.friends" = "友だち";
+"tag.health" = "健康";
+"tag.love" = "恋愛";
+"tag.weather" = "天気";
+"tag.food" = "食べもの";
+
+/* Reminders */
+"settings.reminders" = "リマインダー";
+"settings.dailyReminder" = "毎日のリマインダー";
+"settings.reminderTime" = "通知する時刻";
+"settings.reminderFooter" = "今日のひとことを残すための、やさしい毎日の合図。端末内でスケジュールされ、サーバーは使いません。";
+"settings.reminderDenied" = "OneWordの通知がオフになっています。毎日のリマインダーを受け取るには、iOSの設定でオンにしてください。";
+"notification.title" = "今日のひとこと ✍️";
+"notification.body" = "少しだけ立ち止まって。一文と、ひとつの気分を。";
+
+/* Onboarding */
+"onboarding.skip" = "スキップ";
+"onboarding.next" = "次へ";
+"onboarding.start" = "日記を始める";
+"onboarding.p1.title" = "1日1行";
+"onboarding.p1.body" = "白紙のプレッシャーなし。一文と、ひとつの気分、そして任意の写真だけ。";
+"onboarding.p2.title" = "インサイトは端末内で";
+"onboarding.p2.body" = "OneWordはAppleのオンデバイス技術であなたの言葉から気持ちを読み取り、気分の移り変わりを見せてくれます。";
+"onboarding.p3.title" = "あなただけのもの";
+"onboarding.p3.body" = "アカウントもサーバーもトラッキングもなし。すべての言葉は、いつもあなたのiPhoneの中だけに。";
+
+/* Year in pixels */
+"year.pixels" = "1年をピクセルで";
+"year.pixelsFooter" = "1マスが1日。あなたの気分で色づけされます。";
+
+/* 同期とヘルスケア */
+"settings.sync" = "同期とヘルスケア";
+"settings.healthSync" = "気分をヘルスケアに保存";
+"settings.icloudSync" = "iCloud同期";
+"settings.syncFooter" = "毎日の気分をヘルスケアAppに記録したり、プライベートなiCloudを通じてデバイス間で記録を同期できます。どちらも任意で、初期設定はオフです。";
+"settings.icloudRestart" = "iCloud同期がオンです。適用するにはOneWordを再起動してください。記録はあなたのプライベートなiCloudを通じて同期され、当社のサーバーを経由することはありません。";
+"settings.healthDenied" = "ヘルスケアへのアクセスがオフです。気分を保存するには「設定」›「ヘルスケア」でOneWordに許可してください。";

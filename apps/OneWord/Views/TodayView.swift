@@ -44,6 +44,10 @@ struct TodayView: View {
             .sheet(isPresented: $showingEditor) {
                 EntryEditorView(date: Date(), existing: todayEntry)
             }
+            .onAppear { WidgetSync.update(entries: entries) }
+            .onChange(of: entries.count) { _, _ in
+                WidgetSync.update(entries: entries)
+            }
         }
     }
 

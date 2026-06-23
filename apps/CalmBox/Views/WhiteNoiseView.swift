@@ -223,14 +223,10 @@ private struct SoundTile: View {
                     }
                 }
                 .background(
-                    Group {
-                        if isPlaying {
-                            LinearGradient(colors: [source.tint, source.tint.opacity(0.7)],
-                                           startPoint: .topLeading, endPoint: .bottomTrailing)
-                        } else {
-                            Color(.secondarySystemBackground)
-                        }
-                    },
+                    isPlaying
+                        ? AnyShapeStyle(LinearGradient(colors: [source.tint, source.tint.opacity(0.7)],
+                                                       startPoint: .topLeading, endPoint: .bottomTrailing))
+                        : AnyShapeStyle(Color(.secondarySystemBackground)),
                     in: RoundedRectangle(cornerRadius: 18)
                 )
             }

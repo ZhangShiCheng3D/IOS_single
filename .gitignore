@@ -5,3 +5,8 @@ node_modules/
 __pycache__/
 *.pyc
 .env
+
+# Xcode / xcodegen generated artifacts (regenerate with: xcodegen generate)
+build/
+*.xcodeproj/
+DerivedData/

@@ -36,13 +36,28 @@ final class PurchaseManager {
     /// Surfaced to the UI when a user-facing error occurs.
     var lastError: String?
 
-    private var updatesTask: Task<Void, Never>?
+    nonisolated(unsafe) private var updatesTask: Task<Void, Never>?
     private let defaults = UserDefaults.standard
     private let premiumKey = "purchase.premiumUnlocked"
+
+    #if DEBUG
+    /// DEBUG-only test override so the insight suite can be exercised on the
+    /// simulator (where StoreKit purchases aren't available). Never compiled
+    /// into release builds.
+    private let debugUnlockKey = "debug.forceUnlocked"
+    var debugForceUnlocked: Bool { defaults.bool(forKey: debugUnlockKey) }
+    func debugSetUnlocked(_ on: Bool) {
+        defaults.set(on, forKey: debugUnlockKey)
+        setPremium(on)
+    }
+    #endif
 
     init() {
         // Optimistic local cache; corrected by `refreshEntitlements()` shortly.
         self.isPremiumUnlocked = defaults.bool(forKey: premiumKey)
+        #if DEBUG
+        if defaults.bool(forKey: debugUnlockKey) { self.isPremiumUnlocked = true }
+        #endif
         updatesTask = listenForTransactions()
 
         Task {
@@ -121,6 +136,10 @@ final class PurchaseManager {
     /// Re-derives `isPremiumUnlocked` from StoreKit's current entitlements.
     @MainActor
     func refreshEntitlements() async {
+        #if DEBUG
+        // Honor the test override so it isn't reset to locked on launch.
+        if defaults.bool(forKey: debugUnlockKey) { setPremium(true); return }
+        #endif
         var unlocked = false
         for await result in Transaction.currentEntitlements {
             guard let transaction = try? checkVerified(result) else { continue }

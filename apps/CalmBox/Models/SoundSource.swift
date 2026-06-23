@@ -32,6 +32,10 @@ struct SoundSource: Identifiable, Hashable {
         Bundle.main.url(forResource: fileName, withExtension: fileExtension, subdirectory: "Sounds")
             ?? Bundle.main.url(forResource: fileName, withExtension: fileExtension)
     }
+
+    // LocalizedStringKey 不遵守 Hashable，无法自动合成；按稳定的 id 实现。
+    static func == (lhs: SoundSource, rhs: SoundSource) -> Bool { lhs.id == rhs.id }
+    func hash(into hasher: inout Hasher) { hasher.combine(id) }
 }
 
 extension SoundSource {

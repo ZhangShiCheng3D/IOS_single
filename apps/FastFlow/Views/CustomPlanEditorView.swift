@@ -47,7 +47,7 @@ struct CustomPlanEditorView: View {
                         format: NSLocalizedString("plan.custom.total.format", comment: ""),
                         totalHours
                     ))
-                    .foregroundStyle(totalHours == 24 ? .secondary : .orange)
+                    .foregroundStyle(totalHours == 24 ? Color.secondary : Color.orange)
                 }
 
                 Section {

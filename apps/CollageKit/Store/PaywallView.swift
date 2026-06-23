@@ -83,7 +83,7 @@ struct PaywallView: View {
 
     private var benefitList: some View {
         VStack(spacing: 14) {
-            ForEach(benefits, id: \.title) { benefit in
+            ForEach(benefits, id: \.icon) { benefit in
                 HStack(spacing: 16) {
                     Image(systemName: benefit.icon)
                         .font(.title2)

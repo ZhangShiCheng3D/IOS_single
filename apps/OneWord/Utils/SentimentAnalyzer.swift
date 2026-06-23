@@ -158,15 +158,52 @@ struct SentimentAnalyzer {
         return Array(tags.prefix(4))
     }
 
-    /// A tiny, bilingual theme lexicon. Intentionally small and local — this
-    /// is a hint generator, not a classifier, and ships with the app.
+    /// A tiny, multilingual theme lexicon. Intentionally small and local — this
+    /// is a hint generator, not a classifier, and ships with the app. Covers the
+    /// six shipping locales (en / zh / es / ja / de / fr) so non-English users
+    /// also get theme tags.
     static let lexicon: [String: Set<String>] = [
-        "tag.work":    ["work", "job", "office", "meeting", "deadline", "工作", "加班", "会议"],
-        "tag.family":  ["family", "mom", "dad", "home", "kid", "家", "家人", "妈妈", "爸爸"],
-        "tag.friends": ["friend", "party", "hang", "朋友", "聚会"],
-        "tag.health":  ["sleep", "tired", "run", "gym", "sick", "睡", "累", "运动", "病"],
-        "tag.love":    ["love", "miss", "date", "爱", "想念", "约会"],
-        "tag.weather": ["rain", "sun", "snow", "雨", "晴", "雪", "天气"],
-        "tag.food":    ["eat", "food", "coffee", "dinner", "吃", "咖啡", "饭"]
+        "tag.work":    ["work", "job", "office", "meeting", "deadline",          // en
+                        "工作", "加班", "会议",                                    // zh
+                        "trabajo", "oficina", "reunión",                          // es
+                        "仕事", "会議", "残業",                                    // ja
+                        "arbeit", "büro", "termin",                               // de
+                        "travail", "bureau", "réunion"],                          // fr
+        "tag.family":  ["family", "mom", "dad", "home", "kid",
+                        "家", "家人", "妈妈", "爸爸",
+                        "familia", "mamá", "papá", "casa",
+                        "家族", "母", "父",
+                        "familie", "mama", "papa", "zuhause",
+                        "famille", "maman", "papa", "maison"],
+        "tag.friends": ["friend", "party", "hang",
+                        "朋友", "聚会",
+                        "amigo", "amigos", "fiesta",
+                        "友達", "友人",
+                        "freund", "freunde",
+                        "ami", "amis", "fête"],
+        "tag.health":  ["sleep", "tired", "run", "gym", "sick",
+                        "睡", "累", "运动", "病",
+                        "dormir", "cansado", "gimnasio", "enfermo",
+                        "睡眠", "疲れ", "運動", "病気",
+                        "schlaf", "müde", "sport", "krank",
+                        "sommeil", "fatigué", "malade"],
+        "tag.love":    ["love", "miss", "date",
+                        "爱", "想念", "约会",
+                        "amor", "amar", "cita",
+                        "愛", "恋", "デート",
+                        "liebe", "lieben",
+                        "amour", "aimer"],
+        "tag.weather": ["rain", "sun", "snow",
+                        "雨", "晴", "雪", "天气",
+                        "lluvia", "sol", "nieve",
+                        "晴れ", "雪", "天気",
+                        "regen", "sonne", "schnee", "wetter",
+                        "pluie", "soleil", "neige", "météo"],
+        "tag.food":    ["eat", "food", "coffee", "dinner",
+                        "吃", "咖啡", "饭",
+                        "comer", "comida", "café", "cena",
+                        "食事", "ご飯", "コーヒー",
+                        "essen", "kaffee", "abendessen",
+                        "manger", "nourriture", "dîner"]
     ]
 }

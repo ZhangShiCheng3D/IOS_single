@@ -18,6 +18,12 @@ struct OneWordApp: App {
     /// Drives the biometric / passcode privacy lock.
     @State private var appLock = AppLock()
 
+    /// Owns the optional daily on-device reminder.
+    @State private var notifications = NotificationManager()
+
+    /// Optional opt-in mirroring of moods into Apple Health (State of Mind).
+    @State private var health = HealthManager()
+
     /// The SwiftData container holding all diary entries. Stored locally only.
     let modelContainer: ModelContainer
 
@@ -25,9 +31,14 @@ struct OneWordApp: App {
     init() {
         do {
             let schema = Schema([DiaryEntry.self])
+            // iCloud sync is opt-in (default off). When enabled, SwiftData
+            // mirrors to the user's *private* CloudKit database — not our
+            // servers. The flag is read at launch; toggling needs a restart.
+            let syncOn = UserDefaults.standard.bool(forKey: "icloud.sync")
             let configuration = ModelConfiguration(
                 schema: schema,
-                isStoredInMemoryOnly: false
+                isStoredInMemoryOnly: false,
+                cloudKitDatabase: syncOn ? .automatic : .none
             )
             modelContainer = try ModelContainer(
                 for: schema,
@@ -45,6 +56,9 @@ struct OneWordApp: App {
             RootView()
                 .environment(purchaseManager)
                 .environment(appLock)
+                .environment(notifications)
+                .environment(health)
+                .task { await notifications.refresh() }
         }
         .modelContainer(modelContainer)
     }

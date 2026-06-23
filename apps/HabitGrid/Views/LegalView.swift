@@ -20,7 +20,7 @@ struct PrivacyPolicyView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                ForEach(Self.sections, id: \.titleKey) { section in
+                ForEach(Self.sections) { section in
                     VStack(alignment: .leading, spacing: 6) {
                         Text(section.titleKey)
                             .font(.headline)
@@ -44,18 +44,19 @@ struct PrivacyPolicyView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 
-    private struct Section {
+    private struct Section: Identifiable {
+        let id: String
         let titleKey: LocalizedStringKey
         let bodyKey: LocalizedStringKey
     }
 
     private static let sections: [Section] = [
-        Section(titleKey: "privacy.section.summary.title", bodyKey: "privacy.section.summary.body"),
-        Section(titleKey: "privacy.section.data.title", bodyKey: "privacy.section.data.body"),
-        Section(titleKey: "privacy.section.icloud.title", bodyKey: "privacy.section.icloud.body"),
-        Section(titleKey: "privacy.section.purchase.title", bodyKey: "privacy.section.purchase.body"),
-        Section(titleKey: "privacy.section.notifications.title", bodyKey: "privacy.section.notifications.body"),
-        Section(titleKey: "privacy.section.contact.title", bodyKey: "privacy.section.contact.body")
+        Section(id: "summary", titleKey: "privacy.section.summary.title", bodyKey: "privacy.section.summary.body"),
+        Section(id: "data", titleKey: "privacy.section.data.title", bodyKey: "privacy.section.data.body"),
+        Section(id: "icloud", titleKey: "privacy.section.icloud.title", bodyKey: "privacy.section.icloud.body"),
+        Section(id: "purchase", titleKey: "privacy.section.purchase.title", bodyKey: "privacy.section.purchase.body"),
+        Section(id: "notifications", titleKey: "privacy.section.notifications.title", bodyKey: "privacy.section.notifications.body"),
+        Section(id: "contact", titleKey: "privacy.section.contact.title", bodyKey: "privacy.section.contact.body")
     ]
 }
 

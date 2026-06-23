@@ -1,0 +1,215 @@
+/* OneWord — German localization */
+
+/* App */
+"app.name" = "OneWord";
+
+/* Tabs */
+"tab.today" = "Heute";
+"tab.calendar" = "Kalender";
+"tab.trends" = "Trends";
+"tab.settings" = "Einstellungen";
+
+/* Common */
+"common.save" = "Sichern";
+"common.cancel" = "Abbrechen";
+"common.delete" = "Löschen";
+"common.edit" = "Bearbeiten";
+"common.close" = "Schließen";
+"common.ok" = "OK";
+
+/* Today */
+"today.streakTitle" = "Aktuelle Serie";
+"today.days" = "Tage";
+"today.entriesTotal" = "gesamt";
+"today.recorded" = "Dein Wort heute";
+"today.prompt" = "Was ist dein eines Wort heute?";
+"today.promptSubtitle" = "Ein Satz, eine Stimmung. Mehr braucht es nicht.";
+"today.recordButton" = "Heute festhalten";
+"today.recent" = "Letzte Tage";
+
+/* Editor */
+"editor.title" = "Heute";
+"editor.placeholder" = "Schreib eine Zeile über heute …";
+"editor.howFeeling" = "Wie fühlst du dich?";
+"editor.addPhoto" = "Foto hinzufügen";
+"editor.changePhoto" = "Foto ändern";
+"editor.removePhoto" = "Foto entfernen";
+"editor.aiPreview" = "Analyse auf dem Gerät";
+"editor.onDeviceNote" = "Privat auf deinem Gerät analysiert. Nichts verlässt dein iPhone.";
+
+/* Detail */
+"detail.moodAnalysis" = "Stimmungsanalyse";
+"detail.keywords" = "Schlüsselwörter";
+"detail.deleteTitle" = "Diesen Eintrag löschen?";
+"detail.deleteMessage" = "Das kann nicht rückgängig gemacht werden.";
+
+/* Calendar */
+"calendar.legend" = "Stimmungsfarben";
+
+/* Trends */
+"trends.week" = "Woche";
+"trends.month" = "Monat";
+"trends.year" = "Jahr";
+"trends.range" = "Zeitraum";
+"trends.moodOverTime" = "Stimmung im Verlauf";
+"trends.summary" = "Übersicht";
+"trends.entries" = "Einträge";
+"trends.dominant" = "Am häufigsten";
+"trends.topThemes" = "Wiederkehrende Themen";
+"trends.empty" = "Noch keine Einträge in diesem Zeitraum.";
+"trends.lockedTitle" = "KI-Insights freischalten";
+"trends.lockedSubtitle" = "Sieh deine Stimmungstrends, wiederkehrende Themen und einen automatisch erstellten Jahresrückblick – alles privat auf deinem Gerät analysiert.";
+"trends.unlock" = "Insights freischalten";
+
+/* Year review */
+"year.title" = "Jahresrückblick";
+"year.select" = "Jahr";
+"year.yourYear" = "Dein Jahr in einem Wort";
+"year.distribution" = "Stimmungsverteilung";
+"year.standout" = "Besondere Tage";
+"year.brightest" = "Schönster Tag";
+"year.toughest" = "Schwerster Tag";
+"year.empty" = "Noch keine Einträge für dieses Jahr.";
+"year.narrative" = "%1$@ hast du %2$@ Einträge geschrieben, mit einer längsten Serie von %3$@ Tagen. Dein Jahr neigte zu %4$@, und dein häufigstes Thema war %5$@. Auf die Worte, die noch kommen.";
+
+/* Accessibility */
+"a11y.delete" = "Löschen";
+"a11y.passcodeProgress" = "Eingegebene Code-Ziffern";
+"a11y.previousMonth" = "Vorheriger Monat";
+"a11y.nextMonth" = "Nächster Monat";
+"a11y.photo" = "Angehängtes Foto";
+
+/* Settings */
+"settings.aiInsights" = "KI-Insights";
+"settings.unlockAI" = "KI-Insights freischalten";
+"settings.premiumActive" = "KI-Insights freigeschaltet";
+"settings.restore" = "Kauf wiederherstellen";
+"settings.privacy" = "Datenschutz";
+"settings.appLock" = "App-Sperre";
+"settings.biometrics" = "Face ID / Touch ID";
+"settings.changePasscode" = "Code ändern";
+"settings.privacyFooter" = "Code oder Face ID erforderlich, um OneWord zu öffnen.";
+"settings.data" = "Daten";
+"settings.export" = "Tagebuch exportieren";
+"settings.exportFooter" = "Exportiere alle Einträge als Markdown oder JSON. Deine Daten gehören dir.";
+"settings.about" = "Über";
+"settings.version" = "Version";
+"settings.privacyPolicy" = "Datenschutzrichtlinie";
+"settings.terms" = "Nutzungsbedingungen";
+"settings.privacyPromise" = "100 % offline. Keine Konten, keine Server, kein Tracking.";
+
+/* Paywall */
+"paywall.title" = "KI-Insights freischalten";
+"paywall.subtitle" = "Verstehe deine Stimmungen tiefer – komplett auf deinem Gerät analysiert.";
+"paywall.feature.trends.title" = "Stimmungstrends";
+"paywall.feature.trends.subtitle" = "Diagramme nach Woche, Monat & Jahr.";
+"paywall.feature.insights.title" = "Smarte Zusammenfassungen";
+"paywall.feature.insights.subtitle" = "Stimmungs- & Themenanalyse auf dem Gerät.";
+"paywall.feature.year.title" = "Jahresrückblick";
+"paywall.feature.year.subtitle" = "Eine automatisch erstellte Geschichte deines Jahres.";
+"paywall.feature.keywords.title" = "Schlüsselwort-Erkennung";
+"paywall.feature.keywords.subtitle" = "Zeigt, was dir am wichtigsten ist.";
+"paywall.unlock" = "Für immer freischalten";
+"paywall.oneTime" = "Einmaliger Kauf. Kein Abo.";
+"paywall.restore" = "Wiederherstellen";
+"paywall.loading" = "Lädt …";
+"paywall.legal" = "Die Zahlung wird über deine Apple-ID abgebucht. Dies ist ein einmaliger, nicht verbrauchbarer Kauf.";
+"paywall.terms" = "Nutzungsbedingungen";
+"paywall.privacy" = "Datenschutzrichtlinie";
+
+/* Privacy policy (in-app) */
+"privacy.heading" = "Deine Worte bleiben auf deinem Gerät";
+"privacy.s1.title" = "Was wir erfassen";
+"privacy.s1.body" = "Nichts. OneWord hat kein Konto-System, keine Server und sendet keine Netzwerkanfragen. Deine Einträge, Fotos und Stimmungsanalysen verlassen niemals dein Gerät.";
+"privacy.s2.title" = "Analyse auf dem Gerät";
+"privacy.s2.body" = "Stimmungsbewertung und Schlüsselwort-Erkennung laufen vollständig auf deinem iPhone mit Apples NaturalLanguage-Framework. Es wird kein Text hochgeladen.";
+"privacy.s3.title" = "Deine Daten, deine Kontrolle";
+"privacy.s3.body" = "Du kannst jederzeit alles als Markdown oder JSON exportieren, und beim Löschen der App werden alle Daten dauerhaft entfernt. Ein optionaler Code und Face ID halten dein Tagebuch privat.";
+"privacy.s4.title" = "Käufe";
+"privacy.s4.body" = "Das optionale Freischalten der KI-Insights wird von Apple über den App Store abgewickelt. OneWord sieht deine Zahlungsdaten nie.";
+"privacy.updated" = "Zuletzt aktualisiert im Juni 2026.";
+
+/* Lock */
+"lock.prompt" = "Code eingeben";
+"lock.wrong" = "Falscher Code";
+"lock.useBiometrics" = "Face ID / Touch ID verwenden";
+"lock.biometricReason" = "Tagebuch entsperren";
+
+/* Passcode setup */
+"passcode.create" = "Code erstellen";
+"passcode.confirm" = "Code bestätigen";
+"passcode.mismatch" = "Codes stimmen nicht überein. Versuch es erneut.";
+
+/* Export */
+"export.markdown" = "Markdown (.md)";
+"export.json" = "JSON-Backup (.json)";
+"export.entriesCount" = "Einträge";
+"export.error" = "Export fehlgeschlagen. Bitte versuch es erneut.";
+
+/* Store errors */
+"store.error.load" = "Produkte konnten nicht geladen werden.";
+"store.error.purchase" = "Kauf fehlgeschlagen.";
+"store.error.restore" = "Wiederherstellung fehlgeschlagen.";
+"store.error.pending" = "Kauf wartet auf Freigabe.";
+
+/* Sentiment names */
+"sentiment.veryPositive" = "Wunderbar";
+"sentiment.positive" = "Gut";
+"sentiment.neutral" = "Okay";
+"sentiment.negative" = "Gedrückt";
+"sentiment.veryNegative" = "Schwer";
+
+/* Mood emoji names */
+"mood.joyful" = "Fröhlich";
+"mood.good" = "Gut";
+"mood.calm" = "Ruhig";
+"mood.loved" = "Geliebt";
+"mood.grateful" = "Dankbar";
+"mood.neutral" = "Neutral";
+"mood.tired" = "Müde";
+"mood.thoughtful" = "Nachdenklich";
+"mood.uneasy" = "Unruhig";
+"mood.sad" = "Traurig";
+"mood.angry" = "Wütend";
+"mood.anxious" = "Ängstlich";
+
+/* Theme tags */
+"tag.work" = "Arbeit";
+"tag.family" = "Familie";
+"tag.friends" = "Freunde";
+"tag.health" = "Gesundheit";
+"tag.love" = "Liebe";
+"tag.weather" = "Wetter";
+"tag.food" = "Essen";
+
+/* Reminders */
+"settings.reminders" = "Erinnerungen";
+"settings.dailyReminder" = "Tägliche Erinnerung";
+"settings.reminderTime" = "Erinnerungszeit";
+"settings.reminderFooter" = "Ein sanfter täglicher Anstoß, dein eines Wort festzuhalten. Auf deinem Gerät geplant – ganz ohne Server.";
+"settings.reminderDenied" = "Mitteilungen für OneWord sind aus. Aktiviere sie in den iOS-Einstellungen, um deine tägliche Erinnerung zu erhalten.";
+"notification.title" = "Dein Wort heute ✍️";
+"notification.body" = "Nimm dir einen Moment. Ein Satz, eine Stimmung.";
+
+/* Onboarding */
+"onboarding.skip" = "Überspringen";
+"onboarding.next" = "Weiter";
+"onboarding.start" = "Tagebuch beginnen";
+"onboarding.p1.title" = "Eine Zeile pro Tag";
+"onboarding.p1.body" = "Keine leeren Seiten, kein Druck. Nur ein Satz, eine Stimmung und optional ein Foto.";
+"onboarding.p2.title" = "Insights auf dem Gerät";
+"onboarding.p2.body" = "OneWord erkennt das Gefühl in deinen Worten mit Apples Intelligenz auf dem Gerät und zeigt, wie sich deine Stimmungen über die Zeit verändern.";
+"onboarding.p3.title" = "Ganz allein deins";
+"onboarding.p3.body" = "Kein Konto, keine Server, kein Tracking. Jedes Wort bleibt auf deinem iPhone – immer.";
+
+/* Year in pixels */
+"year.pixels" = "Jahr in Pixeln";
+"year.pixelsFooter" = "Jedes Quadrat ist ein Tag, eingefärbt nach deiner Stimmung.";
+
+/* Synchronisierung & Health */
+"settings.sync" = "Sync & Health";
+"settings.healthSync" = "Stimmung in Health sichern";
+"settings.icloudSync" = "iCloud-Sync";
+"settings.syncFooter" = "Spiegle deine tägliche Stimmung in Apple Health oder synchronisiere deine Einträge über deine private iCloud zwischen deinen Geräten. Beides ist optional und standardmäßig aus.";
+"settings.icloudRestart" = "iCloud-Sync ist aktiv. Starte OneWord neu, um die Änderung zu übernehmen. Deine Einträge werden über deine private iCloud synchronisiert – niemals über unsere Server.";
+"settings.healthDenied" = "Der Health-Zugriff ist deaktiviert. Aktiviere ihn für OneWord in „Einstellungen“ › „Health“, um deine Stimmung zu sichern.";

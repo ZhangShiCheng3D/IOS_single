@@ -3,7 +3,16 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<string>en</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>zh-Hans</string>
+		<string>es</string>
+		<string>ja</string>
+		<string>de</string>
+		<string>fr</string>
+	</array>
 	<key>CFBundleDisplayName</key>
 	<string>OneWord</string>
 	<key>CFBundleExecutable</key>
@@ -49,7 +58,22 @@
 	<string>OneWord uses Face ID to keep your journal private. / 「一句话」使用面容 ID 保护你的日记隐私。</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>OneWord lets you attach a photo to your daily entry. / 「一句话」允许你为每天的记录附上一张照片。</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>OneWord can save your daily mood to Apple Health as a State of Mind sample. This is optional and stays on your device.</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>OneWord does not read your health data; mood is only written when you opt in.</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.oneword.app</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>oneword</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

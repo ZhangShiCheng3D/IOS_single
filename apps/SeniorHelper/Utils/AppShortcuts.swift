@@ -70,7 +70,7 @@ struct SeniorHelperShortcuts: AppShortcutsProvider {
             phrases: [
                 "用\(.applicationName)打开放大镜",
                 "\(.applicationName)放大镜",
-                "打开放大镜"
+                "打开\(.applicationName)放大镜"
             ],
             shortTitle: "放大镜",
             systemImageName: "magnifyingglass"
@@ -80,7 +80,7 @@ struct SeniorHelperShortcuts: AppShortcutsProvider {
             phrases: [
                 "用\(.applicationName)查看用药提醒",
                 "\(.applicationName)用药提醒",
-                "我的用药提醒"
+                "我的\(.applicationName)用药提醒"
             ],
             shortTitle: "用药提醒",
             systemImageName: "pills"
