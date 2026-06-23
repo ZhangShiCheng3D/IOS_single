@@ -1,0 +1,136 @@
+/*
+  Localizable.strings (简体中文)
+  LumenPuzzle
+*/
+
+// MARK: - App / 菜单
+"app.title" = "流光";
+"app.tagline" = "一束光，一道影，一场静谧的解谜";
+"menu.play" = "开始游戏";
+"menu.achievements" = "成就";
+"menu.settings" = "设置";
+"menu.footer" = "买断制 · 无广告 · 无内购骚扰";
+
+// MARK: - 关卡选择
+"levelselect.title" = "选择关卡";
+"levelselect.unlock" = "解锁";
+"level.missing" = "关卡不存在";
+
+// MARK: - 难度
+"difficulty.easy" = "轻松";
+"difficulty.medium" = "进阶";
+"difficulty.hard" = "困难";
+
+// MARK: - 关卡名称
+"level.1.name" = "初光";
+"level.2.name" = "绕行";
+"level.3.name" = "长墙";
+"level.4.name" = "双生";
+"level.5.name" = "夹缝";
+"level.6.name" = "回廊";
+"level.7.name" = "三星";
+"level.8.name" = "对峙";
+"level.9.name" = "斜阳";
+"level.10.name" = "环光";
+
+// MARK: - 关卡提示
+"level.1.hint" = "拖动光源靠近中央的光球，让它亮起来。";
+"level.2.hint" = "方块挡住了光。把光源拖到目标的同一侧。";
+"level.3.hint" = "绕过长墙，让光从没有遮挡的一侧照向目标。";
+"level.4.hint" = "两个目标分居两角。找到能同时照亮它们的落点。";
+"level.5.hint" = "目标藏在两堵墙之间，光必须从缝隙的正上方落下。";
+"level.6.hint" = "回廊把空间一分为二。先点亮一侧，再移向另一侧。";
+"level.7.hint" = "三个目标，三根柱子。耐心寻找无遮挡的角度。";
+"level.8.hint" = "中央长墙将两个目标隔开，试试从墙的尽头绕过。";
+"level.9.hint" = "斜置的墙体改变了光的路径，沿对角线思考。";
+"level.10.hint" = "四个方向、层层遮挡。从中心向外，逐一点亮。";
+
+// MARK: - HUD / 无障碍
+"a11y.back" = "返回";
+"a11y.hint" = "提示";
+"a11y.close" = "关闭";
+"a11y.level.completed %lld" = "第 %lld 关，已通关";
+"a11y.level.unlocked %lld" = "第 %lld 关，可游玩";
+"a11y.level.locked %lld" = "第 %lld 关，尚未解锁";
+"a11y.level.paywall %lld" = "第 %lld 关，需购买解锁";
+"a11y.progress %lld %lld" = "已点亮 %1$lld 个，共 %2$lld 个目标";
+"a11y.moves %lld" = "已用 %lld 步";
+
+// MARK: - 通关结算
+"completion.title" = "豁然开朗";
+"completion.time" = "用时";
+"completion.moves" = "步数";
+"completion.newachievements" = "解锁新成就";
+"completion.next" = "下一关";
+"completion.unlocknext" = "解锁下一关";
+"completion.replay" = "重玩";
+"completion.levels" = "关卡";
+
+// MARK: - 成就
+"achievements.title" = "成就";
+"achievements.subtitle" = "光影之路上的足迹";
+"achievement.first_light.title" = "初见光明";
+"achievement.first_light.detail" = "完成第一关。";
+"achievement.enlightened.title" = "光照万物";
+"achievement.enlightened.detail" = "完成全部 10 个关卡。";
+"achievement.minimalist.title" = "惜墨如金";
+"achievement.minimalist.detail" = "用不超过 3 步通过任意一关。";
+"achievement.swift_solver.title" = "电光石火";
+"achievement.swift_solver.detail" = "在 20 秒内通过任意一关。";
+"achievement.shadow_master.title" = "驭影之人";
+"achievement.shadow_master.detail" = "完成全部困难关卡。";
+
+// MARK: - 设置
+"settings.title" = "设置";
+"settings.section.purchase" = "购买";
+"settings.purchased" = "已解锁完整版";
+"settings.unlock" = "解锁完整版";
+"settings.restore" = "恢复购买";
+"settings.purchase.footer" = "一次购买，永久解锁全部关卡。无订阅、无广告。";
+"settings.section.progress" = "进度";
+"settings.completed" = "已通关";
+"settings.section.about" = "关于";
+"settings.version" = "版本";
+"settings.noads" = "无广告 · 无追踪 · 纯本地运行";
+"settings.about.footer" = "感谢你为一份尊重时间的完整体验付费。";
+"settings.restore.result.title" = "恢复购买";
+"settings.restore.success" = "已恢复你的购买，全部内容已解锁。";
+"settings.restore.empty" = "未找到可恢复的购买。如果你尚未购买，可在付费墙中解锁完整版。";
+"settings.section.legal" = "法律";
+"settings.privacy" = "隐私政策";
+"settings.terms" = "使用条款";
+
+// MARK: - 隐私政策
+"privacy.title" = "隐私政策";
+"privacy.updated" = "最后更新：2026 年";
+"privacy.body.intro" = "「流光」由独立开发者制作。我们相信最好的隐私政策，就是根本不收集你的任何信息。";
+"privacy.body.collection" = "我们不收集、不存储、不上传任何个人信息。本作没有账号系统、没有分析 SDK、没有第三方广告或追踪。";
+"privacy.body.local" = "你的关卡进度与成就仅保存在你的设备本地（通过系统的 SwiftData），从不离开你的手机，也不会同步到我们的任何服务器——因为我们没有服务器。";
+"privacy.body.purchase" = "购买与「恢复购买」由 Apple 的 App Store 与 StoreKit 处理。我们仅从系统获知「是否已购买」这一状态，无法看到你的支付信息或 Apple 账户。";
+"privacy.body.children" = "本作适合所有年龄段，不含任何不当内容，也不会向任何人（包括儿童）收集数据。";
+"privacy.body.contact" = "如对隐私有任何疑问，欢迎通过 App Store 上的开发者支持页面与我们联系。";
+
+// MARK: - 商店错误
+"store.error.title" = "出了点问题";
+"store.error.load" = "无法加载商品信息：%@";
+"store.error.unavailable" = "商品暂时不可用，请稍后再试。";
+"store.error.purchase" = "购买失败：%@";
+"store.error.restore" = "恢复购买失败：%@";
+
+// MARK: - 付费墙
+"paywall.title" = "解锁完整流光";
+"paywall.subtitle" = "一次购买，畅玩全部 10 关，永不打扰。";
+"paywall.benefit.levels" = "全部 10 个关卡";
+"paywall.benefit.levels.detail" = "由易到难，完整的光影解谜之旅。";
+"paywall.benefit.noads" = "零广告";
+"paywall.benefit.noads.detail" = "没有横幅、没有插屏、没有打断。";
+"paywall.benefit.forever" = "永久拥有";
+"paywall.benefit.forever.detail" = "买断制，无订阅，一次付费终身有效。";
+"paywall.benefit.achievements" = "全部成就";
+"paywall.benefit.achievements.detail" = "解锁挑战与收藏的乐趣。";
+"paywall.buy" = "解锁完整版";
+"paywall.restore" = "恢复已购买";
+"paywall.legal" = "购买后将通过你的 Apple 账户付款。这是一次性购买，非订阅。";
+
+// MARK: - 通用
+"common.ok" = "好";

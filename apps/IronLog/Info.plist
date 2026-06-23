@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- 基础信息 -->
+    <key>CFBundleDisplayName</key>
+    <string>IronLog</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+
+    <!-- App Store 分类：健康健美。影响 App Store 归类与搜索。 -->
+    <key>LSApplicationCategoryType</key>
+    <string>public.app-category.health-and-fitness</string>
+
+    <!-- 导出合规：本 App 仅使用 Apple 默认的 HTTPS/系统加密，无自有加密算法。
+         声明 false 可免去每次上传 App Store Connect 时的出口合规问询。 -->
+    <key>ITSAppUsesNonExemptEncryption</key>
+    <false/>
+
+    <!-- 启动屏（SwiftUI 生命周期需此键以原生分辨率渲染，避免兼容缩放） -->
+    <key>UILaunchScreen</key>
+    <dict/>
+
+    <!-- 界面方向：仅竖屏（录入场景） -->
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+    </array>
+    <key>UISupportedInterfaceOrientations~ipad</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+        <string>UIInterfaceOrientationPortraitUpsideDown</string>
+        <string>UIInterfaceOrientationLandscapeLeft</string>
+        <string>UIInterfaceOrientationLandscapeRight</string>
+    </array>
+
+    <!-- HealthKit 用途说明（必填，否则审核拒绝） -->
+    <key>NSHealthShareUsageDescription</key>
+    <string>IronLog 读取你的体重以计算相对力量等数据，全程本地处理，绝不上传。</string>
+    <key>NSHealthUpdateUsageDescription</key>
+    <string>IronLog 将你完成的力量训练写入「健康」App，便于汇总你的体能活动。</string>
+
+    <!-- 本地化 -->
+    <key>CFBundleLocalizations</key>
+    <array>
+        <string>zh-Hans</string>
+        <string>en</string>
+    </array>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>zh-Hans</string>
+
+    <!-- 后台模式：休息计时器结束的本地通知由 UNUserNotificationCenter 处理，
+         无需后台模式；此处不声明任何 UIBackgroundModes。 -->
+</dict>
+</plist>

@@ -1,0 +1,35 @@
+{
+  "identifier" : "FASTFLOW_STOREKIT_CONFIG",
+  "nonRenewingSubscriptions" : [],
+  "products" : [
+    {
+      "displayPrice" : "30.00",
+      "familyShareable" : false,
+      "internalID" : "fastflow.premium.unlock",
+      "localizations" : [
+        {
+          "description" : "解锁高级图表、自定义方案、桌面小组件与体重趋势。",
+          "displayName" : "FastFlow 高级版",
+          "locale" : "zh_CN"
+        },
+        {
+          "description" : "Unlock premium charts, custom plans, home widgets and weight trends.",
+          "displayName" : "FastFlow Premium",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.fastflow.premium.unlock",
+      "referenceName" : "Premium Unlock",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_failTransactionsEnabled" : false,
+    "_locale" : "zh_CN"
+  },
+  "subscriptionGroups" : [],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

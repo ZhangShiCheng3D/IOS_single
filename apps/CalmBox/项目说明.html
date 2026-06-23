@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CalmBox · 项目说明</title>
+<style>
+  :root{--bg:#f4f5fb;--card:#fff;--accent:#614385;--accent2:#516395;--text:#1c1c28;--muted:#6b6b80;--ok:#2faa6a;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,"PingFang SC","Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.7;padding:0 0 60px;}
+  header{background:linear-gradient(135deg,#614385,#516395);color:#fff;padding:48px 24px;text-align:center;}
+  header h1{font-size:2.4rem;letter-spacing:1px;}
+  header p{opacity:.9;margin-top:10px;font-size:1.05rem;}
+  .badge{display:inline-block;background:rgba(255,255,255,.18);border-radius:20px;padding:5px 14px;margin:6px 4px;font-size:.85rem;}
+  main{max-width:920px;margin:-28px auto 0;padding:0 20px;}
+  section{background:var(--card);border-radius:18px;padding:26px 28px;margin-bottom:22px;box-shadow:0 8px 28px rgba(80,70,130,.08);}
+  h2{color:var(--accent);font-size:1.35rem;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  table{width:100%;border-collapse:collapse;margin-top:8px;}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid #eee;font-size:.95rem;}
+  th{color:var(--muted);font-weight:600;}
+  .tag{font-size:.78rem;padding:2px 9px;border-radius:10px;}
+  .free{background:#e6f6ee;color:var(--ok);}
+  .paid{background:#f0eaf7;color:var(--accent);}
+  ul{padding-left:22px;}
+  li{margin:6px 0;}
+  code{background:#f0eef6;padding:2px 7px;border-radius:6px;font-size:.88em;color:var(--accent);}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:8px;}
+  .stat{background:linear-gradient(135deg,#f6f4fb,#eef0f8);border-radius:14px;padding:16px;}
+  .stat b{display:block;font-size:1.5rem;color:var(--accent);}
+  .check li::marker{content:"☐  ";}
+  footer{text-align:center;color:var(--muted);font-size:.85rem;margin-top:30px;}
+</style>
+</head>
+<body>
+<header>
+  <h1>🫧 CalmBox</h1>
+  <p>解压玩具 + 白噪音盒（ASMR）· 触觉与音效合一的睡前放松应用</p>
+  <div>
+    <span class="badge">Swift 6 / SwiftUI</span>
+    <span class="badge">iOS 17+</span>
+    <span class="badge">MVVM</span>
+    <span class="badge">SwiftData</span>
+    <span class="badge">StoreKit 2</span>
+    <span class="badge">买断 ¥25</span>
+  </div>
+</header>
+
+<main>
+  <section>
+    <h2>📱 产品定位</h2>
+    <p>面向<strong>焦虑、需要放松的年轻人</strong>，主打睡前场景。通过捏泡泡、转陀螺、雨声炉火等
+    「触觉 + 音效」组合，配合 Core Haptics 细腻震动，帮助用户减压入眠。纯本地运行，无后端、无广告、无订阅。</p>
+    <div class="grid">
+      <div class="stat"><b>5</b>解压场景</div>
+      <div class="stat"><b>8</b>白噪音声源</div>
+      <div class="stat"><b>¥25</b>一次买断解锁</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>✨ 功能清单</h2>
+    <table>
+      <tr><th>功能</th><th>说明</th><th>权限</th></tr>
+      <tr><td>🫧 泡泡纸</td><td>点击/滑动捏破，音效 + 震动</td><td><span class="tag free">免费</span></td></tr>
+      <tr><td>🌀 解压陀螺</td><td>拖动旋转，物理摩擦衰减，转速联动触觉</td><td><span class="tag free">免费</span></td></tr>
+      <tr><td>🌊 白噪音</td><td>雨声 / 炉火</td><td><span class="tag free">免费</span></td></tr>
+      <tr><td>🌊 白噪音</td><td>海浪 / 森林 / 雷雨 / 风声 / 溪流 / 夏夜虫鸣</td><td><span class="tag paid">付费</span></td></tr>
+      <tr><td>🎛️ 混音器</td><td>多声源叠加、独立音量、保存预设</td><td><span class="tag paid">付费声源</span></td></tr>
+      <tr><td>🫁 呼吸引导</td><td>4-7-8 助眠呼吸法 + 触觉同步</td><td><span class="tag paid">付费</span></td></tr>
+      <tr><td>🧘 冥想计时</td><td>多时长、环形进度、背景音、统计</td><td><span class="tag paid">付费</span></td></tr>
+      <tr><td>❤️ 收藏主页</td><td>常用场景快捷入口</td><td><span class="tag free">免费</span></td></tr>
+      <tr><td>🔊 后台播放</td><td>锁屏/切后台持续出声</td><td><span class="tag free">免费</span></td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>🛠️ 技术架构</h2>
+    <ul>
+      <li><strong>UI</strong>：SwiftUI，<code>@Observable</code> + <code>@Environment</code> 注入全局管理器</li>
+      <li><strong>音频</strong>：<code>AudioManager</code>（AVAudioPlayer 混音 + 后台）+ <code>SoundEffectPlayer</code>（短音效播放器池）</li>
+      <li><strong>触觉</strong>：<code>HapticManager</code>（CHHapticEngine 自定义模式，不支持时降级 UIFeedbackGenerator）</li>
+      <li><strong>内购</strong>：<code>PurchaseManager</code>（StoreKit 2 Product/Transaction）+ <code>PaywallView</code></li>
+      <li><strong>持久化</strong>：SwiftData <code>@Model</code> — 收藏 / 冥想记录 / 混音预设</li>
+      <li><strong>本地化</strong>：简体中文 + 英文；支持深色模式与 Dynamic Type</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>✅ 上架检查清单</h2>
+    <ul class="check">
+      <li>导入无缝循环白噪音与短音效，确认商用授权（见 <code>Resources/Sounds/README.md</code>）</li>
+      <li>导入 1024×1024 App 图标至 <code>Assets.xcassets/AppIcon</code></li>
+      <li>App Store Connect 创建内购 <code>com.calmbox.unlock.all</code>（非消耗型，¥25 档）</li>
+      <li>替换 <code>AppConstants.Links</code> 中隐私 / 条款 / 支持真实链接，填写隐私清单</li>
+      <li>Signing &amp; Capabilities 启用 Background Modes ▸ Audio</li>
+      <li>真机验证：触觉、后台播放、购买/恢复、深色模式、Dynamic Type</li>
+      <li>用 Sandbox 账号测试购买与恢复流程</li>
+      <li>准备 App Store 截图、描述、关键词</li>
+    </ul>
+  </section>
+
+  <footer>© CalmBox · 独立开发者矩阵产品之一 · 本说明文档由开发流程自动生成</footer>
+</main>
+</body>
+</html>

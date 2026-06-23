@@ -1,0 +1,156 @@
+/*
+   Localizable.strings (简体中文)
+   DocScanPro
+*/
+
+// MARK: - Tabs
+"tab.library" = "文档";
+"tab.folders" = "文件夹";
+"tab.settings" = "设置";
+
+// MARK: - Common
+"common.close" = "关闭";
+"common.ok" = "好";
+"common.done" = "完成";
+"common.cancel" = "取消";
+"common.save" = "保存";
+"common.delete" = "删除";
+"common.create" = "创建";
+"common.error" = "出错了";
+
+// MARK: - Scan
+"scan.start" = "扫描文档";
+"scan.start.hint" = "拍照采集文档，自动识别边缘";
+"scan.saving" = "正在保存…";
+"scan.ocr.processing" = "正在本地识别文字…";
+"scan.defaultTitle.prefix" = "扫描";
+"scan.processing.privacyNote" = "全部处理均在本机完成，不会上传任何内容。";
+"scan.result.title" = "扫描完成";
+"scan.result.saved" = "已保存";
+"scan.result.pageCount" = "共采集 %d 页";
+"scan.result.exportPDF" = "导出为 PDF";
+"scan.result.viewDetail" = "查看文档";
+"scan.result.pageThumbnail" = "第 %d 页缩略图";
+
+// MARK: - Documents
+"documents.empty.title" = "还没有文档";
+"documents.empty.message" = "点击扫描按钮采集你的第一份文档，边缘会被自动识别。";
+"documents.empty.action" = "立即扫描";
+"documents.noResults.title" = "没有结果";
+"documents.noResults.message" = "没有匹配搜索的文档。";
+"documents.search.prompt" = "搜索标题、文字或标签";
+"documents.filter.favorites" = "只看收藏";
+"documents.favorite" = "收藏";
+"documents.unfavorite" = "取消收藏";
+"documents.row.ocr" = "已识别";
+
+// MARK: - Detail
+"detail.rename.title" = "重命名文档";
+"detail.rename.placeholder" = "文档名称";
+"detail.ocr.locked.title" = "文字识别未解锁";
+"detail.ocr.locked.message" = "解锁端侧 OCR，即可从扫描件中提取、复制并编辑文字。";
+"detail.ocr.unlock" = "解锁专业版";
+"detail.ocr.running" = "正在识别…";
+"detail.text.title" = "识别文本";
+"detail.text.copy" = "复制";
+"detail.text.copied" = "已复制";
+"detail.text.empty" = "本页未识别到文字。";
+"detail.action.exportPDF" = "导出为 PDF";
+"detail.action.runOCR" = "运行文字识别";
+"detail.action.rename" = "重命名";
+"detail.action.organize" = "文件夹与标签";
+
+// MARK: - Organize
+"organize.title" = "整理";
+"organize.folder" = "文件夹";
+"organize.folder.none" = "无";
+"organize.tags" = "标签";
+"organize.tags.empty" = "还没有标签，请在下方创建。";
+"organize.newTag" = "新建标签";
+"organize.newTag.placeholder" = "标签名称";
+"organize.newTag.add" = "添加标签";
+
+// MARK: - Folders
+"folders.empty.title" = "暂无文件夹";
+"folders.empty.message" = "创建文件夹来分类管理你的扫描件。";
+"folders.new" = "新建文件夹";
+"folders.new.placeholder" = "文件夹名称";
+"folders.count" = "%d 份文档";
+"folders.detail.empty.title" = "空文件夹";
+"folders.detail.empty.message" = "归入此文件夹的文档会显示在这里。";
+
+// MARK: - Privacy
+"privacy.title" = "隐私";
+"privacy.hero.title" = "你的文档永不离开这台设备";
+"privacy.hero.subtitle" = "DocScanPro 以隐私为先：零网络，零上传。";
+"privacy.point.noNetwork.title" = "零网络访问";
+"privacy.point.noNetwork.body" = "应用不发起任何网络请求，扫描与 OCR 完全离线运行。";
+"privacy.point.onDevice.title" = "端侧 OCR";
+"privacy.point.onDevice.body" = "文字识别基于 Apple Vision 框架，在本机神经网络引擎上完成。";
+"privacy.point.noCloud.title" = "不联云同步";
+"privacy.point.noCloud.body" = "扫描件仅保存在应用本地数据库，已关闭 iCloud 同步。";
+"privacy.point.noTracking.title" = "无追踪";
+"privacy.point.noTracking.body" = "无统计分析、无广告、无任何收集数据的第三方 SDK。";
+"privacy.point.youControl.title" = "你掌控一切";
+"privacy.point.youControl.body" = "随时删除任意文档，卸载应用即彻底清除全部数据。";
+"privacy.footer" = "在这里，隐私不是功能，而是根基。";
+
+// MARK: - Settings
+"settings.section.appearance" = "外观";
+"settings.appearance" = "主题";
+"settings.appearance.system" = "跟随系统";
+"settings.appearance.light" = "浅色";
+"settings.appearance.dark" = "深色";
+"settings.pro.active.title" = "DocScanPro 专业版";
+"settings.pro.active.subtitle" = "已解锁全部功能，感谢支持！";
+"settings.pro.upgrade.title" = "升级到专业版";
+"settings.pro.upgrade.subtitle" = "解锁 OCR、批量扫描等功能。";
+"settings.pro.restore" = "恢复购买";
+"settings.section.scan" = "扫描";
+"settings.section.scan.footer" = "更高质量会占用更大空间。文本图层让导出的 PDF 可被搜索。";
+"settings.autoOCR" = "扫描后自动识别文字";
+"settings.pdfTextLayer" = "PDF 中嵌入可搜索文本层";
+"settings.imageQuality" = "图像质量";
+"settings.quality.low" = "小";
+"settings.quality.high" = "清晰";
+"settings.section.privacy" = "隐私";
+"settings.privacy.statement" = "隐私声明";
+"settings.section.about" = "关于";
+"settings.version" = "版本";
+"settings.support" = "支持";
+
+// MARK: - Paywall
+"paywall.title" = "DocScanPro 专业版";
+"paywall.subtitle" = "一次买断，解锁完整的隐私扫描套件。";
+"paywall.feature.ocr.title" = "端侧 OCR";
+"paywall.feature.ocr.subtitle" = "离线识别、复制、编辑中英文文字。";
+"paywall.feature.batch.title" = "批量扫描";
+"paywall.feature.batch.subtitle" = "一次会话快速采集多页文档。";
+"paywall.feature.organize.title" = "无限整理";
+"paywall.feature.organize.subtitle" = "无限文件夹与标签，井井有条。";
+"paywall.feature.privacy.title" = "始终私密";
+"paywall.feature.privacy.subtitle" = "所有数据永远留在你的设备上。";
+"paywall.buy.cta" = "解锁专业版 · %@";
+"paywall.oneTime.note" = "一次性买断，无订阅。";
+"paywall.unavailable" = "暂时无法获取商品，请稍后再试。";
+"paywall.restore" = "恢复";
+"paywall.restore.title" = "恢复购买";
+"paywall.restore.success" = "已恢复你的专业版购买。";
+"paywall.restore.none" = "未找到此前的购买记录。";
+"paywall.terms" = "使用条款";
+"paywall.privacy" = "隐私政策";
+
+// MARK: - Store
+"store.purchase.pending" = "购买正在等待批准。";
+
+// MARK: - Accessibility
+"a11y.row.pages" = "%d 页";
+"a11y.row.hasText" = "已识别文字";
+"a11y.row.favorite" = "已收藏";
+"a11y.detail.page" = "第 %1$d 页，共 %2$d 页";
+
+// MARK: - Errors
+"ocr.error.invalidImage" = "无法读取图像。";
+"ocr.error.failed" = "识别失败：%@";
+"pdf.error.noPages" = "该文档没有可导出的页面。";
+"pdf.error.renderFailed" = "PDF 生成失败。";

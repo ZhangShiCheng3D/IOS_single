@@ -1,0 +1,10 @@
+为 SeniorHelper 银发友好工具集生成 1024×1024 AppIcon。
+用 Python PIL/Pillow 生成一个简洁的 1024×1024 PNG 图标，保存到 Assets.xcassets/AppIcon.appiconset/AppIcon-1024.png。
+设计要求：
+- 主题色：温暖蓝绿色(#2A9D8F)背景渐变
+- 中央放一个大号放大镜图标(白色圆圈+手柄)，象征"放大镜"核心功能
+- 简洁大方，适合老年人辨识
+- 无Alpha通道(24bpp RGB)，App Store要求图标不能有透明度
+- 更新 Contents.json 确保引用了正确的文件名
+
+用 Python 执行：from PIL import Image, ImageDraw; 然后绘制并保存。

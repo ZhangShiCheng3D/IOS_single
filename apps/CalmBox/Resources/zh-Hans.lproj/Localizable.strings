@@ -1,0 +1,120 @@
+/*
+  Localizable.strings (简体中文)
+  CalmBox
+*/
+
+// 通用
+"app.name" = "CalmBox";
+"common.done" = "完成";
+"common.cancel" = "取消";
+"common.save" = "保存";
+"common.delete" = "删除";
+"common.close" = "关闭";
+
+// 无障碍
+"a11y.locked" = "已锁定，需解锁";
+
+// 主页
+"home.favorites" = "我的收藏";
+"home.allScenes" = "全部场景";
+"home.unlock.title" = "解锁全部场景";
+"home.unlock.subtitle" = "一次买断，畅享所有声音与功能";
+
+// 场景
+"scene.bubble.title" = "泡泡纸";
+"scene.bubble.subtitle" = "捏破解压，啵啵作响";
+"scene.spinner.title" = "解压陀螺";
+"scene.spinner.subtitle" = "拨动旋转，物理手感";
+"scene.whitenoise.title" = "白噪音盒";
+"scene.whitenoise.subtitle" = "多声源叠加混音";
+"scene.breathing.title" = "呼吸引导";
+"scene.breathing.subtitle" = "4-7-8 助眠呼吸法";
+"scene.meditation.title" = "冥想计时";
+"scene.meditation.subtitle" = "静心，伴音入眠";
+
+// 泡泡纸
+"bubble.reset" = "重置";
+"bubble.popped %lld" = "已捏破 %lld 个";
+"bubble.allDone" = "全部捏完！";
+
+// 陀螺
+"spinner.hint" = "拖动陀螺旋转，松手后会自然减速。试试快速甩动！";
+"spinner.a11y" = "解压陀螺，拖动可旋转";
+
+// 白噪音 / 混音器
+"sound.rain" = "雨声";
+"sound.fire" = "炉火";
+"sound.waves" = "海浪";
+"sound.forest" = "森林";
+"sound.thunder" = "雷雨";
+"sound.wind" = "风声";
+"sound.stream" = "溪流";
+"sound.night" = "夏夜虫鸣";
+"mixer.masterVolume" = "总音量";
+"mixer.stopAll" = "全部停止";
+"mixer.presets" = "我的混音";
+"mixer.savePreset" = "保存混音";
+"mixer.savePreset.message" = "为当前混音组合起个名字";
+"mixer.presetName" = "混音名称";
+"mixer.defaultPresetName" = "我的混音";
+"mixer.playing" = "播放中";
+"mixer.stopped" = "已停止";
+
+// 呼吸
+"breathing.ready" = "准备好了吗？";
+"breathing.inhale" = "吸气";
+"breathing.hold" = "屏息";
+"breathing.exhale" = "呼气";
+"breathing.start" = "开始呼吸";
+"breathing.stop" = "停止";
+"breathing.cycles %lld" = "已完成 %lld 轮";
+
+// 冥想
+"meditation.chooseDuration" = "选择冥想时长";
+"meditation.minuteUnit" = "分钟";
+"meditation.start" = "开始冥想";
+"meditation.paused" = "已暂停";
+"meditation.ambientOn" = "背景音：开";
+"meditation.ambientOff" = "背景音：关";
+"meditation.selectAmbient" = "选择背景音";
+"meditation.pause" = "暂停";
+"meditation.resume" = "继续";
+"meditation.stop" = "结束";
+
+// 付费墙
+"paywall.title" = "解锁 CalmBox 全部内容";
+"paywall.subtitle" = "一次买断，永久畅享所有放松场景";
+"paywall.benefit.sounds.title" = "全部白噪音";
+"paywall.benefit.sounds.desc" = "海浪、森林、雷雨、溪流等 6 种声音";
+"paywall.benefit.breathing.title" = "呼吸引导";
+"paywall.benefit.breathing.desc" = "4-7-8 科学助眠呼吸法";
+"paywall.benefit.meditation.title" = "冥想计时";
+"paywall.benefit.meditation.desc" = "多种时长，伴音入眠";
+"paywall.benefit.mixer.title" = "混音器";
+"paywall.benefit.mixer.desc" = "叠加多声源，保存专属混音";
+"paywall.unlock" = "解锁全部";
+"paywall.restore" = "恢复购买";
+"paywall.onetime" = "一次性付款，无订阅、无隐藏费用";
+"paywall.terms" = "使用条款";
+"paywall.privacy" = "隐私政策";
+"paywall.error.noProduct" = "暂时无法加载商品，请稍后再试";
+"paywall.error.nothingToRestore" = "没有可恢复的购买记录";
+"paywall.pending" = "购买正在等待批准，完成后将自动解锁";
+
+// 设置
+"settings.title" = "设置";
+"settings.purchase" = "购买";
+"settings.unlocked" = "已解锁全部内容";
+"settings.unlockAll" = "解锁全部场景";
+"settings.restore" = "恢复购买";
+"settings.preferences" = "偏好";
+"settings.haptics" = "触觉反馈";
+"settings.haptics.footer" = "在支持的设备上启用细腻的震动反馈。";
+"settings.stats" = "冥想统计";
+"settings.totalMinutes" = "累计分钟";
+"settings.completedSessions" = "完成次数";
+"settings.about" = "关于";
+"settings.privacy" = "隐私政策";
+"settings.terms" = "使用条款";
+"settings.support" = "联系支持";
+"settings.version" = "版本";

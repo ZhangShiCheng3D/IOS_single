@@ -1,0 +1,236 @@
+/*
+  Localizable.strings (English)
+  BakeCalc
+*/
+
+/* MARK: - Common */
+"app.name" = "BakeCalc";
+"common.result" = "Result";
+"common.amount" = "Amount";
+"common.pro" = "PRO";
+"common.swap" = "Swap";
+"common.close" = "Close";
+"common.notice" = "Notice";
+"common.ok" = "OK";
+"common.cancel" = "Cancel";
+"common.save" = "Save";
+
+/* MARK: - Weight units */
+"unit.gram" = "g";
+"unit.kilogram" = "kg";
+"unit.ounce" = "oz";
+"unit.pound" = "lb";
+
+/* MARK: - Volume units */
+"unit.milliliter" = "mL";
+"unit.liter" = "L";
+"unit.teaspoon" = "tsp";
+"unit.tablespoon" = "tbsp";
+"unit.cup" = "cup";
+"unit.fluidOunce" = "fl oz";
+
+/* MARK: - Unit conversion */
+"convert.mode" = "Mode";
+"convert.mode.weight" = "Weight";
+"convert.mode.volume" = "Volume";
+"convert.mode.cross" = "Vol→Wt";
+"convert.from" = "From";
+"convert.to" = "To";
+"convert.ingredient" = "Ingredient";
+
+/* MARK: - Categories */
+"category.flour" = "Flours";
+"category.sugar" = "Sugars";
+"category.fat" = "Fats";
+"category.liquid" = "Liquids";
+"category.other" = "Other";
+
+/* MARK: - Ingredients */
+"ingredient.ap_flour" = "All-Purpose Flour";
+"ingredient.bread_flour" = "Bread Flour";
+"ingredient.cake_flour" = "Cake Flour";
+"ingredient.whole_wheat" = "Whole Wheat Flour";
+"ingredient.almond_flour" = "Almond Flour";
+"ingredient.cornstarch" = "Cornstarch";
+"ingredient.cocoa" = "Cocoa Powder";
+"ingredient.rolled_oats" = "Rolled Oats";
+"ingredient.granulated" = "Granulated Sugar";
+"ingredient.brown_sugar" = "Brown Sugar (packed)";
+"ingredient.powdered" = "Powdered Sugar";
+"ingredient.honey" = "Honey";
+"ingredient.maple_syrup" = "Maple Syrup";
+"ingredient.butter" = "Butter";
+"ingredient.veg_oil" = "Vegetable Oil";
+"ingredient.water" = "Water";
+"ingredient.whole_milk" = "Whole Milk";
+"ingredient.heavy_cream" = "Heavy Cream";
+"ingredient.table_salt" = "Table Salt";
+"ingredient.baking_powder" = "Baking Powder";
+"ingredient.baking_soda" = "Baking Soda";
+
+/* MARK: - Temperature */
+"temp.celsius" = "Celsius";
+"temp.fahrenheit" = "Fahrenheit";
+"temp.input" = "Temperature";
+"temp.scale" = "Scale";
+"temp.toggle" = "Switch scale";
+"temp.closest_oven" = "Closest oven setting";
+
+/* MARK: - Oven */
+"oven.very_slow" = "Very slow";
+"oven.slow" = "Slow";
+"oven.moderately_slow" = "Mod. slow";
+"oven.moderate" = "Moderate";
+"oven.moderately_hot" = "Mod. hot";
+"oven.hot" = "Hot";
+"oven.very_hot" = "Very hot";
+"oven.gas_mark" = "Gas Mark";
+"oven.heat" = "Heat";
+
+/* MARK: - Features */
+"feature.unitConversion" = "Unit Conversion";
+"feature.unitConversion.sub" = "g / oz / cup / spoon";
+"feature.temperature" = "Temperature";
+"feature.temperature.sub" = "Celsius ↔ Fahrenheit";
+"feature.ovenReference" = "Oven Reference";
+"feature.ovenReference.sub" = "Temperature chart";
+"feature.recipeScaling" = "Recipe Scaling";
+"feature.recipeScaling.sub" = "Scale by servings";
+"feature.densityTable" = "Density Table";
+"feature.densityTable.sub" = "Ingredient densities";
+"feature.savedRecipes" = "My Recipes";
+"feature.savedRecipes.sub" = "Save & name recipes";
+"feature.panConversion" = "Pan Conversion";
+"feature.panConversion.sub" = "Round / square sizes";
+"feature.eggConversion" = "Egg Conversion";
+"feature.eggConversion.sub" = "Count ↔ weight";
+
+/* MARK: - Home */
+"home.section.basic" = "Basic Tools";
+"home.section.pro" = "Pro Tools";
+"home.banner.title" = "Unlock Pro";
+"home.banner.subtitle" = "Scaling, saving, density table & more";
+
+/* MARK: - Recipe scaling */
+"scale.sample.flour" = "Flour";
+"scale.sample.sugar" = "Sugar";
+"scale.sample.egg" = "Egg";
+"scale.base_servings" = "Base servings";
+"scale.target_servings" = "Target servings";
+"scale.ingredients" = "Ingredients";
+"scale.footer" = "Amounts scale automatically with servings. Swipe to delete, drag to reorder.";
+"scale.add_ingredient" = "Add ingredient";
+"scale.ingredient_name" = "Ingredient name";
+"scale.amount" = "Amount";
+"scale.unit" = "Unit";
+
+/* MARK: - Density table */
+"density.search" = "Search ingredients";
+"density.per_cup" = "Per cup";
+"density.per_tbsp" = "Per tbsp";
+"density.value" = "Density";
+
+/* MARK: - Pans */
+"pan.round" = "Round";
+"pan.square" = "Square";
+"pan.rectangle" = "Rectangle";
+"pan.ratio" = "Scale factor";
+"pan.from" = "From pan";
+"pan.to" = "To pan";
+"pan.sample" = "Try it";
+"pan.sample_amount" = "Amount (g)";
+"pan.footer" = "Scaled by base area. Best for pans of equal depth.";
+"pansize.round_15" = "Round 15cm (6\")";
+"pansize.round_18" = "Round 18cm (7\")";
+"pansize.round_20" = "Round 20cm (8\")";
+"pansize.round_23" = "Round 23cm (9\")";
+"pansize.round_25" = "Round 25cm (10\")";
+"pansize.square_20" = "Square 20cm (8\")";
+"pansize.square_23" = "Square 23cm (9\")";
+"pansize.rect_23_33" = "Rect 23×33cm (9×13\")";
+"pansize.rect_20_30" = "Rect 20×30cm";
+
+/* MARK: - Eggs */
+"egg.small" = "Small";
+"egg.medium" = "Medium";
+"egg.large" = "Large";
+"egg.extra_large" = "Extra Large";
+"egg.jumbo" = "Jumbo";
+"egg.part.whole" = "Whole";
+"egg.part.white" = "White";
+"egg.part.yolk" = "Yolk";
+"egg.dir.count_to_weight" = "Count→Weight";
+"egg.dir.weight_to_count" = "Weight→Count";
+"egg.direction" = "Direction";
+"egg.part" = "Part";
+"egg.grade" = "Egg grade";
+"egg.count_input" = "Number of eggs";
+"egg.weight_input" = "Weight (g)";
+"egg.unit.count" = "eggs";
+"egg.rounding_hint" = "About %d–%d eggs";
+
+/* MARK: - My recipes */
+"recipes.add" = "New recipe";
+"recipes.search" = "Search recipes";
+"recipes.untitled" = "Untitled recipe";
+"recipes.subtitle" = "%d servings · %d ingredients";
+"recipes.empty.title" = "No recipes yet";
+"recipes.empty.message" = "Save your favorite recipes and scale them anytime.";
+"recipes.delete.confirm" = "Delete recipe";
+"recipes.delete.message" = "This recipe and its ingredients will be permanently deleted.";
+"recipes.delete.action" = "Delete";
+"recipes.editor.basic" = "Basics";
+"recipes.editor.name" = "Recipe name";
+"recipes.editor.servings" = "Servings";
+"recipes.editor.ingredient_name" = "Ingredient name";
+"recipes.editor.ingredients" = "Ingredients (g)";
+"recipes.editor.ingredients_footer" = "Stored in grams for precise scaling.";
+"recipes.editor.notes" = "Notes";
+"recipes.editor.notes_placeholder" = "Add notes…";
+"recipes.editor.new" = "New Recipe";
+"recipes.editor.edit" = "Edit Recipe";
+"recipes.editor.add_ingredient" = "Add ingredient";
+"recipes.editor.save_error" = "Save failed: %@";
+
+/* MARK: - Locked */
+"locked.message" = "This is a Pro feature. One purchase unlocks all Pro tools forever.";
+"locked.cta" = "Unlock Pro";
+
+/* MARK: - Settings */
+"settings.title" = "Settings";
+"settings.purchase" = "Purchase";
+"settings.pro_active" = "Pro is active";
+"settings.upgrade" = "Upgrade to Pro";
+"settings.restore" = "Restore purchases";
+"settings.about" = "About";
+"settings.version" = "Version";
+"settings.privacy" = "Privacy Policy";
+"settings.terms" = "Terms of Use";
+"settings.credit" = "BakeCalc · Precise conversions for baking lovers.";
+
+/* MARK: - Paywall */
+"paywall.title" = "Pro";
+"paywall.headline" = "Unlock all Pro baking tools";
+"paywall.subheadline" = "One purchase, yours forever. No subscription, no ads.";
+"paywall.buy" = "Unlock now";
+"paywall.onetime" = "One-time purchase · Lifetime access";
+"paywall.restore" = "Restore purchases";
+"paywall.legal" = "By purchasing you agree to the Terms of Use and Privacy Policy.";
+"paywall.benefit.scale.title" = "Recipe scaling by servings";
+"paywall.benefit.scale.sub" = "Rescale to any serving count";
+"paywall.benefit.density.title" = "Ingredient density table";
+"paywall.benefit.density.sub" = "20+ common ingredient densities";
+"paywall.benefit.save.title" = "Save & name recipes";
+"paywall.benefit.save.sub" = "Stored locally, ready anytime";
+"paywall.benefit.pan.title" = "Pan size conversion";
+"paywall.benefit.pan.sub" = "Round/square by area";
+"paywall.benefit.egg.title" = "Precise egg conversion";
+"paywall.benefit.egg.sub" = "Count and weight, both ways";
+
+/* MARK: - Store errors */
+"store.error.load" = "Failed to load products: %@";
+"store.error.purchase" = "Purchase failed: %@";
+"store.error.no_product" = "Product info is unavailable right now. Please try again later.";
+"store.error.restore" = "Restore failed: %@";
+"store.pending" = "Purchase is pending confirmation.";
+"store.restore.none" = "No purchases found to restore.";

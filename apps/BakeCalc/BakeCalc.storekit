@@ -1,0 +1,36 @@
+{
+  "identifier" : "BAKECALC_LOCAL_STORE",
+  "nonRenewingSubscriptions" : [],
+  "products" : [
+    {
+      "displayPrice" : "18.00",
+      "familyShareable" : false,
+      "internalID" : "BC0000001",
+      "localizations" : [
+        {
+          "description" : "解锁全部专业烘焙工具：配方缩放、原料密度表、配方保存、模具换算、鸡蛋精确换算。一次购买，永久使用。",
+          "displayName" : "BakeCalc 专业版",
+          "locale" : "zh_CN"
+        },
+        {
+          "description" : "Unlock all Pro baking tools: recipe scaling, density table, saved recipes, pan conversion and precise egg conversion. One-time purchase, lifetime access.",
+          "displayName" : "BakeCalc Pro",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.indie.bakecalc.pro",
+      "referenceName" : "BakeCalc Pro Unlock",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "BAKECALC",
+    "_developerTeamID" : "",
+    "_lastSynchronizedDate" : 0
+  },
+  "subscriptionGroups" : [],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

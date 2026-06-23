@@ -1,0 +1,156 @@
+/*
+   Localizable.strings (English)
+   DocScanPro
+*/
+
+// MARK: - Tabs
+"tab.library" = "Documents";
+"tab.folders" = "Folders";
+"tab.settings" = "Settings";
+
+// MARK: - Common
+"common.close" = "Close";
+"common.ok" = "OK";
+"common.done" = "Done";
+"common.cancel" = "Cancel";
+"common.save" = "Save";
+"common.delete" = "Delete";
+"common.create" = "Create";
+"common.error" = "Error";
+
+// MARK: - Scan
+"scan.start" = "Scan Document";
+"scan.start.hint" = "Capture a document; edges are detected automatically";
+"scan.saving" = "Saving…";
+"scan.ocr.processing" = "Recognizing text on-device…";
+"scan.defaultTitle.prefix" = "Scan";
+"scan.processing.privacyNote" = "All processing happens on your device. Nothing is uploaded.";
+"scan.result.title" = "Scan Complete";
+"scan.result.saved" = "Saved";
+"scan.result.pageCount" = "%d page(s) captured";
+"scan.result.exportPDF" = "Export as PDF";
+"scan.result.viewDetail" = "View Document";
+"scan.result.pageThumbnail" = "Page %d thumbnail";
+
+// MARK: - Documents
+"documents.empty.title" = "No Documents Yet";
+"documents.empty.message" = "Tap the scan button to capture your first document. Edges are detected automatically.";
+"documents.empty.action" = "Scan Now";
+"documents.noResults.title" = "No Results";
+"documents.noResults.message" = "No documents match your search.";
+"documents.search.prompt" = "Search title, text or tags";
+"documents.filter.favorites" = "Show favorites";
+"documents.favorite" = "Favorite";
+"documents.unfavorite" = "Unfavorite";
+"documents.row.ocr" = "OCR";
+
+// MARK: - Detail
+"detail.rename.title" = "Rename Document";
+"detail.rename.placeholder" = "Document name";
+"detail.ocr.locked.title" = "Text Recognition Locked";
+"detail.ocr.locked.message" = "Unlock on-device OCR to extract, copy and edit text from your scans.";
+"detail.ocr.unlock" = "Unlock Pro";
+"detail.ocr.running" = "Recognizing…";
+"detail.text.title" = "RECOGNIZED TEXT";
+"detail.text.copy" = "Copy";
+"detail.text.copied" = "Copied";
+"detail.text.empty" = "No text recognized on this page.";
+"detail.action.exportPDF" = "Export as PDF";
+"detail.action.runOCR" = "Run Text Recognition";
+"detail.action.rename" = "Rename";
+"detail.action.organize" = "Folder & Tags";
+
+// MARK: - Organize
+"organize.title" = "Organize";
+"organize.folder" = "Folder";
+"organize.folder.none" = "None";
+"organize.tags" = "Tags";
+"organize.tags.empty" = "No tags yet. Create one below.";
+"organize.newTag" = "New Tag";
+"organize.newTag.placeholder" = "Tag name";
+"organize.newTag.add" = "Add Tag";
+
+// MARK: - Folders
+"folders.empty.title" = "No Folders";
+"folders.empty.message" = "Create folders to keep your scans organized.";
+"folders.new" = "New Folder";
+"folders.new.placeholder" = "Folder name";
+"folders.count" = "%d document(s)";
+"folders.detail.empty.title" = "Empty Folder";
+"folders.detail.empty.message" = "Documents you assign to this folder will appear here.";
+
+// MARK: - Privacy
+"privacy.title" = "Privacy";
+"privacy.hero.title" = "Your Documents Never Leave This Device";
+"privacy.hero.subtitle" = "DocScanPro is built privacy-first. Zero network, zero upload.";
+"privacy.point.noNetwork.title" = "Zero Network Access";
+"privacy.point.noNetwork.body" = "The app makes no network requests. Scanning and OCR work fully offline.";
+"privacy.point.onDevice.title" = "On-Device OCR";
+"privacy.point.onDevice.body" = "Text recognition runs locally using Apple's Vision framework on the Neural Engine.";
+"privacy.point.noCloud.title" = "No Cloud Sync";
+"privacy.point.noCloud.body" = "Your scans are stored only in the app's local database. iCloud sync is disabled.";
+"privacy.point.noTracking.title" = "No Tracking";
+"privacy.point.noTracking.body" = "No analytics, no ads, no third-party SDKs collecting your data.";
+"privacy.point.youControl.title" = "You Are in Control";
+"privacy.point.youControl.body" = "Delete any document anytime. Removing the app erases all data.";
+"privacy.footer" = "Privacy isn't a feature here — it's the foundation.";
+
+// MARK: - Settings
+"settings.section.appearance" = "Appearance";
+"settings.appearance" = "Theme";
+"settings.appearance.system" = "System";
+"settings.appearance.light" = "Light";
+"settings.appearance.dark" = "Dark";
+"settings.pro.active.title" = "DocScanPro Pro";
+"settings.pro.active.subtitle" = "All features unlocked. Thank you!";
+"settings.pro.upgrade.title" = "Upgrade to Pro";
+"settings.pro.upgrade.subtitle" = "Unlock OCR, batch scanning and more.";
+"settings.pro.restore" = "Restore Purchases";
+"settings.section.scan" = "Scanning";
+"settings.section.scan.footer" = "Higher quality produces larger files. Text layer makes exported PDFs searchable.";
+"settings.autoOCR" = "Auto-recognize text after scan";
+"settings.pdfTextLayer" = "Searchable text layer in PDF";
+"settings.imageQuality" = "Image Quality";
+"settings.quality.low" = "Small";
+"settings.quality.high" = "Sharp";
+"settings.section.privacy" = "Privacy";
+"settings.privacy.statement" = "Privacy Statement";
+"settings.section.about" = "About";
+"settings.version" = "Version";
+"settings.support" = "Support";
+
+// MARK: - Paywall
+"paywall.title" = "DocScanPro Pro";
+"paywall.subtitle" = "Unlock the full private scanning suite with a one-time purchase.";
+"paywall.feature.ocr.title" = "On-Device OCR";
+"paywall.feature.ocr.subtitle" = "Recognize, copy and edit text in Chinese & English — offline.";
+"paywall.feature.batch.title" = "Batch Scanning";
+"paywall.feature.batch.subtitle" = "Capture multi-page documents in one fast session.";
+"paywall.feature.organize.title" = "Unlimited Organization";
+"paywall.feature.organize.subtitle" = "Unlimited folders and tags to keep everything tidy.";
+"paywall.feature.privacy.title" = "Always Private";
+"paywall.feature.privacy.subtitle" = "Everything stays on your device. Forever.";
+"paywall.buy.cta" = "Unlock Pro · %@";
+"paywall.oneTime.note" = "One-time purchase. No subscription.";
+"paywall.unavailable" = "Products unavailable. Please try again later.";
+"paywall.restore" = "Restore";
+"paywall.restore.title" = "Restore Purchases";
+"paywall.restore.success" = "Your Pro purchase has been restored.";
+"paywall.restore.none" = "No previous purchase found.";
+"paywall.terms" = "Terms of Use";
+"paywall.privacy" = "Privacy Policy";
+
+// MARK: - Store
+"store.purchase.pending" = "Purchase is pending approval.";
+
+// MARK: - Accessibility
+"a11y.row.pages" = "%d pages";
+"a11y.row.hasText" = "text recognized";
+"a11y.row.favorite" = "favorite";
+"a11y.detail.page" = "Page %1$d of %2$d";
+
+// MARK: - Errors
+"ocr.error.invalidImage" = "Unable to read the image.";
+"ocr.error.failed" = "Recognition failed: %@";
+"pdf.error.noPages" = "This document has no pages to export.";
+"pdf.error.renderFailed" = "Failed to generate PDF.";

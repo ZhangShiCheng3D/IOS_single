@@ -1,0 +1,142 @@
+/* PixelStudio — English */
+
+/* Common */
+"common.close" = "Close";
+"common.cancel" = "Cancel";
+"common.save" = "Save";
+"common.delete" = "Delete";
+"common.done" = "Done";
+"common.ok" = "OK";
+"common.more" = "More";
+
+/* Gallery */
+"gallery.title" = "My Pixels";
+"gallery.pro" = "Pro";
+"gallery.new" = "New Canvas";
+"gallery.rename" = "Rename";
+"gallery.duplicate" = "Duplicate";
+"gallery.empty.title" = "No Artwork Yet";
+"gallery.empty.detail" = "Tap below to start your first pixel masterpiece.";
+"gallery.name.placeholder" = "Name";
+"gallery.delete.confirm %@" = "Delete “%@”?";
+"gallery.delete.message" = "This permanently deletes the artwork and all its frames. This cannot be undone.";
+
+/* New Project */
+"newProject.title" = "New Canvas";
+"newProject.name.section" = "Name";
+"newProject.name.placeholder" = "Untitled";
+"newProject.size.section" = "Canvas Size";
+"newProject.size.footer" = "Sizes larger than 32×32 require Pro.";
+"newProject.create" = "Create";
+"newProject.defaultName" = "Untitled";
+
+/* Tools */
+"tool.pencil" = "Pencil";
+"tool.eraser" = "Eraser";
+"tool.fill" = "Fill";
+"tool.line" = "Line";
+"tool.rectangle" = "Rectangle";
+"tool.eyedropper" = "Eyedropper";
+
+/* Layers */
+"layer.title" = "Layers";
+"layer.default" = "Layer 1";
+"layer.named" = "Layer %d";
+"layer.add" = "Add Layer";
+"layer.rename" = "Rename Layer";
+"layer.name.placeholder" = "Layer name";
+"layer.moveUp" = "Move Up";
+"layer.moveDown" = "Move Down";
+"layer.clear" = "Clear Layer";
+"layer.freeLimit" = "Free version is limited to %d layers. Unlock Pro for unlimited layers.";
+
+/* Palette */
+"palette.edit" = "Edit";
+"palette.add" = "Add Color";
+"palette.pick" = "Pick a color";
+"palette.colorTitle" = "Color";
+
+/* Timeline / Animation */
+"timeline.onion" = "Onion Skin";
+"timeline.play" = "Play";
+"timeline.preview" = "Preview";
+"timeline.fast" = "Fast (0.06s)";
+"timeline.normal" = "Normal (0.12s)";
+"timeline.slow" = "Slow (0.25s)";
+"timeline.addBlank" = "Add Blank Frame";
+"timeline.duplicate" = "Duplicate Frame";
+
+/* Export */
+"export.title" = "Export";
+"export.format" = "Format";
+"export.gif.hint" = "GIF exports all frames as an animation.";
+"export.scale" = "Scale";
+"export.share" = "Share";
+"export.saveToPhotos" = "Save to Photos";
+"export.generate" = "Generate";
+"export.regenerate" = "Regenerate";
+"export.failed" = "Export Failed";
+"export.photos.denied" = "Photo access denied. Enable it in Settings.";
+"export.photos.saved" = "Saved to Photos.";
+"export.photos.failed" = "Could not save to Photos.";
+"export.error.render" = "Failed to render the image.";
+"export.error.encode" = "Failed to encode the image.";
+
+/* Editor */
+"editor.rename" = "Rename Project";
+
+/* Accessibility */
+"brush.size" = "Brush Size";
+"mirror.horizontal" = "Horizontal Mirror";
+"mirror.vertical" = "Vertical Mirror";
+"grid.toggle" = "Toggle Grid";
+"palette.current" = "Current Color";
+"timeline.frame.label %lld" = "Frame %lld";
+"timeline.addFrame" = "Add Frame";
+
+/* Settings */
+"settings.title" = "Settings";
+"settings.purchase" = "Purchase";
+"settings.proActive" = "Pro Unlocked";
+"settings.unlockPro" = "Unlock Pro";
+"settings.about" = "About";
+"settings.version" = "Version";
+"settings.footer" = "PixelStudio runs entirely on your device. No account, no cloud, no tracking.";
+
+/* Paywall */
+"paywall.title" = "PixelStudio Pro";
+"paywall.subtitle" = "Unlock the full creative toolkit with a one-time purchase.";
+"paywall.buy" = "Unlock Pro";
+"paywall.restore" = "Restore Purchase";
+"paywall.oneTime" = "One-time purchase. Yours forever.";
+"paywall.terms" = "Terms";
+"paywall.privacy" = "Privacy";
+
+/* Pro Features */
+"pro.feature.largeCanvas.title" = "Large Canvases";
+"pro.feature.largeCanvas.detail" = "Draw up to 256×256 pixels.";
+"pro.feature.extraLayers.title" = "Unlimited Layers";
+"pro.feature.extraLayers.detail" = "Compose without limits.";
+"pro.feature.animation.title" = "Animation";
+"pro.feature.animation.detail" = "Multi-frame timeline with onion skin.";
+"pro.feature.gifExport.title" = "GIF Export";
+"pro.feature.gifExport.detail" = "Export looping animations as GIF.";
+
+/* Store errors */
+"store.error.noProduct" = "Product unavailable. Please try again later.";
+"store.error.verification" = "Purchase could not be verified.";
+
+/* Privacy Policy */
+"privacy.title" = "Privacy Policy";
+"privacy.intro" = "PixelStudio is designed to respect your privacy completely. The app runs entirely on your device.";
+"privacy.lastUpdated" = "Last updated: June 2026";
+"privacy.section.collection.title" = "Data We Collect";
+"privacy.section.collection.body" = "None. PixelStudio does not collect, transmit, or share any personal data. There is no account, no analytics, no advertising, and no tracking of any kind.";
+"privacy.section.storage.title" = "Your Artwork";
+"privacy.section.storage.body" = "Everything you create is stored locally on your device using Apple's on-device database. Your artwork never leaves your device unless you choose to share or export it yourself.";
+"privacy.section.photos.title" = "Photo Library";
+"privacy.section.photos.body" = "If you save an export to Photos, PixelStudio requests add-only access solely to write that file. The app never reads your existing photos.";
+"privacy.section.purchases.title" = "Purchases";
+"privacy.section.purchases.body" = "The Pro unlock is processed entirely by Apple through the App Store. PixelStudio receives only the anonymous entitlement status and never sees your payment details.";
+"privacy.section.contact.title" = "Contact";
+"privacy.section.contact.body" = "Questions about this policy? Reach out through the App Store support page for PixelStudio.";

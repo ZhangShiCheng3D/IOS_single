@@ -1,0 +1,151 @@
+/*
+  Localizable.strings (简体中文)
+  CollageKit
+*/
+
+// 通用
+"app_name" = "CollageKit 拼图";
+"cancel" = "取消";
+"done" = "完成";
+"save" = "保存";
+"delete" = "删除";
+"ok" = "好";
+"close" = "关闭";
+"export" = "导出";
+"alert_title" = "提示";
+"untitled_project" = "未命名拼图";
+
+// 删除确认
+"delete_confirm_title" = "删除这张拼图？";
+"delete_confirm_message" = "删除后无法恢复。";
+
+// 分类
+"category_grid" = "九宫格";
+"category_magazine" = "杂志风";
+"category_film" = "胶片风";
+"category_freeform" = "自由";
+
+// 背景
+"background_solid" = "纯色";
+"background_gradient" = "渐变";
+"background_kind" = "背景类型";
+"background_custom_color" = "自定义颜色";
+"background_angle" = "角度";
+
+// 模板名称
+"tpl_grid_2x2" = "四宫格";
+"tpl_grid_3x3" = "九宫格";
+"tpl_grid_2x3" = "六宫格";
+"tpl_grid_left_big" = "左侧大图";
+"tpl_mag_hero_top" = "封面头图";
+"tpl_mag_sidebar" = "侧栏拼贴";
+"tpl_mag_cover" = "杂志封面";
+"tpl_film_strip_v" = "竖向胶片";
+"tpl_film_strip_h" = "横向胶片";
+"tpl_film_duo" = "双联胶片";
+"tpl_free_pano" = "全景叠层";
+"tpl_free_mosaic" = "马赛克";
+"tpl_free_offset" = "错落拼贴";
+
+// 首页
+"home_empty_title" = "还没有作品";
+"home_empty_sub" = "点击下方按钮，选一个模板开始你的第一张拼图。";
+"home_new" = "新建拼图";
+"pro_badge" = "升级 Pro";
+
+// 模板选择
+"templates_title" = "选择模板";
+"templates_browse_all" = "查看全部";
+
+// 工具
+"tool_templates" = "模板";
+"tool_ratio" = "比例";
+"tool_layout" = "布局";
+"tool_background" = "背景";
+"tool_text" = "文字";
+"tool_presets" = "预设";
+
+// 布局
+"layout_border" = "外边框";
+"layout_spacing" = "间距";
+"layout_corner" = "圆角";
+
+// 文字
+"text_add" = "添加文字";
+"text_select_hint" = "点击画布上的文字进行编辑";
+"text_default_content" = "双击编辑文字";
+"text_placeholder" = "输入文字";
+"text_size" = "字号";
+"text_weight" = "粗细";
+"text_color" = "颜色";
+"text_rotation" = "旋转";
+"text_delete" = "删除文字";
+"weight_regular" = "常规";
+"weight_medium" = "中等";
+"weight_bold" = "加粗";
+"weight_heavy" = "特粗";
+
+// 插槽调整
+"slot_replace" = "替换";
+"slot_reset" = "复位";
+"slot_remove" = "移除";
+
+// 预设
+"preset_save_current" = "保存当前为预设";
+"preset_save_title" = "保存预设";
+"preset_name_placeholder" = "预设名称";
+"preset_empty" = "还没有保存任何预设";
+"preset_apply" = "应用";
+"preset_default_name" = "我的预设";
+
+// 导出
+"export_title" = "导出预览";
+"export_save" = "保存到相册";
+"export_share" = "分享";
+"export_saved" = "已保存到相册";
+"export_watermark_title" = "导出包含水印";
+"export_watermark_sub" = "升级 Pro 去除水印并解锁全部模板";
+
+// 付费墙
+"paywall_title" = "解锁 CollageKit Pro";
+"paywall_subtitle" = "一次买断，永久解锁全部创作能力";
+"paywall_unlock_button" = "立即解锁";
+"paywall_restore" = "恢复购买";
+"paywall_onetime_note" = "一次性买断，非订阅，无需自动续费。";
+"paywall_terms" = "使用条款";
+"paywall_privacy" = "隐私政策";
+"paywall_benefit_templates_title" = "全部精美模板";
+"paywall_benefit_templates_sub" = "解锁杂志风、胶片风等全部模板";
+"paywall_benefit_watermark_title" = "去除水印";
+"paywall_benefit_watermark_sub" = "导出无水印的高清成图";
+"paywall_benefit_ratio_title" = "全部导出比例";
+"paywall_benefit_ratio_sub" = "包含 9:16 竖屏故事比例";
+"paywall_benefit_updates_title" = "持续更新";
+"paywall_benefit_updates_sub" = "未来新增模板免费享用";
+"purchase_product_unavailable" = "商品暂不可用，请稍后再试。";
+"purchase_pending" = "购买请求已提交，待批准后将自动解锁 Pro。";
+
+// 设置
+"settings_title" = "设置";
+"settings_section_pro" = "会员";
+"settings_section_about" = "关于";
+"settings_pro_active" = "已解锁 Pro";
+"settings_unlock_pro" = "解锁 Pro";
+"settings_restore" = "恢复购买";
+"settings_contact" = "联系我们";
+"settings_version" = "版本";
+
+// 隐私政策
+"privacy_intro" = "CollageKit 是一款纯本地运行的应用。我们高度重视你的隐私：所有照片、拼图与设置都仅保存在你的设备上。";
+"privacy_data_title" = "我们不收集任何数据";
+"privacy_data_body" = "本应用不收集、不上传、不分享你的任何个人信息或使用数据，也不含第三方分析或广告 SDK。";
+"privacy_photos_title" = "照片访问";
+"privacy_photos_body" = "你授权的相册访问仅用于在本机选择照片进行拼图，以及把成图保存回相册。照片不会离开你的设备。";
+"privacy_purchase_title" = "购买信息";
+"privacy_purchase_body" = "内购通过 Apple App Store 处理，我们不会接触你的支付信息。购买凭证仅用于在本机校验 Pro 解锁状态。";
+"privacy_contact_title" = "联系我们";
+"privacy_contact_body" = "如对隐私有任何疑问，可通过「设置 → 联系我们」与我们取得联系。";
+"privacy_updated" = "最近更新：2026 年 6 月";
+
+// 错误
+"error_load_photo" = "无法加载该照片，请重试。";

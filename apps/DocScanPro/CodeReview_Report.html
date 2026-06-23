@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DocScanPro 代码审查报告</title>
+<style>
+  :root { --bg:#0f1117; --card:#1a1d27; --line:#2a2f3d; --txt:#e6e8ee; --muted:#9aa0ad;
+          --red:#ff6b6b; --orange:#f7b731; --green:#26de81; --blue:#4a90d9; --purple:#a55eea; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;
+         background:var(--bg); color:var(--txt); line-height:1.6; padding:32px 16px; }
+  .wrap { max-width:980px; margin:0 auto; }
+  h1 { font-size:28px; margin:0 0 4px; }
+  .sub { color:var(--muted); margin-bottom:28px; }
+  h2 { font-size:20px; margin:34px 0 14px; padding-bottom:8px; border-bottom:1px solid var(--line); }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px 20px; margin:14px 0; }
+  .sev { display:inline-block; font-size:12px; font-weight:700; padding:2px 10px; border-radius:20px; margin-right:8px; }
+  .s-crit { background:rgba(255,107,107,.15); color:var(--red); border:1px solid var(--red); }
+  .s-high { background:rgba(247,183,49,.15); color:var(--orange); border:1px solid var(--orange); }
+  .s-med  { background:rgba(74,144,217,.15); color:var(--blue); border:1px solid var(--blue); }
+  .s-ok   { background:rgba(38,222,129,.15); color:var(--green); border:1px solid var(--green); }
+  code { background:#0c0e14; padding:2px 6px; border-radius:5px; font-size:13px;
+         font-family:"SF Mono",Consolas,monospace; color:#d7dae0; }
+  pre { background:#0c0e14; border:1px solid var(--line); border-radius:8px; padding:12px 14px;
+        overflow-x:auto; font-size:13px; font-family:"SF Mono",Consolas,monospace; }
+  .file { color:var(--purple); font-weight:600; }
+  table { width:100%; border-collapse:collapse; margin:10px 0; font-size:14px; }
+  th,td { text-align:left; padding:9px 12px; border-bottom:1px solid var(--line); }
+  th { color:var(--muted); font-weight:600; }
+  .tag { font-size:12px; color:var(--muted); }
+  ul { margin:8px 0; padding-left:22px; }
+  li { margin:4px 0; }
+  .pill { font-size:12px; padding:1px 8px; border-radius:6px; background:#0c0e14; border:1px solid var(--line); color:var(--muted); }
+  .del { color:var(--red); } .add { color:var(--green); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>DocScanPro 代码审查报告</h1>
+  <div class="sub">端侧 OCR 文档扫描仪（隐私版） · 资深 iOS 架构师审查 · 2026-06-22</div>
+
+  <div class="card">
+    <strong>结论：</strong> 共审查 <strong>34</strong> 个文件（20 个 Swift + 配置/资源/本地化）。修复
+    <span class="s-crit sev">3 个编译错误</span>、<span class="s-high sev">3 个本地化缺陷</span>、
+    <span class="s-med sev">2 项配置完善</span>，并补建 1 个缺失的 StoreKit 测试文件。
+    项目整体架构清晰、隐私铁律（零网络 / 纯本地）落实到位，SwiftData 关系与 StoreKit 2 流程正确。
+  </div>
+
+  <h2>一、问题列表（按严重程度排序）</h2>
+
+  <table>
+    <tr><th>#</th><th>严重度</th><th>文件</th><th>问题</th></tr>
+    <tr><td>1</td><td><span class="sev s-crit">编译错误</span></td><td class="file">ScanWorkflowViewModel.swift</td><td>方法 <code>runOCR(on:context:)</code> 与 Bool 参数 <code>runOCR</code> 同名遮蔽，调用解析到非函数类型</td></tr>
+    <tr><td>2</td><td><span class="sev s-crit">编译错误</span></td><td class="file">EmptyStateView.swift</td><td>可选属性 <code>actionTitle</code>/<code>action</code> 无 <code>= nil</code> 默认值，2 参调用点缺参</td></tr>
+    <tr><td>3</td><td><span class="sev s-crit">编译错误</span></td><td class="file">PaywallView.swift</td><td><code>triggeringFeature</code> 无默认值，<code>ContentView</code> 中 <code>PaywallView()</code> 缺参</td></tr>
+    <tr><td>4</td><td><span class="sev s-high">本地化</span></td><td class="file">PaywallView.swift</td><td><code>Text(三元字面量)</code> 退化为 <code>String</code> 初始化器，不本地化</td></tr>
+    <tr><td>5</td><td><span class="sev s-high">本地化</span></td><td class="file">DocumentDetailView.swift</td><td><code>Label(三元字面量, …)</code> 收藏标题不本地化</td></tr>
+    <tr><td>6</td><td><span class="sev s-high">本地化</span></td><td class="file">PageTextEditor.swift</td><td><code>Label(三元字面量, …)</code> 复制标题不本地化</td></tr>
+    <tr><td>7</td><td><span class="sev s-med">配置</span></td><td class="file">Info.plist</td><td>缺 <code>ITSAppUsesNonExemptEncryption</code> 与 <code>UILaunchScreen</code></td></tr>
+    <tr><td>8</td><td><span class="sev s-med">缺失文件</span></td><td class="file">Configuration.storekit</td><td>README / CLAUDE.md 引用的本地内购测试文件不存在</td></tr>
+  </table>
+
+  <h2>二、逐项修复说明</h2>
+
+  <div class="card">
+    <div><span class="sev s-crit">编译错误 #1</span><span class="file">ScanWorkflowViewModel.swift</span></div>
+    <p>在 <code>saveScannedImages</code> 中，局部参数 <code>runOCR: Bool</code> 遮蔽了同名实例方法。
+    <code>await runOCR(on:context:)</code> 会解析到 Bool 局部变量并尝试“调用”它 → <em>cannot call value of non-function type 'Bool'</em>。</p>
+    <pre><span class="del">- await runOCR(on: document, context: context)</span>
+<span class="add">+ await self.runOCR(on: document, context: context)   // 显式 self. 指向方法</span></pre>
+  </div>
+
+  <div class="card">
+    <div><span class="sev s-crit">编译错误 #2</span><span class="file">EmptyStateView.swift</span></div>
+    <p>Swift 合成的逐成员初始化器<strong>不会</strong>为可选属性自动补 <code>nil</code> 默认值。
+    <code>DocumentListView</code>“无结果”态、<code>FolderListView</code> 子文件夹空态都只传 3 个参数，缺 <code>actionTitle</code>/<code>action</code>。</p>
+    <pre><span class="del">- var actionTitle: LocalizedStringKey?
+- var action: (() -> Void)?</span>
+<span class="add">+ var actionTitle: LocalizedStringKey? = nil
++ var action: (() -> Void)? = nil</span></pre>
+  </div>
+
+  <div class="card">
+    <div><span class="sev s-crit">编译错误 #3</span><span class="file">PaywallView.swift</span></div>
+    <p>同上：<code>ContentView</code> 以 <code>PaywallView()</code> 无参调起付费墙，但 <code>triggeringFeature</code> 无默认值。</p>
+    <pre><span class="del">- var triggeringFeature: PremiumFeature?</span>
+<span class="add">+ var triggeringFeature: PremiumFeature? = nil</span></pre>
+  </div>
+
+  <div class="card">
+    <div><span class="sev s-high">本地化 #4–6</span><span class="file">PaywallView / DocumentDetailView / PageTextEditor</span></div>
+    <p><code>Text(cond ? "key.a" : "key.b")</code> 与 <code>Label(cond ? "key.a" : "key.b", …)</code> 中，
+    三元表达式的字面量会被推断为 <code>String</code>，命中 <code>StringProtocol</code> 重载而<strong>跳过本地化</strong>，
+    界面会直接显示原始 key。修复为 <code>if/else</code> 分支或显式声明 <code>LocalizedStringKey</code> 局部量：</p>
+    <pre><span class="add">// PaywallView：改 if/else
+if purchaseManager.isPro { Text("paywall.restore.success") }
+else { Text("paywall.restore.none") }
+
+// Detail / PageTextEditor：显式类型
+let favoriteKey: LocalizedStringKey = document.isFavorite ? "documents.unfavorite" : "documents.favorite"
+Label(favoriteKey, systemImage: …)</span></pre>
+  </div>
+
+  <div class="card">
+    <div><span class="sev s-med">配置 #7</span><span class="file">Info.plist</span></div>
+    <ul>
+      <li><code>ITSAppUsesNonExemptEncryption = false</code>：本应用零网络、无加密，显式豁免出口合规，避免每次上传 TestFlight 被询问。</li>
+      <li><code>UILaunchScreen = {}</code>：SwiftUI 应用缺此键会以兼容模式（黑边）运行，无法占满现代设备全屏。</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div><span class="sev s-med">缺失文件 #8</span><span class="file">Configuration.storekit</span></div>
+    <p>新建本地内购测试配置：非消耗型产品 <code>com.docscanpro.pro.lifetime</code>，含中英文本地化与价格，
+    与 <code>ProductID.pro</code> 一致，可在模拟器测试购买 / 恢复 / 验证流程。</p>
+  </div>
+
+  <h2>三、修改文件清单</h2>
+  <table>
+    <tr><th>文件</th><th>类型</th><th>摘要</th></tr>
+    <tr><td class="file">ViewModels/ScanWorkflowViewModel.swift</td><td><span class="pill">改</span></td><td>修复 runOCR 命名遮蔽编译错误</td></tr>
+    <tr><td class="file">Views/EmptyStateView.swift</td><td><span class="pill">改</span></td><td>可选属性补 <code>= nil</code> 默认值</td></tr>
+    <tr><td class="file">Store/PaywallView.swift</td><td><span class="pill">改</span></td><td><code>triggeringFeature</code> 补默认值 + restore 文案本地化</td></tr>
+    <tr><td class="file">Views/DocumentDetailView.swift</td><td><span class="pill">改</span></td><td>收藏 Label 三元本地化修复</td></tr>
+    <tr><td class="file">Views/PageTextEditor.swift</td><td><span class="pill">改</span></td><td>复制 Label 三元本地化修复</td></tr>
+    <tr><td class="file">Info.plist</td><td><span class="pill">改</span></td><td>新增 2 个上架/全屏相关键</td></tr>
+    <tr><td class="file">Configuration.storekit</td><td><span class="pill add">新建</span></td><td>StoreKit 2 本地测试配置</td></tr>
+  </table>
+
+  <h2>四、验证通过的检查项</h2>
+  <div class="card">
+    <ul>
+      <li><span class="sev s-ok">SwiftData</span> 四个 <code>@Model</code> 关系正确：每对关系仅在<strong>一侧</strong>声明 <code>inverse:</code>（pages↔document 级联、folder/tags 反向 nullify），无双向 inverse 崩溃风险。</li>
+      <li><span class="sev s-ok">并发</span> <code>OCRService</code> 为 <code>actor</code>，仅 <code>Data</code>/<code>OCRResult(Sendable)</code> 跨隔离边界；ViewModel 均 <code>@MainActor</code>，无数据竞争。</li>
+      <li><span class="sev s-ok">StoreKit 2</span> Product ID 与代码一致；<code>Transaction.updates</code> 监听在 <code>start()</code> 启动；<code>currentEntitlements</code> 为真相源并镜像 UserDefaults；恢复购买 <code>AppStore.sync()</code> 正确。</li>
+      <li><span class="sev s-ok">隐私铁律</span> 全仓无任何 URLSession / 网络调用；<code>cloudKitDatabase: .none</code>；ATS <code>NSAllowsArbitraryLoads = false</code>。</li>
+      <li><span class="sev s-ok">本地化</span> zh-Hans 与 en 的 key 完全对齐（各 ~110 条），代码引用的 key 均有定义。</li>
+      <li><span class="sev s-ok">功能完整</span> 扫描→落库→OCR→PDF 导出闭环完整；付费门控统一走 <code>isUnlocked(_:)</code>；无 TODO/占位空壳。</li>
+      <li><span class="sev s-ok">资源</span> Assets <code>Contents.json</code> 格式合法；AccentColor 含明暗双外观。</li>
+    </ul>
+  </div>
+
+  <h2>五、剩余风险与建议（未改动，留作权衡）</h2>
+  <div class="card">
+    <ul>
+      <li><strong>View 直接操作 SwiftData：</strong> <code>DocumentListView</code>/<code>FolderListView</code>/<code>OrganizeDocumentView</code> 直接调用 <code>modelContext</code> 做简单 CRUD，未经 ViewModel。这是 SwiftUI+SwiftData 的惯用简化写法，<em>功能正确</em>；若严格遵循 MVVM 可下沉到 VM，但属大范围重构，本次按“不破坏即不改”原则保留。</li>
+      <li><strong><code>@AppStorage</code> 置于 <code>AppSettings: ObservableObject</code>：</strong> 严格说 <code>@AppStorage</code> 设计用于 View，置于 ObservableObject 不会自动触发 <code>objectWillChange</code>。但本项目中这些值（OCR/质量/文本层）仅在扫描/导出时即时读取，且 Toggle/Slider 经 Binding 直写直读，<em>实际无可见缺陷</em>；外观偏好已手动 <code>objectWillChange.send()</code> 兼容。建议后续统一为 UserDefaults 计算属性。</li>
+      <li><strong>免费/专业门控粒度：</strong> 文件夹创建（<code>FolderListView</code>）当前无数量门控，标签上限仅在“单文档分配 &gt; 3”时触发。若定价要求“无限文件夹/标签”为 Pro 专属，建议在创建入口也接入 <code>isUnlocked(.unlimitedOrganization)</code>。属产品策略取舍，未擅自改动。</li>
+      <li><strong>AppIcon：</strong> <code>AppIcon.appiconset</code> 仅声明 1024×1024 槽位，缺实际 PNG（无法由代码生成），上架前需补图。</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>

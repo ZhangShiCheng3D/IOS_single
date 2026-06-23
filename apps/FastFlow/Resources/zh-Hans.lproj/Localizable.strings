@@ -1,0 +1,168 @@
+/* FastFlow — 简体中文本地化 */
+
+/* 通用 */
+"common.close" = "关闭";
+"common.ok" = "好";
+"common.notice" = "提示";
+"common.cancel" = "取消";
+"common.save" = "保存";
+"common.done" = "完成";
+
+/* 标签栏 */
+"tab.fasting" = "断食";
+"tab.water" = "喝水";
+"tab.trends" = "趋势";
+"tab.history" = "历史";
+"tab.settings" = "设置";
+
+/* 时长格式 */
+"duration.hm.format" = "%d 小时 %d 分";
+"duration.m.format" = "%d 分";
+
+/* 方案 */
+"plan.subtitle.format" = "%d 小时断食 · %d 小时进食";
+"plan.section.builtin" = "内置方案";
+"plan.section.custom" = "自定义方案";
+"plan.addCustom" = "新建自定义方案";
+"plan.custom.locked.footer" = "自定义方案为高级功能，解锁后可创建任意断食窗口。";
+"plan.picker.title" = "选择方案";
+"plan.custom.name" = "名称";
+"plan.custom.name.placeholder" = "例如 14:10";
+"plan.custom.fasting" = "断食时长";
+"plan.custom.eating" = "进食窗口";
+"plan.custom.window" = "时间窗口";
+"plan.custom.total.format" = "共 %d 小时（建议合计 24 小时）";
+"plan.custom.hours" = "%d 小时";
+"plan.custom.title" = "自定义方案";
+
+/* 断食计时 */
+"fasting.startedAt" = "开始";
+"fasting.goalAt" = "目标";
+"fasting.remaining" = "剩余";
+"fasting.completed" = "已完成";
+"fasting.idle.title" = "准备开始断食";
+"fasting.idle.subtitle" = "选择方案并开始，专注当下。";
+"fasting.selectedPlan" = "当前方案";
+"fasting.start" = "开始断食";
+"fasting.end" = "结束断食";
+"fasting.editStart" = "调整开始时间";
+"fasting.startTime" = "开始时间";
+"fasting.status.reached" = "已达成目标 🎉";
+"fasting.status.progress" = "已完成 %d%%";
+"fasting.end.confirm.title" = "结束本次断食？";
+"fasting.end.confirm.reached" = "你已达成目标，本次记录将保存到历史。";
+"fasting.end.confirm.early" = "尚未达成目标，确定要提前结束吗？记录仍会保存。";
+"fasting.selectPlan.a11yHint" = "轻点以选择断食方案";
+
+/* 喝水 */
+"water.editGoal" = "饮水目标";
+"water.ofGoal.format" = "/ %d ml 目标";
+"water.customAmount" = "自定义毫升";
+"water.add" = "添加";
+"water.today.records" = "今日记录";
+"water.remaining.format" = "还差 %d ml";
+"water.empty" = "今天还没有喝水记录";
+"water.quickAdd.a11y" = "添加 %d 毫升饮水";
+"water.delete.a11y" = "删除这条饮水记录";
+"water.goal.title" = "目标";
+"water.goal.daily" = "每日目标";
+"water.sync.health" = "同步到「健康」";
+"water.sync.footer" = "开启后饮水记录将写入系统「健康」App。";
+"water.ofGoal" = "目标";
+
+/* 趋势 */
+"trends.range" = "范围";
+"trends.range.week" = "近 7 天";
+"trends.range.month" = "近 30 天";
+"trends.fasting.title" = "断食时长趋势";
+"trends.axis.day" = "日期";
+"trends.axis.hours" = "小时";
+"trends.axis.date" = "日期";
+"trends.stats.title" = "断食统计";
+"trends.stats.streak" = "连续达标";
+"trends.stats.total" = "总完成";
+"trends.stats.avg" = "平均时长";
+"trends.weight.title" = "体重趋势";
+"trends.weight.empty" = "暂无体重数据，请在「健康」中记录或授权读取。";
+"trends.weight.kg" = "公斤";
+"trends.locked.title" = "解锁高级图表";
+"trends.locked.subtitle" = "查看 30 天趋势与体重曲线。";
+"trends.empty" = "暂无断食数据";
+
+/* 历史 */
+"history.reached" = "达标";
+"history.empty.title" = "暂无历史记录";
+"history.empty.subtitle" = "完成一次断食后，记录会显示在这里。";
+
+/* 设置 */
+"settings.section.premium" = "高级版";
+"settings.premium.active" = "已解锁高级版";
+"settings.premium.unlock" = "解锁高级版";
+"settings.premium.restore" = "恢复购买";
+"settings.section.reminder" = "喝水提醒";
+"settings.reminder.enable" = "开启提醒";
+"settings.reminder.start" = "开始时间";
+"settings.reminder.end" = "结束时间";
+"settings.reminder.interval" = "提醒间隔";
+"settings.reminder.everyHours" = "每 %d 小时";
+"settings.reminder.footer" = "将在设定的时间范围内定时提醒你喝水。";
+"settings.section.health" = "健康";
+"settings.health.connect" = "连接「健康」";
+"settings.health.footer" = "授权后可读写体重与饮水数据。";
+"settings.section.about" = "关于";
+"settings.about.version" = "版本";
+"settings.about.privacy" = "隐私政策";
+"settings.about.terms" = "使用条款";
+
+/* 付费墙 */
+"paywall.title" = "FastFlow 高级版";
+"paywall.subtitle" = "一次买断，永久解锁全部高级功能。";
+"paywall.benefit.charts.title" = "高级图表";
+"paywall.benefit.charts.desc" = "30 天断食趋势与详细统计。";
+"paywall.benefit.custom.title" = "自定义方案";
+"paywall.benefit.custom.desc" = "创建任意断食/进食窗口。";
+"paywall.benefit.widget.title" = "桌面小组件";
+"paywall.benefit.widget.desc" = "主屏实时查看断食进度。";
+"paywall.benefit.health.title" = "体重趋势";
+"paywall.benefit.health.desc" = "接入「健康」展示体重曲线。";
+"paywall.unlocked" = "已解锁高级版";
+"paywall.buy.format" = "立即解锁 %@";
+"paywall.restore" = "恢复购买";
+"paywall.footnote" = "一次性购买，无订阅。购买即表示同意使用条款与隐私政策。";
+
+/* 内购错误 */
+"store.error.load" = "无法加载商品信息，请稍后重试。";
+"store.error.unavailable" = "商品暂不可用。";
+"store.info.pending" = "购买等待确认中。";
+"store.error.purchase" = "购买失败，请稍后重试。";
+"store.error.restore" = "恢复购买失败。";
+
+/* 通知 */
+"notif.fasting.title" = "断食目标达成！";
+"notif.fasting.body" = "恭喜完成 %@ 断食目标，可以进食啦。";
+"notif.water.title" = "该喝水啦 💧";
+"notif.water.body" = "喝一杯水，保持水分充足。";
+
+/* Widget */
+"widget.fasting.name" = "断食进度";
+"widget.fasting.desc" = "在主屏实时查看当前断食进度。";
+"widget.idle" = "未断食";
+"widget.idle.full" = "打开 App 开始断食";
+
+/* Live Activity */
+"live.reached" = "已达成";
+"live.fasting" = "断食中";
+
+/* 隐私政策 */
+"privacy.intro" = "FastFlow 尊重并保护你的隐私。本 App 为纯本地应用，不设服务器、不收集、不上传、不出售你的任何个人数据。";
+"privacy.updated" = "最后更新：2026 年 6 月";
+"privacy.section.local.title" = "本地数据存储";
+"privacy.section.local.body" = "你的断食记录、喝水记录与偏好设置仅保存在本设备上（SwiftData 与系统偏好）。我们无法访问这些数据，卸载 App 即随之删除。";
+"privacy.section.health.title" = "健康数据（HealthKit）";
+"privacy.section.health.body" = "仅在你明确授权后，FastFlow 才会读取体重、写入饮水/体重数据，用于在 App 内绘制趋势。健康数据由系统「健康」App 管理，绝不会上传到任何第三方。你可随时在「设置 → 隐私与安全 → 健康」中撤销授权。";
+"privacy.section.notifications.title" = "通知";
+"privacy.section.notifications.body" = "断食目标与喝水提醒均为本地通知，由你的设备在本地调度，不经过任何服务器。";
+"privacy.section.purchases.title" = "购买";
+"privacy.section.purchases.body" = "高级版通过 Apple App Store 一次性买断。交易由 Apple 处理，我们不会收到或存储你的支付信息。";
+"privacy.section.thirdparty.title" = "无第三方与追踪";
+"privacy.section.thirdparty.body" = "FastFlow 不集成任何广告、分析或追踪 SDK，也不进行跨 App 追踪。";

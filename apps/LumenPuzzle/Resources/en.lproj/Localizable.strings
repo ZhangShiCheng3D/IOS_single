@@ -1,0 +1,136 @@
+/*
+  Localizable.strings (English)
+  LumenPuzzle
+*/
+
+// MARK: - App / Menu
+"app.title" = "Lumen";
+"app.tagline" = "One light, one shadow, one quiet puzzle";
+"menu.play" = "Play";
+"menu.achievements" = "Achievements";
+"menu.settings" = "Settings";
+"menu.footer" = "Pay once · No ads · No IAP nagging";
+
+// MARK: - Level select
+"levelselect.title" = "Select Level";
+"levelselect.unlock" = "Unlock";
+"level.missing" = "Level not found";
+
+// MARK: - Difficulty
+"difficulty.easy" = "Easy";
+"difficulty.medium" = "Medium";
+"difficulty.hard" = "Hard";
+
+// MARK: - Level names
+"level.1.name" = "First Light";
+"level.2.name" = "Around";
+"level.3.name" = "Long Wall";
+"level.4.name" = "Twins";
+"level.5.name" = "The Slit";
+"level.6.name" = "Cloister";
+"level.7.name" = "Three Stars";
+"level.8.name" = "Standoff";
+"level.9.name" = "Slanted Sun";
+"level.10.name" = "Ring of Light";
+
+// MARK: - Level hints
+"level.1.hint" = "Drag the light toward the orb in the center to make it glow.";
+"level.2.hint" = "The block casts a shadow. Move the light to the target's side.";
+"level.3.hint" = "Go around the long wall and light the target from the open side.";
+"level.4.hint" = "Two targets in opposite corners. Find a spot that lights both.";
+"level.5.hint" = "The target hides between two walls — the light must fall through the gap.";
+"level.6.hint" = "The cloister splits the space. Light one side, then move to the other.";
+"level.7.hint" = "Three targets, three pillars. Patiently find the unblocked angle.";
+"level.8.hint" = "A central wall divides the two targets. Try slipping past its end.";
+"level.9.hint" = "The slanted wall bends the path of light. Think diagonally.";
+"level.10.hint" = "Four directions, layered walls. Work outward from the center.";
+
+// MARK: - HUD / Accessibility
+"a11y.back" = "Back";
+"a11y.hint" = "Hint";
+"a11y.close" = "Close";
+"a11y.level.completed %lld" = "Level %lld, completed";
+"a11y.level.unlocked %lld" = "Level %lld, playable";
+"a11y.level.locked %lld" = "Level %lld, locked";
+"a11y.level.paywall %lld" = "Level %lld, purchase to unlock";
+"a11y.progress %lld %lld" = "%1$lld of %2$lld targets lit";
+"a11y.moves %lld" = "%lld moves used";
+
+// MARK: - Completion
+"completion.title" = "Illuminated";
+"completion.time" = "Time";
+"completion.moves" = "Moves";
+"completion.newachievements" = "New Achievements";
+"completion.next" = "Next Level";
+"completion.unlocknext" = "Unlock Next";
+"completion.replay" = "Replay";
+"completion.levels" = "Levels";
+
+// MARK: - Achievements
+"achievements.title" = "Achievements";
+"achievements.subtitle" = "Footprints on the path of light";
+"achievement.first_light.title" = "First Light";
+"achievement.first_light.detail" = "Complete the first level.";
+"achievement.enlightened.title" = "Enlightened";
+"achievement.enlightened.detail" = "Complete all 10 levels.";
+"achievement.minimalist.title" = "Minimalist";
+"achievement.minimalist.detail" = "Solve any level in 3 moves or fewer.";
+"achievement.swift_solver.title" = "Swift Solver";
+"achievement.swift_solver.detail" = "Solve any level in under 20 seconds.";
+"achievement.shadow_master.title" = "Shadow Master";
+"achievement.shadow_master.detail" = "Complete every hard level.";
+
+// MARK: - Settings
+"settings.title" = "Settings";
+"settings.section.purchase" = "Purchase";
+"settings.purchased" = "Full version unlocked";
+"settings.unlock" = "Unlock Full Version";
+"settings.restore" = "Restore Purchase";
+"settings.purchase.footer" = "Buy once to unlock all levels forever. No subscription, no ads.";
+"settings.section.progress" = "Progress";
+"settings.completed" = "Completed";
+"settings.section.about" = "About";
+"settings.version" = "Version";
+"settings.noads" = "No ads · No tracking · Fully offline";
+"settings.about.footer" = "Thank you for paying for a complete experience that respects your time.";
+"settings.restore.result.title" = "Restore Purchase";
+"settings.restore.success" = "Your purchase has been restored. All content is unlocked.";
+"settings.restore.empty" = "No purchase to restore. If you haven't bought yet, you can unlock the full version from the paywall.";
+"settings.section.legal" = "Legal";
+"settings.privacy" = "Privacy Policy";
+"settings.terms" = "Terms of Use";
+
+// MARK: - Privacy policy
+"privacy.title" = "Privacy Policy";
+"privacy.updated" = "Last updated: 2026";
+"privacy.body.intro" = "Lumen is made by an independent developer. We believe the best privacy policy is to simply not collect anything about you.";
+"privacy.body.collection" = "We do not collect, store, or transmit any personal information. There is no account system, no analytics SDK, no third-party ads, and no tracking.";
+"privacy.body.local" = "Your level progress and achievements are stored only on your device (via the system's SwiftData). They never leave your phone and are never synced to any server of ours — because we don't run one.";
+"privacy.body.purchase" = "Purchases and \"Restore Purchase\" are handled by Apple's App Store and StoreKit. We only learn whether you have purchased; we never see your payment details or Apple Account.";
+"privacy.body.children" = "Lumen is suitable for all ages, contains no objectionable content, and collects no data from anyone, including children.";
+"privacy.body.contact" = "If you have any privacy questions, you're welcome to reach us via the developer support page on the App Store.";
+
+// MARK: - Store errors
+"store.error.title" = "Something went wrong";
+"store.error.load" = "Couldn't load product info: %@";
+"store.error.unavailable" = "The product is temporarily unavailable. Please try again later.";
+"store.error.purchase" = "Purchase failed: %@";
+"store.error.restore" = "Restore failed: %@";
+
+// MARK: - Paywall
+"paywall.title" = "Unlock Full Lumen";
+"paywall.subtitle" = "Buy once, play all 10 levels, never be interrupted.";
+"paywall.benefit.levels" = "All 10 Levels";
+"paywall.benefit.levels.detail" = "A complete journey of light-and-shadow puzzles, easy to hard.";
+"paywall.benefit.noads" = "Zero Ads";
+"paywall.benefit.noads.detail" = "No banners, no interstitials, no interruptions.";
+"paywall.benefit.forever" = "Yours Forever";
+"paywall.benefit.forever.detail" = "A one-time purchase. No subscription, ever.";
+"paywall.benefit.achievements" = "All Achievements";
+"paywall.benefit.achievements.detail" = "Unlock the joy of challenge and collection.";
+"paywall.buy" = "Unlock";
+"paywall.restore" = "Restore Purchase";
+"paywall.legal" = "Payment will be charged to your Apple Account on purchase. This is a one-time purchase, not a subscription.";
+
+// MARK: - Common
+"common.ok" = "OK";

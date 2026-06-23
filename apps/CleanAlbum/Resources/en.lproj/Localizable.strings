@@ -1,0 +1,128 @@
+/*
+  Localizable.strings (English)
+  CleanAlbum
+*/
+
+// MARK: - Common
+"app.name" = "CleanAlbum";
+"action.close" = "Close";
+"action.done" = "Done";
+"action.cancel" = "Cancel";
+"action.ok" = "OK";
+"action.rescan" = "Rescan";
+"action.cancelScan" = "Cancel Scan";
+"error.title" = "Something went wrong";
+
+// MARK: - Accessibility (VoiceOver)
+"a11y.photo" = "Photo";
+"a11y.kept" = "Kept";
+"a11y.toggleHint" = "Double-tap to toggle deletion";
+
+// MARK: - Welcome
+"welcome.title" = "Free Up Photo Space";
+"welcome.subtitle" = "On-device AI finds duplicate, similar, and blurry photos so you can clean them in one tap and reclaim space.";
+"welcome.point.privacy" = "Privacy First";
+"welcome.point.privacy.desc" = "Photos never leave your device. All analysis runs locally.";
+"welcome.point.onDevice" = "On-Device Intelligence";
+"welcome.point.onDevice.desc" = "Powered by Apple's Vision framework — works fully offline.";
+"welcome.point.smart" = "Smart Grouping";
+"welcome.point.smart.desc" = "Auto-sorts by duplicate, similar, and blurry, and suggests the best one to keep.";
+"welcome.scan" = "Scan My Library";
+
+// MARK: - Scan progress
+"scan.status.permission" = "Requesting photo access…";
+"scan.status.fetching" = "Loading photos…";
+"scan.status.analyzing" = "Analyzing photos on-device…";
+"scan.status.grouping" = "Grouping intelligently…";
+"scan.privacy.note" = "Everything runs locally. Zero uploads, zero network.";
+"scan.empty.title" = "Your Library Is Clean";
+"scan.empty.desc" = "No duplicate, similar, or blurry photos to clean up.";
+
+// MARK: - Access
+"access.title" = "Photo Access Needed";
+"access.desc" = "Allow photo access in Settings to scan and clean. We never upload your photos.";
+"access.openSettings" = "Open Settings";
+
+// MARK: - Storage
+"storage.used" = "Used";
+"storage.total" = "Total";
+"storage.free" = "Free";
+"storage.usedLabel" = "Used";
+"storage.reclaimable" = "Reclaimable";
+
+// MARK: - Category
+"category.summary" = "%1$d photos · %2$d groups";
+
+// MARK: - Groups
+"group.duplicate" = "Duplicates";
+"group.similar" = "Similar Photos";
+"group.blurry" = "Blurry Photos";
+"group.hint.similar" = "Tap to select photos to delete. Long-press to preview full screen.";
+"group.hint.blurry" = "These photos look out of focus. Tap to select for deletion.";
+"group.keeper" = "Keep";
+"group.keepBest" = "Keep Best";
+"groups.empty" = "Nothing Here";
+"groups.empty.desc" = "No photos to clean in this category.";
+
+// MARK: - Preview
+"preview.markDelete" = "Mark for Deletion";
+"preview.markedDelete" = "Marked for Deletion";
+
+// MARK: - Cleanup
+"cleanup.selectedCount" = "%d selected";
+"cleanup.action" = "Clean Up";
+"cleanup.confirm.title" = "Confirm Cleanup";
+"cleanup.confirm.message" = "This will delete %1$d photos and free about %2$@. Photos move to Recently Deleted and can be restored within 30 days.";
+"cleanup.confirm.delete" = "Delete";
+"cleanup.error" = "Cleanup didn't finish. Please try again.";
+
+// MARK: - Result
+"result.title" = "All Cleaned Up!";
+"result.subtitle" = "Your library is tidier and space is freed.";
+"result.deleted" = "Deleted";
+"result.freed" = "Freed";
+"result.comparison" = "Space Comparison";
+"result.before" = "Free before";
+"result.after" = "Projected free";
+"result.recentlyDeleted.note" = "Photos moved to “Recently Deleted.” Space is fully reclaimed after 30 days or once you empty it manually.";
+
+// MARK: - Settings
+"settings.title" = "Settings";
+"settings.section.similarity" = "Similarity Threshold";
+"settings.similarity" = "Similarity";
+"settings.similarity.hint" = "Higher values require photos to be more alike before grouping — fewer but more precise groups.";
+"settings.section.blur" = "Blur Detection";
+"settings.blur" = "Sensitivity";
+"settings.blur.hint" = "Higher values flag more photos as blurry.";
+"settings.section.privacy" = "Privacy";
+"settings.privacy.local" = "Fully on-device";
+"settings.privacy.noUpload" = "No uploads · No network";
+"settings.privacy.noTracking" = "No tracking · No ads";
+"settings.privacy.footer" = "CleanAlbum never collects or uploads your photos or data.";
+"settings.section.purchase" = "Purchase";
+"settings.proStatus" = "Batch Cleanup";
+"settings.pro.unlocked" = "Unlocked";
+"settings.pro.locked" = "Locked";
+"settings.section.about" = "About";
+"settings.version" = "Version";
+"settings.section.legal" = "Legal";
+"settings.privacyPolicy" = "Privacy Policy";
+"settings.termsOfUse" = "Terms of Use";
+
+// MARK: - Paywall
+"paywall.title" = "Unlock Batch Cleanup";
+"paywall.subtitle" = "Scanning and browsing are always free. A one-time purchase unlocks one-tap batch cleanup forever.";
+"paywall.feature.batch" = "Select and delete photos in bulk";
+"paywall.feature.oneTap" = "Clear all duplicates and blurry shots in one tap";
+"paywall.feature.lifetime" = "One-time purchase, lifetime use, no subscription";
+"paywall.feature.privacy" = "All processing always stays on your device";
+"paywall.privacy.badge" = "100% On-Device";
+"paywall.cta" = "Unlock Now";
+"paywall.restore" = "Restore Purchase";
+"paywall.legal" = "One-time purchase, not a subscription. Restore anytime in Settings.";
+
+// MARK: - Purchase errors
+"purchase.error.load" = "Couldn't load products. Check your connection and try again.";
+"purchase.error.pending" = "Purchase pending. Please wait.";
+"purchase.error.failed" = "Purchase failed. Please try again.";
+"purchase.error.restore" = "Restore failed. Please try again.";

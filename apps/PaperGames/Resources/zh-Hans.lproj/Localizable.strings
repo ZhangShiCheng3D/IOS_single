@@ -1,0 +1,133 @@
+/*
+  Localizable.strings (简体中文)
+  PaperGames
+*/
+
+/* 标签栏 */
+"tab.games" = "游戏";
+"tab.stats" = "统计";
+"tab.settings" = "设置";
+
+/* 通用 */
+"common.close" = "关闭";
+"common.error" = "出错了";
+"common.ok" = "好";
+
+/* 主页 */
+"home.title" = "纸笔游戏";
+"home.hero.title" = "纸笔游戏";
+"home.hero.subtitle" = "离线无限生成 · 零广告 · 静心解压";
+"home.section.games" = "选择玩法";
+"home.upgrade.title" = "解锁完整版";
+"home.upgrade.subtitle" = "全部难度 + 全部玩法，一次买断";
+
+/* 游戏类型 */
+"game.sudoku.title" = "数独";
+"game.sudoku.subtitle" = "9×9 经典逻辑，无限新题";
+"game.tictactoe.title" = "井字棋";
+"game.tictactoe.subtitle" = "挑战不败 AI";
+
+/* 难度 */
+"difficulty.easy" = "简单";
+"difficulty.medium" = "中等";
+"difficulty.hard" = "困难";
+"difficulty.hell" = "地狱";
+
+/* 数独对局 */
+"sudoku.generating" = "正在生成新题…";
+"sudoku.undo" = "撤销";
+"sudoku.erase" = "擦除";
+"sudoku.notes" = "笔记";
+"sudoku.hint" = "提示";
+"sudoku.pause" = "暂停";
+"sudoku.resume" = "继续";
+"sudoku.paused" = "已暂停";
+
+/* 数独完成 */
+"sudoku.complete.title" = "完成！";
+"sudoku.complete.newBest" = "新纪录！";
+"sudoku.complete.time" = "用时";
+"sudoku.complete.mistakes" = "错误";
+"sudoku.complete.newGame" = "再来一局";
+"sudoku.complete.home" = "返回";
+
+/* 井字棋 */
+"tictactoe.newRound" = "新对局";
+"tictactoe.you" = "你";
+"tictactoe.draws" = "平局";
+"tictactoe.ai" = "电脑";
+"tictactoe.aiTurn" = "电脑思考中…";
+"tictactoe.yourTurn" = "轮到你了";
+"tictactoe.youWin" = "你赢了！";
+"tictactoe.aiWin" = "电脑获胜";
+"tictactoe.draw" = "平局";
+
+/* 设置 */
+"settings.section.appearance" = "外观";
+"settings.appearance.theme" = "配色方案";
+"settings.appearance.system" = "跟随系统";
+"settings.appearance.light" = "浅色";
+"settings.appearance.dark" = "深色";
+"settings.appearance.largeFont" = "大字号模式";
+"settings.section.game" = "游戏辅助";
+"settings.game.mistakeHighlight" = "错误提示";
+"settings.game.highlightPeers" = "高亮关联格";
+"settings.game.autoNotes" = "自动清除笔记";
+"settings.game.haptics" = "触觉反馈";
+"settings.game.footer" = "错误提示开启后，填入与正确答案冲突的数字会标红。";
+"settings.section.purchase" = "完整版";
+"settings.purchase.unlocked" = "已解锁完整版";
+"settings.purchase.unlock" = "解锁完整版";
+"settings.purchase.restore" = "恢复购买";
+"settings.section.about" = "关于";
+"settings.about.version" = "版本";
+"settings.about.privacy" = "隐私政策";
+"settings.about.terms" = "使用条款";
+
+/* 统计 */
+"stats.empty.title" = "还没有记录";
+"stats.empty.desc" = "完成一局游戏后，这里会显示你的成绩。";
+"stats.section.overview" = "总览";
+"stats.total" = "完成总局数";
+"stats.totalTime" = "总用时";
+"stats.section.sudoku" = "数独";
+"stats.section.tictactoe" = "井字棋";
+"stats.tictactoe.wins" = "胜场";
+"stats.count.%lld" = "%lld 局";
+
+/* 付费墙 */
+"paywall.title" = "完整版";
+"paywall.headline" = "解锁全部玩法";
+"paywall.subheadline" = "一次买断，永久畅玩，无广告打扰。";
+"paywall.benefit.unlimited.title" = "无限新题";
+"paywall.benefit.unlimited.desc" = "离线程序生成，永远玩不完。";
+"paywall.benefit.difficulty.title" = "全部难度";
+"paywall.benefit.difficulty.desc" = "解锁困难与地狱级挑战。";
+"paywall.benefit.games.title" = "全部玩法";
+"paywall.benefit.games.desc" = "解锁井字棋等更多纸笔游戏。";
+"paywall.benefit.noads.title" = "永久无广告";
+"paywall.benefit.noads.desc" = "纯净体验，专注解压。";
+"paywall.unlocked" = "已解锁完整版，感谢支持！";
+"paywall.buy.%@" = "以 %@ 解锁";
+"paywall.loading" = "正在加载商品…";
+"paywall.restore" = "恢复购买";
+"paywall.legal" = "一次性购买，非订阅。购买后可在所有使用同一 Apple ID 的设备上恢复。";
+
+/* 商店错误 */
+"store.error.load" = "无法加载商品，请检查网络后重试。";
+"store.error.pending" = "购买待批准（如家长共享）。";
+"store.error.purchase" = "购买失败，请稍后重试。";
+"store.error.nothingToRestore" = "没有可恢复的购买。";
+"store.error.restore" = "恢复购买失败，请稍后重试。";
+"store.error.verification" = "交易校验失败。";
+
+/* 无障碍（VoiceOver） */
+"a11y.cell.position.%lld.%lld" = "第 %1$lld 行第 %2$lld 列";
+"a11y.cell.value.%lld" = "数字 %lld";
+"a11y.cell.given" = "题目给定";
+"a11y.cell.notes" = "包含笔记";
+"a11y.cell.empty" = "空格";
+"a11y.numberpad.remaining.%lld" = "剩余 %lld 个";
+"a11y.locked.hint" = "需解锁完整版，轻点查看";
+"a11y.difficulty.hint" = "轻点开始该难度";
+"a11y.game.hint" = "轻点开始游戏";

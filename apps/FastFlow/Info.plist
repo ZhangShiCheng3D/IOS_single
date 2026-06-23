@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- 本地化 -->
+	<key>CFBundleDevelopmentRegion</key>
+	<string>zh-Hans</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>zh-Hans</string>
+		<string>en</string>
+	</array>
+
+	<!-- 出口合规：App 未使用非豁免加密，避免上架时反复询问 -->
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+
+	<!-- App Store 分类：健康与健身 -->
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.healthcare-fitness</string>
+
+	<!-- 启动屏（空 dict 即用系统默认背景，满足上架要求并避免黑屏） -->
+	<key>UILaunchScreen</key>
+	<dict/>
+
+	<!-- Live Activity 支持 -->
+	<key>NSSupportsLiveActivities</key>
+	<true/>
+	<key>NSSupportsLiveActivitiesFrequentUpdates</key>
+	<true/>
+
+	<!-- HealthKit 权限说明 -->
+	<key>NSHealthShareUsageDescription</key>
+	<string>FastFlow 需要读取你的体重数据以绘制趋势曲线。</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>FastFlow 需要写入饮水与体重数据，便于与「健康」App 同步。</string>
+
+	<!-- 界面方向 -->
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+	</dict>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+</dict>
+</plist>

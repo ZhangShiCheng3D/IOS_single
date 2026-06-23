@@ -1,0 +1,35 @@
+{
+  "identifier" : "RETROFILM_STORE",
+  "nonRenewingSubscriptions" : [],
+  "products" : [
+    {
+      "displayPrice" : "45.00",
+      "familyShareable" : true,
+      "internalID" : "com.retrofilm.allfilmpacks",
+      "localizations" : [
+        {
+          "description" : "Unlock every premium film stock and effect forever.",
+          "displayName" : "All Film Packs",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "一次买断，永久解锁所有高级胶片与效果。",
+          "displayName" : "全部胶片包",
+          "locale" : "zh_Hans"
+        }
+      ],
+      "productID" : "com.retrofilm.allfilmpacks",
+      "referenceName" : "All Film Packs",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_failTransactionsEnabled" : false,
+    "_storeKitErrors" : []
+  },
+  "subscriptionGroups" : [],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

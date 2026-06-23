@@ -1,0 +1,87 @@
+你是 Apple Design Award 级别的资深 iOS 架构师 + SwiftUI 视觉设计专家。现在对 拼图海报排版（创意相机·CollageKit）项目执行第二轮深度审查与质量提升。
+
+## 项目上下文
+- 目录：C:\Users\m1770\Desktop\商业项目\IOS_single\apps\CollageKit
+- 品类：创意相机
+- 第一轮审查已修复 0 处问题，当前代码结构完整。
+- 本轮目标：从「能编译」提升到「能上架且能被 Apple 推荐」的品质。
+
+## 第一轮遗留的已知问题
+  - 3处example.com占位URL
+  - 缺AppIcon PNG
+
+## 本轮审查与优化的七大维度
+
+### 维度1：视觉设计精修（最重要）
+作为可能被 Apple 推荐的 App，视觉品质是第一竞争力。逐文件检查所有 SwiftUI View：
+- **配色**：是否使用了经过设计的颜色系统（而非系统默认蓝色）？AccentColor 在浅色/深色模式下的对比度是否达标(WCAG AA)？是否有统一的语义色层（背景/表面/文字层次）？
+- **排版**：字体层级是否清晰（标题/正文/辅助文字至少3级）？是否使用了 SF Pro 的 weight 变体而非固定字号？行高/字间距是否舒适？
+- **间距**：是否有一致的间距系统（4pt/8pt/16pt grid）？View 之间的 padding 是否统一？
+- **圆角/阴影**：圆角半径是否一致？阴影是否轻柔自然(不刺眼)？
+- **动效**：是否有恰当的过渡动画(transition)和弹簧动画(.spring)？列表删除/插入是否有动画？重要状态变化是否有视觉反馈？
+- **空状态**：列表为空时是否有精美的空状态插画/提示？加载中是否有骨架屏或优雅的 ProgressView？
+- **图标**：SF Symbols 的使用是否贴切？权重(weight)是否与文字层级匹配？
+
+发现问题后直接修改代码提升视觉品质。优先创建或优化 Theme.swift / DesignSystem.swift 文件来集中管理设计令牌。
+
+### 维度2：交互体验打磨
+- 所有按钮是否有触觉反馈(Haptics)？
+- 关键操作是否有确认弹窗(删除/清理/重置)？
+- 表单输入是否有实时验证和友好的错误提示？
+- NavigationStack 的转场是否流畅？是否有手势返回支持？
+- 列表是否支持下拉刷新(.refreshable)？
+- 搜索功能(若有)是否有防抖和空结果处理？
+- 加载状态是否正确处理(.task/.onAppear 中的 async 错误处理)？
+
+### 维度3：功能深度与正确性
+拼图模板的排版精度——每张照片的裁剪/缩放是否保持宽高比。九宫格/杂志风/胶片风模板的视觉差异是否足够。Core Graphics合成的渲染质量(抗锯齿/色彩空间)。拖拽替换照片的交互流畅度。导出多种比例(1:1/4:5/9:16)的裁剪逻辑。
+
+逐个检查核心业务逻辑的正确性，确保：
+- 边界条件处理(空数据/极值/并发写入)
+- 错误路径的完整覆盖(try-catch + 用户可见的错误提示)
+- 数据一致性(SwiftData 写入后的 UI 刷新时序)
+- 算法正确性(数学计算/排序/搜索/生成的结果是否准确)
+
+### 维度4：隐私与合规（上架阻断项）
+- 修复所有 example.com 占位 URL → 替换为 https://www.apple.com/legal/internet-services/itunes/dev/stdeula/ (条款) 和自定义隐私页(privacy policy)，如果没有真实URL，使用Apple标准条款链接
+- Info.plist 必须包含：ITSAppUsesNonExemptEncryption=false, UILaunchScreen(空dict)
+- 如涉及相机/相册/麦克风/健康等权限，必须有 NSxxxUsageDescription 文案
+- StoreKit 2 的购买流程必须处理 interrupted/deferred/pending 状态
+- 隐私政策文案必须在 App 内可访问
+
+### 维度5：性能优化
+- 检查 ForEach 是否使用了正确的 id(避免用 index)
+- 检查是否有不必要的全量重绘(@State 过大/View body 计算过重)
+- 图片加载是否异步(AsyncImage 或自定义缓存)
+- SwiftData @Query 是否有过大的 fetchLimit
+- 大计算是否在后台 Task 执行(不阻塞主线程)
+
+### 维度6：可访问性(Accessibility)
+- 所有交互元素是否有 accessibilityLabel
+- 图片是否有 accessibilityLabel 或 accessibilityHidden(true)
+- 颜色对比度是否满足 WCAG AA 标准
+- 是否支持 VoiceOver 导航(accessibilityElement children 组合)
+- Dynamic Type 是否在所有文字上生效
+
+### 维度7：上架资源完整性
+- Assets.xcassets 中是否有完整的颜色定义(浅色+深色)
+- Localizable.strings 中是否有遗漏的 key(扫描代码中所有 String(localized:) / LocalizedStringKey / Text("key") 与 .strings 文件交叉验证)
+- .storekit 文件中的产品 ID 与代码中的 Product.products(for:) 参数是否完全一致
+- Info.plist 中的 LSApplicationCategoryType 是否设置
+- README.md 的上架检查清单是否完整
+
+## 执行规则
+1. 逐文件读取，先理解全局架构再动手修改
+2. 每次修改确保不引入新的编译错误
+3. 修改前思考"这个改动是否会让 App 更接近 Apple 推荐品质"
+4. 发现缺失的文件直接创建(如 DesignSystem.swift, 空状态组件等)
+5. 修改完成后输出详细的变更报告
+
+## 输出格式
+最后输出：
+1. 📊 质量提升摘要（修改前后的维度对比）
+2. 🔧 修改文件清单（文件名 + 修改摘要 + 修改原因）
+3. ⚠️ 剩余风险（需要真机/Xcode验证的项）
+4. 🎯 上架就绪度评分（7个维度各打分 + 总分/100）
+
+请立即开始逐文件深度审查与优化。

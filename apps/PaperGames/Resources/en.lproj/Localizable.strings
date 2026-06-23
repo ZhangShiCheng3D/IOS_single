@@ -1,0 +1,133 @@
+/*
+  Localizable.strings (English)
+  PaperGames
+*/
+
+/* Tab bar */
+"tab.games" = "Games";
+"tab.stats" = "Stats";
+"tab.settings" = "Settings";
+
+/* Common */
+"common.close" = "Close";
+"common.error" = "Something went wrong";
+"common.ok" = "OK";
+
+/* Home */
+"home.title" = "Paper Games";
+"home.hero.title" = "Paper Games";
+"home.hero.subtitle" = "Endless offline puzzles · No ads · Pure calm";
+"home.section.games" = "Choose a game";
+"home.upgrade.title" = "Unlock Full Version";
+"home.upgrade.subtitle" = "All difficulties + all games, one-time";
+
+/* Game types */
+"game.sudoku.title" = "Sudoku";
+"game.sudoku.subtitle" = "Classic 9×9 logic, endless puzzles";
+"game.tictactoe.title" = "Tic-Tac-Toe";
+"game.tictactoe.subtitle" = "Beat the unbeatable AI";
+
+/* Difficulty */
+"difficulty.easy" = "Easy";
+"difficulty.medium" = "Medium";
+"difficulty.hard" = "Hard";
+"difficulty.hell" = "Expert";
+
+/* Sudoku game */
+"sudoku.generating" = "Generating a new puzzle…";
+"sudoku.undo" = "Undo";
+"sudoku.erase" = "Erase";
+"sudoku.notes" = "Notes";
+"sudoku.hint" = "Hint";
+"sudoku.pause" = "Pause";
+"sudoku.resume" = "Resume";
+"sudoku.paused" = "Paused";
+
+/* Sudoku completion */
+"sudoku.complete.title" = "Solved!";
+"sudoku.complete.newBest" = "New best time!";
+"sudoku.complete.time" = "Time";
+"sudoku.complete.mistakes" = "Mistakes";
+"sudoku.complete.newGame" = "New Game";
+"sudoku.complete.home" = "Home";
+
+/* Tic-Tac-Toe */
+"tictactoe.newRound" = "New Round";
+"tictactoe.you" = "You";
+"tictactoe.draws" = "Draws";
+"tictactoe.ai" = "AI";
+"tictactoe.aiTurn" = "AI is thinking…";
+"tictactoe.yourTurn" = "Your turn";
+"tictactoe.youWin" = "You win!";
+"tictactoe.aiWin" = "AI wins";
+"tictactoe.draw" = "It's a draw";
+
+/* Settings */
+"settings.section.appearance" = "Appearance";
+"settings.appearance.theme" = "Color scheme";
+"settings.appearance.system" = "System";
+"settings.appearance.light" = "Light";
+"settings.appearance.dark" = "Dark";
+"settings.appearance.largeFont" = "Large text mode";
+"settings.section.game" = "Gameplay assists";
+"settings.game.mistakeHighlight" = "Mistake highlight";
+"settings.game.highlightPeers" = "Highlight related cells";
+"settings.game.autoNotes" = "Auto-clear notes";
+"settings.game.haptics" = "Haptic feedback";
+"settings.game.footer" = "When mistake highlight is on, numbers that conflict with the solution turn red.";
+"settings.section.purchase" = "Full Version";
+"settings.purchase.unlocked" = "Full version unlocked";
+"settings.purchase.unlock" = "Unlock full version";
+"settings.purchase.restore" = "Restore purchases";
+"settings.section.about" = "About";
+"settings.about.version" = "Version";
+"settings.about.privacy" = "Privacy Policy";
+"settings.about.terms" = "Terms of Use";
+
+/* Stats */
+"stats.empty.title" = "No records yet";
+"stats.empty.desc" = "Finish a game and your results will show up here.";
+"stats.section.overview" = "Overview";
+"stats.total" = "Games completed";
+"stats.totalTime" = "Total time";
+"stats.section.sudoku" = "Sudoku";
+"stats.section.tictactoe" = "Tic-Tac-Toe";
+"stats.tictactoe.wins" = "Wins";
+"stats.count.%lld" = "%lld games";
+
+/* Paywall */
+"paywall.title" = "Full Version";
+"paywall.headline" = "Unlock everything";
+"paywall.subheadline" = "One-time purchase. Play forever, ad-free.";
+"paywall.benefit.unlimited.title" = "Endless puzzles";
+"paywall.benefit.unlimited.desc" = "Generated offline — never run out.";
+"paywall.benefit.difficulty.title" = "All difficulties";
+"paywall.benefit.difficulty.desc" = "Unlock Hard and Expert challenges.";
+"paywall.benefit.games.title" = "All games";
+"paywall.benefit.games.desc" = "Unlock Tic-Tac-Toe and more.";
+"paywall.benefit.noads.title" = "No ads, ever";
+"paywall.benefit.noads.desc" = "A clean, focused experience.";
+"paywall.unlocked" = "Full version unlocked — thank you!";
+"paywall.buy.%@" = "Unlock for %@";
+"paywall.loading" = "Loading products…";
+"paywall.restore" = "Restore purchases";
+"paywall.legal" = "One-time purchase, not a subscription. Restorable on all devices using the same Apple ID.";
+
+/* Store errors */
+"store.error.load" = "Couldn't load products. Check your connection and try again.";
+"store.error.pending" = "Purchase pending approval (e.g. Ask to Buy).";
+"store.error.purchase" = "Purchase failed. Please try again later.";
+"store.error.nothingToRestore" = "No purchases to restore.";
+"store.error.restore" = "Couldn't restore purchases. Please try again later.";
+"store.error.verification" = "Transaction verification failed.";
+
+/* Accessibility (VoiceOver) */
+"a11y.cell.position.%lld.%lld" = "Row %1$lld, Column %2$lld";
+"a11y.cell.value.%lld" = "value %lld";
+"a11y.cell.given" = "given";
+"a11y.cell.notes" = "has notes";
+"a11y.cell.empty" = "empty";
+"a11y.numberpad.remaining.%lld" = "%lld remaining";
+"a11y.locked.hint" = "Requires the full version. Tap to learn more.";
+"a11y.difficulty.hint" = "Tap to start this difficulty";
+"a11y.game.hint" = "Tap to play";

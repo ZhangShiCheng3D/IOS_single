@@ -1,0 +1,10 @@
+为 HabitGrid 极简习惯打卡生成 1024×1024 AppIcon。
+用 Python PIL/Pillow 生成一个简洁的 1024×1024 PNG 图标，保存到 Assets.xcassets/AppIcon.appiconset/AppIcon-1024.png。
+设计要求：
+- 主题色：深绿色(#1B4332)到亮绿色(#40916C)渐变背景
+- 中央放一个5x5的像素格子热力图(白色/浅绿色方块阵列)，象征GitHub风格热力图
+- 简洁有辨识度
+- 无Alpha通道(24bpp RGB)
+- 更新 Contents.json 确保引用了正确的文件名
+
+用 Python 执行：from PIL import Image, ImageDraw; 然后绘制并保存。

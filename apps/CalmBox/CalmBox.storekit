@@ -1,0 +1,39 @@
+{
+  "identifier" : "CALMBOX_STOREKIT_CONFIG",
+  "nonRenewingSubscriptions" : [],
+  "products" : [
+    {
+      "displayPrice" : "25.00",
+      "familyShareable" : false,
+      "internalID" : "calmbox.unlock.all",
+      "localizations" : [
+        {
+          "description" : "解锁全部白噪音、呼吸引导、冥想计时与混音器。一次买断，永久使用。",
+          "displayName" : "解锁全部内容",
+          "locale" : "zh_CN"
+        },
+        {
+          "description" : "Unlock all white noise, breathing guide, meditation timer and mixer. One-time purchase.",
+          "displayName" : "Unlock Everything",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.calmbox.unlock.all",
+      "referenceName" : "Unlock All",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "0",
+    "_developerTeamID" : "",
+    "_failTransactionsEnabled" : false,
+    "_locale" : "zh_CN",
+    "_storefront" : "CHN",
+    "_storeKitErrors" : []
+  },
+  "subscriptionGroups" : [],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

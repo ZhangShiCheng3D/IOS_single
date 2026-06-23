@@ -1,0 +1,144 @@
+/* ShotFrame — 简体中文 */
+
+/* Common */
+"common.ok" = "好";
+"common.error" = "出错了";
+"common.close" = "关闭";
+"common.done" = "完成";
+"common.delete" = "删除";
+
+/* Library */
+"library.title" = "ShotFrame";
+"library.empty.title" = "还没有作品";
+"library.empty.subtitle" = "导入一张截图，为它加上漂亮的背景、边框和阴影。";
+"library.import" = "导入截图";
+"library.pro" = "专业版";
+
+/* Editor tools */
+"editor.export" = "导出";
+"tool.template" = "模板";
+"tool.background" = "背景";
+"tool.frame" = "外壳";
+"tool.adjust" = "调整";
+"tool.text" = "文字";
+
+/* Background */
+"bg.solid" = "纯色";
+"bg.gradient" = "渐变";
+"bg.blurred" = "模糊";
+"bg.image" = "照片";
+"background.custom" = "自定义颜色";
+"background.angle" = "角度";
+"background.start" = "起始色";
+"background.end" = "结束色";
+"background.blur" = "模糊程度";
+"background.blur.hint" = "使用截图本身的模糊副本作为背景。";
+"background.dim" = "压暗";
+"background.choose" = "选择照片";
+"a11y.color.swatch %lld" = "颜色 %lld";
+"a11y.gradient.swatch %lld" = "渐变 %lld";
+
+/* Frames */
+"frame.none" = "无";
+"frame.iphone" = "iPhone";
+"frame.ipad" = "iPad";
+"frame.macbook" = "MacBook";
+"frame.browser" = "浏览器";
+
+/* Aspect */
+"adjust.aspect" = "画面比例";
+"aspect.auto" = "自动";
+"aspect.square" = "方形";
+"aspect.portrait" = "竖版";
+"aspect.story" = "故事";
+"aspect.landscape" = "宽屏";
+
+/* Adjust */
+"adjust.padding" = "留白";
+"adjust.corner" = "圆角";
+"adjust.shadow" = "阴影";
+"adjust.shadowOpacity" = "阴影浓度";
+
+/* Text */
+"text.add" = "添加文字";
+"text.remove" = "删除";
+"text.empty" = "为你的截图添加标题或标注。";
+"text.placeholder" = "输入文字";
+"text.bold" = "加粗";
+"text.shadow" = "阴影";
+"text.size" = "字号";
+"text.drag.hint" = "在画布上拖动以调整位置。";
+"annotation.placeholder" = "点按编辑";
+
+/* Templates */
+"tpl.sunset" = "日落";
+"tpl.clean" = "简净";
+"tpl.midnight" = "午夜";
+"tpl.ocean" = "海洋";
+"tpl.aurora" = "极光";
+"tpl.coral" = "珊瑚";
+"tpl.forest" = "森林";
+"tpl.lavender" = "薰衣草";
+"tpl.slate" = "石板";
+"tpl.peachy" = "蜜桃";
+"tpl.mono" = "深邃";
+"tpl.blush" = "胭脂";
+"tpl.graphite" = "石墨";
+"tpl.frost" = "霜雾";
+
+/* Export */
+"export.title" = "导出";
+"export.resolution" = "分辨率";
+"export.res.standard" = "标准";
+"export.res.high" = "高清";
+"export.save" = "保存到相册";
+"export.share" = "分享";
+"export.saved" = "已保存到相册";
+"export.watermark.title" = "去除水印";
+"export.watermark.subtitle" = "解锁专业版即可导出无 ShotFrame 标识的图片。";
+
+/* Batch */
+"batch.title" = "批量";
+"batch.select" = "选择截图";
+"batch.hint" = "一次选择多张截图，并为它们套用同一个模板。";
+"batch.count %lld" = "已选择 %lld 张";
+"batch.template" = "模板";
+"batch.process %lld" = "处理 %lld 张图片";
+"batch.unlock" = "解锁批量处理（专业版）";
+"batch.done" = "已保存 %lld 张图片";
+
+/* Settings */
+"settings.title" = "设置";
+"settings.pro.active" = "已解锁专业版";
+"settings.pro.title" = "解锁 ShotFrame 专业版";
+"settings.pro.subtitle" = "全部模板、外壳、批量处理且无水印。";
+"settings.restore" = "恢复购买";
+"settings.restore.footer" = "已经购买过专业版？在本设备上恢复。";
+"settings.about" = "关于";
+"settings.version" = "版本";
+"settings.contact" = "联系支持";
+
+/* Paywall */
+"paywall.title" = "ShotFrame 专业版";
+"paywall.subtitle" = "一次买断，永久使用。";
+"paywall.unlock %@" = "%@ 解锁";
+"paywall.onetime" = "一次性购买 · 无订阅";
+"paywall.restore" = "恢复购买";
+"paywall.terms" = "条款";
+"paywall.privacy" = "隐私";
+"paywall.feature.templates.title" = "全部模板";
+"paywall.feature.templates.subtitle" = "解锁每一款精心设计的样式。";
+"paywall.feature.frames.title" = "设备外壳";
+"paywall.feature.frames.subtitle" = "iPad、MacBook 与浏览器外框。";
+"paywall.feature.batch.title" = "批量导出";
+"paywall.feature.batch.subtitle" = "一次美化多张截图。";
+"paywall.feature.watermark.title" = "去除水印";
+"paywall.feature.watermark.subtitle" = "导出干净、专业的图片。";
+
+/* Errors */
+"error.photo.permission" = "ShotFrame 需要权限才能保存到相册，请在“设置”中开启。";
+"error.store.unavailable" = "商店暂时不可用，请稍后再试。";
+"error.store.verification" = "无法验证此次购买。";
+"store.pending" = "购买正在等待批准，批准通过后将自动解锁 ShotFrame 专业版。";
+"error.import" = "无法加载该图片。";
+"error.render" = "无法渲染图片，请尝试更低的分辨率。";

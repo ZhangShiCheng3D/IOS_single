@@ -1,0 +1,218 @@
+/*
+  Localizable.strings (简体中文)
+  IronLog
+*/
+
+// MARK: - 标签栏
+"tab.workout" = "训练";
+"tab.history" = "历史";
+"tab.templates" = "模板";
+"tab.exercises" = "动作库";
+"tab.settings" = "设置";
+
+// MARK: - 通用
+"common.close" = "关闭";
+"common.ok" = "好";
+"common.cancel" = "取消";
+"common.save" = "保存";
+"common.delete" = "删除";
+"common.done" = "完成";
+
+// MARK: - 肌群
+"muscle.chest" = "胸";
+"muscle.back" = "背";
+"muscle.shoulders" = "肩";
+"muscle.biceps" = "肱二头";
+"muscle.triceps" = "肱三头";
+"muscle.legs" = "腿";
+"muscle.quads" = "股四头";
+"muscle.hamstrings" = "腘绳肌";
+"muscle.glutes" = "臀";
+"muscle.calves" = "小腿";
+"muscle.abs" = "核心";
+"muscle.forearms" = "前臂";
+"muscle.fullBody" = "全身";
+"muscle.cardio" = "有氧";
+
+// MARK: - 器械
+"equipment.barbell" = "杠铃";
+"equipment.dumbbell" = "哑铃";
+"equipment.machine" = "器械";
+"equipment.cable" = "绳索";
+"equipment.bodyweight" = "自重";
+"equipment.kettlebell" = "壶铃";
+"equipment.bands" = "弹力带";
+"equipment.other" = "其他";
+
+// MARK: - PR 类型
+"pr.type.maxWeight" = "最大重量";
+"pr.type.estimatedOneRM" = "估算 1RM";
+"pr.type.maxVolume" = "单组最大容量";
+"pr.type.maxReps" = "最多次数";
+
+// MARK: - 日期
+"date.today" = "今天";
+"date.yesterday" = "昨天";
+
+// MARK: - 统计
+"stat.exercises" = "动作";
+"stat.sets" = "组数";
+"stat.volume" = "容量";
+"stat.duration" = "时长";
+"stat.total.workouts" = "训练次数";
+"stat.total.volume" = "累计容量";
+
+// MARK: - 训练
+"workout.untitled" = "未命名训练";
+"workout.start.empty" = "开始训练";
+"workout.start.empty.sub" = "空白起步，边练边加动作";
+"workout.last" = "上次训练";
+"workout.repeat" = "再练一次";
+"workout.empty.title" = "还没有训练记录";
+"workout.empty.desc" = "点击上方按钮，开始你的第一次训练。";
+"workout.add.exercise" = "添加动作";
+"workout.active" = "训练进行中";
+"workout.discard" = "放弃";
+"workout.finish" = "完成";
+"workout.finish.confirm" = "结束本次训练？";
+"workout.discard.confirm" = "放弃本次训练？记录将被删除。";
+"workout.notes" = "备注";
+"workout.notes.placeholder" = "本次训练感受、状态…";
+
+// MARK: - 组
+"set.col.set" = "组";
+"set.col.weight" = "重量";
+"set.col.reps" = "次数";
+"set.col.rpe" = "RPE";
+"set.add" = "加一组";
+"set.warmup" = "热身组";
+"set.working" = "正式组";
+"set.rpe.none" = "不填";
+"set.complete" = "完成本组";
+"set.completed" = "已完成";
+"set.incomplete" = "未完成";
+
+// MARK: - 休息计时
+"rest.title" = "组间休息";
+"rest.skip" = "结束休息";
+
+// MARK: - 通知
+"notif.rest.title" = "休息结束";
+"notif.rest.body" = "该下一组了，继续加油！";
+"notif.pr.title" = "🏆 新纪录！";
+"notif.pr.body" = "%@ 刷新纪录：%@";
+
+// MARK: - 动作库
+"exercise.search" = "搜索动作";
+"exercise.favorite" = "收藏";
+"exercise.new" = "新建动作";
+"exercise.field.name" = "名称";
+"exercise.field.muscle" = "主要肌群";
+"exercise.field.equipment" = "器械";
+"exercise.field.notes" = "动作要领";
+"exercise.field.notes.placeholder" = "如：肩胛收紧、全程控制…";
+"exercise.records" = "个人纪录";
+"exercise.records.empty" = "完成该动作后会自动记录 PR。";
+"exercise.trend" = "估算 1RM 趋势";
+"exercise.trend.empty" = "至少两次训练后显示趋势。";
+"exercise.trend.footer" = "基于 Epley 公式由当日最佳组估算。";
+
+"filter.all" = "全部";
+"unit.reps" = "次";
+
+// MARK: - Pro 锁定
+"pro.locked.title" = "Pro 功能";
+"pro.locked.desc" = "解锁「%@」及全部高级功能";
+
+// MARK: - 付费墙
+"paywall.title" = "IronLog Pro";
+"paywall.subtitle" = "一次买断，永久解锁。纯本地，无订阅、无广告。";
+"paywall.restore" = "恢复购买";
+"paywall.buy" = "解锁 Pro";
+"paywall.onetime" = "一次性买断 · 永久使用";
+"paywall.footnote" = "购买后即解锁所有当前及未来更新中的 Pro 功能。所有数据存储于本机，绝不上传。";
+"paywall.benefit.unlimited.title" = "无限训练记录";
+"paywall.benefit.unlimited.sub" = "免费版仅保存 5 次训练";
+"paywall.benefit.trends.title" = "进阶趋势图表";
+"paywall.benefit.trends.sub" = "容量、频次与 1RM 长期走势";
+"paywall.benefit.pr.title" = "完整 PR 追踪";
+"paywall.benefit.pr.sub" = "自动记录并推送破纪录提醒";
+"paywall.benefit.export.title" = "导出训练日志";
+"paywall.benefit.export.sub" = "一键导出 CSV，数据归你所有";
+"paywall.benefit.health.title" = "同步「健康」App";
+"paywall.benefit.health.sub" = "训练写入 Apple Health";
+
+// MARK: - 商店错误
+"store.error.title" = "提示";
+"store.error.load" = "无法加载商品，请稍后重试。";
+"store.error.unavailable" = "商品暂不可用。";
+"store.error.pending" = "购买待确认，请稍候。";
+"store.error.purchase" = "购买失败，请重试。";
+"store.error.restore" = "恢复失败，请重试。";
+"store.error.norestore" = "未找到可恢复的购买。";
+
+// MARK: - 历史
+"history.empty.title" = "暂无历史";
+"history.empty.desc" = "完成训练后，数据与趋势会在这里呈现。";
+"history.trends" = "趋势分析";
+"history.sessions" = "训练记录";
+"history.volume.byday" = "每日训练容量";
+"history.frequency" = "每周训练频次";
+
+// MARK: - 导出
+"export.title" = "导出日志";
+"export.options" = "选项";
+"export.warmups" = "包含热身组";
+"export.count" = "训练次数";
+"export.unit" = "重量单位";
+"export.share" = "分享 CSV";
+"export.generate" = "生成 CSV";
+"export.footer" = "导出为 UTF-8 CSV，可用 Excel / Numbers 打开。";
+
+// MARK: - 模板
+"templates.custom" = "我的模板";
+"templates.builtin" = "内置模板";
+"templates.plan" = "训练计划";
+"templates.start" = "用此模板开练";
+"templates.duplicate" = "复制为我的模板";
+"templates.conflict.title" = "已有进行中训练";
+"templates.conflict.replace" = "替换并开始";
+"templates.conflict.msg" = "当前有一次训练进行中，是否放弃并用此模板重新开始？";
+"templates.copy.suffix" = "副本";
+"templates.field.name" = "模板名称";
+"templates.field.detail" = "描述（可选）";
+"templates.new" = "新建模板";
+
+// MARK: - 设置
+"settings.pro.active" = "Pro 已解锁";
+"settings.pro.thanks" = "感谢支持 🙏";
+"settings.pro.upgrade" = "升级到 Pro";
+"settings.pro.upgrade.sub" = "解锁趋势、导出、无限记录等";
+"settings.units" = "单位";
+"settings.weight.unit" = "重量单位";
+"settings.rest" = "休息计时";
+"settings.rest.default" = "默认休息时长";
+"settings.rest.auto" = "完成组后自动开始计时";
+"settings.health" = "健康";
+"settings.health.sync" = "同步到「健康」App";
+"settings.health.footer" = "开启后，完成的训练将写入 Apple Health 的体能训练记录。";
+"settings.about" = "关于";
+"settings.version" = "版本";
+"settings.privacy" = "隐私政策";
+"settings.terms" = "使用条款";
+"settings.contact" = "联系我们";
+
+// MARK: - 隐私政策（App 内）
+"privacy.title" = "隐私政策";
+"privacy.updated" = "最后更新：2026 年 6 月";
+"privacy.intro" = "IronLog 在设计上即把隐私放在第一位。它完全在你的设备上运行——没有账号、没有服务器、没有分析追踪。";
+"privacy.section.collect.title" = "我们收集的数据";
+"privacy.section.collect.body" = "无。你录入的训练、动作、个人纪录与设置全部仅保存在本机（通过 Apple 的 SwiftData）。这些数据不会发送给开发者或任何第三方。卸载 App 即会删除全部本地数据。";
+"privacy.section.health.title" = "健康数据";
+"privacy.section.health.body" = "若你主动开启「健康」同步，IronLog 会把完成的训练写入 Apple「健康」App，并可读取你的体重用于相对力量展示。健康数据由系统在设备本地处理，绝不上传，你可随时在「设置」或系统「健康」权限中关闭。";
+"privacy.section.purchase.title" = "购买信息";
+"privacy.section.purchase.body" = "Pro 解锁通过 Apple App Store 的内购完成。交易与收据由 Apple 处理并遵循 Apple 的隐私政策；IronLog 仅在本地校验你的购买权益，不会收到你的支付信息。";
+"privacy.section.notify.title" = "通知";
+"privacy.section.notify.body" = "休息结束提醒与破纪录祝贺均为本机生成的本地通知，不涉及任何远程推送服务。";
+"privacy.section.contact.title" = "联系我们";
+"privacy.section.contact.body" = "对隐私有任何疑问，欢迎通过「设置 → 联系我们」与我们联系。";

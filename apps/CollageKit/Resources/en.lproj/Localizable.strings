@@ -1,0 +1,151 @@
+/*
+  Localizable.strings (English)
+  CollageKit
+*/
+
+// General
+"app_name" = "CollageKit";
+"cancel" = "Cancel";
+"done" = "Done";
+"save" = "Save";
+"delete" = "Delete";
+"ok" = "OK";
+"close" = "Close";
+"export" = "Export";
+"alert_title" = "Notice";
+"untitled_project" = "Untitled Collage";
+
+// Delete confirmation
+"delete_confirm_title" = "Delete this collage?";
+"delete_confirm_message" = "This can't be undone.";
+
+// Categories
+"category_grid" = "Grid";
+"category_magazine" = "Magazine";
+"category_film" = "Film";
+"category_freeform" = "Freeform";
+
+// Background
+"background_solid" = "Solid";
+"background_gradient" = "Gradient";
+"background_kind" = "Background";
+"background_custom_color" = "Custom Color";
+"background_angle" = "Angle";
+
+// Template names
+"tpl_grid_2x2" = "2 × 2";
+"tpl_grid_3x3" = "3 × 3";
+"tpl_grid_2x3" = "2 × 3";
+"tpl_grid_left_big" = "Left Hero";
+"tpl_mag_hero_top" = "Hero Top";
+"tpl_mag_sidebar" = "Sidebar";
+"tpl_mag_cover" = "Cover";
+"tpl_film_strip_v" = "Vertical Strip";
+"tpl_film_strip_h" = "Horizontal Strip";
+"tpl_film_duo" = "Film Duo";
+"tpl_free_pano" = "Panorama";
+"tpl_free_mosaic" = "Mosaic";
+"tpl_free_offset" = "Offset";
+
+// Home
+"home_empty_title" = "No collages yet";
+"home_empty_sub" = "Tap the button below to pick a template and create your first collage.";
+"home_new" = "New Collage";
+"pro_badge" = "Go Pro";
+
+// Template picker
+"templates_title" = "Choose Template";
+"templates_browse_all" = "Browse All";
+
+// Tools
+"tool_templates" = "Templates";
+"tool_ratio" = "Ratio";
+"tool_layout" = "Layout";
+"tool_background" = "Background";
+"tool_text" = "Text";
+"tool_presets" = "Presets";
+
+// Layout
+"layout_border" = "Border";
+"layout_spacing" = "Spacing";
+"layout_corner" = "Corner";
+
+// Text
+"text_add" = "Add Text";
+"text_select_hint" = "Tap text on the canvas to edit it";
+"text_default_content" = "Double-tap to edit";
+"text_placeholder" = "Enter text";
+"text_size" = "Size";
+"text_weight" = "Weight";
+"text_color" = "Color";
+"text_rotation" = "Rotation";
+"text_delete" = "Delete Text";
+"weight_regular" = "Regular";
+"weight_medium" = "Medium";
+"weight_bold" = "Bold";
+"weight_heavy" = "Heavy";
+
+// Slot adjust
+"slot_replace" = "Replace";
+"slot_reset" = "Reset";
+"slot_remove" = "Remove";
+
+// Presets
+"preset_save_current" = "Save Current as Preset";
+"preset_save_title" = "Save Preset";
+"preset_name_placeholder" = "Preset name";
+"preset_empty" = "No presets saved yet";
+"preset_apply" = "Apply";
+"preset_default_name" = "My Preset";
+
+// Export
+"export_title" = "Export Preview";
+"export_save" = "Save to Photos";
+"export_share" = "Share";
+"export_saved" = "Saved to Photos";
+"export_watermark_title" = "Export includes watermark";
+"export_watermark_sub" = "Go Pro to remove the watermark and unlock all templates";
+
+// Paywall
+"paywall_title" = "Unlock CollageKit Pro";
+"paywall_subtitle" = "One-time purchase, unlock everything forever";
+"paywall_unlock_button" = "Unlock Now";
+"paywall_restore" = "Restore Purchase";
+"paywall_onetime_note" = "One-time purchase. Not a subscription, no auto-renewal.";
+"paywall_terms" = "Terms of Use";
+"paywall_privacy" = "Privacy Policy";
+"paywall_benefit_templates_title" = "All Premium Templates";
+"paywall_benefit_templates_sub" = "Unlock every magazine and film-style layout";
+"paywall_benefit_watermark_title" = "Remove Watermark";
+"paywall_benefit_watermark_sub" = "Export clean, high-resolution images";
+"paywall_benefit_ratio_title" = "All Export Ratios";
+"paywall_benefit_ratio_sub" = "Includes the 9:16 story ratio";
+"paywall_benefit_updates_title" = "Future Updates";
+"paywall_benefit_updates_sub" = "New templates included for free";
+"purchase_product_unavailable" = "Product unavailable, please try again later.";
+"purchase_pending" = "Your purchase request was submitted. Pro will unlock automatically once approved.";
+
+// Settings
+"settings_title" = "Settings";
+"settings_section_pro" = "Membership";
+"settings_section_about" = "About";
+"settings_pro_active" = "Pro Unlocked";
+"settings_unlock_pro" = "Unlock Pro";
+"settings_restore" = "Restore Purchase";
+"settings_contact" = "Contact Us";
+"settings_version" = "Version";
+
+// Privacy policy
+"privacy_intro" = "CollageKit runs entirely on your device. Your privacy matters to us: all photos, collages, and settings stay only on your device.";
+"privacy_data_title" = "We collect no data";
+"privacy_data_body" = "This app does not collect, upload, or share any personal information or usage data, and contains no third-party analytics or advertising SDKs.";
+"privacy_photos_title" = "Photo access";
+"privacy_photos_body" = "The photo access you grant is used only to pick photos on-device for your collages and to save finished images back to your library. Your photos never leave your device.";
+"privacy_purchase_title" = "Purchases";
+"privacy_purchase_body" = "In-app purchases are handled by the Apple App Store. We never see your payment details. The purchase receipt is used only to verify your Pro unlock on-device.";
+"privacy_contact_title" = "Contact us";
+"privacy_contact_body" = "If you have any questions about privacy, reach us via Settings → Contact Us.";
+"privacy_updated" = "Last updated: June 2026";
+
+// Errors
+"error_load_photo" = "Could not load this photo, please try again.";

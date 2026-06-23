@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDisplayName</key>
+	<string>长辈助手</string>
+	<key>CFBundleName</key>
+	<string>SeniorHelper</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+
+	<!-- App Store 分类：工具效率 -->
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.utilities</string>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>AccentColor</string>
+	</dict>
+
+	<!-- 隐私权限说明（面向老年用户的友好措辞） -->
+	<key>NSCameraUsageDescription</key>
+	<string>用于放大镜读字，以及拍摄药盒照片来确认是哪种药。所有照片仅保存在本机。</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>用于从相册选择药盒照片，方便辨认药品。照片仅保存在本机。</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>本应用不录音，仅在使用相机时系统可能请求此权限。</string>
+
+	<!-- 设备能力：iOS 17 仅支持 64 位设备 -->
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>arm64</string>
+	</array>
+
+	<!-- 出口合规：本应用不使用非豁免加密，免去每次提交的加密申报 -->
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+
+	<!-- 支持的界面方向：仅竖屏，简化老年用户操作 -->
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+
+	<!-- 深色模式：跟随系统 -->
+	<key>UIUserInterfaceStyle</key>
+	<string>Automatic</string>
+
+	<!-- 本地化 -->
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>zh-Hans</string>
+		<string>en</string>
+	</array>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>zh-Hans</string>
+</dict>
+</plist>

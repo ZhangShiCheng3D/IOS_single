@@ -1,0 +1,39 @@
+{
+  "identifier" : "LumenPuzzleStoreConfig",
+  "nonRenewingSubscriptions" : [],
+  "products" : [
+    {
+      "displayPrice" : "28.00",
+      "familyShareable" : true,
+      "internalID" : "lumen-unlock-001",
+      "localizations" : [
+        {
+          "description" : "解锁全部 10 个关卡与所有内容，永久无广告、无打扰。",
+          "displayName" : "流光 · 完整版",
+          "locale" : "zh_CN"
+        },
+        {
+          "description" : "Unlock all 10 levels and all content. No ads, no nagging, forever.",
+          "displayName" : "Lumen Full Version",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.lumenpuzzle.unlock",
+      "referenceName" : "Full Unlock",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "",
+    "_developerTeamID" : "",
+    "_failTransactionsEnabled" : false,
+    "_locale" : "zh_CN",
+    "_storefront" : "CHN",
+    "_storeKitErrors" : []
+  },
+  "subscriptionGroups" : [],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

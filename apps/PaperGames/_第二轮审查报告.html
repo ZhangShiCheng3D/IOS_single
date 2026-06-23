@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PaperGames · 第二轮深度审查与质量提升报告</title>
+<style>
+  :root{
+    --accent:#4A6FB4; --teal:#2E9E8F; --bg:#F5F6F8; --surface:#fff;
+    --text:#1d1d1f; --muted:#6b7280; --line:#e5e7eb; --ok:#2e9e8f; --warn:#d97706;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,"PingFang SC","Segoe UI",Roboto,sans-serif;
+    background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:960px;margin:0 auto;padding:40px 24px 80px}
+  header{background:linear-gradient(135deg,var(--accent),var(--teal));color:#fff;
+    border-radius:20px;padding:36px 32px;margin-bottom:32px;box-shadow:0 10px 30px rgba(74,111,180,.25)}
+  header h1{margin:0 0 8px;font-size:28px;font-weight:700}
+  header p{margin:0;opacity:.92;font-size:15px}
+  h2{font-size:21px;margin:40px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--line)}
+  h3{font-size:16px;margin:24px 0 8px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;
+    padding:20px 24px;margin:16px 0;box-shadow:0 4px 14px rgba(0,0,0,.04)}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;background:var(--surface);
+    border-radius:12px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.04)}
+  th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:#eef1f6;font-weight:600}
+  tr:last-child td{border-bottom:none}
+  code{background:#eef1f6;padding:1px 6px;border-radius:5px;font-size:13px;
+    font-family:"SF Mono",Menlo,Consolas,monospace}
+  .tag{display:inline-block;padding:2px 9px;border-radius:20px;font-size:12px;font-weight:600}
+  .tag.ok{background:rgba(46,158,143,.14);color:var(--ok)}
+  .tag.warn{background:rgba(217,119,6,.14);color:var(--warn)}
+  .score-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:18px 0}
+  .score{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;
+    box-shadow:0 4px 14px rgba(0,0,0,.04)}
+  .score .num{font-size:30px;font-weight:700;color:var(--accent)}
+  .score .lbl{font-size:13px;color:var(--muted);margin-top:2px}
+  .bar{height:7px;background:#eef1f6;border-radius:10px;margin-top:10px;overflow:hidden}
+  .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--teal));border-radius:10px}
+  .total{background:linear-gradient(135deg,var(--accent),var(--teal));color:#fff;
+    border-radius:16px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;
+    margin:24px 0;box-shadow:0 8px 24px rgba(74,111,180,.22)}
+  .total .big{font-size:46px;font-weight:800;line-height:1}
+  ul{margin:8px 0;padding-left:22px} li{margin:5px 0}
+  .muted{color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>纸笔游戏（PaperGames）· 第二轮深度审查报告</h1>
+  <p>从「能编译」到「可上架且具备 Apple 推荐潜质」的品质提升 · 审查日期 2026-06-22</p>
+</header>
+
+<h2>📊 一、质量提升摘要</h2>
+<div class="card">
+<p>本轮在第一轮结构完整的基础上，聚焦<strong>视觉一致性、交互触感、无障碍可读性与上架合规</strong>四条主线，并清除了唯一已知阻断项（缺 App Icon PNG）。核心业务逻辑（数独唯一解生成、Minimax 不败 AI、StoreKit 2 交易流）经逐函数复核，<strong>未发现正确性缺陷</strong>，故本轮以「打磨」而非「修复」为主。</p>
+<table>
+  <tr><th>维度</th><th>修改前</th><th>修改后</th></tr>
+  <tr><td>设计令牌</td><td>仅 <code>AppMetrics</code>（圆角/内距）</td><td>新增 8pt 间距阶梯、圆角阶梯、统一卡片表面 + 阴影、可按压按钮样式</td></tr>
+  <tr><td>触觉反馈</td><td>部分调用绕过设置开关（井字棋、完成结算照常震动）</td><td>全局 <code>Haptics.isEnabled</code> 统一受控，开关真正全覆盖</td></tr>
+  <tr><td>动效</td><td>几乎无过渡动画</td><td>选格、落子弹入、胜利连线、完成徽章弹簧、全局按压缩放</td></tr>
+  <tr><td>无障碍</td><td>盘面/棋格/数字键无 VoiceOver 标签</td><td>9×9 格、井字棋格、数字键、卡片均含语义化标签与提示</td></tr>
+  <tr><td>合规资源</td><td>无 App Icon、无分类、无使用条款链接</td><td>1024² 无 Alpha 图标、<code>LSApplicationCategoryType</code>、EULA 链接</td></tr>
+</table>
+</div>
+
+<h2>🔧 二、修改文件清单</h2>
+<table>
+  <tr><th>文件</th><th>修改摘要</th><th>原因</th></tr>
+  <tr><td><code>Utils/Theme.swift</code></td><td>新增 <code>AppSpacing</code>/<code>AppRadius</code> 令牌、<code>cardSurface()</code> 修饰器、<code>PressableButtonStyle</code>（<code>.pressable</code>）</td><td>集中设计令牌，消除散落魔法数字，统一阴影/圆角/触感</td></tr>
+  <tr><td><code>Utils/Haptics.swift</code></td><td>四个方法统一加 <code>isEnabled</code> 守卫</td><td>使所有触觉（含完成、井字棋）统一受设置开关控制</td></tr>
+  <tr><td><code>ViewModels/SettingsStore.swift</code></td><td>标注 <code>@MainActor</code>；init 与 didSet 同步 <code>Haptics.isEnabled</code>；移除冗余 <code>haptic()</code> 包装</td><td>修复「关闭触觉后部分场景仍震动」的设置失效问题</td></tr>
+  <tr><td><code>ViewModels/SudokuViewModel.swift</code></td><td>改为直接调用 <code>Haptics.*</code>（已全局受控）</td><td>统一触觉调用路径</td></tr>
+  <tr><td><code>Views/SudokuBoardView.swift</code></td><td>选格 <code>withAnimation</code>；每格 VoiceOver 标签（行列/给定/笔记/空）+ 选中特征</td><td>盲人用户可逐格导航；选择有视觉过渡</td></tr>
+  <tr><td><code>Views/NumberPadView.swift</code></td><td>新增 <code>accessibilityValue</code>（剩余数量）；<code>.pressable</code></td><td>朗读剩余数量；按压触感</td></tr>
+  <tr><td><code>Views/TicTacToeView.swift</code></td><td>落子缩放弹入 + 棋盘/胜利连线动画；棋格 VoiceOver 标签；<code>.pressable</code></td><td>提升对局生动感与可访问性</td></tr>
+  <tr><td><code>Views/SudokuCompletionView.swift</code></td><td>完成徽章弹簧缩放出现；徽章 <code>accessibilityHidden</code></td><td>结算时的愉悦反馈；避免装饰图标干扰朗读</td></tr>
+  <tr><td><code>Views/DifficultySelectionView.swift</code></td><td>套用 <code>cardSurface()</code>（阴影/描边）、锁图标、标签+提示、<code>.pressable</code></td><td>统一卡片视觉层次与可访问性</td></tr>
+  <tr><td><code>Views/HomeView.swift</code></td><td>游戏卡片与升级横幅加语义标签+提示、<code>.pressable</code></td><td>主页可访问性与一致触感</td></tr>
+  <tr><td><code>Views/SudokuGameView.swift</code></td><td>控制条按钮 <code>.pressable</code>；触觉调用直连</td><td>触感一致</td></tr>
+  <tr><td><code>Views/SettingsView.swift</code></td><td>新增「使用条款」(Apple 标准 EULA) 链接</td><td>App Store 合规：可访问条款</td></tr>
+  <tr><td><code>Info.plist</code></td><td>新增 <code>LSApplicationCategoryType = public.app-category.puzzle-games</code></td><td>App Store 分类元数据</td></tr>
+  <tr><td><code>Resources/*/Localizable.strings</code></td><td>新增 <code>settings.about.terms</code> 与 9 个 <code>a11y.*</code> 键（中英）</td><td>新文案完整本地化，无硬编码</td></tr>
+  <tr><td><code>Assets.xcassets/AppIcon/AppIcon.png</code> <span class="tag ok">新增</span></td><td>程序生成 1024×1024、24bpp 无 Alpha 图标（井字/网格意象，品牌渐变）</td><td>清除第一轮遗留阻断项</td></tr>
+  <tr><td><code>AppIcon.appiconset/Contents.json</code></td><td>登记 <code>filename: AppIcon.png</code></td><td>使图标被工程识别</td></tr>
+  <tr><td><code>README.md</code></td><td>更新上架清单（图标已就绪）</td><td>文档与现状一致</td></tr>
+</table>
+
+<h2>✅ 三、核心逻辑复核结论</h2>
+<div class="card">
+<ul>
+  <li><strong>数独唯一解</strong>：<code>dig()</code> 每次挖空后以 <code>countSolutions(limit:2)</code> 校验是否仍为唯一解，破坏唯一性即还原——逻辑正确；<code>limit=2</code> 命中即剪枝，性能与正确性兼顾。难度线索数 42/34/28/24 均 ≥17，满足唯一解最小线索约束。</li>
+  <li><strong>Minimax 不败 AI</strong>：评分 <code>10-depth</code> / <code>depth-10</code> 鼓励尽快取胜、拖延失败；<code>bestMove(for:.o)</code> 落子后切换到最小化方，递归正确，理论不可被战胜。</li>
+  <li><strong>StoreKit 2</strong>：<code>userCancelled</code>/<code>pending</code>/<code>unverified</code> 均有分支；<code>Transaction.updates</code> 后台监听 + <code>currentEntitlements</code> 权益校验，UserDefaults 仅作离线缓存——符合最佳实践。</li>
+  <li><strong>并发</strong>：计时使用结构化并发（避免 Timer 的 Sendable 问题）；谜题生成在 <code>Task.detached</code> 后台执行，主线程不阻塞。</li>
+</ul>
+</div>
+
+<h2>⚠️ 四、剩余风险（需 Xcode / 真机验证）</h2>
+<div class="card">
+<ul>
+  <li><span class="tag warn">必验</span> 本环境无 Xcode/Swift 工具链，所有改动经人工审阅但<strong>未经编译器验证</strong>；将 <code>SettingsStore</code> 标为 <code>@MainActor</code> 的并发改动需在 Swift 6 严格并发下编译确认（预期通过：所有调用点均在主线程上下文）。</li>
+  <li><span class="tag warn">建议</span> App Icon 为程序化生成的几何占位级图标，已满足上架技术要求（1024²、无 Alpha）；上架前建议替换为设计师定制图，以最大化「被推荐」竞争力。</li>
+  <li><span class="tag warn">真机</span> 触觉反馈、VoiceOver 朗读顺序、动效流畅度需真机体验；StoreKit 购买/恢复/Ask-to-Buy 三流程需用 <code>Configuration.storekit</code> 实测。</li>
+  <li><span class="tag warn">隐私</span> 当前隐私政策链接指向 Apple 通用隐私页，使用条款指向 Apple 标准 EULA；若上架要求自托管隐私政策 URL，需替换为真实页面（应用本身不收集任何数据，填报「不收集」即可）。</li>
+</ul>
+</div>
+
+<h2>🎯 五、上架就绪度评分</h2>
+<div class="score-grid">
+  <div class="score"><div class="num">90</div><div class="lbl">维度1 视觉设计</div><div class="bar"><i style="width:90%"></i></div></div>
+  <div class="score"><div class="num">91</div><div class="lbl">维度2 交互体验</div><div class="bar"><i style="width:91%"></i></div></div>
+  <div class="score"><div class="num">95</div><div class="lbl">维度3 功能正确性</div><div class="bar"><i style="width:95%"></i></div></div>
+  <div class="score"><div class="num">93</div><div class="lbl">维度4 隐私合规</div><div class="bar"><i style="width:93%"></i></div></div>
+  <div class="score"><div class="num">92</div><div class="lbl">维度5 性能</div><div class="bar"><i style="width:92%"></i></div></div>
+  <div class="score"><div class="num">88</div><div class="lbl">维度6 可访问性</div><div class="bar"><i style="width:88%"></i></div></div>
+  <div class="score"><div class="num">92</div><div class="lbl">维度7 上架资源</div><div class="bar"><i style="width:92%"></i></div></div>
+</div>
+<div class="total">
+  <div>
+    <div style="font-size:14px;opacity:.9">综合就绪度</div>
+    <div style="font-size:14px;opacity:.9;margin-top:4px">（7 维度加权均值，四舍五入）</div>
+  </div>
+  <div class="big">92<span style="font-size:22px;font-weight:600">/100</span></div>
+</div>
+<p class="muted">评分逻辑：功能与合规已达上架硬指标；视觉/交互/可访问性在本轮显著提升至「优秀」区间。尚未满分项主要受限于「程序化占位图标」与「未经真机/编译器实测」两点，待替换定制图标并通过 Xcode 构建后，综合分可上探 95+。</p>
+
+</div>
+</body>
+</html>

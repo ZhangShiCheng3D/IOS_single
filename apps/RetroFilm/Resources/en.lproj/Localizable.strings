@@ -1,0 +1,113 @@
+/* RetroFilm — English */
+
+/* Film stocks (key == FilmStock.id) */
+"film.original"      = "Original";
+"film.kodakGold"     = "Kodak Gold";
+"film.portra400"     = "Portra 400";
+"film.fujiSuperia"   = "Fuji Superia";
+"film.ilfordHP5"     = "Ilford B&W";
+"film.kodakUltramax" = "Kodak Ultramax";
+"film.portra800"     = "Portra 800";
+"film.fujiPro400H"   = "Fuji Pro 400H";
+"film.cinestill800T" = "CineStill 800T";
+"film.agfaVista"     = "Agfa Vista";
+"film.polaroidSX70"  = "Polaroid SX-70";
+
+/* Tab bar */
+"tab.camera"  = "Camera";
+"tab.gallery" = "Library";
+
+/* Camera */
+"camera.datestamp"        = "Date Stamp";
+"camera.shutter"          = "Shutter";
+"camera.saved"            = "Saved to roll";
+"camera.permission.title" = "Camera Access Needed";
+"camera.permission.body"  = "RetroFilm needs camera access to compose and capture shots. Enable it in Settings.";
+"camera.permission.open"  = "Open Settings";
+
+/* Library */
+"gallery.title"       = "Roll";
+"gallery.empty.title" = "No photos yet";
+"gallery.empty.body"  = "Head back to the camera and press the shutter to take your first film shot.";
+
+/* Fine-tune */
+"adjust.title"     = "Fine-tune";
+"adjust.intensity" = "Intensity";
+"adjust.grain"     = "Grain";
+"adjust.vignette"  = "Vignette";
+"adjust.lightleak" = "Light Leak";
+"adjust.exposure"  = "Exposure";
+"adjust.warmth"    = "Warmth";
+"adjust.leakstyle" = "Leak Style";
+"adjust.reset"     = "Reset";
+
+/* Common actions */
+"action.done"   = "Done";
+"action.delete" = "Delete";
+"action.close"  = "Close";
+
+/* Paywall */
+"paywall.title"    = "Unlock All Film Packs";
+"paywall.subtitle" = "One-time purchase. Unlock every premium film stock and effect forever.";
+"paywall.included" = "Included film stocks";
+"paywall.cta"      = "Unlock Now";
+"paywall.onetime"  = "One-time purchase · No subscription · 100% on-device";
+"paywall.restore"  = "Restore Purchases";
+"paywall.terms"    = "Terms of Use";
+"paywall.privacy"  = "Privacy Policy";
+"paywall.error.noProduct" = "Couldn't load the product. Please try again later.";
+"paywall.pending"  = "Your purchase is pending approval (e.g. Ask to Buy). It will unlock automatically once approved — no need to buy again.";
+
+"paywall.feature.stocks.title"     = "Every Premium Stock";
+"paywall.feature.stocks.subtitle"  = "Ultramax, CineStill, Polaroid and more classics";
+"paywall.feature.tune.title"       = "Full Fine-tuning";
+"paywall.feature.tune.subtitle"    = "Dial in grain, vignette, light leaks and warmth";
+"paywall.feature.effects.title"    = "Premium Effects";
+"paywall.feature.effects.subtitle" = "Authentic light leaks and film grain";
+"paywall.feature.forever.title"    = "Yours Forever";
+"paywall.feature.forever.subtitle" = "Buy once, use across all your devices";
+
+/* Photo detail / re-edit */
+"detail.export"         = "Save to Photos";
+"detail.share"          = "Share";
+"detail.save"           = "Save Edits";
+"detail.delete.confirm" = "Delete this photo?";
+
+/* Export results */
+"export.success" = "Saved to Photos";
+"export.failed"  = "Export failed, try again";
+"export.denied"  = "Photo Library permission denied";
+
+/* Settings */
+"settings.title"            = "Settings";
+"settings.section.purchase" = "Purchase";
+"settings.section.about"    = "About";
+"settings.section.legal"    = "Legal";
+"settings.unlocked"         = "All film packs unlocked";
+"settings.unlockAll"        = "Unlock All Film Packs";
+"settings.version"          = "Version";
+"settings.filmCount"        = "Film Stocks";
+"settings.privacy.note"     = "All photo processing happens on-device. Nothing is ever uploaded.";
+
+/* Errors */
+"error.encode"   = "Image encoding failed";
+"error.notFound" = "File not found";
+
+/* Accessibility (VoiceOver) labels */
+"a11y.flash"        = "Flash";
+"a11y.switchCamera" = "Switch between front and rear camera";
+"a11y.locked"       = "Locked. Tap to unlock all film stocks";
+"a11y.photoPrefix"  = "Film photo, stock";
+
+/* Privacy policy (available in-app) */
+"privacy.intro" = "RetroFilm takes your privacy seriously. The app is fully standalone — it has no network connection, no servers, and collects no personal data. The sections below explain how each permission is used.";
+"privacy.section.data.title"     = "Data We Collect";
+"privacy.section.data.body"      = "None. RetroFilm does not collect, upload, or share any personal information or usage data, and contains no third-party analytics or advertising SDKs. All image processing happens locally on your device.";
+"privacy.section.camera.title"   = "Camera";
+"privacy.section.camera.body"    = "Camera access is used only for the live viewfinder and to capture photos. Frames are processed entirely on-device and are never sent anywhere.";
+"privacy.section.photos.title"   = "Photos";
+"privacy.section.photos.body"    = "The app writes a photo to your system library only when you explicitly choose “Save to Photos.” We do not read or browse your existing photos.";
+"privacy.section.purchase.title" = "Purchases";
+"privacy.section.purchase.body"  = "In-app purchases are handled by Apple’s StoreKit, and receipts are verified by Apple. We never see your payment information.";
+"privacy.section.contact.title"  = "Contact";
+"privacy.section.contact.body"   = "If you have any questions about this privacy policy, you can reach us through the developer support page for this app on the App Store.";

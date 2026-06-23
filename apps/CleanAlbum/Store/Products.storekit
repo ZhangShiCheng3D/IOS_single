@@ -1,0 +1,36 @@
+{
+  "identifier" : "CleanAlbumStoreKit",
+  "nonRenewingSubscriptions" : [],
+  "products" : [
+    {
+      "displayPrice" : "30.00",
+      "familyShareable" : false,
+      "internalID" : "com.cleanalbum.pro.unlock",
+      "localizations" : [
+        {
+          "description" : "解锁一键批量清理，终身使用",
+          "displayName" : "解锁批量清理",
+          "locale" : "zh_Hans"
+        },
+        {
+          "description" : "Unlock one-tap batch cleanup, lifetime use",
+          "displayName" : "Unlock Batch Cleanup",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.cleanalbum.pro.unlock",
+      "referenceName" : "Pro Unlock",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "CleanAlbum",
+    "_developerTeamID" : "",
+    "_failTransactionsEnabled" : false
+  },
+  "subscriptionGroups" : [],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

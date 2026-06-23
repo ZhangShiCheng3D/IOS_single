@@ -1,0 +1,236 @@
+/*
+  Localizable.strings (简体中文)
+  BakeCalc
+*/
+
+/* MARK: - 通用 */
+"app.name" = "烘焙换算";
+"common.result" = "结果";
+"common.amount" = "数量";
+"common.pro" = "专业版";
+"common.swap" = "交换";
+"common.close" = "关闭";
+"common.notice" = "提示";
+"common.ok" = "好";
+"common.cancel" = "取消";
+"common.save" = "保存";
+
+/* MARK: - 重量单位 */
+"unit.gram" = "克";
+"unit.kilogram" = "千克";
+"unit.ounce" = "盎司";
+"unit.pound" = "磅";
+
+/* MARK: - 体积单位 */
+"unit.milliliter" = "毫升";
+"unit.liter" = "升";
+"unit.teaspoon" = "茶匙";
+"unit.tablespoon" = "大勺";
+"unit.cup" = "杯";
+"unit.fluidOunce" = "液量盎司";
+
+/* MARK: - 单位换算 */
+"convert.mode" = "模式";
+"convert.mode.weight" = "重量";
+"convert.mode.volume" = "体积";
+"convert.mode.cross" = "体积→重量";
+"convert.from" = "从";
+"convert.to" = "到";
+"convert.ingredient" = "原料";
+
+/* MARK: - 原料分类 */
+"category.flour" = "粉类";
+"category.sugar" = "糖类";
+"category.fat" = "油脂";
+"category.liquid" = "液体";
+"category.other" = "其他";
+
+/* MARK: - 原料 */
+"ingredient.ap_flour" = "中筋面粉";
+"ingredient.bread_flour" = "高筋面粉";
+"ingredient.cake_flour" = "低筋面粉";
+"ingredient.whole_wheat" = "全麦面粉";
+"ingredient.almond_flour" = "杏仁粉";
+"ingredient.cornstarch" = "玉米淀粉";
+"ingredient.cocoa" = "可可粉";
+"ingredient.rolled_oats" = "燕麦片";
+"ingredient.granulated" = "细砂糖";
+"ingredient.brown_sugar" = "红糖（压实）";
+"ingredient.powdered" = "糖粉";
+"ingredient.honey" = "蜂蜜";
+"ingredient.maple_syrup" = "枫糖浆";
+"ingredient.butter" = "黄油";
+"ingredient.veg_oil" = "植物油";
+"ingredient.water" = "水";
+"ingredient.whole_milk" = "全脂牛奶";
+"ingredient.heavy_cream" = "淡奶油";
+"ingredient.table_salt" = "食盐";
+"ingredient.baking_powder" = "泡打粉";
+"ingredient.baking_soda" = "小苏打";
+
+/* MARK: - 温度 */
+"temp.celsius" = "摄氏";
+"temp.fahrenheit" = "华氏";
+"temp.input" = "温度";
+"temp.scale" = "温标";
+"temp.toggle" = "切换温标";
+"temp.closest_oven" = "最接近的烤箱档位";
+
+/* MARK: - 烤箱 */
+"oven.very_slow" = "极低温";
+"oven.slow" = "低温";
+"oven.moderately_slow" = "中低温";
+"oven.moderate" = "中温";
+"oven.moderately_hot" = "中高温";
+"oven.hot" = "高温";
+"oven.very_hot" = "极高温";
+"oven.gas_mark" = "燃气档";
+"oven.heat" = "火力";
+
+/* MARK: - 功能 */
+"feature.unitConversion" = "单位换算";
+"feature.unitConversion.sub" = "克/盎司/杯/匙互换";
+"feature.temperature" = "温度换算";
+"feature.temperature.sub" = "摄氏 ↔ 华氏";
+"feature.ovenReference" = "烤箱参考";
+"feature.ovenReference.sub" = "温度档位对照表";
+"feature.recipeScaling" = "配方缩放";
+"feature.recipeScaling.sub" = "按份数等比例换算";
+"feature.densityTable" = "原料密度表";
+"feature.densityTable.sub" = "常见原料密度参数";
+"feature.savedRecipes" = "我的配方";
+"feature.savedRecipes.sub" = "保存与命名配方";
+"feature.panConversion" = "模具换算";
+"feature.panConversion.sub" = "圆模/方模尺寸换算";
+"feature.eggConversion" = "鸡蛋换算";
+"feature.eggConversion.sub" = "个数 ↔ 重量精确换算";
+
+/* MARK: - 主页 */
+"home.section.basic" = "基础工具";
+"home.section.pro" = "专业工具";
+"home.banner.title" = "解锁专业版";
+"home.banner.subtitle" = "配方缩放、保存、密度表等全部解锁";
+
+/* MARK: - 配方缩放 */
+"scale.sample.flour" = "面粉";
+"scale.sample.sugar" = "糖";
+"scale.sample.egg" = "鸡蛋";
+"scale.base_servings" = "原始份数";
+"scale.target_servings" = "目标份数";
+"scale.ingredients" = "原料用量";
+"scale.footer" = "所有用量随份数比例自动换算。可左滑删除、拖动排序。";
+"scale.add_ingredient" = "添加原料";
+"scale.ingredient_name" = "原料名称";
+"scale.amount" = "数量";
+"scale.unit" = "单位";
+
+/* MARK: - 密度表 */
+"density.search" = "搜索原料";
+"density.per_cup" = "每杯";
+"density.per_tbsp" = "每大勺";
+"density.value" = "密度";
+
+/* MARK: - 模具 */
+"pan.round" = "圆模";
+"pan.square" = "方模";
+"pan.rectangle" = "矩形模";
+"pan.ratio" = "用量比例";
+"pan.from" = "原模具";
+"pan.to" = "目标模具";
+"pan.sample" = "用量试算";
+"pan.sample_amount" = "原用量 (g)";
+"pan.footer" = "按底面积比例换算。深度相同的模具适用本换算。";
+"pansize.round_15" = "圆模 15cm (6\")";
+"pansize.round_18" = "圆模 18cm (7\")";
+"pansize.round_20" = "圆模 20cm (8\")";
+"pansize.round_23" = "圆模 23cm (9\")";
+"pansize.round_25" = "圆模 25cm (10\")";
+"pansize.square_20" = "方模 20cm (8\")";
+"pansize.square_23" = "方模 23cm (9\")";
+"pansize.rect_23_33" = "矩形 23×33cm (9×13\")";
+"pansize.rect_20_30" = "矩形 20×30cm";
+
+/* MARK: - 鸡蛋 */
+"egg.small" = "小号蛋";
+"egg.medium" = "中号蛋";
+"egg.large" = "大号蛋";
+"egg.extra_large" = "特大号蛋";
+"egg.jumbo" = "巨型蛋";
+"egg.part.whole" = "全蛋";
+"egg.part.white" = "蛋白";
+"egg.part.yolk" = "蛋黄";
+"egg.dir.count_to_weight" = "个数→重量";
+"egg.dir.weight_to_count" = "重量→个数";
+"egg.direction" = "方向";
+"egg.part" = "部位";
+"egg.grade" = "蛋的规格";
+"egg.count_input" = "鸡蛋个数";
+"egg.weight_input" = "重量 (克)";
+"egg.unit.count" = "个";
+"egg.rounding_hint" = "约等于 %d～%d 个鸡蛋";
+
+/* MARK: - 我的配方 */
+"recipes.add" = "新建配方";
+"recipes.search" = "搜索配方";
+"recipes.untitled" = "未命名配方";
+"recipes.subtitle" = "%d 份 · %d 种原料";
+"recipes.empty.title" = "还没有配方";
+"recipes.empty.message" = "保存常用配方，随时按份数缩放。";
+"recipes.delete.confirm" = "删除配方";
+"recipes.delete.message" = "此配方及其原料将被永久删除，无法恢复。";
+"recipes.delete.action" = "删除";
+"recipes.editor.basic" = "基本信息";
+"recipes.editor.name" = "配方名称";
+"recipes.editor.servings" = "份数";
+"recipes.editor.ingredient_name" = "原料名称";
+"recipes.editor.ingredients" = "原料 (克)";
+"recipes.editor.ingredients_footer" = "以克为基准存储，便于精确缩放。";
+"recipes.editor.notes" = "备注";
+"recipes.editor.notes_placeholder" = "添加备注…";
+"recipes.editor.new" = "新建配方";
+"recipes.editor.edit" = "编辑配方";
+"recipes.editor.add_ingredient" = "添加原料";
+"recipes.editor.save_error" = "保存失败：%@";
+
+/* MARK: - 锁定 */
+"locked.message" = "此功能为专业版功能。一次购买，永久解锁全部专业工具。";
+"locked.cta" = "解锁专业版";
+
+/* MARK: - 设置 */
+"settings.title" = "设置";
+"settings.purchase" = "购买";
+"settings.pro_active" = "专业版已激活";
+"settings.upgrade" = "升级到专业版";
+"settings.restore" = "恢复购买";
+"settings.about" = "关于";
+"settings.version" = "版本";
+"settings.privacy" = "隐私政策";
+"settings.terms" = "使用条款";
+"settings.credit" = "BakeCalc · 为烘焙爱好者打造的精确换算工具。";
+
+/* MARK: - 付费墙 */
+"paywall.title" = "专业版";
+"paywall.headline" = "解锁全部专业烘焙工具";
+"paywall.subheadline" = "一次购买，永久使用，无订阅、无广告。";
+"paywall.buy" = "立即解锁";
+"paywall.onetime" = "一次性买断 · 永久解锁";
+"paywall.restore" = "恢复购买";
+"paywall.legal" = "购买即表示同意使用条款与隐私政策。";
+"paywall.benefit.scale.title" = "配方按份数缩放";
+"paywall.benefit.scale.sub" = "一键换算任意份数用量";
+"paywall.benefit.density.title" = "原料密度参数表";
+"paywall.benefit.density.sub" = "20+ 常见原料密度数据";
+"paywall.benefit.save.title" = "保存与命名配方";
+"paywall.benefit.save.sub" = "本地保存，随时调用";
+"paywall.benefit.pan.title" = "模具尺寸换算";
+"paywall.benefit.pan.sub" = "圆模/方模按面积换算";
+"paywall.benefit.egg.title" = "鸡蛋精确换算";
+"paywall.benefit.egg.sub" = "个数与重量精确互换";
+
+/* MARK: - 商店错误 */
+"store.error.load" = "加载产品失败：%@";
+"store.error.purchase" = "购买失败：%@";
+"store.error.no_product" = "暂时无法获取产品信息，请稍后再试。";
+"store.error.restore" = "恢复购买失败：%@";
+"store.pending" = "购买待确认，请稍候。";
+"store.restore.none" = "未发现可恢复的购买。";

@@ -1,0 +1,128 @@
+/*
+  Localizable.strings (简体中文)
+  CleanAlbum
+*/
+
+// MARK: - 通用
+"app.name" = "相册瘦身";
+"action.close" = "关闭";
+"action.done" = "完成";
+"action.cancel" = "取消";
+"action.ok" = "好";
+"action.rescan" = "重新扫描";
+"action.cancelScan" = "取消扫描";
+"error.title" = "出错了";
+
+// MARK: - 无障碍（VoiceOver）
+"a11y.photo" = "照片";
+"a11y.kept" = "保留";
+"a11y.toggleHint" = "双击以切换是否标记删除";
+
+// MARK: - 欢迎页
+"welcome.title" = "释放相册空间";
+"welcome.subtitle" = "端侧 AI 智能找出重复、相似与模糊照片，一键清理，腾出宝贵空间。";
+"welcome.point.privacy" = "隐私至上";
+"welcome.point.privacy.desc" = "照片绝不上传，所有分析都在你的设备上完成。";
+"welcome.point.onDevice" = "端侧智能";
+"welcome.point.onDevice.desc" = "采用 Apple Vision 框架，离线即可识别相似照片。";
+"welcome.point.smart" = "智能分组";
+"welcome.point.smart.desc" = "自动按重复、相似、模糊分类，并推荐保留最佳一张。";
+"welcome.scan" = "开始扫描相册";
+
+// MARK: - 扫描进度
+"scan.status.permission" = "正在请求相册权限…";
+"scan.status.fetching" = "正在读取照片…";
+"scan.status.analyzing" = "正在端侧分析照片…";
+"scan.status.grouping" = "正在智能分组…";
+"scan.privacy.note" = "全程本地处理，零上传、零联网。";
+"scan.empty.title" = "相册很干净";
+"scan.empty.desc" = "没有发现可清理的重复、相似或模糊照片。";
+
+// MARK: - 权限
+"access.title" = "需要相册访问权限";
+"access.desc" = "请在“设置”中允许访问照片，以便扫描与清理。我们绝不上传你的照片。";
+"access.openSettings" = "前往设置";
+
+// MARK: - 存储统计
+"storage.used" = "已用";
+"storage.total" = "总容量";
+"storage.free" = "可用";
+"storage.usedLabel" = "已使用";
+"storage.reclaimable" = "预计可释放";
+
+// MARK: - 分类
+"category.summary" = "%1$d 张照片 · %2$d 组";
+
+// MARK: - 分组
+"group.duplicate" = "重复照片";
+"group.similar" = "相似照片";
+"group.blurry" = "模糊照片";
+"group.hint.similar" = "轻点选择待删除照片，长按可全屏预览。";
+"group.hint.blurry" = "这些照片清晰度较低，轻点选择待删除。";
+"group.keeper" = "建议保留";
+"group.keepBest" = "保留最佳";
+"groups.empty" = "暂无内容";
+"groups.empty.desc" = "该类别下没有需要清理的照片。";
+
+// MARK: - 全屏预览
+"preview.markDelete" = "标记删除";
+"preview.markedDelete" = "已标记删除";
+
+// MARK: - 清理
+"cleanup.selectedCount" = "已选 %d 张";
+"cleanup.action" = "清理";
+"cleanup.confirm.title" = "确认清理";
+"cleanup.confirm.message" = "即将删除 %1$d 张照片，预计释放 %2$@。照片将移入“最近删除”，30 天内可恢复。";
+"cleanup.confirm.delete" = "删除";
+"cleanup.error" = "清理未完成，请重试。";
+
+// MARK: - 清理结果
+"result.title" = "清理完成！";
+"result.subtitle" = "相册更清爽了，空间已释放。";
+"result.deleted" = "已删除";
+"result.freed" = "已释放";
+"result.comparison" = "空间对比";
+"result.before" = "清理前可用";
+"result.after" = "预计清理后可用";
+"result.recentlyDeleted.note" = "照片已移入系统“最近删除”，30 天后或手动清空后将彻底释放空间。";
+
+// MARK: - 设置
+"settings.title" = "设置";
+"settings.section.similarity" = "相似度阈值";
+"settings.similarity" = "相似度要求";
+"settings.similarity.hint" = "数值越高，要求照片越相似才会归为一组，分组更精准但数量更少。";
+"settings.section.blur" = "模糊检测";
+"settings.blur" = "灵敏度";
+"settings.blur.hint" = "数值越高，越容易把照片判定为模糊。";
+"settings.section.privacy" = "隐私";
+"settings.privacy.local" = "全部本地处理";
+"settings.privacy.noUpload" = "零上传 · 无需联网";
+"settings.privacy.noTracking" = "无追踪 · 无广告";
+"settings.privacy.footer" = "CleanAlbum 不收集、不上传你的任何照片或数据。";
+"settings.section.purchase" = "购买";
+"settings.proStatus" = "批量清理";
+"settings.pro.unlocked" = "已解锁";
+"settings.pro.locked" = "未解锁";
+"settings.section.about" = "关于";
+"settings.version" = "版本";
+"settings.section.legal" = "法律";
+"settings.privacyPolicy" = "隐私政策";
+"settings.termsOfUse" = "使用条款";
+
+// MARK: - 付费墙
+"paywall.title" = "解锁批量清理";
+"paywall.subtitle" = "扫描与查看永久免费。一次买断，解锁一键批量清理，终身使用。";
+"paywall.feature.batch" = "批量选择并删除照片";
+"paywall.feature.oneTap" = "一键清理所有重复与模糊照片";
+"paywall.feature.lifetime" = "一次购买，终身使用，无订阅";
+"paywall.feature.privacy" = "所有处理始终在设备本地完成";
+"paywall.privacy.badge" = "100% 端侧处理";
+"paywall.cta" = "立即解锁";
+"paywall.restore" = "恢复购买";
+"paywall.legal" = "一次性买断，非订阅。购买后可在“设置”中恢复。";
+
+// MARK: - 购买错误
+"purchase.error.load" = "无法加载商品信息，请检查网络后重试。";
+"purchase.error.pending" = "购买待确认，请稍候。";
+"purchase.error.failed" = "购买失败，请重试。";
+"purchase.error.restore" = "恢复购买失败，请重试。";

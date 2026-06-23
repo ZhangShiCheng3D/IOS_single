@@ -1,0 +1,35 @@
+{
+  "identifier" : "OneWordStoreConfig",
+  "nonRenewingSubscriptions" : [],
+  "products" : [
+    {
+      "displayPrice" : "12.99",
+      "familyShareable" : false,
+      "internalID" : "ONEWORD_AI_INSIGHTS",
+      "localizations" : [
+        {
+          "description" : "Unlock mood trends, recurring themes, keyword extraction, and an auto-generated year in review — analyzed privately on your device.",
+          "displayName" : "AI Insights",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "解锁心情走势、高频主题、关键词提取，以及自动生成的年度回顾——全部在设备本地私密分析。",
+          "displayName" : "AI 情绪洞察",
+          "locale" : "zh_CN"
+        }
+      ],
+      "productID" : "com.oneword.aiinsights.unlock",
+      "referenceName" : "AI Insights Unlock",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_failTransactionsEnabled" : false,
+    "_storeKitErrors" : []
+  },
+  "subscriptionGroups" : [],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>zh-Hans</string>
+	<key>CFBundleDisplayName</key>
+	<string>CalmBox</string>
+	<key>CFBundleName</key>
+	<string>CalmBox</string>
+	<!-- App Store 分类：健康健美（放松/呼吸/冥想/助眠） -->
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.healthcare-fitness</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<!-- 后台播放白噪音所需的音频后台模式 -->
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+	</array>
+	<!-- 支持的本地化语言 -->
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>zh-Hans</string>
+		<string>en</string>
+	</array>
+	<!-- 界面方向：仅竖屏，符合放松场景 -->
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+	</dict>
+	<!-- 允许深色模式自动适配（不强制） -->
+	<key>UIUserInterfaceStyle</key>
+	<string>Automatic</string>
+	<!-- 启动屏：避免在现代设备上以非原生分辨率（信箱模式）渲染 -->
+	<key>UILaunchScreen</key>
+	<dict/>
+	<!-- 出口合规：本 App 不使用非豁免加密，避免上传时反复询问 -->
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+</dict>
+</plist>

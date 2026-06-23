@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Privacy usage descriptions (required by App Review) -->
+	<key>NSCameraUsageDescription</key>
+	<string>RetroFilm needs the camera to compose and capture your film-style photos. All processing happens on your device.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>RetroFilm saves your finished film photos to your Photo Library.</string>
+
+	<!-- App Store category -->
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.photography</string>
+
+	<!-- Orientation: portrait-only capture UI -->
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+	</array>
+
+	<!-- Camera is required hardware -->
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>arm64</string>
+		<string>still-camera</string>
+	</array>
+
+	<!-- No non-exempt encryption → skips the export-compliance prompt at upload -->
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+
+	<!-- Localization -->
+	<key>CFBundleDevelopmentRegion</key>
+	<string>zh-Hans</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>zh-Hans</string>
+		<string>en</string>
+	</array>
+
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>FilmBackground</string>
+	</dict>
+</dict>
+</plist>

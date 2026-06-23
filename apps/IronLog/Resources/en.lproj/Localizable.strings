@@ -1,0 +1,218 @@
+/*
+  Localizable.strings (English)
+  IronLog
+*/
+
+// MARK: - Tabs
+"tab.workout" = "Workout";
+"tab.history" = "History";
+"tab.templates" = "Templates";
+"tab.exercises" = "Exercises";
+"tab.settings" = "Settings";
+
+// MARK: - Common
+"common.close" = "Close";
+"common.ok" = "OK";
+"common.cancel" = "Cancel";
+"common.save" = "Save";
+"common.delete" = "Delete";
+"common.done" = "Done";
+
+// MARK: - Muscle groups
+"muscle.chest" = "Chest";
+"muscle.back" = "Back";
+"muscle.shoulders" = "Shoulders";
+"muscle.biceps" = "Biceps";
+"muscle.triceps" = "Triceps";
+"muscle.legs" = "Legs";
+"muscle.quads" = "Quads";
+"muscle.hamstrings" = "Hamstrings";
+"muscle.glutes" = "Glutes";
+"muscle.calves" = "Calves";
+"muscle.abs" = "Core";
+"muscle.forearms" = "Forearms";
+"muscle.fullBody" = "Full Body";
+"muscle.cardio" = "Cardio";
+
+// MARK: - Equipment
+"equipment.barbell" = "Barbell";
+"equipment.dumbbell" = "Dumbbell";
+"equipment.machine" = "Machine";
+"equipment.cable" = "Cable";
+"equipment.bodyweight" = "Bodyweight";
+"equipment.kettlebell" = "Kettlebell";
+"equipment.bands" = "Bands";
+"equipment.other" = "Other";
+
+// MARK: - PR types
+"pr.type.maxWeight" = "Max Weight";
+"pr.type.estimatedOneRM" = "Est. 1RM";
+"pr.type.maxVolume" = "Max Set Volume";
+"pr.type.maxReps" = "Max Reps";
+
+// MARK: - Dates
+"date.today" = "Today";
+"date.yesterday" = "Yesterday";
+
+// MARK: - Stats
+"stat.exercises" = "Exercises";
+"stat.sets" = "Sets";
+"stat.volume" = "Volume";
+"stat.duration" = "Duration";
+"stat.total.workouts" = "Workouts";
+"stat.total.volume" = "Total Volume";
+
+// MARK: - Workout
+"workout.untitled" = "Untitled Workout";
+"workout.start.empty" = "Start Workout";
+"workout.start.empty.sub" = "Start blank, add exercises as you go";
+"workout.last" = "Last Workout";
+"workout.repeat" = "Do It Again";
+"workout.empty.title" = "No Workouts Yet";
+"workout.empty.desc" = "Tap the button above to log your first workout.";
+"workout.add.exercise" = "Add Exercise";
+"workout.active" = "Workout In Progress";
+"workout.discard" = "Discard";
+"workout.finish" = "Finish";
+"workout.finish.confirm" = "Finish this workout?";
+"workout.discard.confirm" = "Discard this workout? It will be deleted.";
+"workout.notes" = "Notes";
+"workout.notes.placeholder" = "How did it feel today…";
+
+// MARK: - Sets
+"set.col.set" = "Set";
+"set.col.weight" = "Weight";
+"set.col.reps" = "Reps";
+"set.col.rpe" = "RPE";
+"set.add" = "Add Set";
+"set.warmup" = "Warm-up";
+"set.working" = "Working set";
+"set.rpe.none" = "None";
+"set.complete" = "Complete set";
+"set.completed" = "Completed";
+"set.incomplete" = "Not completed";
+
+// MARK: - Rest timer
+"rest.title" = "Rest";
+"rest.skip" = "Skip Rest";
+
+// MARK: - Notifications
+"notif.rest.title" = "Rest's Up";
+"notif.rest.body" = "Time for your next set. Let's go!";
+"notif.pr.title" = "🏆 New PR!";
+"notif.pr.body" = "%@ — new record: %@";
+
+// MARK: - Exercises
+"exercise.search" = "Search exercises";
+"exercise.favorite" = "Favorite";
+"exercise.new" = "New Exercise";
+"exercise.field.name" = "Name";
+"exercise.field.muscle" = "Primary Muscle";
+"exercise.field.equipment" = "Equipment";
+"exercise.field.notes" = "Cues";
+"exercise.field.notes.placeholder" = "e.g. brace, control the eccentric…";
+"exercise.records" = "Personal Records";
+"exercise.records.empty" = "PRs are tracked automatically as you log this lift.";
+"exercise.trend" = "Est. 1RM Trend";
+"exercise.trend.empty" = "Trend appears after at least two sessions.";
+"exercise.trend.footer" = "Estimated via the Epley formula from each day's best set.";
+
+"filter.all" = "All";
+"unit.reps" = "reps";
+
+// MARK: - Pro lock
+"pro.locked.title" = "Pro Feature";
+"pro.locked.desc" = "Unlock \"%@\" and all premium features";
+
+// MARK: - Paywall
+"paywall.title" = "IronLog Pro";
+"paywall.subtitle" = "One-time purchase, unlocked forever. Fully offline — no subscription, no ads.";
+"paywall.restore" = "Restore";
+"paywall.buy" = "Unlock Pro";
+"paywall.onetime" = "One-time purchase · Yours forever";
+"paywall.footnote" = "Unlocks every Pro feature, now and in future updates. All data stays on your device and is never uploaded.";
+"paywall.benefit.unlimited.title" = "Unlimited Workouts";
+"paywall.benefit.unlimited.sub" = "Free version keeps only 5 workouts";
+"paywall.benefit.trends.title" = "Advanced Trends";
+"paywall.benefit.trends.sub" = "Volume, frequency & 1RM over time";
+"paywall.benefit.pr.title" = "Full PR Tracking";
+"paywall.benefit.pr.sub" = "Auto-logged records with notifications";
+"paywall.benefit.export.title" = "Export Logs";
+"paywall.benefit.export.sub" = "One-tap CSV — your data is yours";
+"paywall.benefit.health.title" = "Sync to Health";
+"paywall.benefit.health.sub" = "Write workouts to Apple Health";
+
+// MARK: - Store errors
+"store.error.title" = "Notice";
+"store.error.load" = "Couldn't load products. Please try again later.";
+"store.error.unavailable" = "Product is currently unavailable.";
+"store.error.pending" = "Purchase is pending approval.";
+"store.error.purchase" = "Purchase failed. Please try again.";
+"store.error.restore" = "Restore failed. Please try again.";
+"store.error.norestore" = "No purchases found to restore.";
+
+// MARK: - History
+"history.empty.title" = "No History";
+"history.empty.desc" = "Your stats and trends will show up here after you finish a workout.";
+"history.trends" = "Trends";
+"history.sessions" = "Workouts";
+"history.volume.byday" = "Daily Volume";
+"history.frequency" = "Weekly Frequency";
+
+// MARK: - Export
+"export.title" = "Export Log";
+"export.options" = "Options";
+"export.warmups" = "Include warm-up sets";
+"export.count" = "Workouts";
+"export.unit" = "Weight unit";
+"export.share" = "Share CSV";
+"export.generate" = "Generate CSV";
+"export.footer" = "Exports as UTF-8 CSV, openable in Excel / Numbers.";
+
+// MARK: - Templates
+"templates.custom" = "My Templates";
+"templates.builtin" = "Built-in";
+"templates.plan" = "Plan";
+"templates.start" = "Start with this Template";
+"templates.duplicate" = "Duplicate as Mine";
+"templates.conflict.title" = "Workout In Progress";
+"templates.conflict.replace" = "Replace & Start";
+"templates.conflict.msg" = "A workout is already in progress. Discard it and start fresh from this template?";
+"templates.copy.suffix" = "Copy";
+"templates.field.name" = "Template Name";
+"templates.field.detail" = "Description (optional)";
+"templates.new" = "New Template";
+
+// MARK: - Settings
+"settings.pro.active" = "Pro Unlocked";
+"settings.pro.thanks" = "Thank you 🙏";
+"settings.pro.upgrade" = "Upgrade to Pro";
+"settings.pro.upgrade.sub" = "Trends, export, unlimited logs & more";
+"settings.units" = "Units";
+"settings.weight.unit" = "Weight Unit";
+"settings.rest" = "Rest Timer";
+"settings.rest.default" = "Default Rest";
+"settings.rest.auto" = "Auto-start after completing a set";
+"settings.health" = "Health";
+"settings.health.sync" = "Sync to Health App";
+"settings.health.footer" = "When on, finished workouts are written to Apple Health as strength training.";
+"settings.about" = "About";
+"settings.version" = "Version";
+"settings.privacy" = "Privacy Policy";
+"settings.terms" = "Terms of Use";
+"settings.contact" = "Contact Us";
+
+// MARK: - Privacy policy (in-app)
+"privacy.title" = "Privacy Policy";
+"privacy.updated" = "Last updated: June 2026";
+"privacy.intro" = "IronLog is private by design. It runs entirely on your device — no account, no servers, no analytics tracking.";
+"privacy.section.collect.title" = "Data We Collect";
+"privacy.section.collect.body" = "None. The workouts, exercises, personal records, and settings you enter are stored only on your device (via Apple's SwiftData). This data is never sent to the developer or any third party. Deleting the app removes all local data.";
+"privacy.section.health.title" = "Health Data";
+"privacy.section.health.body" = "If you turn on Health sync, IronLog writes finished workouts to Apple Health and may read your body weight to show relative strength. Health data is handled locally by the system, is never uploaded, and can be revoked anytime in Settings or the system Health permissions.";
+"privacy.section.purchase.title" = "Purchases";
+"privacy.section.purchase.body" = "The Pro unlock is an in-app purchase through the Apple App Store. Transactions and receipts are handled by Apple under Apple's privacy policy; IronLog only verifies your entitlement locally and never receives your payment details.";
+"privacy.section.notify.title" = "Notifications";
+"privacy.section.notify.body" = "Rest-timer reminders and new-record celebrations are local notifications generated on your device. No remote push service is involved.";
+"privacy.section.contact.title" = "Contact";
+"privacy.section.contact.body" = "Questions about privacy? Reach us via Settings → Contact Us.";

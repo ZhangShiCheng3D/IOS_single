@@ -1,0 +1,120 @@
+/*
+  Localizable.strings (English)
+  CalmBox
+*/
+
+// Common
+"app.name" = "CalmBox";
+"common.done" = "Done";
+"common.cancel" = "Cancel";
+"common.save" = "Save";
+"common.delete" = "Delete";
+"common.close" = "Close";
+
+// Accessibility
+"a11y.locked" = "Locked";
+
+// Home
+"home.favorites" = "Favorites";
+"home.allScenes" = "All Scenes";
+"home.unlock.title" = "Unlock Everything";
+"home.unlock.subtitle" = "One purchase, all sounds & features";
+
+// Scenes
+"scene.bubble.title" = "Bubble Wrap";
+"scene.bubble.subtitle" = "Pop to relax";
+"scene.spinner.title" = "Fidget Spinner";
+"scene.spinner.subtitle" = "Flick & spin, real physics";
+"scene.whitenoise.title" = "White Noise";
+"scene.whitenoise.subtitle" = "Layered sound mixer";
+"scene.breathing.title" = "Breathing";
+"scene.breathing.subtitle" = "4-7-8 sleep breathing";
+"scene.meditation.title" = "Meditation";
+"scene.meditation.subtitle" = "Calm timer for sleep";
+
+// Bubble wrap
+"bubble.reset" = "Reset";
+"bubble.popped %lld" = "Popped %lld";
+"bubble.allDone" = "All popped!";
+
+// Spinner
+"spinner.hint" = "Drag the spinner to rotate. It slows down naturally — try a fast flick!";
+"spinner.a11y" = "Fidget spinner, drag to spin";
+
+// White noise / Mixer
+"sound.rain" = "Rain";
+"sound.fire" = "Fireplace";
+"sound.waves" = "Ocean Waves";
+"sound.forest" = "Forest";
+"sound.thunder" = "Thunderstorm";
+"sound.wind" = "Wind";
+"sound.stream" = "Stream";
+"sound.night" = "Summer Night";
+"mixer.masterVolume" = "Master Volume";
+"mixer.stopAll" = "Stop All";
+"mixer.presets" = "My Mixes";
+"mixer.savePreset" = "Save Mix";
+"mixer.savePreset.message" = "Name your current sound mix";
+"mixer.presetName" = "Mix name";
+"mixer.defaultPresetName" = "My Mix";
+"mixer.playing" = "Playing";
+"mixer.stopped" = "Stopped";
+
+// Breathing
+"breathing.ready" = "Ready?";
+"breathing.inhale" = "Inhale";
+"breathing.hold" = "Hold";
+"breathing.exhale" = "Exhale";
+"breathing.start" = "Start Breathing";
+"breathing.stop" = "Stop";
+"breathing.cycles %lld" = "%lld cycles done";
+
+// Meditation
+"meditation.chooseDuration" = "Choose Duration";
+"meditation.minuteUnit" = "min";
+"meditation.start" = "Start";
+"meditation.paused" = "Paused";
+"meditation.ambientOn" = "Ambient: On";
+"meditation.ambientOff" = "Ambient: Off";
+"meditation.selectAmbient" = "Select Ambient Sound";
+"meditation.pause" = "Pause";
+"meditation.resume" = "Resume";
+"meditation.stop" = "Stop";
+
+// Paywall
+"paywall.title" = "Unlock All of CalmBox";
+"paywall.subtitle" = "One purchase, every relaxing scene forever";
+"paywall.benefit.sounds.title" = "All White Noise";
+"paywall.benefit.sounds.desc" = "Waves, forest, thunder, stream & more";
+"paywall.benefit.breathing.title" = "Breathing Guide";
+"paywall.benefit.breathing.desc" = "Science-based 4-7-8 method";
+"paywall.benefit.meditation.title" = "Meditation Timer";
+"paywall.benefit.meditation.desc" = "Multiple durations with ambient sound";
+"paywall.benefit.mixer.title" = "Sound Mixer";
+"paywall.benefit.mixer.desc" = "Layer sounds & save your own mixes";
+"paywall.unlock" = "Unlock All";
+"paywall.restore" = "Restore Purchase";
+"paywall.onetime" = "One-time payment. No subscription, no hidden fees.";
+"paywall.terms" = "Terms";
+"paywall.privacy" = "Privacy";
+"paywall.error.noProduct" = "Unable to load product. Please try again later.";
+"paywall.error.nothingToRestore" = "No purchases to restore.";
+"paywall.pending" = "Purchase pending approval. It will unlock automatically once approved.";
+
+// Settings
+"settings.title" = "Settings";
+"settings.purchase" = "Purchase";
+"settings.unlocked" = "All content unlocked";
+"settings.unlockAll" = "Unlock All Scenes";
+"settings.restore" = "Restore Purchase";
+"settings.preferences" = "Preferences";
+"settings.haptics" = "Haptic Feedback";
+"settings.haptics.footer" = "Enable refined vibration feedback on supported devices.";
+"settings.stats" = "Meditation Stats";
+"settings.totalMinutes" = "Total Minutes";
+"settings.completedSessions" = "Completed Sessions";
+"settings.about" = "About";
+"settings.privacy" = "Privacy Policy";
+"settings.terms" = "Terms of Use";
+"settings.support" = "Support";
+"settings.version" = "Version";

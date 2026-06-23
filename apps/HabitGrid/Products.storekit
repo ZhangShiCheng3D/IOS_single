@@ -1,0 +1,36 @@
+{
+  "identifier" : "B2C9F1A4",
+  "nonRenewingSubscriptions" : [],
+  "products" : [
+    {
+      "displayPrice" : "28.00",
+      "familyShareable" : false,
+      "internalID" : "A1B2C3D4",
+      "localizations" : [
+        {
+          "description" : "Unlock unlimited habits, all color themes, export and reminders. One-time purchase.",
+          "displayName" : "HabitGrid Pro",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "解锁无限习惯、全部配色方案、导出与提醒。一次买断，永久使用。",
+          "displayName" : "HabitGrid Pro",
+          "locale" : "zh_Hans"
+        }
+      ],
+      "productID" : "com.habitgrid.pro.lifetime",
+      "referenceName" : "HabitGrid Pro Lifetime",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "0000000000",
+    "_developerTeamID" : "0000000000",
+    "_lastSynchronizedDate" : 0
+  },
+  "subscriptionGroups" : [],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

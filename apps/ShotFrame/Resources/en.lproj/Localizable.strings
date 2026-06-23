@@ -1,0 +1,144 @@
+/* ShotFrame — English */
+
+/* Common */
+"common.ok" = "OK";
+"common.error" = "Something went wrong";
+"common.close" = "Close";
+"common.done" = "Done";
+"common.delete" = "Delete";
+
+/* Library */
+"library.title" = "ShotFrame";
+"library.empty.title" = "No shots yet";
+"library.empty.subtitle" = "Import a screenshot to add a beautiful background, frame, and shadow.";
+"library.import" = "Import Screenshot";
+"library.pro" = "Pro";
+
+/* Editor tools */
+"editor.export" = "Export";
+"tool.template" = "Templates";
+"tool.background" = "Background";
+"tool.frame" = "Frame";
+"tool.adjust" = "Adjust";
+"tool.text" = "Text";
+
+/* Background */
+"bg.solid" = "Solid";
+"bg.gradient" = "Gradient";
+"bg.blurred" = "Blur";
+"bg.image" = "Photo";
+"background.custom" = "Custom color";
+"background.angle" = "Angle";
+"background.start" = "Start";
+"background.end" = "End";
+"background.blur" = "Blur amount";
+"background.blur.hint" = "Uses a blurred copy of your screenshot as the backdrop.";
+"background.dim" = "Dim";
+"background.choose" = "Choose Photo";
+"a11y.color.swatch %lld" = "Color swatch %lld";
+"a11y.gradient.swatch %lld" = "Gradient swatch %lld";
+
+/* Frames */
+"frame.none" = "None";
+"frame.iphone" = "iPhone";
+"frame.ipad" = "iPad";
+"frame.macbook" = "MacBook";
+"frame.browser" = "Browser";
+
+/* Aspect */
+"adjust.aspect" = "Aspect Ratio";
+"aspect.auto" = "Auto";
+"aspect.square" = "Square";
+"aspect.portrait" = "Portrait";
+"aspect.story" = "Story";
+"aspect.landscape" = "Wide";
+
+/* Adjust */
+"adjust.padding" = "Padding";
+"adjust.corner" = "Corner radius";
+"adjust.shadow" = "Shadow";
+"adjust.shadowOpacity" = "Shadow strength";
+
+/* Text */
+"text.add" = "Add Text";
+"text.remove" = "Remove";
+"text.empty" = "Add a caption or label to your shot.";
+"text.placeholder" = "Your text";
+"text.bold" = "Bold";
+"text.shadow" = "Shadow";
+"text.size" = "Size";
+"text.drag.hint" = "Drag on the canvas to reposition.";
+"annotation.placeholder" = "Tap to edit";
+
+/* Templates */
+"tpl.sunset" = "Sunset";
+"tpl.clean" = "Clean";
+"tpl.midnight" = "Midnight";
+"tpl.ocean" = "Ocean";
+"tpl.aurora" = "Aurora";
+"tpl.coral" = "Coral";
+"tpl.forest" = "Forest";
+"tpl.lavender" = "Lavender";
+"tpl.slate" = "Slate";
+"tpl.peachy" = "Peachy";
+"tpl.mono" = "Mono";
+"tpl.blush" = "Blush";
+"tpl.graphite" = "Graphite";
+"tpl.frost" = "Frost";
+
+/* Export */
+"export.title" = "Export";
+"export.resolution" = "Resolution";
+"export.res.standard" = "Standard";
+"export.res.high" = "High";
+"export.save" = "Save to Photos";
+"export.share" = "Share";
+"export.saved" = "Saved to Photos";
+"export.watermark.title" = "Remove watermark";
+"export.watermark.subtitle" = "Unlock Pro to export without the ShotFrame badge.";
+
+/* Batch */
+"batch.title" = "Batch";
+"batch.select" = "Select Screenshots";
+"batch.hint" = "Select several screenshots and apply one template to all of them at once.";
+"batch.count %lld" = "%lld selected";
+"batch.template" = "Template";
+"batch.process %lld" = "Process %lld Images";
+"batch.unlock" = "Unlock Batch (Pro)";
+"batch.done" = "Saved %lld images";
+
+/* Settings */
+"settings.title" = "Settings";
+"settings.pro.active" = "Pro unlocked";
+"settings.pro.title" = "Unlock ShotFrame Pro";
+"settings.pro.subtitle" = "All templates, frames, batch & no watermark.";
+"settings.restore" = "Restore Purchases";
+"settings.restore.footer" = "Already bought Pro? Restore it on this device.";
+"settings.about" = "About";
+"settings.version" = "Version";
+"settings.contact" = "Contact Support";
+
+/* Paywall */
+"paywall.title" = "ShotFrame Pro";
+"paywall.subtitle" = "A one-time purchase. Yours forever.";
+"paywall.unlock %@" = "Unlock for %@";
+"paywall.onetime" = "One-time purchase · No subscription";
+"paywall.restore" = "Restore Purchases";
+"paywall.terms" = "Terms";
+"paywall.privacy" = "Privacy";
+"paywall.feature.templates.title" = "All Templates";
+"paywall.feature.templates.subtitle" = "Unlock every hand-crafted look.";
+"paywall.feature.frames.title" = "Device Frames";
+"paywall.feature.frames.subtitle" = "iPad, MacBook & browser mockups.";
+"paywall.feature.batch.title" = "Batch Export";
+"paywall.feature.batch.subtitle" = "Beautify many shots at once.";
+"paywall.feature.watermark.title" = "No Watermark";
+"paywall.feature.watermark.subtitle" = "Export clean, professional images.";
+
+/* Errors */
+"error.photo.permission" = "ShotFrame needs permission to save to your photo library. Enable it in Settings.";
+"error.store.unavailable" = "The store is unavailable right now. Please try again.";
+"error.store.verification" = "Could not verify the purchase.";
+"store.pending" = "Your purchase is pending approval. ShotFrame Pro will unlock automatically once it's approved.";
+"error.import" = "That image could not be loaded.";
+"error.render" = "Could not render the image. Try a lower resolution.";

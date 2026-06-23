@@ -1,0 +1,183 @@
+/* OneWord — English localization */
+
+/* App */
+"app.name" = "OneWord";
+
+/* Tabs */
+"tab.today" = "Today";
+"tab.calendar" = "Calendar";
+"tab.trends" = "Trends";
+"tab.settings" = "Settings";
+
+/* Common */
+"common.save" = "Save";
+"common.cancel" = "Cancel";
+"common.delete" = "Delete";
+"common.edit" = "Edit";
+"common.close" = "Close";
+"common.ok" = "OK";
+
+/* Today */
+"today.streakTitle" = "Current streak";
+"today.days" = "days";
+"today.entriesTotal" = "total";
+"today.recorded" = "Today's word";
+"today.prompt" = "What's your one word today?";
+"today.promptSubtitle" = "One sentence, one mood. That's all it takes.";
+"today.recordButton" = "Record today";
+"today.recent" = "Recent days";
+
+/* Editor */
+"editor.title" = "Today";
+"editor.placeholder" = "Write one line about today…";
+"editor.howFeeling" = "How are you feeling?";
+"editor.addPhoto" = "Add a photo";
+"editor.changePhoto" = "Change photo";
+"editor.removePhoto" = "Remove photo";
+"editor.aiPreview" = "On-device insight";
+"editor.onDeviceNote" = "Analyzed privately on your device. Nothing leaves your phone.";
+
+/* Detail */
+"detail.moodAnalysis" = "Mood analysis";
+"detail.keywords" = "Keywords";
+"detail.deleteTitle" = "Delete this entry?";
+"detail.deleteMessage" = "This can't be undone.";
+
+/* Calendar */
+"calendar.legend" = "Mood colors";
+
+/* Trends */
+"trends.week" = "Week";
+"trends.month" = "Month";
+"trends.year" = "Year";
+"trends.range" = "Range";
+"trends.moodOverTime" = "Mood over time";
+"trends.summary" = "Summary";
+"trends.entries" = "Entries";
+"trends.dominant" = "Most common";
+"trends.topThemes" = "Recurring themes";
+"trends.empty" = "No entries in this range yet.";
+"trends.lockedTitle" = "Unlock AI Insights";
+"trends.lockedSubtitle" = "See your mood trends, recurring themes, and an auto-generated year in review — all analyzed privately on your device.";
+"trends.unlock" = "Unlock Insights";
+
+/* Year review */
+"year.title" = "Year in Review";
+"year.select" = "Year";
+"year.yourYear" = "Your year in one word";
+"year.distribution" = "Mood distribution";
+"year.standout" = "Standout days";
+"year.brightest" = "Brightest day";
+"year.toughest" = "Toughest day";
+"year.empty" = "No entries for this year yet.";
+"year.narrative" = "In %1$@ you wrote %2$@ entries, with a longest streak of %3$@ days. Your year leaned %4$@, and your most recurring theme was %5$@. Here's to the words still to come.";
+
+/* Accessibility */
+"a11y.delete" = "Delete";
+"a11y.passcodeProgress" = "Passcode digits entered";
+"a11y.previousMonth" = "Previous month";
+"a11y.nextMonth" = "Next month";
+"a11y.photo" = "Attached photo";
+
+/* Settings */
+"settings.aiInsights" = "AI Insights";
+"settings.unlockAI" = "Unlock AI Insights";
+"settings.premiumActive" = "AI Insights unlocked";
+"settings.restore" = "Restore Purchase";
+"settings.privacy" = "Privacy";
+"settings.appLock" = "App Lock";
+"settings.biometrics" = "Face ID / Touch ID";
+"settings.changePasscode" = "Change Passcode";
+"settings.privacyFooter" = "Require a passcode or Face ID to open OneWord.";
+"settings.data" = "Data";
+"settings.export" = "Export Journal";
+"settings.exportFooter" = "Export all entries as Markdown or JSON. Your data is yours.";
+"settings.about" = "About";
+"settings.version" = "Version";
+"settings.privacyPolicy" = "Privacy Policy";
+"settings.terms" = "Terms of Use";
+"settings.privacyPromise" = "100% offline. No accounts, no servers, no tracking.";
+
+/* Paywall */
+"paywall.title" = "Unlock AI Insights";
+"paywall.subtitle" = "Deeper understanding of your moods — analyzed entirely on your device.";
+"paywall.feature.trends.title" = "Mood trends";
+"paywall.feature.trends.subtitle" = "Weekly, monthly & yearly charts.";
+"paywall.feature.insights.title" = "Smart summaries";
+"paywall.feature.insights.subtitle" = "On-device sentiment & theme analysis.";
+"paywall.feature.year.title" = "Year in review";
+"paywall.feature.year.subtitle" = "An auto-generated story of your year.";
+"paywall.feature.keywords.title" = "Keyword extraction";
+"paywall.feature.keywords.subtitle" = "Surface what matters most to you.";
+"paywall.unlock" = "Unlock Forever";
+"paywall.oneTime" = "One-time purchase. No subscription.";
+"paywall.restore" = "Restore";
+"paywall.loading" = "Loading…";
+"paywall.legal" = "Payment is charged to your Apple ID. This is a one-time, non-consumable purchase.";
+"paywall.terms" = "Terms of Use";
+"paywall.privacy" = "Privacy Policy";
+
+/* Privacy policy (in-app) */
+"privacy.heading" = "Your words stay on your device";
+"privacy.s1.title" = "What we collect";
+"privacy.s1.body" = "Nothing. OneWord has no account system, no servers, and makes no network requests. Your entries, photos, and mood analysis never leave your device.";
+"privacy.s2.title" = "On-device analysis";
+"privacy.s2.body" = "Sentiment scoring and keyword extraction run entirely on your iPhone using Apple's NaturalLanguage framework. No text is ever uploaded.";
+"privacy.s3.title" = "Your data, your control";
+"privacy.s3.body" = "You can export everything as Markdown or JSON at any time, and deleting the app removes all data permanently. An optional passcode and Face ID keep your journal private.";
+"privacy.s4.title" = "Purchases";
+"privacy.s4.body" = "The optional AI Insights unlock is processed by Apple via the App Store. OneWord never sees your payment details.";
+"privacy.updated" = "Last updated June 2026.";
+
+/* Lock */
+"lock.prompt" = "Enter your passcode";
+"lock.wrong" = "Incorrect passcode";
+"lock.useBiometrics" = "Use Face ID / Touch ID";
+"lock.biometricReason" = "Unlock your journal";
+
+/* Passcode setup */
+"passcode.create" = "Create a passcode";
+"passcode.confirm" = "Confirm passcode";
+"passcode.mismatch" = "Passcodes don't match. Try again.";
+
+/* Export */
+"export.markdown" = "Markdown (.md)";
+"export.json" = "JSON Backup (.json)";
+"export.entriesCount" = "entries";
+"export.error" = "Export failed. Please try again.";
+
+/* Store errors */
+"store.error.load" = "Couldn't load products.";
+"store.error.purchase" = "Purchase failed.";
+"store.error.restore" = "Restore failed.";
+"store.error.pending" = "Purchase is pending approval.";
+
+/* Sentiment names */
+"sentiment.veryPositive" = "Wonderful";
+"sentiment.positive" = "Good";
+"sentiment.neutral" = "Okay";
+"sentiment.negative" = "Low";
+"sentiment.veryNegative" = "Hard";
+
+/* Mood emoji names */
+"mood.joyful" = "Joyful";
+"mood.good" = "Good";
+"mood.calm" = "Calm";
+"mood.loved" = "Loved";
+"mood.grateful" = "Grateful";
+"mood.neutral" = "Neutral";
+"mood.tired" = "Tired";
+"mood.thoughtful" = "Thoughtful";
+"mood.uneasy" = "Uneasy";
+"mood.sad" = "Sad";
+"mood.angry" = "Angry";
+"mood.anxious" = "Anxious";
+
+/* Theme tags */
+"tag.work" = "work";
+"tag.family" = "family";
+"tag.friends" = "friends";
+"tag.health" = "health";
+"tag.love" = "love";
+"tag.weather" = "weather";
+"tag.food" = "food";

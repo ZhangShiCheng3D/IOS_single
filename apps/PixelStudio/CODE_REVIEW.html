@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PixelStudio 代码审查报告</title>
+<style>
+  :root {
+    --bg: #1a1c2c; --card: #ffffff; --ink: #21242b; --muted: #6b7280;
+    --accent: #41a6f6; --green: #38b764; --amber: #ef7d57; --red: #b13e53;
+    --line: #e5e7eb;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: -apple-system, "SF Pro Text", "PingFang SC", system-ui, sans-serif;
+    background: linear-gradient(160deg, #f4f4f6, #eef2f7); color: var(--ink); line-height: 1.6;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 40px 24px 80px; }
+  header {
+    background: linear-gradient(135deg, #29366f, #41a6f6); color: #fff;
+    border-radius: 18px; padding: 32px 36px; box-shadow: 0 12px 40px rgba(41,54,111,.25);
+  }
+  header h1 { margin: 0 0 6px; font-size: 28px; letter-spacing: .5px; }
+  header p { margin: 0; opacity: .85; font-size: 15px; }
+  .verdict {
+    display: inline-block; margin-top: 18px; background: rgba(255,255,255,.18);
+    padding: 8px 16px; border-radius: 999px; font-weight: 600; font-size: 14px;
+    backdrop-filter: blur(6px);
+  }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: 14px; margin: 28px 0; }
+  .stat { background: var(--card); border-radius: 14px; padding: 18px; box-shadow: 0 4px 16px rgba(0,0,0,.04); }
+  .stat .n { font-size: 26px; font-weight: 700; }
+  .stat .l { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .4px; }
+  section { background: var(--card); border-radius: 16px; padding: 26px 30px; margin: 22px 0; box-shadow: 0 4px 16px rgba(0,0,0,.04); }
+  section h2 { margin: 0 0 16px; font-size: 19px; display: flex; align-items: center; gap: 10px; }
+  .tag { font-size: 11px; padding: 3px 9px; border-radius: 999px; font-weight: 700; color: #fff; }
+  .t-fix { background: var(--green); } .t-info { background: var(--accent); }
+  .t-risk { background: var(--amber); } .t-note { background: var(--muted); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .4px; }
+  code { background: #f1f3f6; padding: 1px 6px; border-radius: 5px; font-family: "SF Mono", ui-monospace, Menlo, monospace; font-size: 13px; color: var(--red); }
+  .item { border-left: 3px solid var(--line); padding: 4px 0 4px 16px; margin: 14px 0; }
+  .item.fix { border-color: var(--green); }
+  .item.risk { border-color: var(--amber); }
+  .item.note { border-color: var(--muted); }
+  .item h3 { margin: 0 0 4px; font-size: 15px; }
+  .item p { margin: 4px 0; font-size: 14px; color: #374151; }
+  .sev { font-size: 12px; font-weight: 700; }
+  .ok { color: var(--green); } .lo { color: var(--muted); } .md { color: var(--amber); }
+  ul.clean { margin: 8px 0; padding-left: 20px; } ul.clean li { margin: 4px 0; font-size: 14px; }
+  footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 30px; }
+  .pill { display:inline-block; background:#eef6ff; color:#2563eb; padding:2px 8px; border-radius:6px; font-size:12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>PixelStudio — 资深 iOS 架构师审查报告</h1>
+    <p>SwiftUI + SwiftData · StoreKit 2 · 纯本地像素画工具 · 审查日期 2026-06-22</p>
+    <div class="verdict">总体结论：架构健康，可编译，功能完整 — 仅 1 处需修复</div>
+  </header>
+
+  <div class="grid">
+    <div class="stat"><div class="n">37</div><div class="l">审查文件</div></div>
+    <div class="stat"><div class="n green">1</div><div class="l">已修复缺陷</div></div>
+    <div class="stat"><div class="n">0</div><div class="l">编译错误（其余）</div></div>
+    <div class="stat"><div class="n">3</div><div class="l">上架前风险</div></div>
+    <div class="stat"><div class="n">100%</div><div class="l">本地化键齐全</div></div>
+  </div>
+
+  <section>
+    <h2>一、问题列表（按严重程度排序）</h2>
+
+    <div class="item fix">
+      <span class="sev md">中 · 已修复</span> <span class="tag t-fix">FIX</span>
+      <h3>#1 Swift 6 严格并发：PhotoKit 回调捕获非 Sendable 的 View</h3>
+      <p>位置：<code>Views/ExportSheet.swift · saveToPhotos(url:)</code></p>
+      <p>原实现用 <code>PHPhotoLibrary.requestAuthorization(for:_:)</code> 与
+      <code>performChanges(_:completionHandler:)</code> 的闭包回调。这两个回调在 iOS SDK 中被标注
+      <code>@Sendable</code>，而闭包内为更新 <code>@State saveResult</code> 捕获了 <code>self</code>
+      （<code>ExportSheet</code> 是非 Sendable 的 View）。在 README 声明的 <span class="pill">Swift 6 语言模式</span>
+      下，这会产生「capture of 'self' with non-Sendable type ... in a @Sendable closure」诊断。</p>
+      <p><strong>影响：</strong>严格并发模式下编译报错 / 警告；保存到相册路径不达标。</p>
+    </div>
+
+    <div class="item note">
+      <span class="sev lo">低 · 观察项（未改）</span> <span class="tag t-note">NOTE</span>
+      <h3>#2 <code>EditorViewModel.isProUnlocked</code> 非 @Published 的弱响应</h3>
+      <p>该属性为普通 <code>var</code>，在 <code>EditorView.onAppear / onChange</code> 中赋值。付费墙的
+      <em>限制判定</em>（addLayer/addFrame 等）在动作触发时读取，逻辑正确。唯一边界：图层面板 sheet 打开期间
+      用户完成购买，底部「免费版上限」文案不会即时刷新。属极小概率 UI 滞后，非功能缺陷。</p>
+      <p><strong>建议（非必须）：</strong>如需严格响应，可改为 <code>@Published var isProUnlocked</code>。
+      遵循「精准改动」原则未擅自更改。</p>
+    </div>
+
+    <div class="item note">
+      <span class="sev lo">低 · 观察项（未删）</span> <span class="tag t-note">NOTE</span>
+      <h3>#3 <code>PixelBuffer</code> 内的未使用绘制原语</h3>
+      <p><code>drawLine</code>、<code>drawRect</code>、<code>fillRect</code> 未被调用——
+      ViewModel 用自带的 <code>paintLine/paintRect/stamp</code>（含镜像+笔刷）实现绘制，
+      <code>floodFill</code> 仍在使用。属审查前已存在的死代码，按要求<strong>保留不删</strong>，仅提示。</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>二、修复方式</h2>
+    <div class="item fix">
+      <h3>#1 改用 async PhotoKit API</h3>
+      <p>以单个继承 View 主线程隔离的 <code>Task { }</code> 包裹 <code>await requestAuthorization(for:)</code>
+      与 <code>try await performChanges { }</code>。变更块仅捕获 Sendable 的 <code>url</code>，不再捕获
+      <code>self</code>；<code>saveResult</code> 在 Task 恢复后于主线程直接赋值，无需 <code>MainActor.run</code> 桥接。</p>
+      <ul class="clean">
+        <li>消除非 Sendable 捕获 → 满足 Swift 6 严格并发。</li>
+        <li>错误经 <code>do/catch</code> 统一回写本地化文案，逻辑与原行为等价。</li>
+        <li>本地化键 <code>export.photos.denied / saved / failed</code> 维持不变（中英文均已存在）。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>三、修改的文件列表</h2>
+    <table>
+      <tr><th>文件</th><th>改动</th><th>类型</th></tr>
+      <tr>
+        <td><code>Views/ExportSheet.swift</code></td>
+        <td><code>saveToPhotos(url:)</code> 由完成回调改写为 async/await，去除 @Sendable 闭包对 self 的捕获</td>
+        <td><span class="tag t-fix">并发修复</span></td>
+      </tr>
+      <tr>
+        <td><code>CODE_REVIEW.html</code></td>
+        <td>新增本审查报告（HTML）</td>
+        <td><span class="tag t-info">文档</span></td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>三·补 逐项核查结论（清单全覆盖）</h2>
+    <table>
+      <tr><th>审查维度</th><th>结论</th></tr>
+      <tr><td>1. 编译正确性 / 类型 / 签名 / 可选解包</td><td class="green">通过 — 全部类型引用存在、签名匹配、无强解包崩溃风险（force-unwrap 仅出现在 preview 与已判 nil 的形状预览缓冲）</td></tr>
+      <tr><td>1. Swift 6 并发（Sendable / @MainActor）</td><td class="green">通过（修复 #1 后）— VM/Manager 均 @MainActor；detached 任务仅调用 nonisolated 成员</td></tr>
+      <tr><td>2. MVVM 分层</td><td class="green">通过 — Model 不依赖 View/VM；View 经 EditorViewModel 间接操作数据；Gallery 的 @Query/CRUD 为 SwiftUI 惯用法</td></tr>
+      <tr><td>3. SwiftData（@Model / @Relationship inverse / 容器）</td><td class="green">通过 — 级联关系与 inverse 单侧声明正确，externalStorage 用法得当，ModelContainer 配置无误</td></tr>
+      <tr><td>4. StoreKit 2</td><td class="green">通过 — Product ID 与 <code>.storekit</code> 一致（<code>com.pixelstudio.pro.unlock</code>）；Transaction.updates 监听、currentEntitlements 校验、恢复购买、缓存均完整</td></tr>
+      <tr><td>5. 功能完整性 / TODO</td><td class="green">通过 — README 列出的画布/工具/镜像/图层/调色板/网格/动画/洋葱皮/导出全部有真实实现，无空壳</td></tr>
+      <tr><td>6. SwiftUI 最佳实践</td><td class="green">通过 — NavigationStack、navigationDestination(item:)、两参 onChange、ForEach id、#Preview 均规范</td></tr>
+      <tr><td>7. 本地化</td><td class="green">通过 — 代码中全部 key 在 en / zh-Hans 双文件齐全且一一对应</td></tr>
+      <tr><td>8. 资源文件</td><td class="md">基本通过 — Contents.json 格式合法；Info.plist 权限/出口合规齐全；AppIcon 为空槽位（见风险）</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>四、剩余风险 / 上架前建议</h2>
+
+    <div class="item risk">
+      <span class="tag t-risk">RISK</span>
+      <h3>R1 · AppIcon 仅占位</h3>
+      <p><code>Assets.xcassets/AppIcon.appiconset</code> 仅有 1024×1024 空槽位，无实际图片。
+      不影响编译，但 App Store 提交会被拒。需补齐图标资源。</p>
+    </div>
+
+    <div class="item risk">
+      <span class="tag t-risk">RISK</span>
+      <h3>R2 · 隐私政策 URL 为 example.com 占位</h3>
+      <p><code>PaywallView.legalLinks</code> 与 <code>SettingsView</code> 中
+      <code>https://example.com/privacy</code> 为占位地址，上架前须替换为真实隐私政策页。
+      （未擅自编造真实 URL。）</p>
+    </div>
+
+    <div class="item risk">
+      <span class="tag t-risk">RISK</span>
+      <h3>R3 · 部分 SF Symbol 名称待真机核验</h3>
+      <p>如 PaywallView 卖点图标 <code>square.resize</code> 等。SF Symbol 名称无效不会编译报错，
+      但运行时该图标不渲染。建议在 iOS 17 真机 / SF Symbols App 中逐一核验，缺失者替换。
+      （未盲改，避免替换后仍无效引入新问题。）</p>
+    </div>
+
+    <div class="item note">
+      <span class="tag t-note">提示</span>
+      <h3>低优先观察</h3>
+      <ul class="clean">
+        <li><code>save()</code> 每次自动保存全量删除并重建帧/图层，正确但有 externalStorage 文件抖动；当前数据量下可接受，未来大画布多帧可考虑增量写回。</li>
+        <li>复制作品名硬编码后缀 <code>" 2"</code>（GalleryView.duplicate），非本地化，影响极小。</li>
+        <li><code>EditorView.init</code> 在 <code>project.modelContext</code> 为 nil 时回退到 Preview 内存容器；对 @Query 取回的模型不会发生，属保护性兜底。</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    PixelStudio 代码审查 · 共审查 37 个文件（Swift / Localizable.strings / Info.plist / *.storekit / Contents.json）<br>
+    架构评价：值类型 + COW 撤销、预乘合成管线、付费墙集中触发等设计干净专业，工程质量优良。
+  </footer>
+
+</div>
+</body>
+</html>

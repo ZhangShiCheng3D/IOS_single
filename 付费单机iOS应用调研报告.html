@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>付费单机 iOS App 系统调研报告</title>
+<style>
+  :root{
+    --ink:#1a1a1e; --muted:#6b7280; --line:#e6e6ea; --bg:#fbfbfd;
+    --accent:#2563eb; --accent-soft:#eef3ff; --green:#0f9d58; --amber:#c47f00; --red:#d23f3f;
+    --card:#ffffff; --shadow:0 1px 3px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.04);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:980px;margin:0 auto;padding:0 22px}
+  header.hero{background:linear-gradient(135deg,#1e293b 0%,#2563eb 100%);color:#fff;padding:56px 0 48px}
+  header.hero .wrap{padding-top:0}
+  .kicker{font-size:13px;letter-spacing:.12em;text-transform:uppercase;opacity:.8;margin:0 0 10px}
+  h1{font-size:34px;line-height:1.25;margin:0 0 14px;font-weight:800}
+  .sub{font-size:17px;opacity:.92;max-width:680px;margin:0}
+  .meta{margin-top:22px;font-size:13px;opacity:.8;display:flex;gap:18px;flex-wrap:wrap}
+  .meta b{font-weight:600}
+  section{padding:40px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:24px;margin:0 0 6px;font-weight:800;letter-spacing:-.01em}
+  h2 .n{color:var(--accent);font-variant-numeric:tabular-nums;margin-right:10px}
+  .lead{color:var(--muted);margin:0 0 22px;font-size:15px}
+  h3{font-size:18px;margin:26px 0 10px;font-weight:700}
+  p{margin:0 0 14px}
+  ul{margin:0 0 14px;padding-left:20px}
+  li{margin:6px 0}
+  strong{font-weight:700}
+  .grid{display:grid;gap:16px}
+  .g2{grid-template-columns:1fr 1fr}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:760px){.g2,.g3{grid-template-columns:1fr}}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow)}
+  .stat .big{font-size:28px;font-weight:800;color:var(--accent);line-height:1.1}
+  .stat .lbl{font-size:13px;color:var(--muted);margin-top:6px}
+  .callout{background:var(--accent-soft);border:1px solid #d7e3ff;border-radius:14px;padding:18px 20px;margin:18px 0}
+  .callout.warn{background:#fff7ed;border-color:#fbe2c0}
+  .callout.good{background:#eefaf2;border-color:#cdeed9}
+  .callout p:last-child{margin-bottom:0}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin:10px 0 6px;background:var(--card)}
+  .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}
+  th,td{text-align:left;padding:11px 13px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:#f4f5f8;font-weight:700;font-size:13px;white-space:nowrap}
+  tr:last-child td{border-bottom:none}
+  .tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;white-space:nowrap}
+  .t-tool{background:#eaf2ff;color:#2156c9}
+  .t-health{background:#e9f8ef;color:#0c7a43}
+  .t-game{background:#f3ecff;color:#6b35c9}
+  .t-create{background:#fff0ec;color:#c4471f}
+  .pcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow);margin:18px 0}
+  .pcard h3{margin-top:0;display:flex;align-items:center;gap:10px;font-size:19px}
+  .pcard h3 .num{background:var(--ink);color:#fff;font-size:13px;font-weight:700;width:26px;height:26px;
+    border-radius:8px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+  .oneliner{font-size:15px;color:var(--ink);font-weight:600;margin:2px 0 14px}
+  .pcard dl{display:grid;grid-template-columns:104px 1fr;gap:6px 14px;margin:0;font-size:14px}
+  .pcard dt{color:var(--muted);font-weight:600}
+  .pcard dd{margin:0}
+  .stars{color:var(--amber);letter-spacing:1px}
+  .moat{color:var(--green);font-weight:600}
+  .price{font-weight:700;color:var(--accent)}
+  ol.road{counter-reset:r;list-style:none;padding:0}
+  ol.road li{position:relative;padding:14px 14px 14px 56px;background:var(--card);border:1px solid var(--line);
+    border-radius:12px;margin:10px 0;box-shadow:var(--shadow)}
+  ol.road li::before{counter-increment:r;content:counter(r);position:absolute;left:14px;top:14px;
+    width:28px;height:28px;background:var(--accent);color:#fff;border-radius:8px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;font-size:14px}
+  .src{font-size:13px;color:var(--muted)}
+  .src a{color:var(--accent);text-decoration:none;word-break:break-all}
+  .src a:hover{text-decoration:underline}
+  footer{padding:30px 0 60px;color:var(--muted);font-size:13px}
+  .pill-row{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 4px}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin:8px 0 0}
+  .toc{columns:2;column-gap:30px;font-size:14px}
+  @media(max-width:600px){.toc{columns:1}}
+  .toc a{color:var(--accent);text-decoration:none}
+  .toc a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">市场调研 · 产品立项</p>
+    <h1>付费单机 iOS App<br>系统调研与 15 款产品提案</h1>
+    <p class="sub">面向"自己写 Swift/SwiftUI · 一次性买断 · 无后端 · 单机"的独立开发者，给出可落地的赛道逻辑、矩阵打法、选品方法论与具体产品清单。</p>
+    <div class="meta">
+      <span><b>定位条件：</b>付费买断 · 纯本地 · 无服务器</span>
+      <span><b>覆盖品类：</b>工具效率 / 健康习惯 / 解压游戏 / 创意相机</span>
+      <span><b>日期：</b>2026-06-22</span>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2><span class="n">00</span>目录</h2>
+    <div class="toc">
+      <p><a href="#tldr">① 核心结论（先读这段）</a></p>
+      <p><a href="#why">② 这条赛道为什么成立</a></p>
+      <p><a href="#portfolio">③ 核心策略：App 矩阵打法</a></p>
+      <p><a href="#method">④ 选品方法论（ASO 先行）</a></p>
+      <p><a href="#products">⑤ 15 款产品提案（四大品类）</a></p>
+      <p><a href="#matrix">⑥ 优先级矩阵 &amp; 起步建议</a></p>
+      <p><a href="#risk">⑦ 风险与避坑清单</a></p>
+      <p><a href="#sources">⑧ 数据来源</a></p>
+    </div>
+  </div>
+</section>
+
+<section id="tldr">
+  <div class="wrap">
+    <h2><span class="n">01</span>核心结论</h2>
+    <p class="lead">如果只读一段，读这段。</p>
+    <div class="grid g3">
+      <div class="stat"><div class="big">4×</div><div class="lbl">iPhone 用户的付费意愿是 Android 用户的约 4 倍，付费/买断模式天然适配 iOS</div></div>
+      <div class="stat"><div class="big">~$730</div><div class="lbl">成熟矩阵开发者单款 App 的平均月收入；靠"多款叠加"而非单款爆款</div></div>
+      <div class="stat"><div class="big">3–5 天</div><div class="lbl">借助 AI 编码，一名熟练开发者搭出一款工具类 App 的典型周期</div></div>
+    </div>
+    <div class="callout good">
+      <p><strong>结论一：你的打法不是"赌一款爆款"，而是"做 10–15 款小而精的单机工具，组成矩阵"。</strong>
+      每款 App 上架都能吃到 App Store 的"新品发现期"流量加权，10 款 = 10 次曝光窗口。多数单款不温不火，但组合收益比押单注更稳、更可预测。</p>
+      <p><strong>结论二：买断 + 无后端是优势不是限制。</strong>无服务器 = 零运维成本、零数据合规负担、利润率 70%+（扣除苹果抽成后）、隐私即卖点。当前最赚钱的付费榜几乎全是这类"专业小工具"。</p>
+      <p><strong>结论三：选品先看关键词（ASO），再写代码。</strong>先用工具确认"有人搜、竞争弱"的细分需求，再动手——这是矩阵打法里回报率最高的一步。</p>
+    </div>
+    <div class="callout warn">
+      <p><strong>必须认清的天花板：</strong>买断制的用户终身价值（LTV）= 售价，封顶。增长完全依赖"持续拉新"（即 ASO + 口碑），而非"留存复购"。单人单款的收入中位数其实低于 $1,000/月；做到头部 1/4 也需 12–18 个月的打磨与精准定位。<b>所以"矩阵"是这套模式跑通的前提，不是可选项。</b></p>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <h2><span class="n">02</span>这条赛道为什么成立</h2>
+    <p class="lead">付费单机 App 不是过时打法——它正是当前付费榜的主流形态。</p>
+
+    <h3>2.1 付费榜的真实长相</h3>
+    <p>2025 年美国区 iPhone 付费榜 Top 20 几乎清一色是"专业化单机小工具"，而非大众明星产品。它们大多可离线使用、靠功能而非流量变现：</p>
+    <div class="tablewrap">
+      <table>
+        <tr><th>排名</th><th>App</th><th>类型</th><th>对你的启示</th></tr>
+        <tr><td>3</td><td>Procreate Pocket</td><td><span class="tag t-create">创意</span></td><td>买断制绘画工具，本地运行的标杆</td></tr>
+        <tr><td>4</td><td>AnkiMobile</td><td><span class="tag t-tool">工具</span></td><td>$24.99 买断的记忆卡，纯本地也能高价</td></tr>
+        <tr><td>5</td><td>Paprika Recipe 3</td><td><span class="tag t-tool">工具</span></td><td>菜谱管理，本地数据库，长青买断</td></tr>
+        <tr><td>6</td><td>SkyView</td><td><span class="tag t-tool">工具</span></td><td>AR 星空，传感器+本地数据，无需后端</td></tr>
+        <tr><td>8</td><td>AutoSleep</td><td><span class="tag t-health">健康</span></td><td>睡眠追踪，HealthKit 本地分析，买断</td></tr>
+        <tr><td>9</td><td>Forest</td><td><span class="tag t-health">健康</span></td><td>专注番茄钟，单机也能成现象级</td></tr>
+        <tr><td>13</td><td>Streaks</td><td><span class="tag t-health">健康</span></td><td>习惯打卡，纯本地，Apple 设计奖</td></tr>
+        <tr><td>18</td><td>Things 3</td><td><span class="tag t-tool">工具</span></td><td>任务管理，本地优先，高价买断典范</td></tr>
+      </table>
+    </div>
+    <p class="src">数据：Daring Fireball 整理的 2025 美区 iPhone 付费榜 Top 20。</p>
+
+    <h3>2.2 无后端 = 结构性优势</h3>
+    <div class="grid g2">
+      <div class="stat"><div class="lbl"><strong>成本侧</strong></div>
+        <ul style="margin-top:8px">
+          <li>零服务器/数据库/运维费用</li>
+          <li>无需处理 GDPR/数据安全合规</li>
+          <li>扣苹果抽成后毛利 70%+</li>
+          <li>一次开发，长期被动收入</li>
+        </ul>
+      </div>
+      <div class="stat"><div class="lbl"><strong>产品侧</strong></div>
+        <ul style="margin-top:8px">
+          <li>"数据不出设备"是强卖点，正逢隐私焦虑上升</li>
+          <li>苹果神经引擎（Neural Engine）让端侧 AI（OCR/图像分类/语音）零延迟、零联网</li>
+          <li>离线可用 = 弱网/无网场景下的体验护城河</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout">
+      <p><strong>2026 的关键技术红利：端侧 AI。</strong>过去需要服务器的图像识别、OCR、自然语言处理、音频处理，现在都能在 iPhone 本地完成。这意味着<strong>"AI 功能 + 无后端 + 买断"第一次可以三者兼得</strong>——这是你做差异化最大的机会窗口（见提案 #2、#13、#15）。</p>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="wrap">
+    <h2><span class="n">03</span>核心策略：App 矩阵打法</h2>
+    <p class="lead">"做 30 款小 App 胜过死磕 1 款"——这是已被多个独立开发者验证的真实路径。</p>
+
+    <h3>3.1 真实战绩（都是单机/工具向矩阵）</h3>
+    <div class="tablewrap">
+      <table>
+        <tr><th>开发者路径</th><th>结果</th><th>关键点</th></tr>
+        <tr><td>从失败单品转向多 App 组合</td><td>30+ 款 → 总 MRR $22k（单款均 ~$730）</td><td>分散下注，组合收益更可预测</td></tr>
+        <tr><td>8 个月做 28 款</td><td>$100 → $25k MRR，累计 $84k</td><td>速度优先，靠数量铺开吃发现期</td></tr>
+        <tr><td>Apple 封号后重建</td><td>2025.12 单月净收 $60k+</td><td>边做边卖，部分 App 整体出售套现</td></tr>
+        <tr><td>Sebastian Röhl（HabitKit）</td><td>单款习惯追踪 → $15k+ MRR</td><td>极简单机工具也能跑出单款冠军</td></tr>
+        <tr><td>Xnapper（截图美化）</td><td>$29 买断，峰值 ~$6k MRR，21 个月后出售</td><td>买断 + 公开构建（build in public）拉新</td></tr>
+      </table>
+    </div>
+
+    <h3>3.2 矩阵为什么有效</h3>
+    <ul>
+      <li><strong>每款都有"发现期"红利：</strong>App Store 算法会给新上架 App 一段临时流量加权，这是花钱也买不到的。10 款 = 10 个曝光窗口。</li>
+      <li><strong>组合对冲单款失败：</strong>多数 App 单独看平平，但聚合后的总收益比押任何单一爆款都稳。</li>
+      <li><strong>同类用户可交叉导流：</strong>到第二年，头部玩家会从"铺量"转向"精做 5–19 款共享同一批用户、互相导量"的集群。</li>
+      <li><strong>开发成本骤降：</strong>有 AI 辅助编码，工具类 App 3–5 天即可搭出可用版本，复用同一套 SwiftUI 组件库后更快。</li>
+    </ul>
+    <div class="callout good">
+      <p><strong>给你的建议节奏：</strong>第一年铺 8–12 款（验证哪些细分有反馈），第二年砍掉无效的、把资源压在 3–5 款有数据的上做深做透并互相导流。<strong>建一套可复用的 SwiftUI 组件/付费墙/本地存储模板</strong>，让第 2 款起边际成本逼近零。</p>
+    </div>
+  </div>
+</section>
+
+<section id="method">
+  <div class="wrap">
+    <h2><span class="n">04</span>选品方法论：ASO 先行</h2>
+    <p class="lead">买断制下，增长 = 持续拉新 = ASO。所以选品的第一步不是"想点子"，是"查关键词"。</p>
+    <ol class="road">
+      <li><strong>先找关键词，再决定做什么。</strong>用 ASO 工具（如 AppFigures、Sensor Tower、Astro/ASO 关键词工具）找"搜索量不低、竞争度低、且意图明确"的词。有人在搜、对手又弱的词 = 金矿。</li>
+      <li><strong>验证"愿意为此付费"。</strong>看该细分现有付费 App 的评分数与价格——有付费竞品且评论数健康，说明需求被验证；完全没人付费的领域要警惕（可能是伪需求）。</li>
+      <li><strong>锁定"单一痛点 + 小而精人群"。</strong>2026 最强的点子是"超细分工具解决一个具体痛点"，而非大而全。垂直人群（如某职业、某爱好、银发族）优于泛人群。</li>
+      <li><strong>能否纯本地实现？</strong>过滤掉任何需要账号体系、实时多人、云同步为核心卖点的点子——它们不适合无后端买断。（本地 iCloud 同步可用 CloudKit，仍算"无自建后端"。）</li>
+      <li><strong>差异化在哪？</strong>同质化红海里，靠"端侧 AI / 隐私 / 极致设计 / 垂直深度 / 银发友好"切一个角度，而不是再做一个一模一样的。</li>
+    </ol>
+    <div class="callout warn">
+      <p><strong>当前明确的"高需求 + 供给不足"信号（可重点切入）：</strong></p>
+      <ul style="margin-bottom:0">
+        <li><strong>银发族 App</strong>：65+ 智能机渗透率 2025 年破 75%，但几乎没有为大字号、极简导航、语音优先、拍照确认式用药提醒设计的 App。</li>
+        <li><strong>微日记 / 情绪记录</strong>：一句话/一表情/一张图的"微日记"留存是传统日记的 5 倍。</li>
+        <li><strong>垂直财务工具</strong>：通用记账已饱和，但"自由职业报税、租房收益、副业利润"等垂直计算器仍空缺。</li>
+        <li><strong>数字戒断 / 心理健康</strong>：相关搜索 2025 年翻倍，现有产品偏"屏蔽"，用户其实想要"理解"。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="products">
+  <div class="wrap">
+    <h2><span class="n">05</span>15 款产品提案</h2>
+    <p class="lead">全部满足：Swift/SwiftUI 可独立实现 · 无服务器 · 买断或本地内购解锁。按你选的四大品类分组。</p>
+    <div class="pill-row">
+      <span class="tag t-tool">工具效率</span>
+      <span class="tag t-health">健康习惯</span>
+      <span class="tag t-game">解压游戏</span>
+      <span class="tag t-create">创意相机</span>
+    </div>
+    <div class="legend">难度：★ 周末项目　★★ 1–2 周　★★★ 3–6 周　★★★★ 1–2 月+</div>
+
+    <!-- ===== 工具效率 ===== -->
+    <h3 style="margin-top:30px"><span class="tag t-tool">工具效率</span></h3>
+
+    <div class="pcard">
+      <h3><span class="num">1</span>截图美化 / 出图工具　<span class="tag t-tool">工具</span></h3>
+      <p class="oneliner">把随手截图一键加上漂亮背景、边框、设备外壳、阴影，导出社交/作品集级图片。</p>
+      <dl>
+        <dt>目标用户</dt><dd>开发者、设计师、产品经理、做内容/带货的人——需要"晒图好看"</dd>
+        <dt>市场依据</dt><dd>Xnapper（Mac 端 $29 买断，峰值 ~$6k MRR）已验证；iOS 端原生工具更少、移动场景更高频</dd>
+        <dt>无后端实现</dt><dd>纯本地图像合成（Core Graphics / Core Image）、相册读写、模板内置</dd>
+        <dt>定价</dt><dd><span class="price">免费试用 + ¥30–50 解锁全部模板</span>（本地内购）</dd>
+        <dt>难度</dt><dd><span class="stars">★★</span></dd>
+        <dt>护城河</dt><dd class="moat">模板审美 + 设备外壳库的持续更新；做到"比系统截图编辑器强 10 倍"</dd>
+        <dt>风险</dt><dd>有竞品，需在审美/速度上拉开差距</dd>
+      </dl>
+    </div>
+
+    <div class="pcard">
+      <h3><span class="num">2</span>端侧 OCR 文档扫描仪（隐私版）　<span class="tag t-tool">工具</span></h3>
+      <p class="oneliner">拍照转 PDF + 完全本地 OCR 文字识别，"一个字都不上传云端"。</p>
+      <dl>
+        <dt>目标用户</dt><dd>注重隐私的职场人、律师/医生/财务等敏感行业、学生</dd>
+        <dt>市场依据</dt><dd>扫描类需求长青；端侧 AI 让"零联网识别"成为可信卖点（隐私焦虑上升）</dd>
+        <dt>无后端实现</dt><dd>VisionKit 文档扫描 + Vision 框架本地 OCR（含中文）+ PDFKit 导出</dd>
+        <dt>定价</dt><dd><span class="price">¥18–40 买断</span>，或免费扫描+内购解锁批量/OCR</dd>
+        <dt>难度</dt><dd><span class="stars">★★</span></dd>
+        <dt>护城河</dt><dd class="moat">"数据不出设备"主打隐私 + 速度；对标那些偷偷上传的免费扫描 App</dd>
+        <dt>风险</dt><dd>红海，但隐私+本地是清晰差异点</dd>
+      </dl>
+    </div>
+
+    <div class="pcard">
+      <h3><span class="num">3</span>垂直专业计算器（系列）　<span class="tag t-tool">工具</span></h3>
+      <p class="oneliner">不做通用计算器，做"某一行的专用计算器"：烘焙换算 / 装修建材 / 程序员进制 / 自由职业报税 / 租房收益。</p>
+      <dl>
+        <dt>目标用户</dt><dd>各垂直人群——"通用记账饱和，垂直计算器空缺"是明确信号</dd>
+        <dt>市场依据</dt><dd>调研指出"自由职业报税、租房收益、副业利润"等垂直工具服务不足</dd>
+        <dt>无后端实现</dt><dd>纯本地计算逻辑 + 本地参数表；一套框架可复制成多款（天然矩阵）</dd>
+        <dt>定价</dt><dd><span class="price">¥12–25 买断</span>，单价低但开发极快、可批量上</dd>
+        <dt>难度</dt><dd><span class="stars">★</span></dd>
+        <dt>护城河</dt><dd class="moat">ASO 关键词精准（搜"装修计算器"的人意图极强）+ 系列化占位</dd>
+        <dt>风险</dt><dd>单款收入有限，靠数量；务必先验证关键词搜索量</dd>
+      </dl>
+    </div>
+
+    <div class="pcard">
+      <h3><span class="num">4</span>银发友好工具集（放大镜 / 用药提醒）　<span class="tag t-tool">工具</span></h3>
+      <p class="oneliner">超大字号、极简导航、语音优先；放大镜读字 + 拍照确认式用药提醒。</p>
+      <dl>
+        <dt>目标用户</dt><dd>老年人及其子女（子女常是付费决策者）——巨大且增长的空白市场</dd>
+        <dt>市场依据</dt><dd>65+ 智能机渗透率 2025 破 75%，但"几乎没有"为该群体设计的 App</dd>
+        <dt>无后端实现</dt><dd>摄像头放大 + 本地通知 + 拍照存档；全本地，无需账号</dd>
+        <dt>定价</dt><dd><span class="price">¥25–50 买断</span>（子女愿为父母买单，价格不敏感）</dd>
+        <dt>难度</dt><dd><span class="stars">★★</span></dd>
+        <dt>护城河</dt><dd class="moat">无障碍设计的深度 + 子女送父母的"礼物式"定位；竞争极弱</dd>
+        <dt>风险</dt><dd>触达老年用户难，需靠"子女"渠道做 ASO/文案</dd>
+      </dl>
+    </div>
+
+    <!-- ===== 健康习惯 ===== -->
+    <h3 style="margin-top:34px"><span class="tag t-health">健康习惯</span></h3>
+
+    <div class="pcard">
+      <h3><span class="num">5</span>极简习惯打卡（像素格子风）　<span class="tag t-health">健康</span></h3>
+      <p class="oneliner">GitHub 贡献图式的习惯热力图，每天点一下，纯本地、好看到想晒。</p>
+      <dl>
+        <dt>目标用户</dt><dd>想养成习惯、喜欢可视化与极简美学的年轻人</dd>
+        <dt>市场依据</dt><dd>HabitKit（同类玩法）单款做到 $15k+ MRR；Streaks 拿过 Apple 设计奖</dd>
+        <dt>无后端实现</dt><dd>本地存储 + 本地通知 + Widget；可选 CloudKit 同步（仍无自建后端）</dd>
+        <dt>定价</dt><dd><span class="price">免费基础 + ¥25–40 解锁无限习惯/主题</span></dd>
+        <dt>难度</dt><dd><span class="stars">★★</span></dd>
+        <dt>护城河</dt><dd class="moat">视觉差异化（热力图/像素美学）+ Widget 体验；红海里靠"好看"破局</dd>
+        <dt>风险</dt><dd>竞争激烈，必须在设计上达到 Top 梯队</dd>
+      </dl>
+    </div>
+
+    <div class="pcard">
+      <h3><span class="num">6</span>微日记 / 一句话情绪记录　<span class="tag t-health">健康</span></h3>
+      <p class="oneliner">每天只记一句话 + 一个表情 + 一张图，零压力坚持，本地端侧 AI 给情绪洞察。</p>
+      <dl>
+        <dt>目标用户</dt><dd>写不下去传统日记的人、关注情绪/心理健康的年轻群体</dd>
+        <dt>市场依据</dt><dd>微日记留存是传统日记的 5 倍；情绪追踪类订阅留存高 3 倍——需求强</dd>
+        <dt>无后端实现</dt><dd>本地数据库 + 端侧 NLP 做情绪标注/月度总结，无需联网</dd>
+        <dt>定价</dt><dd><span class="price">¥30–60 买断</span> 或内购解锁 AI 洞察</dd>
+        <dt>难度</dt><dd><span class="stars">★★★</span></dd>
+        <dt>护城河</dt><dd class="moat">"端侧 AI 情绪洞察 + 绝对隐私"（日记最怕泄露）是强组合</dd>
+        <dt>风险</dt><dd>日记类多，靠"微 + AI + 隐私"三点合一突围</dd>
+      </dl>
+    </div>
+
+    <div class="pcard">
+      <h3><span class="num">7</span>断食 / 喝水 / 节律追踪器　<span class="tag t-health">健康</span></h3>
+      <p class="oneliner">间歇性断食计时 + 喝水提醒 + 简洁趋势图，接 HealthKit，全本地。</p>
+      <dl>
+        <dt>目标用户</dt><dd>做 16:8 断食、控糖、健康管理的人群（持续高热度）</dd>
+        <dt>市场依据</dt><dd>AutoSleep 等健康追踪买断款常驻付费榜，验证"本地分析+买断"成立</dd>
+        <dt>无后端实现</dt><dd>本地计时/通知 + HealthKit 读写 + 本地图表（Swift Charts）</dd>
+        <dt>定价</dt><dd><span class="price">免费 + ¥30 解锁高级图表/自定义</span></dd>
+        <dt>难度</dt><dd><span class="stars">★★</span></dd>
+        <dt>护城河</dt><dd class="moat">极简体验 + Widget/Live Activity 实时计时（多数竞品笨重）</dd>
+        <dt>风险</dt><dd>免费竞品多且带广告，需用"无广告+设计"切高端</dd>
+      </dl>
+    </div>
+
+    <div class="pcard">
+      <h3><span class="num">8</span>力量训练 / 健身记录　<span class="tag t-health">健康</span></h3>
+      <p class="oneliner">极速记录组数重量、自动算容量与 PR，离线可用，给认真练的人。</p>
+      <dl>
+        <dt>目标用户</dt><dd>撸铁人群——付费意愿高、对"记录顺手"极挑剔</dd>
+        <dt>市场依据</dt><dd>健身记录是经典买断品类，用户黏性与付费率俱佳</dd>
+        <dt>无后端实现</dt><dd>本地数据库 + HealthKit + 图表；训练计划模板内置</dd>
+        <dt>定价</dt><dd><span class="price">¥40–68 买断</span>（高客单，硬核用户认可）</dd>
+        <dt>难度</dt><dd><span class="stars">★★★</span></dd>
+        <dt>护城河</dt><dd class="moat">录入速度 + 数据洞察深度；服务"认真训练者"的垂直人群</dd>
+        <dt>风险</dt><dd>头部产品成熟，需在某一细分（如健美/力量举）做深</dd>
+      </dl>
+    </div>
+
+    <!-- ===== 解压游戏 ===== -->
+    <h3 style="margin-top:34px"><span class="tag t-game">解压游戏</span></h3>
+
+    <div class="pcard">
+      <h3><span class="num">9</span>极简解谜游戏（买断·无广告）　<span class="tag t-game">游戏</span></h3>
+      <p class="oneliner">Monument Valley / The Room 式精品解谜：完整体验、零广告、零内购骚扰。</p>
+      <dl>
+        <dt>目标用户</dt><dd>愿为"尊重时间的完整体验"付费的轻度玩家、审美党</dd>
+        <dt>市场依据</dt><dd>The Room、Monument Valley 2 证明"买断精品解谜"长青；用户明确愿为质量预付</dd>
+        <dt>无后端实现</dt><dd>SpriteKit/SceneKit 或 Unity 导出，关卡内置，纯单机</dd>
+        <dt>定价</dt><dd><span class="price">¥18–40 买断</span></dd>
+        <dt>难度</dt><dd><span class="stars">★★★★</span></dd>
+        <dt>护城河</dt><dd class="moat">美术与关卡设计本身就是壁垒，难被快速抄袭</dd>
+        <dt>风险</dt><dd>开发周期长、对美术/关卡要求高；建议矩阵里只放 1 款做"招牌"</dd>
+      </dl>
+    </div>
+
+    <div class="pcard">
+      <h3><span class="num">10</span>纸笔游戏合集（数独/填字/无尽）　<span class="tag t-game">游戏</span></h3>
+      <p class="oneliner">一款 App 打包多种经典纸笔逻辑游戏，离线无限生成、无广告。</p>
+      <dl>
+        <dt>目标用户</dt><dd>通勤/睡前打发时间、讨厌广告的中老年与上班族</dd>
+        <dt>市场依据</dt><dd>"无广告 + 离线"是该品类核心诉求（Reddit 用户反复点名"一次买断不看广告"）</dd>
+        <dt>无后端实现</dt><dd>本地题目生成算法（数独可程序生成），零内容服务器</dd>
+        <dt>定价</dt><dd><span class="price">免费 + ¥18 去广告/解锁全部玩法</span></dd>
+        <dt>难度</dt><dd><span class="stars">★★</span></dd>
+        <dt>护城河</dt><dd class="moat">无广告纯净体验 + 题库无限；老年群体可结合大字号差异化</dd>
+        <dt>风险</dt><dd>同类多，靠"干净+多合一+本地生成"取胜</dd>
+      </dl>
+    </div>
+
+    <div class="pcard">
+      <h3><span class="num">11</span>解压玩具 / 白噪音盒（ASMR）　<span class="tag t-game">游戏</span></h3>
+      <p class="oneliner">捏泡泡、转陀螺、雨声炉火等触觉+音效解压合集，配合震动反馈。</p>
+      <dl>
+        <dt>目标用户</dt><dd>焦虑/需要放松的年轻人，睡眠场景</dd>
+        <dt>市场依据</dt><dd>数字戒断/放松类搜索 2025 翻倍；解压/白噪音常年高需求</dd>
+        <dt>无后端实现</dt><dd>本地音频 + Core Haptics 震动 + 简单物理动画，全离线</dd>
+        <dt>定价</dt><dd><span class="price">免费 + ¥25 解锁全部场景</span></dd>
+        <dt>难度</dt><dd><span class="stars">★★</span></dd>
+        <dt>护城河</dt><dd class="moat">触觉反馈 + 音画质感；体验细腻度是壁垒</dd>
+        <dt>风险</dt><dd>免费竞品多，需"精致质感 + 无广告"切高端</dd>
+      </dl>
+    </div>
+
+    <!-- ===== 创意相机 ===== -->
+    <h3 style="margin-top:34px"><span class="tag t-create">创意相机</span></h3>
+
+    <div class="pcard">
+      <h3><span class="num">12</span>复古胶片相机（端侧滤镜）　<span class="tag t-create">创意</span></h3>
+      <p class="oneliner">真实胶片质感的相机+滤镜，所有处理本地完成，主打"出片即高级"。</p>
+      <dl>
+        <dt>目标用户</dt><dd>爱拍照的年轻人、ins/小红书风格内容创作者</dd>
+        <dt>市场依据</dt><dd>Halide、Dazz 等买断/内购相机长期表现好；审美型相机有持续付费力</dd>
+        <dt>无后端实现</dt><dd>AVFoundation 取景 + Core Image/Metal 自研滤镜管线，纯本地</dd>
+        <dt>定价</dt><dd><span class="price">免费 + ¥30–68 解锁全部胶片包</span></dd>
+        <dt>难度</dt><dd><span class="stars">★★★★</span></dd>
+        <dt>护城河</dt><dd class="moat">滤镜算法调校的审美 = 核心壁垒，难抄</dd>
+        <dt>风险</dt><dd>竞争激烈、技术门槛高；要么做到顶级审美，要么切细分（如某种特定胶片）</dd>
+      </dl>
+    </div>
+
+    <div class="pcard">
+      <h3><span class="num">13</span>照片去重 / 相册瘦身（隐私版）　<span class="tag t-create">创意</span></h3>
+      <p class="oneliner">本地 AI 找出重复/相似/模糊照片，一键清理，腾出空间，零上传。</p>
+      <dl>
+        <dt>目标用户</dt><dd>相册爆满、存储告急的普通用户（几乎人人需要）</dd>
+        <dt>市场依据</dt><dd>Clever Cleaner 等用端侧处理找相似照片，是 2025 典型范例</dd>
+        <dt>无后端实现</dt><dd>Vision 框架做端侧图像特征比对 + Photos 框架管理，全本地</dd>
+        <dt>定价</dt><dd><span class="price">免费扫描 + ¥25–40 解锁批量清理</span></dd>
+        <dt>难度</dt><dd><span class="stars">★★★</span></dd>
+        <dt>护城河</dt><dd class="moat">"照片不出设备"隐私卖点 + 相似度算法准度</dd>
+        <dt>风险</dt><dd>有竞品（含不良套路订阅款），用"买断/一次解锁+隐私"差异化</dd>
+      </dl>
+    </div>
+
+    <div class="pcard">
+      <h3><span class="num">14</span>拼图 / 海报排版工具　<span class="tag t-create">创意</span></h3>
+      <p class="oneliner">把多张照片排成精致拼图/九宫格/杂志风海报，模板化一键出图。</p>
+      <dl>
+        <dt>目标用户</dt><dd>发社交动态、做电商图、记录生活的人</dd>
+        <dt>市场依据</dt><dd>拼图/排版是高频刚需，买断"无水印+全模板"有市场</dd>
+        <dt>无后端实现</dt><dd>Core Graphics 本地合成 + 内置模板，相册读写</dd>
+        <dt>定价</dt><dd><span class="price">免费 + ¥18–30 去水印/全模板</span></dd>
+        <dt>难度</dt><dd><span class="stars">★★</span></dd>
+        <dt>护城河</dt><dd class="moat">模板审美持续更新；对标带水印/逼订阅的免费款</dd>
+        <dt>风险</dt><dd>红海，靠"无套路买断 + 设计感"切口</dd>
+      </dl>
+    </div>
+
+    <div class="pcard">
+      <h3><span class="num">15</span>像素画 / 绘画小工具　<span class="tag t-create">创意</span></h3>
+      <p class="oneliner">专注像素画或某一细分绘画（如手账贴纸、字体设计），轻量好上手。</p>
+      <dl>
+        <dt>目标用户</dt><dd>像素艺术爱好者、独立游戏美术、手账/贴纸创作者</dd>
+        <dt>市场依据</dt><dd>Procreate Pocket 证明买断绘画工具能进付费榜 Top；细分绘画仍有空位</dd>
+        <dt>无后端实现</dt><dd>Metal/Core Graphics 画布 + 本地导出，无需联网</dd>
+        <dt>定价</dt><dd><span class="price">¥18–40 买断</span></dd>
+        <dt>难度</dt><dd><span class="stars">★★★</span></dd>
+        <dt>护城河</dt><dd class="moat">不与 Procreate 正面竞争，切一个它不深耕的细分</dd>
+        <dt>风险</dt><dd>受众相对窄，靠垂直深度与社区口碑</dd>
+      </dl>
+    </div>
+
+  </div>
+</section>
+
+<section id="matrix">
+  <div class="wrap">
+    <h2><span class="n">06</span>优先级矩阵 &amp; 起步建议</h2>
+    <p class="lead">按"开发难度 × 验证度 × 差异化空间"综合评估，给出推荐落地顺序。</p>
+    <div class="tablewrap">
+      <table>
+        <tr><th>#</th><th>产品</th><th>品类</th><th>难度</th><th>需求验证</th><th>差异化空间</th><th>建议梯队</th></tr>
+        <tr><td>3</td><td>垂直专业计算器（系列）</td><td><span class="tag t-tool">工具</span></td><td>★</td><td>高</td><td>中</td><td><strong>先做·练手+铺量</strong></td></tr>
+        <tr><td>2</td><td>端侧 OCR 扫描仪</td><td><span class="tag t-tool">工具</span></td><td>★★</td><td>高</td><td>高（隐私）</td><td><strong>先做·主力</strong></td></tr>
+        <tr><td>5</td><td>极简习惯打卡</td><td><span class="tag t-health">健康</span></td><td>★★</td><td>很高</td><td>中（设计）</td><td><strong>先做·主力</strong></td></tr>
+        <tr><td>1</td><td>截图美化工具</td><td><span class="tag t-tool">工具</span></td><td>★★</td><td>高</td><td>中</td><td>第二批</td></tr>
+        <tr><td>4</td><td>银发友好工具</td><td><span class="tag t-tool">工具</span></td><td>★★</td><td>中（空白）</td><td>很高</td><td>第二批·蓝海</td></tr>
+        <tr><td>13</td><td>照片去重瘦身</td><td><span class="tag t-create">创意</span></td><td>★★★</td><td>很高</td><td>高（隐私）</td><td>第二批</td></tr>
+        <tr><td>7</td><td>断食/喝水追踪</td><td><span class="tag t-health">健康</span></td><td>★★</td><td>高</td><td>中</td><td>第二批</td></tr>
+        <tr><td>10</td><td>纸笔游戏合集</td><td><span class="tag t-game">游戏</span></td><td>★★</td><td>高</td><td>中</td><td>第二批</td></tr>
+        <tr><td>6</td><td>微日记 + AI 洞察</td><td><span class="tag t-health">健康</span></td><td>★★★</td><td>很高</td><td>高（AI+隐私）</td><td>第三批·有亮点</td></tr>
+        <tr><td>11</td><td>解压玩具/白噪音</td><td><span class="tag t-game">游戏</span></td><td>★★</td><td>高</td><td>中</td><td>第三批</td></tr>
+        <tr><td>14</td><td>拼图/海报排版</td><td><span class="tag t-create">创意</span></td><td>★★</td><td>高</td><td>中</td><td>第三批</td></tr>
+        <tr><td>8</td><td>力量训练记录</td><td><span class="tag t-health">健康</span></td><td>★★★</td><td>高</td><td>中</td><td>第三批·高客单</td></tr>
+        <tr><td>15</td><td>像素/细分绘画</td><td><span class="tag t-create">创意</span></td><td>★★★</td><td>中</td><td>高</td><td>选做</td></tr>
+        <tr><td>12</td><td>复古胶片相机</td><td><span class="tag t-create">创意</span></td><td>★★★★</td><td>高</td><td>高（壁垒高）</td><td>招牌款·后期</td></tr>
+        <tr><td>9</td><td>精品解谜游戏</td><td><span class="tag t-game">游戏</span></td><td>★★★★</td><td>高</td><td>很高</td><td>招牌款·后期</td></tr>
+      </table>
+    </div>
+
+    <h3>推荐落地顺序</h3>
+    <ol class="road">
+      <li><strong>第 1 步：做 #3 垂直计算器</strong>——最快跑通"上架→ASO→收款"全流程，练手、验证你的关键词调研法，顺便铺 2–3 款占位。</li>
+      <li><strong>第 2 步：做 #2 OCR 扫描 + #5 习惯打卡</strong>——两款需求验证最扎实、差异化清晰的主力。同步沉淀你的<strong>可复用 SwiftUI 模板（付费墙/本地存储/Widget/设置页）</strong>。</li>
+      <li><strong>第 3 步：复用模板批量产出 #4 / #7 / #10 / #13</strong>——边际成本骤降，快速把矩阵铺到 8–12 款，观察哪些细分有真实下载与评价反馈。</li>
+      <li><strong>第 4 步：押注 1 款"招牌"（#12 胶片相机 或 #9 解谜）</strong>——用前面赚到的现金流和经验，做一款高壁垒、能立住口碑的精品。</li>
+      <li><strong>第 5 步：砍弱留强、互相导流</strong>——第二年把资源压在有数据的 3–5 款上做深，App 间交叉推荐共享用户。</li>
+    </ol>
+  </div>
+</section>
+
+<section id="risk">
+  <div class="wrap">
+    <h2><span class="n">07</span>风险与避坑清单</h2>
+    <div class="grid g2">
+      <div class="stat">
+        <div class="lbl"><strong>商业风险</strong></div>
+        <ul style="margin-top:8px">
+          <li><strong>LTV 封顶</strong>：买断 = 收入上限是售价，必须靠持续拉新；增长全压在 ASO 上。</li>
+          <li><strong>收入中位数偏低</strong>：单人单款月收入中位 &lt;$1,000，务必用矩阵摊薄风险。</li>
+          <li><strong>免费+广告竞品</strong>：很多品类有免费对手，你的卖点必须是"无广告/隐私/设计/垂直深度"。</li>
+        </ul>
+      </div>
+      <div class="stat">
+        <div class="lbl"><strong>平台风险</strong></div>
+        <ul style="margin-top:8px">
+          <li><strong>苹果账号/审核</strong>：矩阵打法被滥用过，避免"换皮垃圾 App"，每款要有真实价值，否则可能被封号（已有先例）。</li>
+          <li><strong>同质化拒审</strong>：大量近似 App 易被判"垃圾信息"，靠真差异化规避。</li>
+          <li><strong>关键词依赖</strong>：算法调整会冲击 ASO 流量，需多款分散。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout">
+      <p><strong>关于"无后端"的边界澄清：</strong>用 <strong>CloudKit（iCloud 私有库）</strong>做跨设备同步仍属"无自建后端"——苹果托管、免运维、免费额度足够，且不碰用户数据合规。需要避开的是：自建账号体系、自建服务器、需要你维护数据库的实时/多人功能。这些不适合买断单机模式。</p>
+    </div>
+    <div class="callout good">
+      <p><strong>一句话行动建议：</strong>别纠结"做哪一个最好"——先用一周做 #3 跑通全流程，同时做关键词调研验证 #2/#5，然后用模板把矩阵铺起来。<strong>速度和数量在前期比完美更重要</strong>，数据会告诉你该把后面的精力压在哪。</p>
+    </div>
+  </div>
+</section>
+
+<section id="sources">
+  <div class="wrap">
+    <h2><span class="n">08</span>数据来源</h2>
+    <p class="src">本报告基于 2025–2026 年公开市场数据与独立开发者案例整理：</p>
+    <ul class="src">
+      <li>Daring Fireball — 2025 美区 iPhone 付费榜 Top 20：<a href="https://daringfireball.net/2026/01/app_store_2025_top_iphone_apps_in_the_us">daringfireball.net</a></li>
+      <li>Apple App Store — 2025 年度付费榜：<a href="https://apps.apple.com/us/iphone/room/6756333301">apps.apple.com</a></li>
+      <li>Market Clarity — 最赚钱的独立 App Top 15（含 Xnapper 案例）：<a href="https://mktclarity.com/blogs/news/indie-apps-top">mktclarity.com</a></li>
+      <li>Indie Hackers — 从失败单品到 30 款矩阵 $22k/mo：<a href="https://www.indiehackers.com/post/tech/from-failed-app-to-30-app-portfolio-making-22k-mo-in-less-than-a-year-myy3U7K9evxGOVOHti8s">indiehackers.com</a></li>
+      <li>BuildMVPFast — 矩阵策略：为什么 28 款胜过 1 款：<a href="https://www.buildmvpfast.com/blog/portfolio-app-strategy-multiple-apps-revenue-solo-founder-2026">buildmvpfast.com</a></li>
+      <li>App Opportunity — 2026 七个供给不足的 App 细分：<a href="https://appopportunity.com/blog/underserved-app-niches-2026">appopportunity.com</a></li>
+      <li>Developer Tech — 2025–2026 iOS 开发趋势（端侧 AI）：<a href="https://www.developer-tech.com/news/5-ios-app-development-trends-for-2025-2026/">developer-tech.com</a></li>
+      <li>Play Oopsies — 无广告无内购 iOS 精品游戏评测：<a href="https://playoopsies.com/no-ads-game/">playoopsies.com</a></li>
+      <li>Ptolemay — 2025 最赚钱 App 拆解：<a href="https://www.ptolemay.com/post/how-the-11-most-profitable-apps-make-billions">ptolemay.com</a></li>
+    </ul>
+    <p class="src" style="margin-top:16px">⚠️ 说明：报告中的收入数字来自公开自述案例，存在幸存者偏差；定价为人民币区间建议，实际请结合美元区与 ASO 测试微调。动手前请用 ASO 工具二次验证每个细分的关键词搜索量与竞争度。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    付费单机 iOS App 系统调研报告 · 生成于 2026-06-22 · 仅供产品立项参考
+  </div>
+</footer>
+
+</body>
+</html>

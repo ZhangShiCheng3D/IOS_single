@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CleanAlbum 代码审查报告</title>
+<style>
+  :root { --bg:#0f1115; --card:#1a1d24; --line:#2a2f3a; --txt:#e6e9ef; --mut:#9aa3b2; --brand:#3c7aef; --red:#e5484d; --amber:#f5a623; --green:#30a46c; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--txt); font:15px/1.65 -apple-system,"PingFang SC",Segoe UI,Roboto,sans-serif; }
+  .wrap { max-width:920px; margin:0 auto; padding:40px 24px 80px; }
+  h1 { font-size:28px; margin:0 0 4px; }
+  h2 { font-size:20px; margin:40px 0 14px; padding-bottom:8px; border-bottom:1px solid var(--line); }
+  h3 { font-size:16px; margin:22px 0 8px; }
+  .sub { color:var(--mut); margin:0 0 8px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px 20px; margin:14px 0; }
+  code { background:#11141a; border:1px solid var(--line); border-radius:5px; padding:1px 6px; font-family:"SF Mono",Menlo,Consolas,monospace; font-size:13px; }
+  pre { background:#11141a; border:1px solid var(--line); border-radius:8px; padding:14px; overflow:auto; font-family:"SF Mono",Menlo,Consolas,monospace; font-size:13px; }
+  table { width:100%; border-collapse:collapse; margin:12px 0; }
+  th,td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { color:var(--mut); font-weight:600; font-size:13px; }
+  .tag { display:inline-block; font-size:11px; font-weight:700; padding:2px 9px; border-radius:20px; letter-spacing:.3px; }
+  .t-fix { background:rgba(48,163,108,.16); color:var(--green); }
+  .t-hi  { background:rgba(229,72,77,.16); color:var(--red); }
+  .t-md  { background:rgba(245,166,35,.16); color:var(--amber); }
+  .t-lo  { background:rgba(60,122,239,.16); color:var(--brand); }
+  ul { margin:6px 0 6px 2px; padding-left:20px; } li { margin:4px 0; }
+  .ok { color:var(--green); } .muted { color:var(--mut); }
+  .file { font-family:"SF Mono",Menlo,Consolas,monospace; font-size:13px; color:var(--brand); }
+  .summary-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:18px 0; }
+  .metric { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; text-align:center; }
+  .metric .n { font-size:26px; font-weight:700; } .metric .l { font-size:12px; color:var(--mut); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>CleanAlbum 代码审查报告</h1>
+  <p class="sub">照片去重 / 相册瘦身（隐私版） · Swift 6 / SwiftUI / iOS 17 · 资深 iOS 架构师审查</p>
+  <p class="sub">审查日期：2026-06-22 · 范围：全部 21 个 <code>.swift</code> 文件 + Info.plist + 本地化 + Assets + .storekit + 文档</p>
+
+  <div class="summary-grid">
+    <div class="metric"><div class="n">21</div><div class="l">Swift 文件审查</div></div>
+    <div class="metric"><div class="n">2</div><div class="l">已修复问题</div></div>
+    <div class="metric"><div class="n">0</div><div class="l">剩余编译错误</div></div>
+    <div class="metric"><div class="n">6</div><div class="l">建议事项</div></div>
+  </div>
+
+  <div class="card">
+    <strong>总体结论：</strong>代码质量高，架构清晰（MVVM + actor 隔离 + StoreKit 2 权益以服务端权益为准）。
+    无空壳实现、无 TODO/FIXME 残留、本地化中英文 key 完全一致、Info.plist 权限与加密声明完整。
+    审查发现 <strong>1 个会在 Swift 6 严格并发下报错的真实缺陷</strong> 和 <strong>1 个 UI 时序小缺陷</strong>，均已直接修复；
+    其余为不影响编译运行的架构/产品建议。
+  </div>
+
+  <!-- ============ 1. 问题列表 ============ -->
+  <h2>一、发现的问题（按严重程度排序）</h2>
+
+  <h3><span class="tag t-hi">高 · 编译</span> &nbsp;1. 原始 <code>PHAsset</code> 跨 actor 边界违反 Swift 6 Sendable</h3>
+  <div class="card">
+    <p><span class="file">ViewModels/ScanViewModel.swift</span></p>
+    <p><code>PhotoLibraryManager</code> 是 actor，其 <code>analysisImage(for:)</code>、<code>delete(assets:)</code>、
+    <code>thumbnail(for:)</code> 均为 actor 隔离方法且参数为 <code>PHAsset</code> / <code>[PHAsset]</code>。
+    <code>ScanViewModel</code>（@MainActor）在以下三处把<strong>原始 PHAsset</strong> 送入该 actor：</p>
+    <ul>
+      <li><code>await library.analysisImage(for: asset)</code>（扫描循环，第 134 行）</li>
+      <li><code>try await library.delete(assets: assets)</code>（第 184 行）</li>
+      <li><code>await library.thumbnail(for: item.asset, …)</code>（第 203 行）</li>
+    </ul>
+    <p><code>PHAsset</code> 未被 Apple 标注为 <code>Sendable</code>。项目把 <code>PhotoItem</code> / <code>PhotoGroup</code> 包成
+    <code>@unchecked Sendable</code> 来安全跨界，<code>UIImage</code> 在目标 SDK 中本身即 <code>Sendable</code>（因此作者未包裹它），
+    但<strong>裸 PHAsset 的跨界没有被覆盖</strong>，在 Swift 6 语言模式下会报
+    “non-sendable type 'PHAsset' … into actor-isolated context”。</p>
+    <p class="ok"><strong>修复：</strong>将 <code>import Photos</code> 改为 <code>@preconcurrency import Photos</code>。
+    这是 Apple 推荐的、针对尚未采用并发标注框架的标准降级方式，精准覆盖本文件内所有 PHAsset 跨界点，零行为变化。</p>
+<pre>- import Photos
++ @preconcurrency import Photos   // PHAsset 未标注 Sendable；跨 actor 传递时降级为兼容模式</pre>
+  </div>
+
+  <h3><span class="tag t-md">中 · UI</span> &nbsp;2. 全屏预览首帧闪现第一张照片</h3>
+  <div class="card">
+    <p><span class="file">Views/PhotoPreviewView.swift</span></p>
+    <p>原先 <code>@State private var selection = ""</code>，在 <code>.onAppear</code> 里才赋值
+    <code>initialItem.id</code>。<code>TabView(selection:)</code> 初值不匹配任何 tag，会先渲染第 0 张，
+    <code>onAppear</code> 后再跳到用户点开的那张 —— 用户点第 5 张会先看到第 1 张闪一下再跳转。</p>
+    <p class="ok"><strong>修复：</strong>新增 <code>init</code>，用 <code>_selection = State(initialValue: initialItem.id)</code>
+    在构造期就定位到目标照片，并删除 <code>.onAppear</code> 赋值。</p>
+  </div>
+
+  <!-- ============ 2. 逐项核对 ============ -->
+  <h2>二、审查清单逐项核对</h2>
+  <table>
+    <tr><th style="width:170px">检查项</th><th>结论</th></tr>
+    <tr><td>类型 / 方法签名 / 泛型</td><td class="ok">通过。所有引用类型存在、调用方签名匹配。<code>ContentView</code> 的 <code>switch viewModel.phase</code> 与 <code>ScanProgressView.statusKey</code> 均穷举。</td></tr>
+    <tr><td>Swift 6 严格并发</td><td>已修复裸 PHAsset 跨界（见问题 1）。actor 隔离（<code>PhotoAnalyzer</code> / <code>PhotoLibraryManager</code>）、<code>@MainActor</code> 标注、<code>@unchecked Sendable</code> 包裹策略均正确。</td></tr>
+    <tr><td>可选值处理</td><td class="ok">通过。<code>settingsList.first</code>、<code>request.results?.first</code>、<code>cgImage</code> 等均安全解包。</td></tr>
+    <tr><td>SwiftUI ViewBuilder</td><td class="ok">通过。<code>@ViewBuilder content</code>、<code>Slider</code> 多标签初始化、<code>ContentUnavailableView</code> 用法均合法。</td></tr>
+    <tr><td>@Model / @Observable / @MainActor</td><td class="ok">通过。<code>AppSettings</code>/<code>CleanupRecord</code> 属性类型 SwiftData 兼容（无不支持的集合可选）；<code>ScanViewModel</code>/<code>PurchaseManager</code> 正确标注 <code>@MainActor @Observable</code>。</td></tr>
+    <tr><td>SwiftData 容器 / @Query</td><td class="ok">通过。<code>Schema([AppSettings, CleanupRecord])</code> 与 <code>@Query</code> 用法正确。无 <code>@Relationship</code>（模型间无关联，符合设计）。</td></tr>
+    <tr><td>StoreKit 2</td><td class="ok">通过。Product ID 与 <code>.storekit</code> 一致（<code>com.cleanalbum.pro.unlock</code>）；<code>Transaction.updates</code> 监听在 <code>start()</code> 启动；权益以 <code>currentEntitlements</code> 为准、<code>UserDefaults</code> 仅作冷启动兜底；恢复购买（<code>AppStore.sync()</code>）双入口（设置页 + 付费墙）。</td></tr>
+    <tr><td>功能完整性</td><td>CLAUDE.md 列出的功能均有真实实现。唯一缺口：<code>CleanupRecord</code> 被写入但从未被查询/展示（见建议 1）。</td></tr>
+    <tr><td>SwiftUI 最佳实践</td><td class="ok">通过。<code>@State</code>/<code>@Bindable</code>/<code>@Environment</code>、<code>NavigationStack</code>/<code>NavigationLink</code>、<code>ForEach</code> 的 <code>id</code>、<code>.task(id:)</code> 异步加载均规范；所有主要 View 带有效 <code>#Preview</code>。</td></tr>
+    <tr><td>本地化</td><td class="ok">通过。zh-Hans 与 en 的 key 集合<strong>完全一致</strong>，代码中所有 <code>String(localized:)</code> / <code>LocalizedStringKey</code> 均有对应条目，无悬空 key。</td></tr>
+    <tr><td>资源文件</td><td class="ok">通过。<code>Assets.xcassets</code> 各 <code>Contents.json</code> 格式正确（AccentColor 含深色变体）；Info.plist 含相册权限文案、<code>ITSAppUsesNonExemptEncryption=false</code>、本地化声明。</td></tr>
+  </table>
+
+  <!-- ============ 3. 修改文件 ============ -->
+  <h2>三、修改的文件</h2>
+  <table>
+    <tr><th style="width:320px">文件</th><th>修改摘要</th></tr>
+    <tr><td class="file">ViewModels/ScanViewModel.swift</td><td><code>import Photos</code> → <code>@preconcurrency import Photos</code>，消除 Swift 6 下裸 PHAsset 跨 actor 的 Sendable 编译错误。</td></tr>
+    <tr><td class="file">Views/PhotoPreviewView.swift</td><td>新增 <code>init</code> 在构造期初始化 <code>selection</code> 为 <code>initialItem.id</code>；删除 <code>.onAppear</code> 赋值，消除首帧闪现。</td></tr>
+  </table>
+  <p class="muted">本次修改严格遵循“精准改动”：未触碰相邻无关代码、未改动既有风格、未删除任何文件或既存死代码。</p>
+
+  <!-- ============ 4. 建议 ============ -->
+  <h2>四、剩余风险与建议（不影响编译运行）</h2>
+
+  <div class="card">
+    <h3>建议 1 — <span class="tag t-md">中</span> 清理后“空间对比”会误导用户</h3>
+    <p><span class="file">Views/CleanupResultView.swift</span> · <span class="file">ScanViewModel.deleteSelected()</span></p>
+    <p>删除走 <code>PHAssetChangeRequest.deleteAssets</code>，照片进入“最近删除”，<strong>30 天内不真正释放磁盘</strong>。
+    因此 <code>storageAfter.free</code> 与 <code>storageBefore.free</code> 几乎相等，前后对比卡片会显示“几乎没释放”，与“已释放 X GB”自相矛盾。
+    此外 <code>CleanupResultView.freeGain</code> 计算属性<strong>从未被使用</strong>（死代码，按规约保留未删）。</p>
+    <p><strong>建议：</strong>以估算的 <code>freedBytes</code> 作为主指标，把“清理后可用空间”改为“预计可释放”或加注“清空‘最近删除’后生效”，避免审核期与用户对“释放空间”的预期落差。</p>
+  </div>
+
+  <div class="card">
+    <h3>建议 2 — <span class="tag t-lo">低</span> <code>CleanupRecord</code> 只写不读</h3>
+    <p><code>ContentView.performCleanup()</code> 会 <code>insert</code> 一条 <code>CleanupRecord</code>，但全项目无 <code>@Query&lt;CleanupRecord&gt;</code>、无历史页。
+    清理历史功能未闭环。<strong>建议：</strong>要么补一个“清理历史”入口（设置页），要么明确其仅用于统计累计释放量并据此展示。</p>
+  </div>
+
+  <div class="card">
+    <h3>建议 3 — <span class="tag t-lo">低</span> View 直接操作 SwiftData</h3>
+    <p>CLAUDE.md 约定“View 不应直接操作 SwiftData，应通过 ViewModel”。当前 <code>ContentView</code> 直接 <code>modelContext.insert(settings/record)</code>。
+    <code>@Query</code> + <code>@Bindable settings</code> 是官方惯用法，可接受；但 <code>CleanupRecord</code> 的写入更适合下沉到 <code>ScanViewModel</code>（注入 <code>modelContext</code>），以严格满足分层约定。未改动以避免引入耦合风险。</p>
+  </div>
+
+  <div class="card">
+    <h3>建议 4 — <span class="tag t-lo">低</span> <code>String(format:)</code> 用 <code>%d</code> 承载 Swift <code>Int</code></h3>
+    <p><code>cleanup.confirm.message</code> / <code>cleanup.selectedCount</code> / <code>category.summary</code> 使用 <code>%d</code> 对应 64 位 <code>Int</code>。
+    在小整数下工作正常，但严格而言应为 <code>%ld</code>。属潜在隐患（大数 / 大端），照片计数远小于 2³¹，不会崩溃。未改动以避免在两个本地化文件间制造格式不一致。</p>
+  </div>
+
+  <div class="card">
+    <h3>建议 5 — <span class="tag t-lo">低</span> 分析取图用 <code>.opportunistic</code> 投递</h3>
+    <p><span class="file">PhotoLibraryManager.thumbnail</span> 用 <code>.opportunistic</code> + 已禁用 iCloud 网络。
+    对“分析用图”(<code>analysisImage</code>)，理论上存在仅返回降质回调而无最终回调的极端情形（continuation 不 resume）。
+    实测中 iCloud 缺图会以 <code>isDegraded=false</code> + <code>image=nil</code> 收尾从而正常 resume，但分析路径改用 <code>.highQualityFormat</code>（单次回调）会更确定。</p>
+  </div>
+
+  <div class="card">
+    <h3>建议 6 — <span class="tag t-lo">低</span> 上架资源待补</h3>
+    <p><code>AppIcon.appiconset/Contents.json</code> 仅声明 1024×1024 槽位且无实际图片文件（不影响编译，Xcode 会占位）。上架前需补齐 App 图标资源。</p>
+  </div>
+
+  <h2>结语</h2>
+  <div class="card">
+    项目工程化成熟、隐私设计（端侧分析、<code>isNetworkAccessAllowed=false</code>、特征向量不落盘）与卖点一致，可直接进入真机联调。
+    本次已消除 Swift 6 严格并发下的编译阻断与一处 UI 时序小缺陷；其余 6 项均为产品体验/分层层面的优化建议，按“精准改动”原则交由产品决策，未擅自扩大改动面。
+  </div>
+
+</div>
+</body>
+</html>

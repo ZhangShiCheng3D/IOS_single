@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SeniorHelper · 代码审查报告</title>
+<style>
+  :root{--bg:#f6f7f9;--card:#fff;--ink:#1c1c1e;--sub:#6b7280;--line:#e5e7eb;
+        --red:#d1342b;--amber:#b7791f;--green:#1a8a4a;--blue:#0062c6;--accent:#007bc6;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:16px/1.65 -apple-system,"PingFang SC","Microsoft YaHei",Segoe UI,sans-serif;}
+  .wrap{max-width:980px;margin:0 auto;padding:32px 20px 80px}
+  h1{font-size:30px;margin:0 0 6px}
+  .lede{color:var(--sub);margin:0 0 28px}
+  h2{font-size:21px;margin:38px 0 14px;padding-bottom:8px;border-bottom:2px solid var(--line)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+        padding:18px 20px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+  .tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 10px;border-radius:999px;
+       color:#fff;vertical-align:middle;margin-right:8px}
+  .t-fix{background:var(--green)} .t-high{background:var(--red)}
+  .t-med{background:var(--amber)} .t-low{background:var(--blue)} .t-info{background:#6b7280}
+  .card h3{margin:0 0 8px;font-size:17px;display:flex;align-items:center;flex-wrap:wrap;gap:4px}
+  .card p{margin:6px 0}
+  code{background:#f0f1f3;border-radius:5px;padding:1px 6px;font-size:13.5px;
+       font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  .file{color:var(--accent);font-weight:600}
+  table{width:100%;border-collapse:collapse;background:var(--card);border-radius:12px;overflow:hidden;
+        border:1px solid var(--line);margin-top:8px}
+  th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);font-size:14.5px;vertical-align:top}
+  th{background:#fafbfc;font-weight:700}
+  tr:last-child td{border-bottom:none}
+  .ok{color:var(--green);font-weight:700}
+  .summary{display:flex;gap:14px;flex-wrap:wrap;margin:18px 0}
+  .stat{flex:1;min-width:130px;background:var(--card);border:1px solid var(--line);
+        border-radius:12px;padding:14px 16px;text-align:center}
+  .stat b{display:block;font-size:26px}
+  .stat span{color:var(--sub);font-size:13px}
+  ul{margin:6px 0 6px 2px;padding-left:20px} li{margin:4px 0}
+  .muted{color:var(--sub);font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>SeniorHelper 代码审查报告</h1>
+  <p class="lede">银发友好工具集（放大镜 + 用药提醒）· Swift 6 / SwiftUI / iOS 17 · 审查日期 2026-06-22</p>
+
+  <div class="summary">
+    <div class="stat"><b>27</b><span>审查文件数</span></div>
+    <div class="stat"><b class="ok">0</b><span>阻断性编译错误</span></div>
+    <div class="stat"><b style="color:var(--amber)">4</b><span>已修复问题</span></div>
+    <div class="stat"><b style="color:var(--blue)">4</b><span>剩余建议</span></div>
+  </div>
+
+  <div class="card">
+    <h3>总体结论</h3>
+    <p>整体代码质量<strong>良好</strong>：MVVM 分层清晰，Model 不依赖 View/VM；ViewModel 统一
+    <code>@Observable @MainActor</code>；写操作走 VM、读列表走 <code>@Query</code>，符合
+    <span class="file">CLAUDE.md</span> 约定。<strong>未发现会阻断 Swift 5 语言模式编译的错误</strong>。
+    本次共修复 4 处问题（1 本地化缺失、2 处 Info.plist、1 处缺失的 StoreKit 配置文件），
+    并记录 4 项需业务侧决策的剩余建议。</p>
+  </div>
+
+  <h2>一、发现并修复的问题</h2>
+
+  <div class="card">
+    <h3><span class="tag t-high">高</span><span class="tag t-fix">已修复</span>本地化键缺失，英文环境显示中文</h3>
+    <p><span class="file">Views/MoreView.swift:78</span> 中 <code>subtitle: "语音、字号、通知与购买"</code>
+    作为 <code>LocalizedStringKey</code> 使用，但该键在
+    <span class="file">zh-Hans.lproj</span> 与 <span class="file">en.lproj</span> 两份
+    <code>Localizable.strings</code> 中均不存在。后果：英文环境下「设置」卡片副标题直接回退显示中文原文。</p>
+    <p><strong>修复：</strong>已向两份字符串表补齐该键
+    （中文恒等映射；英文译为 <em>"Voice, text size, notifications &amp; purchase"</em>）。
+    全量复核后这是唯一缺失的本地化键，其余 130+ 键中英齐全一致。</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="tag t-med">中</span><span class="tag t-fix">已修复</span>Info.plist 设备能力架构错误</h3>
+    <p><span class="file">Info.plist</span> 的 <code>UIRequiredDeviceCapabilities</code> 声明为
+    <code>armv7</code>（32 位）。而本应用最低系统为 iOS 17，所有支持设备均为 64 位，正确值应为
+    <code>arm64</code>。错误的 32 位能力声明在提交时可能被拒或导致设备兼容判定异常。</p>
+    <p><strong>修复：</strong><code>armv7</code> → <code>arm64</code>。</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="tag t-med">中</span><span class="tag t-fix">已修复</span>缺少出口合规声明键</h3>
+    <p><span class="file">Info.plist</span> 未声明 <code>ITSAppUsesNonExemptEncryption</code>。
+    本应用纯本地、不含非豁免加密，缺此键会导致每次 TestFlight/提交都被追问加密合规。</p>
+    <p><strong>修复：</strong>新增 <code>ITSAppUsesNonExemptEncryption = false</code>。</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="tag t-med">中</span><span class="tag t-fix">已修复</span>缺失 StoreKit 本地测试配置文件</h3>
+    <p><span class="file">CLAUDE.md</span> 与 <span class="file">README.md</span> 的集成步骤均要求创建
+    StoreKit 配置文件，但仓库中不存在 <code>*.storekit</code>。缺失时模拟器内
+    <code>Product.products(for:)</code> 取不到商品，付费墙「立即解锁」按钮恒为禁用，无法本地走通购买/恢复流程。</p>
+    <p><strong>修复：</strong>新建 <span class="file">SeniorHelper.storekit</span>，含与代码
+    <code>PurchaseManager.unlockProductID</code> 完全一致的非消耗型产品
+    <code>com.seniorhelper.unlock.lifetime</code>，并配中英本地化文案。</p>
+  </div>
+
+  <h2>二、逐项核对结果（无需改动项）</h2>
+  <table>
+    <tr><th>审查维度</th><th>结论</th></tr>
+    <tr><td>类型 / 方法签名 / 调用方匹配</td><td class="ok">通过 — 无未定义符号，被引用的 View 全部存在</td></tr>
+    <tr><td><code>@Model</code> 属性类型兼容性</td><td class="ok">通过 — <code>[Date]</code>、<code>String?</code> 均为 SwiftData 支持类型；两模型无关系，无需 <code>@Relationship</code></td></tr>
+    <tr><td>ModelContainer 配置</td><td class="ok">通过 — Schema 含两模型，失败 <code>fatalError</code> 合理</td></tr>
+    <tr><td><code>@Query</code> / 写操作分层</td><td class="ok">通过 — 读用 <code>@Query</code>，写经 ViewModel</td></tr>
+    <tr><td>StoreKit 2：监听 / 校验 / 恢复</td><td class="ok">通过 — <code>Transaction.updates</code> 启动监听、<code>checkVerified</code> 校验、<code>AppStore.sync()</code> 恢复、Product ID 与配置一致</td></tr>
+    <tr><td>依赖注入</td><td class="ok">通过 — 全局对象经 <code>.environment(...)</code> 注入，<code>@Environment(Type.self)</code> 读取</td></tr>
+    <tr><td>可选值处理 / 强制解包</td><td class="ok">通过 — 仅 URL 字面量与 <code>layerClass</code> 强转，均安全</td></tr>
+    <tr><td>SwiftUI 语法 / <code>#Preview</code></td><td class="ok">通过 — Preview 均注入所需环境对象与内存容器</td></tr>
+    <tr><td>资源文件 JSON 格式</td><td class="ok">通过 — Assets / AccentColor / AppIcon 的 Contents.json 合法</td></tr>
+    <tr><td>功能完整性 vs CLAUDE.md</td><td class="ok">通过 — 放大镜/用药/联系人/语音/Siri/超大字号全部有实现，无 TODO/空壳</td></tr>
+  </table>
+
+  <h2>三、剩余风险与建议（需业务侧决策，未改动）</h2>
+  <div class="card">
+    <h3><span class="tag t-low">建议</span>占位 URL 待替换</h3>
+    <p><span class="file">PaywallView.swift</span> 与 <span class="file">SettingsView.swift</span> 中隐私政策 /
+    支持 / 帮助链接为 <code>https://example.com/...</code> 占位。需替换为真实地址后方可过审
+    （README 上架清单已列明，属业务内容，故未代改）。</p>
+  </div>
+  <div class="card">
+    <h3><span class="tag t-info">提示</span>Swift 6 严格并发（complete 模式）</h3>
+    <p><span class="file">CameraManager</span> / <span class="file">NotificationManager</span> 等非
+    <code>Sendable</code> 类在 <code>DispatchQueue.async</code> / <code>Task</code> 中捕获 <code>self</code>。
+    在默认 Swift 5 语言模式下编译通过；若将 Build Setting 切到
+    <code>Swift Language Version = 6</code> 且开启 complete 并发检查，会产生告警/报错。
+    届时建议给 AVFoundation 管理器标注 <code>@unchecked Sendable</code> 或收敛到单一 actor。
+    因当前无法在本环境编译验证，为避免引入不可控改动，本项<strong>未做修改</strong>，仅记录。</p>
+  </div>
+  <div class="card">
+    <h3><span class="tag t-info">提示</span>通知撤销使用硬编码上限</h3>
+    <p><span class="file">NotificationManager.cancel(for:)</span> 以 <code>0..&lt;20</code> 枚举标识符撤销旧通知。
+    当前单条计划提醒数远小于 20，安全；若未来放开提醒次数上限，需同步调整。</p>
+  </div>
+  <div class="card">
+    <h3><span class="tag t-info">提示</span>AppIcon 未放置实际图片</h3>
+    <p><span class="file">Assets.xcassets/AppIcon.appiconset</span> 仅有 1024×1024 槽位，未关联图片文件。
+    不影响编译，上架前需补图。</p>
+  </div>
+
+  <h2>四、本次修改文件清单</h2>
+  <table>
+    <tr><th>文件</th><th>修改摘要</th></tr>
+    <tr><td><span class="file">Resources/zh-Hans.lproj/Localizable.strings</span></td><td>补充缺失键 <code>"语音、字号、通知与购买"</code></td></tr>
+    <tr><td><span class="file">Resources/en.lproj/Localizable.strings</span></td><td>补充该键的英文译文</td></tr>
+    <tr><td><span class="file">Info.plist</span></td><td><code>armv7</code>→<code>arm64</code>；新增 <code>ITSAppUsesNonExemptEncryption=false</code></td></tr>
+    <tr><td><span class="file">SeniorHelper.storekit</span></td><td><strong>新建</strong> StoreKit 本地测试配置（非消耗型产品 + 中英文案）</td></tr>
+  </table>
+
+  <p class="muted" style="margin-top:34px">说明：本项目不含 <code>.xcodeproj</code>，无法在当前环境实际编译。以上结论基于 27 个文件的逐行静态审查；并发相关结论以 Swift 5 语言模式为基准。</p>
+
+</div>
+</body>
+</html>

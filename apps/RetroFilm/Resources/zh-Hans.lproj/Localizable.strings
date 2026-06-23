@@ -1,0 +1,113 @@
+/* RetroFilm — 简体中文 */
+
+/* 胶片 / Film stocks (key == FilmStock.id) */
+"film.original"      = "原图";
+"film.kodakGold"     = "柯达 Gold";
+"film.portra400"     = "Portra 400";
+"film.fujiSuperia"   = "富士 Superia";
+"film.ilfordHP5"     = "依尔福 黑白";
+"film.kodakUltramax" = "柯达 Ultramax";
+"film.portra800"     = "Portra 800";
+"film.fujiPro400H"   = "富士 Pro 400H";
+"film.cinestill800T" = "CineStill 800T";
+"film.agfaVista"     = "爱克发 Vista";
+"film.polaroidSX70"  = "宝丽来 SX-70";
+
+/* 标签栏 */
+"tab.camera"  = "相机";
+"tab.gallery" = "相册";
+
+/* 相机 */
+"camera.datestamp"        = "日期戳";
+"camera.shutter"          = "快门";
+"camera.saved"            = "已保存到胶卷";
+"camera.permission.title" = "需要相机权限";
+"camera.permission.body"  = "RetroFilm 需要访问相机才能取景拍摄。请在「设置」中开启相机权限。";
+"camera.permission.open"  = "前往设置";
+
+/* 相册 */
+"gallery.title"       = "胶卷";
+"gallery.empty.title" = "还没有照片";
+"gallery.empty.body"  = "回到相机页，按下快门拍下第一张胶片照吧。";
+
+/* 参数微调 */
+"adjust.title"     = "微调";
+"adjust.intensity" = "滤镜强度";
+"adjust.grain"     = "颗粒";
+"adjust.vignette"  = "暗角";
+"adjust.lightleak" = "漏光";
+"adjust.exposure"  = "曝光";
+"adjust.warmth"    = "色温";
+"adjust.leakstyle" = "漏光样式";
+"adjust.reset"     = "重置";
+
+/* 通用动作 */
+"action.done"   = "完成";
+"action.delete" = "删除";
+"action.close"  = "关闭";
+
+/* 付费墙 */
+"paywall.title"    = "解锁全部胶片包";
+"paywall.subtitle" = "一次买断，永久解锁所有高级胶片与效果。";
+"paywall.included" = "包含以下胶片";
+"paywall.cta"      = "立即解锁";
+"paywall.onetime"  = "一次性买断 · 无订阅 · 全部本地处理";
+"paywall.restore"  = "恢复购买";
+"paywall.terms"    = "使用条款";
+"paywall.privacy"  = "隐私政策";
+"paywall.error.noProduct" = "暂时无法加载商品，请稍后再试。";
+"paywall.pending"  = "购买正在等待批准（如「家人共享」需家长同意）。批准后将自动解锁，无需重复购买。";
+
+"paywall.feature.stocks.title"     = "全部高级胶片";
+"paywall.feature.stocks.subtitle"  = "Ultramax、CineStill、宝丽来等多款经典胶片";
+"paywall.feature.tune.title"       = "自由微调";
+"paywall.feature.tune.subtitle"    = "颗粒、暗角、漏光、色温逐项可调";
+"paywall.feature.effects.title"    = "高级效果";
+"paywall.feature.effects.subtitle" = "真实漏光与胶片颗粒，出片即高级";
+"paywall.feature.forever.title"    = "永久拥有";
+"paywall.feature.forever.subtitle" = "一次购买，所有设备同账号通用";
+
+/* 照片详情 / 二次滤镜 */
+"detail.export"         = "存到相册";
+"detail.share"          = "分享";
+"detail.save"           = "保存修改";
+"detail.delete.confirm" = "确定要删除这张照片吗？";
+
+/* 导出结果 */
+"export.success" = "已存入系统相册";
+"export.failed"  = "导出失败，请重试";
+"export.denied"  = "未获得相册写入权限";
+
+/* 设置 */
+"settings.title"            = "设置";
+"settings.section.purchase" = "购买";
+"settings.section.about"    = "关于";
+"settings.section.legal"    = "法律";
+"settings.unlocked"         = "已解锁全部胶片";
+"settings.unlockAll"        = "解锁全部胶片包";
+"settings.version"          = "版本";
+"settings.filmCount"        = "胶片数量";
+"settings.privacy.note"     = "所有照片处理均在设备本地完成，不上传任何数据。";
+
+/* 错误 */
+"error.encode"   = "图像编码失败";
+"error.notFound" = "找不到文件";
+
+/* 无障碍（VoiceOver）标签 */
+"a11y.flash"        = "闪光灯";
+"a11y.switchCamera" = "切换前后摄像头";
+"a11y.locked"       = "未解锁，点按以解锁全部胶片";
+"a11y.photoPrefix"  = "胶片照片，使用胶片";
+
+/* 隐私政策（App 内可访问） */
+"privacy.intro" = "RetroFilm 高度重视你的隐私。本应用为纯单机应用，不联网、不设服务器，也不收集任何个人数据。以下说明各项权限的用途。";
+"privacy.section.data.title"     = "我们收集的数据";
+"privacy.section.data.body"      = "没有。RetroFilm 不收集、不上传、不分享任何个人信息或使用数据，也不含第三方分析或广告 SDK。所有图像处理均在你的设备本地完成。";
+"privacy.section.camera.title"   = "相机";
+"privacy.section.camera.body"    = "相机权限仅用于实时取景与拍摄。画面只在设备本地处理，绝不会被发送到任何服务器。";
+"privacy.section.photos.title"   = "相册";
+"privacy.section.photos.body"    = "仅当你主动选择「存到相册」时，应用才会向系统相册写入你导出的照片。我们不会读取或浏览你已有的照片。";
+"privacy.section.purchase.title" = "购买";
+"privacy.section.purchase.body"  = "内购通过 Apple 的 StoreKit 处理，购买凭证由 Apple 校验。我们不会接触你的支付信息。";
+"privacy.section.contact.title"  = "联系我们";
+"privacy.section.contact.body"   = "如对本隐私政策有任何疑问，可通过 App Store 中本应用的开发者支持页面与我们联系。";

@@ -1,0 +1,153 @@
+/*
+  Localizable.strings (English)
+  HabitGrid
+*/
+
+// MARK: - App
+"app.title" = "HabitGrid";
+
+// MARK: - Common
+"common.close" = "Close";
+"common.cancel" = "Cancel";
+"common.save" = "Save";
+"common.done" = "Done";
+"common.edit" = "Edit";
+"common.delete" = "Delete";
+
+// MARK: - Today / Home
+"today.title" = "Today";
+"today.allDone" = "All done for today!";
+"habit.add" = "Add Habit";
+
+// MARK: - Delete confirmation
+"delete.confirm.title" = "Delete this habit?";
+"delete.confirm.message %@" = "“%@” and all of its check-ins will be permanently deleted. This can't be undone.";
+
+// MARK: - Empty state
+"empty.title" = "Start your first habit";
+"empty.subtitle" = "Tap a square every day and watch your streak grow into a beautiful grid.";
+"empty.cta" = "Create Habit";
+
+// MARK: - Row
+"row.rate %lld" = "%lld%% rate";
+
+// MARK: - Frequency
+"frequency.daily" = "Every day";
+"frequency.weekdays" = "Weekdays";
+"frequency.weekends" = "Weekends";
+"frequency.custom" = "Custom";
+
+// MARK: - Form
+"form.title.new" = "New Habit";
+"form.title.edit" = "Edit Habit";
+"form.name" = "Name";
+"form.name.placeholder" = "e.g. Read for 20 min";
+"form.icon" = "Icon";
+"form.color" = "Color";
+"form.frequency" = "Frequency";
+"form.weeklyTarget %lld" = "%lld times per week";
+"form.reminder" = "Daily reminder";
+"form.reminderTime" = "Time";
+"form.reminder.footer" = "We'll send a gentle nudge at this time every day.";
+"form.preview.placeholder" = "Habit name";
+
+// MARK: - Detail
+"detail.export" = "Share heatmap";
+"detail.tapHint" = "Tap any square to check in";
+"detail.streakLine %lld" = "%lld day streak";
+
+// MARK: - Stats
+"stats.currentStreak" = "Current streak";
+"stats.longestStreak" = "Longest streak";
+"stats.total" = "Total check-ins";
+"stats.completionRate" = "Completion rate";
+
+// MARK: - Heatmap
+"heatmap.less" = "Less";
+"heatmap.more" = "More";
+
+// MARK: - Settings
+"settings.title" = "Settings";
+"settings.appearance" = "Appearance";
+"settings.theme" = "Theme";
+"settings.colorTheme" = "Color theme";
+"settings.notifications" = "Notifications";
+"settings.notifications.footer" = "Enable notifications in iOS Settings to receive habit reminders.";
+"settings.openNotificationSettings" = "Open notification settings";
+"settings.about" = "About";
+"settings.version" = "Version";
+"settings.privacy" = "Privacy Policy";
+"settings.terms" = "Terms of Use";
+"settings.upgrade" = "Unlock HabitGrid Pro";
+"settings.proActive" = "HabitGrid Pro";
+"settings.proBadge" = "PRO";
+
+// MARK: - Appearance
+"appearance.system" = "System";
+"appearance.light" = "Light";
+"appearance.dark" = "Dark";
+
+// MARK: - Themes
+"theme.title" = "Color Theme";
+"theme.github" = "GitHub";
+"theme.midnight" = "Midnight";
+"theme.sunset" = "Sunset";
+"theme.sakura" = "Sakura";
+"theme.ocean" = "Ocean";
+"theme.grape" = "Grape";
+"theme.mono" = "Mono";
+
+// MARK: - Paywall
+"paywall.title" = "HabitGrid Pro";
+"paywall.reason.general" = "Unlock the full HabitGrid experience";
+"paywall.reason.habitLimit" = "You've reached the free limit of 3 habits";
+"paywall.reason.theme" = "This color theme is part of Pro";
+"paywall.unlock" = "Unlock";
+"paywall.onetime" = "One-time purchase · Yours forever";
+"paywall.restore" = "Restore";
+"paywall.terms" = "Terms";
+"paywall.privacy" = "Privacy";
+"paywall.benefit.unlimited.title" = "Unlimited habits";
+"paywall.benefit.unlimited.subtitle" = "Track as many habits as you want";
+"paywall.benefit.themes.title" = "All color themes";
+"paywall.benefit.themes.subtitle" = "5+ gorgeous palettes for your grid";
+"paywall.benefit.export.title" = "Export & share";
+"paywall.benefit.export.subtitle" = "Save your heatmap as a shareable image";
+"paywall.benefit.reminders.title" = "Smart reminders";
+"paywall.benefit.reminders.subtitle" = "Never miss a day";
+"paywall.error.load" = "Couldn't load products. Please try again.";
+"paywall.error.purchase" = "Purchase failed. Please try again.";
+"paywall.error.restore" = "Nothing to restore.";
+"paywall.error.pending" = "Your purchase is pending approval.";
+
+// MARK: - Notifications
+"notification.body" = "Time to check in. Keep your streak alive! 🔥";
+
+// MARK: - Widget
+"widget.displayName" = "Today's Habits";
+"widget.description" = "See and track today's habits at a glance.";
+"widget.today" = "Today";
+"widget.allDone" = "All done! 🎉";
+"widget.empty" = "No habits yet";
+
+// MARK: - Privacy policy (in-app)
+"privacy.section.summary.title" = "Your data stays on your device";
+"privacy.section.summary.body" = "HabitGrid is a fully offline app. Everything you create — habits, check-ins, themes and reminders — is stored locally on your device. We do not run servers and we never collect, transmit or sell your personal data.";
+"privacy.section.data.title" = "What we collect";
+"privacy.section.data.body" = "Nothing. HabitGrid contains no analytics, no advertising and no third-party tracking SDKs. The developer has no access to your habits or usage.";
+"privacy.section.icloud.title" = "iCloud sync";
+"privacy.section.icloud.body" = "If you enable optional iCloud sync, your habit data is stored in your own private iCloud database managed by Apple and is only accessible to you. It is off by default.";
+"privacy.section.purchase.title" = "Purchases";
+"privacy.section.purchase.body" = "HabitGrid Pro is a one-time purchase processed entirely by Apple through the App Store. We never see your payment details. Purchase verification happens on-device via StoreKit.";
+"privacy.section.notifications.title" = "Notifications";
+"privacy.section.notifications.body" = "Reminders are scheduled as local notifications on your device. They are never sent through any server.";
+"privacy.section.contact.title" = "Contact";
+"privacy.section.contact.body" = "Questions about privacy? Reach out through the App Store support page for HabitGrid.";
+"privacy.updated" = "Last updated: June 2026";
+
+// MARK: - Accessibility
+"a11y.completed" = "completed";
+"a11y.notCompleted" = "not completed";
+"a11y.check" = "Check in";
+"a11y.uncheck" = "Undo check-in";
+"a11y.streak %lld" = "%lld day streak";

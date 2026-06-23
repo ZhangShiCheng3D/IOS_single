@@ -1,0 +1,77 @@
+你是一名资深 iOS 开发工程师，正在为一个独立开发者创建一款付费买断制单机 iOS App。请直接在指定目录下创建完整的 SwiftUI 项目源代码。
+
+## 项目信息
+- 应用名称：LumenPuzzle
+- 应用目录：C:/Users/m1770/Desktop/商业项目/IOS_single/apps/LumenPuzzle
+- 品类：解压游戏
+- 一句话描述：极简解谜游戏（买断无广告）
+- 详述：Monument Valley/The Room式精品解谜：完整体验、零广告、零内购骚扰
+
+## 目标用户
+愿为尊重时间的完整体验付费的轻度玩家、审美党
+
+## 核心功能列表
+  - 1. 3D光影解谜核心玩法
+  - 2. 拖动光源照亮目标
+  - 3. 10个内置关卡，由易到难
+  - 4. 极简美观的SceneKit渲染
+  - 5. 手势交互：拖拽光源、旋转视角
+  - 6. 通关动画与成就
+  - 7. 无广告、无内购
+  - 8. 深色模式美学
+  - 9. 关卡选择界面
+
+## 技术栈
+SceneKit 3D场景 + SwiftUI界面 + 关卡内置
+
+## 定价模型
+¥18-40 买断
+
+## 架构要求
+- 语言：Swift 6.0+ / SwiftUI
+- 最低系统：iOS 17
+- 架构：MVVM + SwiftUI
+- 数据持久化：SwiftData（iOS 17+）
+- 无后端、无服务器、纯本地运行
+- 支持深色模式（ColorAsset）
+- 支持Dynamic Type
+- 本地化基础（中文+英文 Localizable.strings）
+
+## StoreKit 2 付费墙
+- 使用 StoreKit 2 (Transaction, Product) 实现买断/内购
+- 创建 PaywallView 和 PurchaseManager 类
+- 根据定价模型实现对应的产品ID和购买逻辑
+- 购买成功后解锁功能（UserDefaults或SwiftData存储购买状态）
+
+## 需要创建的文件结构
+在 C:/Users/m1770/Desktop/商业项目/IOS_single/apps/LumenPuzzle 目录下创建：
+
+1. LumenPuzzleApp.swift — @main App 入口
+2. ContentView.swift — 主界面
+3. Models/ — 数据模型（SwiftData @Model 类）
+4. Views/ — 各功能页面 SwiftUI View
+5. ViewModels/ — ObservableObject ViewModel
+6. Utils/ — 工具类/扩展
+7. Store/ — StoreKit 2 购买管理 + PaywallView
+8. Assets.xcassets/ — 资源目录（创建 Contents.json + AppIcon/AccentColor）
+9. Resources/ — Localizable.strings (zh + en)
+10. Info.plist — 应用配置（如果需要）
+11. CLAUDE.md — 本项目的开发指南
+12. README.md — 项目说明（功能、技术、上架检查清单）
+
+## 质量要求
+- 代码必须完整、清晰、有注释
+- 所有主要 View 都有 #Preview 宏
+- 遵循 Apple HIG
+- 命名规范清晰
+- 错误处理完善
+- 不创建 .xcodeproj（需要 Xcode GUI 创建）
+- 创建所有 .swift 源文件、资源文件、配置文件
+
+## 特别说明
+- 这是15款矩阵产品之一，请做出可上架质量的完整代码
+- 注重视觉设计的美观度
+- 每个功能都要真正实现，不要留 TODO 占位符
+- SceneKit 3D渲染要美观，关卡设计要有递进感
+
+请立即开始创建所有文件。不要提问，直接在 C:/Users/m1770/Desktop/商业项目/IOS_single/apps/LumenPuzzle 目录下创建完整项目。

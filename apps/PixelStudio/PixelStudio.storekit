@@ -1,0 +1,35 @@
+{
+  "identifier" : "PIXELSTUDIO_STORE",
+  "nonRenewingSubscriptions" : [],
+  "products" : [
+    {
+      "displayPrice" : "3.99",
+      "familyShareable" : false,
+      "internalID" : "PXS0001",
+      "localizations" : [
+        {
+          "description" : "Unlock large canvases, unlimited layers, animation and GIF export.",
+          "displayName" : "PixelStudio Pro",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "解锁大尺寸画布、无限图层、逐帧动画与 GIF 导出。",
+          "displayName" : "PixelStudio Pro",
+          "locale" : "zh_Hans"
+        }
+      ],
+      "productID" : "com.pixelstudio.pro.unlock",
+      "referenceName" : "PixelStudio Pro Unlock",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "0000000000",
+    "_developerTeamID" : "0000000000"
+  },
+  "subscriptionGroups" : [],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

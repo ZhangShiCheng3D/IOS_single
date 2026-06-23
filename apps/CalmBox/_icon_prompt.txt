@@ -1,0 +1,10 @@
+为 CalmBox 解压白噪音盒生成 1024×1024 AppIcon。
+用 Python PIL/Pillow 生成一个简洁的 1024×1024 PNG 图标，保存到 Assets.xcassets/AppIcon.appiconset/AppIcon-1024.png。
+设计要求：
+- 主题色：深蓝紫色(#2D3047)到紫蓝色(#4191E1)渐变背景
+- 中央放一个简洁的同心圆波纹图案(白色渐变透明度)，象征声波/白噪音
+- 简洁治愈感
+- 无Alpha通道(24bpp RGB)
+- 更新 Contents.json 确保引用了正确的文件名
+
+用 Python 执行：from PIL import Image, ImageDraw; 然后绘制并保存。

@@ -1,0 +1,35 @@
+{
+  "identifier" : "B1A2C3D4",
+  "nonRenewingSubscriptions" : [],
+  "products" : [
+    {
+      "displayPrice" : "18.00",
+      "familyShareable" : false,
+      "internalID" : "1001",
+      "localizations" : [
+        {
+          "description" : "解锁全部模板、去除水印、开放全部导出比例。",
+          "displayName" : "CollageKit Pro",
+          "locale" : "zh_CN"
+        },
+        {
+          "description" : "Unlock all templates, remove watermark, and all export ratios.",
+          "displayName" : "CollageKit Pro",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.collagekit.pro.lifetime",
+      "referenceName" : "CollageKit Pro Lifetime",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "0000000000",
+    "_developerTeamID" : "ABCDE12345"
+  },
+  "subscriptionGroups" : [],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

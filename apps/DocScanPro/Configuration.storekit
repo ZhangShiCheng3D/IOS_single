@@ -1,0 +1,90 @@
+{
+  "identifier" : "B1A7F2C0-1D3E-4A8B-9C2D-6E5F0A1B2C3D",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "4.99",
+      "familyShareable" : false,
+      "internalID" : "7C3E9A10-5B2F-4D6A-8E1C-9F0A2B3C4D5E",
+      "localizations" : [
+        {
+          "description" : "Unlock on-device OCR, batch scanning, and unlimited folders & tags.",
+          "displayName" : "DocScanPro Pro",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "解锁端侧 OCR、批量扫描，以及无限文件夹与标签。",
+          "displayName" : "DocScanPro 专业版",
+          "locale" : "zh_Hans"
+        }
+      ],
+      "productID" : "com.docscanpro.pro.lifetime",
+      "referenceName" : "DocScanPro Pro Lifetime",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "DocScanPro",
+    "_developerTeamID" : "",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 0,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OneWord 代码审查报告</title>
+<style>
+  :root { --bg:#faf9f7; --card:#fff; --accent:#4caf8f; --text:#1c1c1e; --muted:#6b6b70; --crit:#d9534f; --warn:#e0962f; --ok:#3aa76d; }
+  * { box-sizing:border-box; }
+  body { font:16px/1.65 -apple-system,"PingFang SC","Segoe UI",sans-serif; color:var(--text); background:var(--bg); margin:0; padding:32px 16px; }
+  .wrap { max-width:960px; margin:0 auto; }
+  h1 { font-size:28px; margin:0 0 4px; }
+  .sub { color:var(--muted); margin:0 0 28px; }
+  h2 { font-size:21px; margin:34px 0 12px; padding-bottom:6px; border-bottom:2px solid var(--accent); }
+  .card { background:var(--card); border:1px solid #ececec; border-radius:14px; padding:18px 20px; margin:14px 0; box-shadow:0 2px 8px rgba(0,0,0,.04); }
+  .tag { display:inline-block; font-size:12px; font-weight:700; padding:2px 10px; border-radius:20px; color:#fff; margin-right:8px; vertical-align:middle; }
+  .t-crit { background:var(--crit); } .t-warn { background:var(--warn); } .t-ok { background:var(--ok); } .t-info { background:#5b7fc4; }
+  code { background:#f0efec; padding:1px 6px; border-radius:5px; font:14px ui-monospace,"SF Mono",Consolas,monospace; }
+  pre { background:#1e1e22; color:#e8e8e8; padding:14px 16px; border-radius:10px; overflow:auto; font:13px/1.5 ui-monospace,"SF Mono",Consolas,monospace; }
+  pre .add { color:#7ee2a8; } pre .del { color:#f08a8a; } pre .cmt { color:#8a8a92; }
+  table { width:100%; border-collapse:collapse; margin:8px 0; }
+  th,td { text-align:left; padding:9px 10px; border-bottom:1px solid #ececec; font-size:14.5px; vertical-align:top; }
+  th { color:var(--muted); font-weight:600; }
+  .file { font:14px ui-monospace,Consolas,monospace; color:var(--accent); }
+  ul { margin:8px 0 8px 0; padding-left:22px; } li { margin:4px 0; }
+  .pill { font-size:12.5px; color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>OneWord · 一句话 — 全面代码审查报告</h1>
+  <p class="sub">付费买断制单机 iOS 情绪日记 App · Swift 6 / SwiftUI / SwiftData · 审查日期 2026-06-22</p>
+
+  <div class="card">
+    <strong>总体结论：</strong>代码质量高、架构清晰、功能完整，CLAUDE.md 所列 9 项功能均有真实实现，无 TODO/占位符/空壳逻辑。
+    <strong>本次共发现并修复 3 处会导致 Swift 6 严格并发<em>编译失败</em>的问题</strong>，均集中在两个全局 <code>@Observable</code> 管理器的 actor 隔离上。
+    其余为不影响编译的轻微建议。本地化键、资源目录、StoreKit 配置、Info.plist 全部核对一致。
+  </div>
+
+  <h2>1. 发现的问题（按严重程度排序）</h2>
+
+  <div class="card">
+    <span class="tag t-crit">阻断编译</span><strong>#1 · <code>Task.detached</code> 捕获非 Sendable 的 <code>self</code></strong>
+    <p>文件：<span class="file">Store/PurchaseManager.swift</span></p>
+    <p><code>listenForTransactions()</code> 用 <code>Task.detached { [weak self] … }</code> 启动交易监听。detached 任务的闭包是 <code>@Sendable</code> 且不继承 actor 隔离，而 <code>PurchaseManager</code> 是非 Sendable 类——Swift 6 严格并发下报错：<em>“Capture of 'self' with non-sendable type 'PurchaseManager?' in a @Sendable closure”</em>。</p>
+  </div>
+
+  <div class="card">
+    <span class="tag t-crit">阻断编译</span><strong>#2 · 非 Sendable 实例跨 actor 边界</strong>
+    <p>文件：<span class="file">Utils/AppLock.swift</span></p>
+    <p><code>authenticateWithBiometrics()</code> 是 <em>非隔离</em> 的 <code>async</code> 方法，却在 <code>@MainActor</code> 的 <code>LockView</code> 中以 <code>await appLock.authenticateWithBiometrics()</code> 调用。这会把非 Sendable 的 <code>AppLock</code> 实例（隐式 <code>self</code>）发送到通用执行器，触发严格并发的发送性错误。</p>
+  </div>
+
+  <div class="card">
+    <span class="tag t-crit">阻断编译</span><strong>#3 · App 的 <code>init()</code> 隔离域不匹配</strong>
+    <p>文件：<span class="file">OneWordApp.swift</span>（由 #1/#2 的修复连带产生）</p>
+    <p>将两个管理器标为 <code>@MainActor</code> 后，其 <code>init</code> 成为主 actor 隔离。而 <code>@State private var purchaseManager = PurchaseManager()</code> 的默认值在 App 的 <code>init()</code> 中求值，若该 <code>init</code> 仍为非隔离，会报 <em>“call to main actor-isolated initializer in a synchronous nonisolated context”</em>。</p>
+  </div>
+
+  <div class="card">
+    <span class="tag t-info">建议 · 不影响编译</span><strong>#4 · 杂项观察</strong>
+    <ul>
+      <li><span class="file">Views/Components/PhotoPickerButton.swift</span> — <code>load()</code> 内的 <code>await MainActor.run{…}</code> 是冗余的（<code>View</code> 在 Swift 6 已是 <code>@MainActor</code>），但合法。同时图片缩放/JPEG 编码运行在主线程，大图可能短暂卡顿，可考虑移到后台 <code>Task.detached</code> 后再回主线程赋值。<em>未改动（遵循“精准改动”原则）。</em></li>
+      <li><span class="file">Views/TrendsView.swift</span> — <code>#Preview("Unlocked")</code> 实际并未解锁（<code>isPremiumUnlocked</code> 为 <code>private(set)</code>，预览无法置位），预览仍显示付费墙。仅命名误导，非缺陷。</li>
+      <li><span class="file">ViewModels/EntryEditorViewModel.swift</span> — 作为触达 <code>ModelContext</code> 的 ViewModel，可按清单加 <code>@MainActor</code> 以更严格对齐 MVVM 约定；当前未加也能编译且无并发告警，故保持不动。</li>
+    </ul>
+  </div>
+
+  <h2>2. 每个问题的修复方式</h2>
+
+  <div class="card">
+    <strong>#1 修复</strong> — <span class="file">PurchaseManager.swift</span>：类标注 <code>@MainActor</code>，监听任务改用继承隔离的 <code>Task{ }</code>（而非 <code>Task.detached</code>）。任务因此在主 actor 上运行，每次 <code>await</code> 自动让出，不阻塞 UI；<code>self</code> 捕获合法。
+<pre><span class="add">+@MainActor</span>
+ @Observable
+ final class PurchaseManager { … }
+
+ private func listenForTransactions() -> Task&lt;Void, Never&gt; {
+<span class="del">-    Task.detached(priority: .background) { [weak self] in</span>
+<span class="add">+    Task { [weak self] in            // 继承主 actor 隔离</span>
+         for await update in Transaction.updates { … }
+     }
+ }</pre>
+    <p class="pill">注：<code>deinit { updatesTask?.cancel() }</code> 仍合法——<code>Task</code> 是 Sendable 类型，可在非隔离 deinit 中访问。</p>
+  </div>
+
+  <div class="card">
+    <strong>#2 修复</strong> — <span class="file">AppLock.swift</span>：类标注 <code>@MainActor</code>。方法随之主 actor 隔离，不再跨边界；原本的 <code>await MainActor.run{ self.isLocked = false }</code> 简化为直接赋值。
+<pre><span class="add">+@MainActor</span>
+ @Observable
+ final class AppLock { … }
+
+ if success {
+<span class="del">-    await MainActor.run { self.isLocked = false }</span>
+<span class="add">+    isLocked = false</span>
+ }</pre>
+  </div>
+
+  <div class="card">
+    <strong>#3 修复</strong> — <span class="file">OneWordApp.swift</span>：为 <code>init()</code> 标注 <code>@MainActor</code>。App 入口 <code>main()</code> 本就是主 actor，调用合法；两个 <code>@State</code> 管理器的主 actor 初始化器得以正确求值。
+<pre> @main
+ struct OneWordApp: App {
+<span class="add">+    @MainActor</span>
+     init() { … modelContainer = try ModelContainer(…) }
+ }</pre>
+  </div>
+
+  <h2>3. 修改的文件列表</h2>
+  <table>
+    <tr><th>文件</th><th>修改摘要</th></tr>
+    <tr><td class="file">Store/PurchaseManager.swift</td><td>类加 <code>@MainActor</code>；<code>Task.detached</code> → <code>Task</code>（修复非 Sendable 捕获）</td></tr>
+    <tr><td class="file">Utils/AppLock.swift</td><td>类加 <code>@MainActor</code>；移除冗余 <code>MainActor.run</code>（修复跨 actor 发送）</td></tr>
+    <tr><td class="file">OneWordApp.swift</td><td><code>init()</code> 加 <code>@MainActor</code>（匹配管理器的主 actor 初始化器）</td></tr>
+  </table>
+
+  <h2>4. 已核对一致 / 无需修改的项</h2>
+  <div class="card">
+    <ul>
+      <li><strong>编译正确性</strong>：类型引用、方法签名、可选解包、ViewBuilder 语法、<code>@Model</code>/<code>@Observable</code> 使用均正确；<code>Sentiment.init(score:)</code> 区间穷尽。</li>
+      <li><strong>SwiftData</strong>：<code>DiaryEntry</code> 属性类型（<code>[String]</code>、<code>Data?</code> 外部存储、<code>UUID</code> 唯一约束）均受支持；<code>ModelContainer</code> 配置正确；<code>@Query</code> 排序键合法。模型无关系，无需 <code>@Relationship/inverse</code>。</li>
+      <li><strong>StoreKit 2</strong>：产品 ID <code>com.oneword.aiinsights.unlock</code> 与 <code>.storekit</code> 完全一致；交易监听、<code>currentEntitlements</code> 校验、<code>AppStore.sync()</code> 恢复购买、付费墙交互均完整。</li>
+      <li><strong>本地化</strong>：en / zh-Hans 两套 <code>Localizable.strings</code> 键齐全且一一对应；代码中所有 <code>String(localized:)</code> 与 <code>LocalizedStringKey</code> 键（含运行时键 <code>tag.*</code>、<code>sentiment.*</code>）均能命中；<code>year.narrative</code> 的 <code>%1$@…%5$@</code> 位置参数两端一致。</li>
+      <li><strong>资源</strong>：10 个颜色集 + AppIcon 的 <code>Contents.json</code> 格式正确并支持深色模式；Info.plist 含 FaceID / 相册权限文案及 <code>ITSAppUsesNonExemptEncryption=false</code>；启动屏引用的 <code>AppBackground</code> 色集存在。</li>
+      <li><strong>功能完整性</strong>：每日一句、端侧情绪分析、趋势图、情绪日历、标签建议、年度回顾、关键词提取、导出、隐私锁 9 项均真实实现，无占位代码。</li>
+    </ul>
+  </div>
+
+  <h2>5. 剩余风险 / 建议</h2>
+  <div class="card">
+    <ul>
+      <li><strong>无法在本机编译验证</strong>：仓库不含 <code>.xcodeproj</code> 且运行于 Windows，以上结论基于静态分析。建议在 Xcode（iOS 17+ / Swift 6 语言模式）按 CLAUDE.md 装配后跑一次 Build 确认。</li>
+      <li><strong>性能（非阻断）</strong>：照片缩放与 JPEG 编码当前在主线程执行（见 #4），超大图可能造成轻微掉帧；如追求极致流畅可移至后台。</li>
+      <li><strong>体验（可选）</strong>：<code>TrendsView</code> 的 “Unlocked” 预览未真正解锁；如需在预览中展示已解锁形态，可加一个仅供预览的注入点。</li>
+      <li><strong>隐私卖点已守住</strong>：全程无网络请求、无第三方 SDK，密码仅存加盐 SHA-256，照片外部存储——与定位一致。</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

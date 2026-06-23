@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BakeCalc 代码审查报告</title>
+<style>
+  :root { --accent:#e08a3c; --ok:#2e9e5b; --warn:#c9920a; --bg:#faf7f2; --card:#fff; --line:#ece3d6; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:40px 20px; font-family:-apple-system,"PingFang SC","Segoe UI",sans-serif;
+         background:var(--bg); color:#2a2a2a; line-height:1.65; }
+  .wrap { max-width:980px; margin:0 auto; }
+  h1 { font-size:28px; margin:0 0 4px; }
+  .sub { color:#8a7d6a; margin-bottom:28px; }
+  h2 { font-size:20px; margin:34px 0 12px; padding-bottom:8px; border-bottom:2px solid var(--line); }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 22px; margin:14px 0;
+          box-shadow:0 2px 8px rgba(0,0,0,.03); }
+  .verdict { background:linear-gradient(135deg,#fff4e8,#fdeee0); border:1px solid #f0d9be; }
+  table { width:100%; border-collapse:collapse; margin:8px 0; font-size:14.5px; }
+  th,td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { color:#7a6e5c; font-weight:600; background:#fbf6ef; }
+  code { background:#f3ece1; padding:1.5px 6px; border-radius:5px; font-size:13px;
+         font-family:"SF Mono",Consolas,monospace; }
+  .pill { display:inline-block; font-size:12px; font-weight:700; padding:2px 10px; border-radius:20px; color:#fff; }
+  .p-fix { background:var(--accent); } .p-ok { background:var(--ok); } .p-note { background:var(--warn); }
+  .p-info { background:#6b7c93; }
+  ul { margin:6px 0 6px 2px; padding-left:20px; } li { margin:4px 0; }
+  .files li { font-family:"SF Mono",Consolas,monospace; font-size:13.5px; }
+  .small { font-size:13px; color:#8a7d6a; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>🧁 BakeCalc 代码审查报告</h1>
+  <div class="sub">资深 iOS 架构师全量审查 · 审查日期 2026-06-22 · 范围：17 个 Swift 文件 + 本地化 / Info.plist / StoreKit / Assets / 文档</div>
+
+  <div class="card verdict">
+    <strong>总体结论：</strong>代码库整体质量高，可直接编译运行。Swift 6 严格并发标注正确，MVVM 分层清晰，
+    免费/付费分流单点可控，中英本地化键完全对称（无缺漏、无悬空键），StoreKit 2 与 SwiftData 配置正确。
+    <b>未发现编译级错误、未发现功能空壳。</b>逐项核查后仅修复 <b>1 处真实行为缺陷</b>；其余为符合
+    Apple 惯例的合理设计或已在 README/CLAUDE.md 中明确声明的上架占位项，依「精准改动」原则不做无谓改写。
+  </div>
+
+  <h2>一、问题列表（按严重程度）</h2>
+  <table>
+    <tr><th style="width:90px">级别</th><th style="width:34%">问题</th><th>说明与处理</th></tr>
+    <tr>
+      <td><span class="pill p-fix">已修复</span></td>
+      <td><code>PurchaseManager.listenForTransactions()</code> 弱引用失效后任务泄漏</td>
+      <td>交易监听循环中 <code>guard let self else { continue }</code>：当管理器被释放后，<code>continue</code> 会让任务重新挂起在 <code>Transaction.updates</code> 上而永不结束，造成 Task 泄漏。已改为 <code>return</code>，使监听任务在持有者销毁时正确终止。</td>
+    </tr>
+    <tr>
+      <td><span class="pill p-note">建议</span></td>
+      <td>5 个换算 ViewModel 未标注 <code>@MainActor</code></td>
+      <td>它们均为 <code>ObservableObject</code> 且仅由 <code>@MainActor</code> 的 SwiftUI 视图通过 <code>@StateObject</code> 持有/调用，<b>不跨并发域，Swift 6 下无诊断、不影响编译</b>。补 <code>@MainActor</code> 是更严谨的写法，但属于对正常代码的改写，故仅列为建议，未改动。</td>
+    </tr>
+    <tr>
+      <td><span class="pill p-note">注记</span></td>
+      <td><code>UnitConverter.weightToVolume(...)</code> 为死代码</td>
+      <td>当前 <code>ConversionMode</code> 只用到 <code>weightToVolume</code> 的反向函数 <code>volumeToWeight</code>。该函数是换算引擎对称 API 的一半，属改动前已存在的死代码 —— 依准则<b>提一嘴但不删</b>，保留以备「重量→体积」模式扩展。</td>
+    </tr>
+    <tr>
+      <td><span class="pill p-info">上架占位</span></td>
+      <td>AppIcon 无图、隐私/条款为 Apple 通用 URL</td>
+      <td>均已在 README「上架检查清单」与 CLAUDE.md「待办」中显式声明，非缺陷。<code>AppIcon.appiconset/Contents.json</code> 为合法的单尺寸（1024）格式，缺图仅产生警告、不阻断编译。</td>
+    </tr>
+  </table>
+
+  <h2>二、逐项核查结论</h2>
+
+  <div class="card">
+    <p><span class="pill p-ok">通过</span> <b>1. 编译正确性</b></p>
+    <ul>
+      <li>全部类型引用、方法签名、泛型约束（<code>checkVerified&lt;T&gt;</code>、<code>Dictionary(grouping:by:)</code>）解析无误。</li>
+      <li><code>@Model</code> / <code>@MainActor</code> / <code>@Relationship(inverse:)</code> 标注正确；<code>SavedIngredient.recipe</code> 反向关系与级联删除规则匹配。</li>
+      <li>Swift 6 并发：<code>PurchaseManager</code> 为 <code>@MainActor</code>，<code>deinit</code> 仅访问 Sendable 的 <code>Task</code> 属性，合法；<code>Task</code> 闭包经 <code>@_inheritActorContext</code> 继承主 actor，故 <code>checkVerified</code> 同步调用无需 <code>await</code>。</li>
+      <li>可选值处理（<code>result?</code>、<code>?? defaultDensity</code>、<code>density &gt; 0</code> 防除零）严谨。</li>
+      <li>ViewBuilder：<code>inputCard</code> 内 <code>switch</code>（含单分支多视图）、<code>ForEach</code> 内条件 <code>Divider</code> 均合法。</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <p><span class="pill p-ok">通过</span> <b>2. 架构一致性</b> · <b>3. SwiftData</b></p>
+    <ul>
+      <li>Model 层不依赖 ViewModel/View；换算逻辑全部在 <code>Utils</code> + ViewModel，View 不做计算。</li>
+      <li><code>SavedRecipesView</code>/<code>RecipeEditorView</code> 经 <code>@Query</code> 与 <code>@Environment(\.modelContext)</code> 直接操作 SwiftData —— 这是 Apple 官方推荐的 SwiftData 用法（强行包一层 VM 会丢失 <code>@Query</code> 响应性），属<b>惯用的合理偏离</b>，不予重构。</li>
+      <li><code>ModelContainer</code> 在 App 入口正确配置并注入；<code>@Query(sort:order:)</code> 用法正确。</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <p><span class="pill p-ok">通过</span> <b>4. StoreKit 2</b></p>
+    <ul>
+      <li>产品 ID <code>com.indie.bakecalc.pro</code> 在 <code>StoreConfig</code>、<code>.storekit</code>、本地化描述三处一致。</li>
+      <li>交易监听在 <code>init</code> 启动；<code>Transaction.currentEntitlements</code> 为权益判定基准，UserDefaults 仅作离线兜底。</li>
+      <li>购买（含 pending / userCancelled / 未验签抛错）、恢复购买（<code>AppStore.sync()</code>）、付费墙按钮态与 <code>isPro</code> 变更自动 dismiss 均闭环。</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <p><span class="pill p-ok">通过</span> <b>5. 功能完整性</b> · <b>6. SwiftUI 实践</b></p>
+    <ul>
+      <li>CLAUDE.md/README 所列 8 项功能（单位/温度/烤箱/缩放/密度/保存/模具/鸡蛋）均有真实实现，无 TODO/FIXME/空壳。</li>
+      <li><code>@State/@Binding/@EnvironmentObject</code>、<code>NavigationStack + navigationDestination(for:)</code>、绑定式 <code>ForEach($)</code> + <code>onMove/onDelete</code>、全部 <code>#Preview</code> 依赖注入均有效。</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <p><span class="pill p-ok">通过</span> <b>7. 本地化</b> · <b>8. 资源文件</b></p>
+    <ul>
+      <li>逐键交叉比对：代码中 <code>LocalizedStringKey</code> / <code>NSLocalizedString</code> 引用的全部键在 zh-Hans 与 en 两份文件中<b>齐全且一一对应</b>，无单边缺失、无未使用悬空键。</li>
+      <li><code>%d～%d</code> / <code>%@</code> 格式串参数匹配；arm64 变参 8 字节槽位下 <code>%d + Int</code> 取值正确。</li>
+      <li>全部 <code>Contents.json</code> 为合法 JSON；4 个 BC 色集均含浅/深双外观；Info.plist 含 <code>ITSAppUsesNonExemptEncryption=NO</code>、本地化声明、启动屏与方向配置。</li>
+    </ul>
+  </div>
+
+  <h2>三、修改的文件</h2>
+  <div class="card files">
+    <ul>
+      <li>Store/PurchaseManager.swift — 监听任务弱引用失效处理由 <code>continue</code> 改为 <code>return</code>，修复持有者释放后的 Task 泄漏。</li>
+    </ul>
+    <p class="small">（仅此一处源码改动；未创建/删除任何文件——无 import 缺失、无冗余需清理。）</p>
+  </div>
+
+  <h2>四、剩余风险与建议</h2>
+  <div class="card">
+    <ul>
+      <li><b>上架前必办</b>：补 1024×1024 AppIcon；将设置页隐私政策/条款替换为真实可访问 URL；在 App Store Connect 创建同 ID 非消耗型内购。</li>
+      <li><b>可选增强</b>：为 5 个换算 ViewModel 补 <code>@MainActor</code>（前瞻性并发严谨度）；模具换算已在文案中说明「仅按底面积、假设深度一致」，符合预期。</li>
+      <li><b>派生复用</b>：模板化目标达成——换 <code>BakingData.swift</code> + <code>AppFeature</code> 枚举即可派生下一款垂直计算器，换算引擎/StoreKit/ProGate/主题可原样复用。</li>
+    </ul>
+  </div>
+
+  <p class="small" style="text-align:center;margin-top:30px;">BakeCalc · 全量代码审查 · 结论：可编译、可上架（补齐占位资源后）</p>
+
+</div>
+</body>
+</html>

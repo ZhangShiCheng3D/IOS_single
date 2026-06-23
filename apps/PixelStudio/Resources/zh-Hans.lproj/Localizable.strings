@@ -1,0 +1,142 @@
+/* PixelStudio — 简体中文 */
+
+/* Common */
+"common.close" = "关闭";
+"common.cancel" = "取消";
+"common.save" = "保存";
+"common.delete" = "删除";
+"common.done" = "完成";
+"common.ok" = "好";
+"common.more" = "更多";
+
+/* Gallery */
+"gallery.title" = "我的像素画";
+"gallery.pro" = "Pro";
+"gallery.new" = "新建画布";
+"gallery.rename" = "重命名";
+"gallery.duplicate" = "复制";
+"gallery.empty.title" = "还没有作品";
+"gallery.empty.detail" = "点击下方按钮，开始你的第一幅像素杰作。";
+"gallery.name.placeholder" = "名称";
+"gallery.delete.confirm %@" = "删除「%@」？";
+"gallery.delete.message" = "将永久删除该作品及其所有帧，此操作无法撤销。";
+
+/* New Project */
+"newProject.title" = "新建画布";
+"newProject.name.section" = "名称";
+"newProject.name.placeholder" = "未命名";
+"newProject.size.section" = "画布尺寸";
+"newProject.size.footer" = "大于 32×32 的尺寸需要 Pro。";
+"newProject.create" = "创建";
+"newProject.defaultName" = "未命名";
+
+/* Tools */
+"tool.pencil" = "画笔";
+"tool.eraser" = "橡皮";
+"tool.fill" = "填充";
+"tool.line" = "直线";
+"tool.rectangle" = "矩形";
+"tool.eyedropper" = "取色";
+
+/* Layers */
+"layer.title" = "图层";
+"layer.default" = "图层 1";
+"layer.named" = "图层 %d";
+"layer.add" = "新增图层";
+"layer.rename" = "重命名图层";
+"layer.name.placeholder" = "图层名称";
+"layer.moveUp" = "上移一层";
+"layer.moveDown" = "下移一层";
+"layer.clear" = "清空图层";
+"layer.freeLimit" = "免费版最多 %d 个图层。解锁 Pro 享受无限图层。";
+
+/* Palette */
+"palette.edit" = "编辑";
+"palette.add" = "添加颜色";
+"palette.pick" = "选择颜色";
+"palette.colorTitle" = "颜色";
+
+/* Timeline / Animation */
+"timeline.onion" = "洋葱皮";
+"timeline.play" = "播放";
+"timeline.preview" = "预览";
+"timeline.fast" = "快速 (0.06s)";
+"timeline.normal" = "正常 (0.12s)";
+"timeline.slow" = "慢速 (0.25s)";
+"timeline.addBlank" = "添加空白帧";
+"timeline.duplicate" = "复制当前帧";
+
+/* Export */
+"export.title" = "导出";
+"export.format" = "格式";
+"export.gif.hint" = "GIF 会把所有帧导出为动画。";
+"export.scale" = "放大";
+"export.share" = "分享";
+"export.saveToPhotos" = "保存到相册";
+"export.generate" = "生成";
+"export.regenerate" = "重新生成";
+"export.failed" = "导出失败";
+"export.photos.denied" = "相册访问被拒绝，请在「设置」中开启。";
+"export.photos.saved" = "已保存到相册。";
+"export.photos.failed" = "无法保存到相册。";
+"export.error.render" = "图像渲染失败。";
+"export.error.encode" = "图像编码失败。";
+
+/* Editor */
+"editor.rename" = "重命名作品";
+
+/* Accessibility */
+"brush.size" = "笔刷大小";
+"mirror.horizontal" = "水平镜像";
+"mirror.vertical" = "垂直镜像";
+"grid.toggle" = "网格开关";
+"palette.current" = "当前颜色";
+"timeline.frame.label %lld" = "第 %lld 帧";
+"timeline.addFrame" = "添加帧";
+
+/* Settings */
+"settings.title" = "设置";
+"settings.purchase" = "购买";
+"settings.proActive" = "已解锁 Pro";
+"settings.unlockPro" = "解锁 Pro";
+"settings.about" = "关于";
+"settings.version" = "版本";
+"settings.footer" = "PixelStudio 完全在本地运行。无账号、无云端、无追踪。";
+
+/* Paywall */
+"paywall.title" = "PixelStudio Pro";
+"paywall.subtitle" = "一次买断，解锁完整创作工具箱。";
+"paywall.buy" = "解锁 Pro";
+"paywall.restore" = "恢复购买";
+"paywall.oneTime" = "一次性买断，永久拥有。";
+"paywall.terms" = "条款";
+"paywall.privacy" = "隐私";
+
+/* Pro Features */
+"pro.feature.largeCanvas.title" = "大尺寸画布";
+"pro.feature.largeCanvas.detail" = "绘制最大 256×256 像素。";
+"pro.feature.extraLayers.title" = "无限图层";
+"pro.feature.extraLayers.detail" = "尽情叠加，毫无限制。";
+"pro.feature.animation.title" = "逐帧动画";
+"pro.feature.animation.detail" = "多帧时间轴 + 洋葱皮。";
+"pro.feature.gifExport.title" = "GIF 导出";
+"pro.feature.gifExport.detail" = "把循环动画导出为 GIF。";
+
+/* Store errors */
+"store.error.noProduct" = "商品暂不可用，请稍后再试。";
+"store.error.verification" = "购买无法验证。";
+
+/* Privacy Policy */
+"privacy.title" = "隐私政策";
+"privacy.intro" = "PixelStudio 完全尊重你的隐私。整个 App 都在你的设备上本地运行。";
+"privacy.lastUpdated" = "最后更新：2026 年 6 月";
+"privacy.section.collection.title" = "我们收集的数据";
+"privacy.section.collection.body" = "没有。PixelStudio 不收集、不上传、不分享任何个人数据。没有账号、没有统计分析、没有广告，也没有任何形式的追踪。";
+"privacy.section.storage.title" = "你的作品";
+"privacy.section.storage.body" = "你创作的一切都通过 Apple 的本地数据库存储在你的设备上。除非你主动分享或导出，作品绝不会离开你的设备。";
+"privacy.section.photos.title" = "相册";
+"privacy.section.photos.body" = "当你把导出图片保存到相册时，PixelStudio 仅申请「仅添加」权限以写入该文件，绝不会读取你已有的照片。";
+"privacy.section.purchases.title" = "购买";
+"privacy.section.purchases.body" = "Pro 解锁完全由 Apple 通过 App Store 处理。PixelStudio 只会收到匿名的权益状态，永远看不到你的支付信息。";
+"privacy.section.contact.title" = "联系我们";
+"privacy.section.contact.body" = "对本政策有疑问？可通过 PixelStudio 的 App Store 支持页面与我们联系。";

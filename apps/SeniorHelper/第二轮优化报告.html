@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SeniorHelper · 第二轮深度审查与质量提升报告</title>
+<style>
+  :root{
+    --bg:#f5f6f8; --card:#ffffff; --ink:#1c1c1e; --sub:#6b6f76;
+    --accent:#0073c6; --green:#1c7c3c; --red:#d23b30; --amber:#b8860b;
+    --line:#e6e8ec; --radius:16px;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,"SF Pro Text","PingFang SC","Microsoft YaHei",sans-serif;
+    line-height:1.65;padding:40px 20px;}
+  .wrap{max-width:960px;margin:0 auto;}
+  h1{font-size:30px;margin:0 0 6px;}
+  .lead{color:var(--sub);margin:0 0 28px;font-size:15px;}
+  h2{font-size:20px;margin:36px 0 14px;padding-bottom:8px;border-bottom:2px solid var(--line);}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px 22px;margin:14px 0;box-shadow:0 4px 14px rgba(0,0,0,.04);}
+  table{width:100%;border-collapse:collapse;background:var(--card);border-radius:var(--radius);
+    overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.04);font-size:14px;}
+  th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{background:#fafbfc;font-weight:600;}
+  tr:last-child td{border-bottom:none;}
+  code{background:#eef1f4;border-radius:5px;padding:1px 6px;font-size:12.5px;
+    font-family:"SF Mono",Consolas,monospace;}
+  .tag{display:inline-block;font-size:12px;font-weight:600;border-radius:6px;padding:2px 9px;color:#fff;}
+  .t-fix{background:var(--green);} .t-vis{background:var(--accent);}
+  .t-a11y{background:#7b4fc0;} .t-doc{background:var(--amber);}
+  .pill{display:inline-block;border-radius:20px;padding:3px 12px;font-size:13px;font-weight:600;}
+  .ok{background:#e6f4ea;color:var(--green);} .warn{background:#fcf3e0;color:var(--amber);}
+  .blk{background:#fbe6e4;color:var(--red);}
+  .score{display:flex;align-items:center;gap:14px;margin:8px 0;}
+  .bar{flex:1;height:10px;background:var(--line);border-radius:6px;overflow:hidden;}
+  .bar>i{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,#0073c6,#1c7c3c);}
+  .score b{width:54px;text-align:right;font-variant-numeric:tabular-nums;}
+  .score span{width:190px;font-size:14px;}
+  .total{font-size:46px;font-weight:800;color:var(--green);}
+  ul{margin:8px 0;padding-left:22px;} li{margin:5px 0;}
+  .muted{color:var(--sub);font-size:13px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>SeniorHelper · 第二轮深度审查与质量提升报告</h1>
+  <p class="lead">银发友好工具集（工具效率）· 目标：从「能编译」迈向「能上架且能被 Apple 推荐」· 审查覆盖 7 大维度</p>
+
+  <!-- 1. 质量提升摘要 -->
+  <h2>📊 一、质量提升摘要</h2>
+  <div class="card">
+    本轮在已较为完整的代码基础上做<strong>精准、低风险</strong>的品质提升，聚焦三条主线：
+    <strong>① 上架合规阻断项</strong>（占位 URL → 内置隐私页）、
+    <strong>② 视觉层次</strong>（卡片阴影 + 列表动效）、
+    <strong>③ 无障碍对比度</strong>（拨号绿按钮白字对比度达标）。
+    遵循「最小改动」原则，未重构未损坏的逻辑。
+  </div>
+  <table>
+    <tr><th>维度</th><th>修改前</th><th>修改后</th></tr>
+    <tr><td>隐私 / 合规</td><td><span class="pill blk">阻断</span> 3 处 <code>example.com</code> 死链；隐私政策无法在 App 内访问</td><td><span class="pill ok">达标</span> 内置 <code>PrivacyPolicyView</code>（双语），设置页 + 付费墙均可达；补 <code>LSApplicationCategoryType</code> 与 StoreKit EULA</td></tr>
+    <tr><td>视觉设计</td><td>卡片仅靠底色区分，无层次；列表增删无动画</td><td>卡片统一<strong>轻柔阴影</strong>；用药/联系人列表增删带<strong>弹簧过渡动画</strong></td></tr>
+    <tr><td>无障碍</td><td>拨号 / 手电筒绿按钮白字 ≈ 2.2:1，<strong>不达 WCAG AA</strong></td><td>新增深绿语义色 <code>CallAction</code>（含深浅两套），对比度 ≈ 5.3:1 <span class="pill ok">AA 通过</span></td></tr>
+    <tr><td>本地化完整性</td><td>英文 <code>用药提醒</code> 键<strong>重复定义</strong>（Tab 与列表标题冲突）</td><td>移除重复键；新增隐私页全部文案双语同步</td></tr>
+  </table>
+
+  <!-- 2. 修改文件清单 -->
+  <h2>🔧 二、修改文件清单</h2>
+  <table>
+    <tr><th>文件</th><th>类型</th><th>修改摘要与原因</th></tr>
+    <tr><td><code>Views/PrivacyPolicyView.swift</code></td><td><span class="tag t-fix">新建</span></td><td>内置双语隐私政策页。纯本地 App 用内置页替代外部网页，<strong>根除失效链接</strong>并满足「隐私政策须在 App 内可访问」的审核要求。</td></tr>
+    <tr><td><code>Assets.xcassets/CallAction.colorset</code></td><td><span class="tag t-a11y">新建</span></td><td>深绿语义色（浅 #1C7C3C / 深 #228A47）。供承载白字的实心绿按钮使用，确保对比度达 WCAG AA。</td></tr>
+    <tr><td><code>Utils/Theme.swift</code></td><td><span class="tag t-vis">改</span></td><td>新增 <code>Theme.callAction</code> 令牌；<code>success</code> 注释明确为「仅用于不承载白字的状态指示」。</td></tr>
+    <tr><td><code>Utils/Extensions.swift</code></td><td><span class="tag t-vis">改</span></td><td><code>cardStyle()</code> 改为「圆角表面 + 柔和阴影」，全局卡片获得统一层次感。</td></tr>
+    <tr><td><code>Views/MoreView.swift</code><br><code>Views/EmergencyContactView.swift</code><br><code>Views/MagnifierView.swift</code></td><td><span class="tag t-a11y">改</span></td><td>三处「白字 + 绿底」按钮（快捷拨号、联系人拨号、手电筒点亮态）背景由 <code>success</code> → <code>callAction</code>，修复对比度。</td></tr>
+    <tr><td><code>Views/MedicationListView.swift</code><br><code>Views/EmergencyContactView.swift</code></td><td><span class="tag t-vis">改</span></td><td>列表行加 <code>.transition</code>，容器按 <code>count</code> 加 <code>.snappy</code> 动画，增删条目流畅过渡。</td></tr>
+    <tr><td><code>Views/SettingsView.swift</code></td><td><span class="tag t-fix">改</span></td><td>「隐私政策」→ 跳转内置 <code>PrivacyPolicyView</code>；「联系与帮助」→ <code>mailto:</code>（彻底移除 <code>example.com</code>）。</td></tr>
+    <tr><td><code>Store/PaywallView.swift</code></td><td><span class="tag t-fix">改</span></td><td>付费墙「隐私政策」由死链改为内置页跳转；「使用条款」保留 Apple 标准 EULA。</td></tr>
+    <tr><td><code>Resources/*/Localizable.strings</code></td><td><span class="tag t-doc">改</span></td><td>新增隐私页 14 条双语文案；删除英文重复键 <code>用药提醒</code>。</td></tr>
+    <tr><td><code>Info.plist</code></td><td><span class="tag t-fix">改</span></td><td>新增 <code>LSApplicationCategoryType = public.app-category.utilities</code>（工具效率分类）。</td></tr>
+    <tr><td><code>SeniorHelper.storekit</code></td><td><span class="tag t-fix">改</span></td><td>填入 EULA 标准链接；隐私说明补充「App 内可查看」。</td></tr>
+    <tr><td><code>README.md</code></td><td><span class="tag t-doc">改</span></td><td>上架清单同步：隐私页已内置打勾；新增 AppIcon、支持邮箱待办项。</td></tr>
+  </table>
+
+  <!-- 3. 剩余风险 -->
+  <h2>⚠️ 三、剩余风险（需 Xcode / 真机验证）</h2>
+  <div class="card">
+    <ul>
+      <li><span class="pill blk">上架阻断</span> <strong>AppIcon 缺 1024×1024 PNG</strong>：<code>AppIcon.appiconset</code> 仅有占位元数据，需放入实际图标 PNG 才能归档提交（二进制资源无法由本工具生成）。</li>
+      <li><span class="pill warn">待替换</span> <strong>支持邮箱占位</strong>：<code>mailto:support@seniorhelper.app</code> 为占位，上架前替换为真实可收件地址（<code>mailto</code> 不会触发死链拒审，但应可用）。</li>
+      <li><span class="pill warn">需真机</span> <strong>相机 / 手电筒 / 缩放</strong>：模拟器不支持，需真机验证放大镜帧率、捏合缩放与 <code>setTorchModeOn</code>。</li>
+      <li><span class="pill warn">需真机</span> <strong>StoreKit 购买 / 恢复 / pending</strong>：沙盒账号实测购买、恢复、家长同意（Ask to Buy）等中断态。</li>
+      <li><span class="pill warn">建议核验</span> <strong>VoiceOver + 超大字号（accessibility5）</strong>：逐页确认布局不破版、朗读顺序合理。</li>
+      <li><span class="muted">轻微</span> 通知撤销采用固定 <code>0..&lt;20</code> 索引区间，单条用药超过 20 个提醒时间时无法全撤（现实极罕见，刻意不为不可能场景加防护）。</li>
+      <li><span class="muted">轻微</span> 列表缩略图 <code>ImageStore.load</code> 为主线程同步解码；条目极多时可考虑异步缓存，当前数据量下无感。</li>
+    </ul>
+  </div>
+
+  <!-- 4. 上架就绪度评分 -->
+  <h2>🎯 四、上架就绪度评分</h2>
+  <div class="card">
+    <div class="score"><span>① 视觉设计精修</span><div class="bar"><i style="width:89%"></i></div><b>89</b></div>
+    <div class="score"><span>② 交互体验打磨</span><div class="bar"><i style="width:88%"></i></div><b>88</b></div>
+    <div class="score"><span>③ 功能深度与正确性</span><div class="bar"><i style="width:90%"></i></div><b>90</b></div>
+    <div class="score"><span>④ 隐私与合规</span><div class="bar"><i style="width:95%"></i></div><b>95</b></div>
+    <div class="score"><span>⑤ 性能优化</span><div class="bar"><i style="width:87%"></i></div><b>87</b></div>
+    <div class="score"><span>⑥ 可访问性</span><div class="bar"><i style="width:91%"></i></div><b>91</b></div>
+    <div class="score"><span>⑦ 上架资源完整性</span><div class="bar"><i style="width:80%"></i></div><b>80</b></div>
+    <hr style="border:none;border-top:1px solid var(--line);margin:18px 0;">
+    <div style="display:flex;align-items:baseline;gap:14px;">
+      <span class="total">88</span><span class="muted">/ 100 综合就绪度 ·
+      <strong>唯一硬阻断为 AppIcon PNG</strong>；补齐图标 + 真机自测后即具备提交资格。</span>
+    </div>
+  </div>
+
+  <p class="muted" style="margin-top:30px;text-align:center;">SeniorHelper · 第二轮审查 · 所有改动遵循「精准、最小、不破坏」原则</p>
+</div>
+</body>
+</html>

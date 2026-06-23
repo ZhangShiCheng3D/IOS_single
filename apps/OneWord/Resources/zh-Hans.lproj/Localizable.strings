@@ -1,0 +1,183 @@
+/* OneWord — 简体中文本地化 */
+
+/* App */
+"app.name" = "一句话";
+
+/* Tabs */
+"tab.today" = "今天";
+"tab.calendar" = "日历";
+"tab.trends" = "趋势";
+"tab.settings" = "设置";
+
+/* Common */
+"common.save" = "保存";
+"common.cancel" = "取消";
+"common.delete" = "删除";
+"common.edit" = "编辑";
+"common.close" = "关闭";
+"common.ok" = "好";
+
+/* Today */
+"today.streakTitle" = "连续记录";
+"today.days" = "天";
+"today.entriesTotal" = "总计";
+"today.recorded" = "今天的一句话";
+"today.prompt" = "今天，你想记下哪一句？";
+"today.promptSubtitle" = "一句话，一个心情。这就够了。";
+"today.recordButton" = "记录今天";
+"today.recent" = "最近几天";
+
+/* Editor */
+"editor.title" = "今天";
+"editor.placeholder" = "写下今天的一句话…";
+"editor.howFeeling" = "今天感觉如何？";
+"editor.addPhoto" = "添加照片";
+"editor.changePhoto" = "更换照片";
+"editor.removePhoto" = "移除照片";
+"editor.aiPreview" = "端侧情绪洞察";
+"editor.onDeviceNote" = "在你的设备上私密分析，数据从不离开手机。";
+
+/* Detail */
+"detail.moodAnalysis" = "情绪分析";
+"detail.keywords" = "关键词";
+"detail.deleteTitle" = "删除这条记录？";
+"detail.deleteMessage" = "此操作无法撤销。";
+
+/* Calendar */
+"calendar.legend" = "心情配色";
+
+/* Trends */
+"trends.week" = "周";
+"trends.month" = "月";
+"trends.year" = "年";
+"trends.range" = "范围";
+"trends.moodOverTime" = "心情走势";
+"trends.summary" = "概览";
+"trends.entries" = "记录数";
+"trends.dominant" = "最常出现";
+"trends.topThemes" = "高频主题";
+"trends.empty" = "这个范围内还没有记录。";
+"trends.lockedTitle" = "解锁 AI 情绪洞察";
+"trends.lockedSubtitle" = "查看你的心情走势、高频主题，以及自动生成的年度回顾——全部在设备本地私密分析。";
+"trends.unlock" = "解锁洞察";
+
+/* Year review */
+"year.title" = "年度回顾";
+"year.select" = "年份";
+"year.yourYear" = "你的这一年";
+"year.distribution" = "心情分布";
+"year.standout" = "难忘的日子";
+"year.brightest" = "最闪亮的一天";
+"year.toughest" = "最艰难的一天";
+"year.empty" = "这一年还没有记录。";
+"year.narrative" = "%1$@ 年，你写下了 %2$@ 条记录，最长连续记录 %3$@ 天。这一年的底色偏向「%4$@」，最常出现的主题是「%5$@」。愿那些还未写下的句子，同样温柔。";
+
+/* Accessibility */
+"a11y.delete" = "删除";
+"a11y.passcodeProgress" = "已输入密码位数";
+"a11y.previousMonth" = "上个月";
+"a11y.nextMonth" = "下个月";
+"a11y.photo" = "附带的照片";
+
+/* Settings */
+"settings.aiInsights" = "AI 情绪洞察";
+"settings.unlockAI" = "解锁 AI 情绪洞察";
+"settings.premiumActive" = "已解锁 AI 情绪洞察";
+"settings.restore" = "恢复购买";
+"settings.privacy" = "隐私";
+"settings.appLock" = "应用锁";
+"settings.biometrics" = "面容 ID / 触控 ID";
+"settings.changePasscode" = "更改密码";
+"settings.privacyFooter" = "打开「一句话」时需要密码或面容 ID。";
+"settings.data" = "数据";
+"settings.export" = "导出日记";
+"settings.exportFooter" = "将全部记录导出为 Markdown 或 JSON。你的数据，归你所有。";
+"settings.about" = "关于";
+"settings.version" = "版本";
+"settings.privacyPolicy" = "隐私政策";
+"settings.terms" = "使用条款";
+"settings.privacyPromise" = "100% 离线运行。无账号、无服务器、无追踪。";
+
+/* Paywall */
+"paywall.title" = "解锁 AI 情绪洞察";
+"paywall.subtitle" = "更深入地理解你的情绪——全程在设备本地完成分析。";
+"paywall.feature.trends.title" = "心情走势";
+"paywall.feature.trends.subtitle" = "周、月、年度图表一目了然。";
+"paywall.feature.insights.title" = "智能总结";
+"paywall.feature.insights.subtitle" = "端侧情绪与主题分析。";
+"paywall.feature.year.title" = "年度回顾";
+"paywall.feature.year.subtitle" = "自动生成属于你的年度故事。";
+"paywall.feature.keywords.title" = "关键词提取";
+"paywall.feature.keywords.subtitle" = "看见你最在意的事。";
+"paywall.unlock" = "永久解锁";
+"paywall.oneTime" = "一次性买断，无订阅。";
+"paywall.restore" = "恢复";
+"paywall.loading" = "加载中…";
+"paywall.legal" = "费用将从你的 Apple ID 扣除。这是一次性的非消耗型内购。";
+"paywall.terms" = "使用条款";
+"paywall.privacy" = "隐私政策";
+
+/* 隐私政策（应用内） */
+"privacy.heading" = "你的文字，只留在你的设备上";
+"privacy.s1.title" = "我们收集什么";
+"privacy.s1.body" = "什么都不收集。「一句话」没有账号体系、没有服务器，也不发起任何网络请求。你的记录、照片与情绪分析永远不会离开你的设备。";
+"privacy.s2.title" = "端侧分析";
+"privacy.s2.body" = "情绪打分与关键词提取完全在你的 iPhone 上、借助 Apple 的 NaturalLanguage 框架完成，没有任何文本会被上传。";
+"privacy.s3.title" = "你的数据由你掌控";
+"privacy.s3.body" = "你可以随时将全部内容导出为 Markdown 或 JSON；删除应用即彻底清除所有数据。可选的密码与面容 ID 让你的日记保持私密。";
+"privacy.s4.title" = "关于购买";
+"privacy.s4.body" = "可选的「AI 情绪洞察」解锁通过 App Store 由 Apple 处理，「一句话」绝不会接触你的支付信息。";
+"privacy.updated" = "最近更新：2026 年 6 月。";
+
+/* Lock */
+"lock.prompt" = "输入密码";
+"lock.wrong" = "密码错误";
+"lock.useBiometrics" = "使用面容 ID / 触控 ID";
+"lock.biometricReason" = "解锁你的日记";
+
+/* Passcode setup */
+"passcode.create" = "设置密码";
+"passcode.confirm" = "确认密码";
+"passcode.mismatch" = "两次密码不一致，请重试。";
+
+/* Export */
+"export.markdown" = "Markdown（.md）";
+"export.json" = "JSON 备份（.json）";
+"export.entriesCount" = "条记录";
+"export.error" = "导出失败，请重试。";
+
+/* Store errors */
+"store.error.load" = "无法加载商品。";
+"store.error.purchase" = "购买失败。";
+"store.error.restore" = "恢复失败。";
+"store.error.pending" = "购买正在等待批准。";
+
+/* Sentiment names */
+"sentiment.veryPositive" = "很棒";
+"sentiment.positive" = "不错";
+"sentiment.neutral" = "平常";
+"sentiment.negative" = "低落";
+"sentiment.veryNegative" = "艰难";
+
+/* Mood emoji names */
+"mood.joyful" = "开心";
+"mood.good" = "愉快";
+"mood.calm" = "平静";
+"mood.loved" = "被爱";
+"mood.grateful" = "感恩";
+"mood.neutral" = "平淡";
+"mood.tired" = "疲惫";
+"mood.thoughtful" = "若有所思";
+"mood.uneasy" = "不安";
+"mood.sad" = "难过";
+"mood.angry" = "生气";
+"mood.anxious" = "焦虑";
+
+/* Theme tags */
+"tag.work" = "工作";
+"tag.family" = "家人";
+"tag.friends" = "朋友";
+"tag.health" = "健康";
+"tag.love" = "爱";
+"tag.weather" = "天气";
+"tag.food" = "美食";

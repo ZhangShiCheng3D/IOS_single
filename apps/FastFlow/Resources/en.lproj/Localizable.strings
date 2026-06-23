@@ -1,0 +1,168 @@
+/* FastFlow — English localization */
+
+/* Common */
+"common.close" = "Close";
+"common.ok" = "OK";
+"common.notice" = "Notice";
+"common.cancel" = "Cancel";
+"common.save" = "Save";
+"common.done" = "Done";
+
+/* Tab bar */
+"tab.fasting" = "Fasting";
+"tab.water" = "Water";
+"tab.trends" = "Trends";
+"tab.history" = "History";
+"tab.settings" = "Settings";
+
+/* Duration formats */
+"duration.hm.format" = "%dh %dm";
+"duration.m.format" = "%dm";
+
+/* Plans */
+"plan.subtitle.format" = "%dh fasting · %dh eating";
+"plan.section.builtin" = "Built-in Plans";
+"plan.section.custom" = "Custom Plans";
+"plan.addCustom" = "New Custom Plan";
+"plan.custom.locked.footer" = "Custom plans are a premium feature. Unlock to create any fasting window.";
+"plan.picker.title" = "Choose Plan";
+"plan.custom.name" = "Name";
+"plan.custom.name.placeholder" = "e.g. 14:10";
+"plan.custom.fasting" = "Fasting hours";
+"plan.custom.eating" = "Eating window";
+"plan.custom.window" = "Time Window";
+"plan.custom.total.format" = "%d hours total (24 recommended)";
+"plan.custom.hours" = "%d h";
+"plan.custom.title" = "Custom Plan";
+
+/* Fasting timer */
+"fasting.startedAt" = "Started";
+"fasting.goalAt" = "Goal";
+"fasting.remaining" = "Remaining";
+"fasting.completed" = "Completed";
+"fasting.idle.title" = "Ready to Fast";
+"fasting.idle.subtitle" = "Pick a plan and start. Stay focused.";
+"fasting.selectedPlan" = "Current plan";
+"fasting.start" = "Start Fasting";
+"fasting.end" = "End Fasting";
+"fasting.editStart" = "Adjust Start Time";
+"fasting.startTime" = "Start time";
+"fasting.status.reached" = "Goal reached 🎉";
+"fasting.status.progress" = "%d%% complete";
+"fasting.end.confirm.title" = "End this fast?";
+"fasting.end.confirm.reached" = "You reached your goal. This fast will be saved to your history.";
+"fasting.end.confirm.early" = "You haven't reached your goal yet. End early anyway? It will still be saved.";
+"fasting.selectPlan.a11yHint" = "Tap to choose a fasting plan";
+
+/* Water */
+"water.editGoal" = "Water Goal";
+"water.ofGoal.format" = "/ %d ml goal";
+"water.customAmount" = "Custom ml";
+"water.add" = "Add";
+"water.today.records" = "Today";
+"water.remaining.format" = "%d ml to go";
+"water.empty" = "No water logged today";
+"water.quickAdd.a11y" = "Add %d milliliters of water";
+"water.delete.a11y" = "Delete this water entry";
+"water.goal.title" = "Goal";
+"water.goal.daily" = "Daily goal";
+"water.sync.health" = "Sync to Health";
+"water.sync.footer" = "Water entries will be written to the system Health app.";
+"water.ofGoal" = "Goal";
+
+/* Trends */
+"trends.range" = "Range";
+"trends.range.week" = "7 Days";
+"trends.range.month" = "30 Days";
+"trends.fasting.title" = "Fasting Duration";
+"trends.axis.day" = "Day";
+"trends.axis.hours" = "Hours";
+"trends.axis.date" = "Date";
+"trends.stats.title" = "Fasting Stats";
+"trends.stats.streak" = "Streak";
+"trends.stats.total" = "Completed";
+"trends.stats.avg" = "Avg hours";
+"trends.weight.title" = "Weight Trend";
+"trends.weight.empty" = "No weight data. Log in Health or grant read access.";
+"trends.weight.kg" = "kg";
+"trends.locked.title" = "Unlock Premium Charts";
+"trends.locked.subtitle" = "See 30-day trends and weight curves.";
+"trends.empty" = "No fasting data yet";
+
+/* History */
+"history.reached" = "Goal";
+"history.empty.title" = "No History Yet";
+"history.empty.subtitle" = "Completed fasts will appear here.";
+
+/* Settings */
+"settings.section.premium" = "Premium";
+"settings.premium.active" = "Premium unlocked";
+"settings.premium.unlock" = "Unlock Premium";
+"settings.premium.restore" = "Restore Purchases";
+"settings.section.reminder" = "Water Reminders";
+"settings.reminder.enable" = "Enable reminders";
+"settings.reminder.start" = "Start time";
+"settings.reminder.end" = "End time";
+"settings.reminder.interval" = "Interval";
+"settings.reminder.everyHours" = "Every %d h";
+"settings.reminder.footer" = "You'll be reminded to drink water within the set time range.";
+"settings.section.health" = "Health";
+"settings.health.connect" = "Connect Health";
+"settings.health.footer" = "Grant access to read/write weight and water data.";
+"settings.section.about" = "About";
+"settings.about.version" = "Version";
+"settings.about.privacy" = "Privacy Policy";
+"settings.about.terms" = "Terms of Use";
+
+/* Paywall */
+"paywall.title" = "FastFlow Premium";
+"paywall.subtitle" = "One-time purchase. Unlock everything forever.";
+"paywall.benefit.charts.title" = "Premium Charts";
+"paywall.benefit.charts.desc" = "30-day fasting trends & detailed stats.";
+"paywall.benefit.custom.title" = "Custom Plans";
+"paywall.benefit.custom.desc" = "Create any fasting/eating window.";
+"paywall.benefit.widget.title" = "Home Widget";
+"paywall.benefit.widget.desc" = "See live fasting progress on your home screen.";
+"paywall.benefit.health.title" = "Weight Trend";
+"paywall.benefit.health.desc" = "Connect Health to chart your weight.";
+"paywall.unlocked" = "Premium unlocked";
+"paywall.buy.format" = "Unlock for %@";
+"paywall.restore" = "Restore Purchases";
+"paywall.footnote" = "One-time purchase, no subscription. Buying means you agree to the Terms and Privacy Policy.";
+
+/* Store errors */
+"store.error.load" = "Couldn't load products. Please try again.";
+"store.error.unavailable" = "Product unavailable.";
+"store.info.pending" = "Purchase is pending confirmation.";
+"store.error.purchase" = "Purchase failed. Please try again.";
+"store.error.restore" = "Failed to restore purchases.";
+
+/* Notifications */
+"notif.fasting.title" = "Fasting Goal Reached!";
+"notif.fasting.body" = "You completed your %@ fast. Time to eat.";
+"notif.water.title" = "Time to Hydrate 💧";
+"notif.water.body" = "Drink a glass of water to stay hydrated.";
+
+/* Widget */
+"widget.fasting.name" = "Fasting Progress";
+"widget.fasting.desc" = "See your current fasting progress at a glance.";
+"widget.idle" = "Not fasting";
+"widget.idle.full" = "Open the app to start fasting";
+
+/* Live Activity */
+"live.reached" = "Reached";
+"live.fasting" = "Fasting";
+
+/* Privacy Policy */
+"privacy.intro" = "FastFlow respects and protects your privacy. It is a fully local app with no servers — we do not collect, upload, or sell any of your personal data.";
+"privacy.updated" = "Last updated: June 2026";
+"privacy.section.local.title" = "Local Data Storage";
+"privacy.section.local.body" = "Your fasting records, water logs, and preferences are stored only on this device (SwiftData and system preferences). We cannot access them, and they are removed when you delete the app.";
+"privacy.section.health.title" = "Health Data (HealthKit)";
+"privacy.section.health.body" = "Only with your explicit permission does FastFlow read your weight and write water/weight data to chart trends in-app. Health data is managed by Apple's Health app and is never sent to any third party. You can revoke access anytime in Settings → Privacy & Security → Health.";
+"privacy.section.notifications.title" = "Notifications";
+"privacy.section.notifications.body" = "Fasting goal and water reminders are local notifications scheduled on your device — they never pass through any server.";
+"privacy.section.purchases.title" = "Purchases";
+"privacy.section.purchases.body" = "Premium is a one-time purchase through the Apple App Store. Transactions are handled by Apple; we never receive or store your payment information.";
+"privacy.section.thirdparty.title" = "No Third Parties or Tracking";
+"privacy.section.thirdparty.body" = "FastFlow integrates no advertising, analytics, or tracking SDKs, and performs no cross-app tracking.";

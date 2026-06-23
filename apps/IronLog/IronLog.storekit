@@ -1,0 +1,35 @@
+{
+  "identifier" : "IRONLOG_STOREKIT_CONFIG",
+  "nonRenewingSubscriptions" : [],
+  "products" : [
+    {
+      "displayPrice" : "48.00",
+      "familyShareable" : true,
+      "internalID" : "IRONLOG_PRO_UNLOCK",
+      "localizations" : [
+        {
+          "description" : "一次买断，永久解锁全部 Pro 功能：无限训练记录、进阶趋势图表、完整 PR 追踪、导出与健康同步。",
+          "displayName" : "IronLog Pro",
+          "locale" : "zh_CN"
+        },
+        {
+          "description" : "One-time purchase. Unlock all Pro features forever: unlimited workouts, advanced trends, full PR tracking, export and Health sync.",
+          "displayName" : "IronLog Pro",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.ironlog.pro.unlock",
+      "referenceName" : "IronLog Pro Unlock",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "IRONLOG_APP",
+    "_developerTeamID" : "TEAMID"
+  },
+  "subscriptionGroups" : [],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

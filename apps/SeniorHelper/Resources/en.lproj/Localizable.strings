@@ -1,0 +1,158 @@
+/*
+   Localizable.strings (English)
+   SeniorHelper
+   Keys are the Simplified-Chinese development strings; values are English translations.
+*/
+
+/* MARK: - Tabs */
+"放大镜" = "Magnifier";
+"用药提醒" = "Medication";
+"更多" = "More";
+
+/* MARK: - Medication model */
+"未设置提醒" = "No reminders set";
+"提醒时间" = "Reminder time ";
+"该服用「%@」了" = "Time to take \"%@\"";
+"该服用「%@」了：%@" = "Time to take \"%@\": %@";
+
+/* MARK: - Store / Paywall */
+"无法加载商品信息，请检查网络后重试" = "Couldn't load product info. Check your connection and try again.";
+"商品暂不可用，请稍后再试" = "Product is currently unavailable. Please try again later.";
+"购买正在等待批准（如家长同意）" = "Purchase is pending approval (e.g. Ask to Buy).";
+"购买失败，请稍后重试" = "Purchase failed. Please try again later.";
+"未找到可恢复的购买记录" = "No previous purchase found to restore.";
+"恢复购买失败，请稍后重试" = "Restore failed. Please try again later.";
+"交易校验失败" = "Transaction verification failed.";
+"解锁完整版" = "Unlock Full Version";
+"关闭" = "Close";
+"提示" = "Notice";
+"好的" = "OK";
+"贴心守护，全家安心" = "Caring support, peace of mind";
+"解锁全部功能，让长辈生活更便利" = "Unlock every feature to make life easier";
+"拍下药盒，按时提醒，再也不怕忘记吃药" = "Photograph the box, get timely reminders, never miss a dose";
+"紧急联系人" = "Emergency Contacts";
+"一键拨打家人电话，关键时刻不慌张" = "Call family in one tap when it matters";
+"语音播报" = "Voice Readout";
+"看不清也能听得清，操作全程语音陪伴" = "Hear it when you can't see it — voice guidance throughout";
+"永久使用" = "Lifetime Access";
+"一次购买，永久解锁，无月费、无广告" = "Buy once, unlock forever — no subscription, no ads";
+"立即解锁" = "Unlock Now";
+"永久" = "Lifetime";
+"恢复购买" = "Restore Purchase";
+"一次性付款，无自动续费" = "One-time payment, no auto-renewal";
+"购买成功，感谢您的支持" = "Purchase successful. Thank you for your support!";
+"使用条款" = "Terms of Use";
+"隐私政策" = "Privacy Policy";
+
+/* MARK: - Magnifier */
+"已定格 · 再次点击解除" = "Frozen · tap again to resume";
+"关灯" = "Light Off";
+"照明" = "Light";
+"打开或关闭手电筒补光" = "Turn the flashlight on or off";
+"继续" = "Resume";
+"定格" = "Freeze";
+"定格当前画面，方便看清" = "Freeze the image for easier reading";
+"放大" = "Zoom in";
+"缩小" = "Zoom out";
+"需要使用相机" = "Camera Access Needed";
+"放大镜需要打开相机才能放大文字。请在「设置」中允许使用相机。" = "The magnifier needs the camera to enlarge text. Please allow camera access in Settings.";
+"前往设置" = "Open Settings";
+
+/* MARK: - Medication list & edit */
+"添加用药" = "Add Medication";
+"还没有用药计划" = "No medications yet";
+"点击右上角加号，拍下药盒并设置提醒时间" = "Tap the plus button to photograph a box and set reminder times";
+"添加第一条用药" = "Add Your First Medication";
+"用药提醒是高级功能" = "Medication Reminders is a premium feature";
+"拍下药盒，设置每日提醒，按时吃药更安心。解锁后永久使用。" = "Photograph the box, set daily reminders, take meds on time. Unlock once for lifetime use.";
+"提醒开" = "Reminder On";
+"提醒关" = "Reminder Off";
+"朗读" = "Read Aloud";
+"编辑" = "Edit";
+"删除" = "Delete";
+"确定删除「%@」吗？" = "Delete \"%@\"?";
+"取消" = "Cancel";
+"编辑用药" = "Edit Medication";
+"保存" = "Save";
+"药盒照片" = "Medicine Box Photo";
+"拍照" = "Take Photo";
+"从相册选择" = "Choose from Library";
+"移除照片" = "Remove Photo";
+"更换" = "Change";
+"拍摄药盒照片" = "Take a photo of the box";
+"方便确认是哪一种药" = "Helps confirm which medicine it is";
+"药品名称" = "Medication Name";
+"例如：降压药" = "e.g. Blood pressure pills";
+"服用说明" = "Dosage";
+"例如：每次 1 片，饭后" = "e.g. 1 tablet after meals";
+"药品信息" = "Medication Info";
+"第 %lld 次" = "Dose %lld";
+"删除该时间" = "Remove this time";
+"添加提醒时间" = "Add Reminder Time";
+"每日提醒时间" = "Daily Reminder Times";
+"到点会发出通知提醒服药，可设置多个时间。" = "A notification will remind you to take your medicine. You can add multiple times.";
+"启用提醒" = "Enable Reminder";
+
+/* MARK: - Emergency contacts */
+"添加联系人" = "Add Contact";
+"还没有紧急联系人" = "No emergency contacts yet";
+"添加家人或医生的电话，紧急时一键拨打" = "Add family or your doctor to call in one tap";
+"拨打电话" = "Call";
+"拨打 %@ 的电话" = "Call %@";
+"拨打 %@" = "Call %@";
+"正在拨打%@" = "Calling %@";
+"电话号码无效" = "Invalid phone number";
+"编辑联系人" = "Edit Contact";
+"称呼" = "Name";
+"例如：女儿" = "e.g. Daughter";
+"电话号码" = "Phone Number";
+"例如：13800138000" = "e.g. 555-123-4567";
+"关系（可选）" = "Relationship (optional)";
+"例如：家人" = "e.g. Family";
+"电话号码用于一键拨号，请填写完整可拨打的号码。" = "The number is used for one-tap dialing. Please enter a complete, dialable number.";
+"添加家人电话，紧急时一键拨打" = "Add family numbers for one-tap dialing";
+"管理紧急联系人" = "Manage Emergency Contacts";
+"添加、编辑或删除联系人" = "Add, edit, or delete contacts";
+
+/* MARK: - Settings */
+"设置" = "Settings";
+"语音、字号、通知与购买" = "Voice, text size, notifications & purchase";
+"语音播报已开启" = "Voice readout is on";
+"语音" = "Voice";
+"开启后，操作时会有语音提示，方便看不清屏幕时使用。" = "When on, actions are spoken aloud — helpful when the screen is hard to read.";
+"已解锁完整版" = "Full Version Unlocked";
+"感谢您的支持，全部功能已开启" = "Thank you! All features are enabled.";
+"一次购买，永久使用全部功能" = "Buy once, use all features forever";
+"示例文字" = "Sample text";
+"当前字号会随系统设置自动变大或变小。" = "Text size follows your system setting automatically.";
+"在系统设置中调整字号" = "Adjust text size in System Settings";
+"字号" = "Text Size";
+"本应用已适配超大字号。前往「设置 › 辅助功能 › 显示与文字大小」可进一步放大。" = "This app supports extra-large text. Go to Settings › Accessibility › Display & Text Size to enlarge further.";
+"用药提醒通知" = "Medication notifications";
+"已开启" = "On";
+"未开启" = "Off";
+"前往设置开启通知" = "Open Settings to enable notifications";
+"通知" = "Notifications";
+"用 Siri 打开放大镜" = "Open the magnifier with Siri";
+"对 Siri 说「打开放大镜」即可快速使用。首次使用请按提示授权。" = "Say \"Open the magnifier\" to Siri for quick access. Authorize when first prompted.";
+"Siri 快捷指令" = "Siri Shortcuts";
+"版本" = "Version";
+"联系与帮助" = "Contact & Help";
+"关于" = "About";
+"SeniorHelper · 让长辈生活更便利\n所有数据仅保存在本机，不上传云端。" = "SeniorHelper · Making life easier for elders\nAll data stays on this device — nothing is uploaded.";
+
+/* MARK: - Privacy policy */
+"我们重视您的隐私" = "Your privacy matters";
+"一句话总结：所有数据只留在您的手机里。" = "In short: all your data stays on your phone.";
+"不收集个人信息" = "No personal data collected";
+"本应用完全在您的设备上运行，不收集、不上传、也不共享任何个人信息。" = "This app runs entirely on your device. It does not collect, upload, or share any personal information.";
+"数据存储" = "Data storage";
+"用药计划、紧急联系人与药盒照片仅保存在您的设备本地，永不上传到任何服务器。" = "Medication plans, emergency contacts, and medicine-box photos are stored only on your device and are never uploaded to any server.";
+"相机与相册" = "Camera & Photos";
+"相机仅用于放大镜和拍摄药盒照片；相册仅用于选取药盒照片。照片只保存在本机。" = "The camera is used only for the magnifier and photographing medicine boxes; the photo library is used only to pick a box photo. Photos stay on this device.";
+"用药提醒通过系统本地通知发送，不经过任何网络服务。" = "Medication reminders are delivered via the system's local notifications and never go through any network service.";
+"购买" = "Purchases";
+"内购由 Apple App Store 处理，我们不会接触到您的支付信息。" = "In-app purchases are handled by the Apple App Store; we never see your payment information.";
+"联系我们" = "Contact us";
+"如有任何疑问，请通过「设置 › 联系与帮助」与我们联系。" = "If you have any questions, reach us via Settings › Contact & Help.";
+"最近更新" = "Last updated";

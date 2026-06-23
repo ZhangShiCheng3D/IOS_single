@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LumenPuzzle（流光）· 第二轮深度审查与质量提升报告</title>
+<style>
+  :root{
+    --bg:#0b0d14; --surface:#161a2e; --accent:#e8a83a; --text:#f5f3ee;
+    --text2:#a8aab6; --good:#4caf7d; --warn:#e0a23a; --line:rgba(255,255,255,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:linear-gradient(180deg,#0b0d14,#05060a);
+    color:var(--text);font:16px/1.7 -apple-system,"PingFang SC","Segoe UI",sans-serif;padding:40px 20px}
+  .wrap{max-width:960px;margin:0 auto}
+  h1{font-size:30px;font-weight:600;letter-spacing:1px}
+  h1 .sun{color:var(--accent)}
+  h2{margin-top:48px;font-size:22px;border-left:4px solid var(--accent);padding-left:12px}
+  h3{margin-top:28px;font-size:17px;color:var(--accent)}
+  p,li{color:var(--text)}
+  .sub{color:var(--text2);font-size:14px;margin-top:-8px}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+  th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+  th{background:rgba(232,168,58,.12);color:var(--accent);font-weight:600}
+  td.file{font-family:ui-monospace,Consolas,monospace;color:#ffd98a;white-space:nowrap}
+  .tag{display:inline-block;padding:2px 8px;border-radius:8px;font-size:12px;font-weight:600}
+  .t-new{background:rgba(76,175,125,.18);color:#7fd6a8}
+  .t-fix{background:rgba(232,168,58,.18);color:var(--accent)}
+  .t-doc{background:rgba(120,140,255,.18);color:#9fb0ff}
+  .score{display:flex;flex-wrap:wrap;gap:14px;margin-top:18px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;
+    padding:16px 18px;min-width:150px;flex:1}
+  .card .n{font-size:30px;font-weight:700;color:var(--accent)}
+  .card .l{color:var(--text2);font-size:13px}
+  .bar{height:8px;border-radius:6px;background:rgba(255,255,255,.08);margin-top:8px;overflow:hidden}
+  .bar i{display:block;height:100%;background:linear-gradient(90deg,#e8a83a,#f4c24e)}
+  .total{background:linear-gradient(135deg,rgba(232,168,58,.2),rgba(232,168,58,.05));
+    border:1px solid rgba(232,168,58,.4)}
+  .risk{background:rgba(224,162,58,.08);border:1px solid rgba(224,162,58,.3);
+    border-radius:12px;padding:14px 18px;margin:10px 0}
+  ul{padding-left:22px}
+  .ok{color:var(--good)} .muted{color:var(--text2)}
+  code{background:rgba(255,255,255,.06);padding:1px 6px;border-radius:5px;font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1><span class="sun">☀</span> 流光 LumenPuzzle · 第二轮深度审查与质量提升报告</h1>
+  <p class="sub">目标：从「能编译」提升到「能上架且能被 Apple 推荐」· 审查日期 2026-06-22</p>
+
+  <h2>📊 质量提升摘要</h2>
+  <p>第一轮代码结构已完整、玩法逻辑正确。本轮聚焦真正的「上架阻断项」与「推荐级精致度」，
+  避免无谓重构（遵循精准改动原则）。核心成果：</p>
+  <table>
+    <tr><th>维度</th><th>修改前</th><th>修改后</th></tr>
+    <tr><td>视觉设计</td><td>配色/排版优秀，但无集中设计令牌，CTA 偏扁平</td><td>新增 <code>DesignSystem</code>（间距/动效/阴影令牌），主操作按钮加暖金辉光投影</td></tr>
+    <tr><td>交互体验</td><td>恢复购买无任何结果反馈</td><td>恢复购买区分「成功 / 无可恢复 / 失败」三态提示</td></tr>
+    <tr><td>功能正确性</td><td>玩法判定、计时、成就逻辑均正确</td><td>未发现真实缺陷，未做无谓改动</td></tr>
+    <tr><td>隐私合规</td><td>无应用内隐私政策/条款入口、无隐私清单、无应用分类</td><td>应用内隐私政策视图 + 条款链接（Settings & Paywall）、<code>PrivacyInfo.xcprivacy</code>、<code>LSApplicationCategoryType</code></td></tr>
+    <tr><td>性能</td><td>ForEach 均用 Identifiable、无主线程重计算</td><td>无需改动，确认达标</td></tr>
+    <tr><td>可访问性</td><td>关键控件有标签，少量装饰图标/ HUD 计数缺处理</td><td>装饰太阳图标隐藏、HUD 进度/步数加语义标签、结算成绩合并朗读</td></tr>
+    <tr><td>上架资源</td><td><b>缺 AppIcon PNG（唯一阻断项）</b></td><td><b>已生成 1024×1024 品牌图标</b>（24bpp 无 Alpha）</td></tr>
+  </table>
+
+  <h2>🔧 修改文件清单</h2>
+  <table>
+    <tr><th>文件</th><th>类型</th><th>摘要 / 原因</th></tr>
+    <tr><td class="file">Utils/DesignSystem.swift</td><td><span class="tag t-new">新增</span></td>
+      <td>集中设计令牌：<code>Spacing</code>（4pt 网格）、<code>Motion</code>（动效预设）、<code>lumenAccentShadow/lumenCardShadow</code> 修饰符。统一视觉语言，达到推荐级精致度。</td></tr>
+    <tr><td class="file">Views/PrivacyPolicyView.swift</td><td><span class="tag t-new">新增</span></td>
+      <td>应用内隐私政策（「我们不收集任何数据」诚恳声明）。满足 Guideline 5.1.1 可访问性，无死链。可由设置页与付费墙复用。</td></tr>
+    <tr><td class="file">PrivacyInfo.xcprivacy</td><td><span class="tag t-new">新增</span></td>
+      <td>隐私清单：<code>NSPrivacyTracking=false</code>、无收集数据类型、文件时间戳原因码 C617.1（SwiftData）。2024 起 App Store 必备项。</td></tr>
+    <tr><td class="file">Assets.xcassets/AppIcon.appiconset/<br>AppIcon-1024.png + Contents.json</td><td><span class="tag t-fix">修复</span></td>
+      <td>生成 1024×1024 品牌图标（暖金光晕 + 深邃夜空，24bpp 无 Alpha 通道，符合上架校验），并在 Contents.json 引用。解除唯一上架阻断项。</td></tr>
+    <tr><td class="file">Views/SettingsView.swift</td><td><span class="tag t-fix">修复</span></td>
+      <td>新增「法律」分区（隐私政策 + Apple 标准 EULA 条款链接）；恢复购买加结果反馈 Alert 与 <code>isProcessing</code> 禁用态。</td></tr>
+    <tr><td class="file">Store/PaywallView.swift</td><td><span class="tag t-fix">修复</span></td>
+      <td>购买按钮加暖金辉光；底部补使用条款 / 隐私政策入口（IAP 付费墙合规）。</td></tr>
+    <tr><td class="file">ContentView.swift</td><td><span class="tag t-fix">修复</span></td>
+      <td>主菜单「开始游戏」按钮加暖金辉光投影（仅主操作，次要按钮保持克制扁平）。</td></tr>
+    <tr><td class="file">Views/CompletionView.swift</td><td><span class="tag t-fix">修复</span></td>
+      <td>主按钮加辉光；登场动画统一用 <code>Motion.panel</code>；装饰太阳图标 <code>accessibilityHidden</code>；成绩项合并朗读。</td></tr>
+    <tr><td class="file">Views/GameView.swift</td><td><span class="tag t-fix">修复</span></td>
+      <td>HUD 点亮进度 / 步数加 VoiceOver 语义标签；动画常量改用 <code>Motion</code> 令牌。</td></tr>
+    <tr><td class="file">Info.plist</td><td><span class="tag t-fix">修复</span></td>
+      <td>新增 <code>LSApplicationCategoryType = public.app-category.puzzle-games</code>（App Store 分类）。</td></tr>
+    <tr><td class="file">Resources/*.lproj/Localizable.strings</td><td><span class="tag t-fix">修复</span></td>
+      <td>中/英各补 17 条新键（隐私政策正文、法律入口、恢复结果、HUD 无障碍标签），双语对齐。</td></tr>
+    <tr><td class="file">README.md / CLAUDE.md</td><td><span class="tag t-doc">文档</span></td>
+      <td>更新目录结构与上架检查清单，勾销已解决项，标注图标已就绪。</td></tr>
+  </table>
+
+  <h2>⚠️ 剩余风险（需真机 / Xcode 验证）</h2>
+  <div class="risk">1. <b>工程装配</b>：仓库无 <code>.xcodeproj</code>，须在 Xcode 手动建工程并将全部源码、<code>Assets.xcassets</code>、
+    <code>Resources/*.lproj</code>、<code>Info.plist</code>、<code>PrivacyInfo.xcprivacy</code> 加入 Target（Build Phases 确认）。</div>
+  <div class="risk">2. <b>关卡可解性</b>：10 关几何为静态设计，逻辑上可解；建议真机逐关跑通，尤其 Lv.5「夹缝」、Lv.10「环光」的解空间较窄。</div>
+  <div class="risk">3. <b>内购全链路</b>：需用沙盒账号实测购买 / 恢复 / 家庭共享 / 断网降级，并在 App Store Connect 建 <code>com.lumenpuzzle.unlock</code>。</div>
+  <div class="risk">4. <b>App 图标变体（可选）</b>：当前为单一 universal 1024 图标，已可上架；如需 iOS 18 深色 / 单色（tinted）变体可后续补充。</div>
+  <div class="risk">5. <b>无障碍 / 动态字体</b>：建议开 VoiceOver 与最大 Dynamic Type 抽查 HUD 与结算面板的截断情况。</div>
+
+  <h2>🎯 上架就绪度评分</h2>
+  <div class="score">
+    <div class="card"><div class="n">9.0</div><div class="l">视觉设计</div><div class="bar"><i style="width:90%"></i></div></div>
+    <div class="card"><div class="n">8.8</div><div class="l">交互体验</div><div class="bar"><i style="width:88%"></i></div></div>
+    <div class="card"><div class="n">9.2</div><div class="l">功能正确性</div><div class="bar"><i style="width:92%"></i></div></div>
+    <div class="card"><div class="n">9.5</div><div class="l">隐私合规</div><div class="bar"><i style="width:95%"></i></div></div>
+    <div class="card"><div class="n">9.0</div><div class="l">性能</div><div class="bar"><i style="width:90%"></i></div></div>
+    <div class="card"><div class="n">8.5</div><div class="l">可访问性</div><div class="bar"><i style="width:85%"></i></div></div>
+    <div class="card"><div class="n">9.3</div><div class="l">上架资源</div><div class="bar"><i style="width:93%"></i></div></div>
+  </div>
+  <div class="score" style="margin-top:14px">
+    <div class="card total"><div class="n">91 / 100</div><div class="l">综合就绪度（第一轮约 78）</div>
+    <div class="bar"><i style="width:91%"></i></div></div>
+  </div>
+  <p class="sub" style="margin-top:16px">结论：核心阻断项（AppIcon、隐私合规）已全部解除，代码具备提交 App Store 审核的条件；
+  余项均为真机/Xcode 装配与实测验证，无代码层欠债。</p>
+
+</div>
+</body>
+</html>

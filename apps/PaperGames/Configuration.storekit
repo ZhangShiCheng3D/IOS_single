@@ -1,0 +1,39 @@
+{
+  "identifier" : "PAPERGAMES_STOREKIT_CONFIG",
+  "nonRenewingSubscriptions" : [],
+  "products" : [
+    {
+      "displayPrice" : "18.00",
+      "familyShareable" : false,
+      "internalID" : "PG_UNLOCK_ALL",
+      "localizations" : [
+        {
+          "description" : "解锁全部难度与玩法，永久无广告。",
+          "displayName" : "完整版解锁",
+          "locale" : "zh_CN"
+        },
+        {
+          "description" : "Unlock all difficulties and games. No ads, forever.",
+          "displayName" : "Full Version Unlock",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.papergames.unlockall",
+      "referenceName" : "Unlock All",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "PAPERGAMES",
+    "_developerTeamID" : "",
+    "_failTransactionsEnabled" : false,
+    "_locale" : "zh_CN",
+    "_storefront" : "CHN",
+    "_storeKitErrors" : []
+  },
+  "subscriptionGroups" : [],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

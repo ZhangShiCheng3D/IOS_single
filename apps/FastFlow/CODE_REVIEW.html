@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FastFlow 代码审查报告</title>
+<style>
+  :root { --bg:#0f1115; --card:#1a1e26; --line:#2a2f3a; --txt:#e6e9ef; --muted:#9aa3b2;
+          --red:#ff6b6b; --orange:#ffa94d; --green:#51cf66; --blue:#4dabf7; --accent:#3ba0bd; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--txt);
+         font:15px/1.6 -apple-system,"PingFang SC",Segoe UI,Roboto,sans-serif; padding:32px; }
+  .wrap { max-width:960px; margin:0 auto; }
+  h1 { font-size:26px; margin:0 0 4px; }
+  .sub { color:var(--muted); margin:0 0 24px; }
+  h2 { font-size:19px; margin:32px 0 12px; padding-bottom:6px; border-bottom:1px solid var(--line); }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px;
+          padding:16px 18px; margin:12px 0; }
+  .tag { display:inline-block; font-size:12px; font-weight:600; padding:2px 9px;
+         border-radius:20px; margin-right:8px; }
+  .t-blocker { background:rgba(255,107,107,.15); color:var(--red); }
+  .t-func   { background:rgba(255,169,77,.15);  color:var(--orange); }
+  .t-compl  { background:rgba(77,171,247,.15);  color:var(--blue); }
+  .t-ok     { background:rgba(81,207,102,.15);  color:var(--green); }
+  .file { color:var(--accent); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:13px; }
+  table { width:100%; border-collapse:collapse; margin:8px 0; }
+  th,td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { color:var(--muted); font-weight:600; font-size:13px; }
+  code { background:#0c0e12; padding:1px 6px; border-radius:5px; font-size:13px;
+         font-family:ui-monospace,Menlo,monospace; color:#d9e0ec; }
+  ul { margin:8px 0; padding-left:20px; } li { margin:4px 0; }
+  .muted { color:var(--muted); }
+  .ok-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:8px; }
+  .ok-grid div { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:8px 12px; font-size:13px; }
+  .ok-grid b { color:var(--green); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>FastFlow — 全面代码审查报告</h1>
+  <p class="sub">资深 iOS 架构师审查 · 审查日期 2026-06-22 · 范围：35 个源文件 / 资源 / 配置</p>
+
+  <div class="card">
+    <strong>总体结论。</strong> 项目质量较高，MVVM 分层清晰，SwiftData / StoreKit 2 / HealthKit /
+    Live Activity / Widget 连接正确，所有类型引用均可解析，无缺失文件，中英本地化键完整一致。
+    共发现 <b>3</b> 处需修复问题（1 处编译阻断、2 处健壮性/合规），<b>均已修复</b>。
+    遵循「精准改动」原则，未对正确且符合习惯用法的代码做无谓重构。
+  </div>
+
+  <h2>一、问题列表（按严重程度排序）</h2>
+
+  <div class="card">
+    <span class="tag t-blocker">编译阻断</span>
+    <strong>#1 · <span class="file">Utils/Extensions.swift</span> 缺少 <code>import UIKit</code></strong>
+    <p><code>Haptics</code> 枚举使用了 <code>UINotificationFeedbackGenerator</code> 与
+    <code>UIImpactFeedbackGenerator</code>，但文件仅 <code>import Foundation / SwiftUI</code>。
+    SwiftUI 不会自动导出 UIKit 的触感反馈类型，因此这两个符号在编译期无法解析，
+    会导致整个模块编译失败。<code>Haptics</code> 被 ViewModel、PurchaseManager、PlanPickerView 广泛调用，
+    属于阻断级问题。</p>
+    <p class="muted">修复：在文件顶部新增 <code>import UIKit</code>。</p>
+  </div>
+
+  <div class="card">
+    <span class="tag t-func">功能缺陷</span>
+    <strong>#2 · <span class="file">Views/TrendsView.swift</span> 体重趋势不随时间范围刷新</strong>
+    <p>体重曲线（高级功能）通过 <code>HealthKitManager.fetchWeightSamples(days: range.rawValue)</code>
+    按所选范围取数，但加载只挂在 <code>.task { … }</code> 上、仅在视图首次出现时执行一次。
+    付费用户从「近 7 天」切到「近 30 天」时，<code>weightSamples</code> 不会按 30 天重新拉取，
+    导致体重图与所选范围不一致。</p>
+    <p class="muted">修复：<code>.task { await loadWeight() }</code> → <code>.task(id: range) { await loadWeight() }</code>，
+    范围变化即重新取数（<code>TrendRange</code> 为 <code>Int</code> 原值枚举，天然满足 <code>Equatable</code>）。</p>
+  </div>
+
+  <div class="card">
+    <span class="tag t-compl">合规/上架</span>
+    <strong>#3 · <span class="file">Info.plist</span> 缺少 <code>ITSAppUsesNonExemptEncryption</code></strong>
+    <p>审查清单第 8 项与 README 上架检查均要求声明出口加密合规键。缺失时每次构建上传都会被反复询问。
+    App 仅使用系统标准加密（HTTPS 等），属豁免范畴。</p>
+    <p class="muted">修复：新增 <code>&lt;key&gt;ITSAppUsesNonExemptEncryption&lt;/key&gt;&lt;false/&gt;</code>。</p>
+  </div>
+
+  <h2>二、修改文件清单</h2>
+  <table>
+    <tr><th>文件</th><th>修改摘要</th></tr>
+    <tr><td class="file">Utils/Extensions.swift</td><td>新增 <code>import UIKit</code>，修复触感反馈类型未声明的编译错误。</td></tr>
+    <tr><td class="file">Views/TrendsView.swift</td><td><code>.task</code> 改为 <code>.task(id: range)</code>，使体重趋势随范围切换重新加载。</td></tr>
+    <tr><td class="file">Info.plist</td><td>新增 <code>ITSAppUsesNonExemptEncryption=false</code> 出口合规声明。</td></tr>
+  </table>
+
+  <h2>三、已逐项核验通过的方面</h2>
+  <div class="ok-grid">
+    <div><b>✓</b> 类型/符号引用全部可解析，无缺失文件</div>
+    <div><b>✓</b> 方法签名与调用方匹配</div>
+    <div><b>✓</b> <code>@Model</code> 属性类型均受 SwiftData 支持</div>
+    <div><b>✓</b> <code>@Observable @MainActor</code> ViewModel 标注正确</div>
+    <div><b>✓</b> App 入口容器配置 / Schema 正确</div>
+    <div><b>✓</b> <code>@Query</code> / <code>#Predicate</code> 使用正确</div>
+    <div><b>✓</b> Product ID 与 .storekit 一致</div>
+    <div><b>✓</b> 交易监听 / 校验 / 恢复购买完整</div>
+    <div><b>✓</b> 付费门控逻辑正确（自定义方案/30天/体重）</div>
+    <div><b>✓</b> 本地化键中英完整一致，无引用缺失</div>
+    <div><b>✓</b> Assets Contents.json 格式合法</div>
+    <div><b>✓</b> Live Activity / Widget 走时与共享快照正确</div>
+    <div><b>✓</b> 计时核心后台/重启恢复逻辑正确</div>
+    <div><b>✓</b> HealthKit continuation 隔离安全</div>
+    <div><b>✓</b> View 不直接写 SwiftData，经 VM 收敛</div>
+    <div><b>✓</b> 所有主要 View 含可用 <code>#Preview</code></div>
+  </div>
+
+  <h2>四、剩余风险与建议（非阻断，未改动）</h2>
+  <div class="card">
+    <ul>
+      <li><strong>上架前替换占位链接。</strong> <span class="file">SettingsView.swift</span> 中隐私政策 /
+        使用条款为 <code>https://example.com/…</code>，发布前需替换为真实地址（README 已列入清单）。</li>
+      <li><strong>AppIcon 占位。</strong> <span class="file">AppIcon.appiconset</span> 仅有 1024 槽位、无实际 PNG，
+        源码仓库属正常；上架前需放入图标资源。</li>
+      <li><strong>喝水列表刷新机制。</strong> <span class="file">WaterTrackingView</span> 用
+        <code>refreshToken + .id()</code> 强制重建以反映增删。当前功能正确；若后续数据来源变复杂，
+        建议改用 <code>@Query</code> 让 SwiftData 自动驱动刷新（属增强，非缺陷，故未改）。</li>
+      <li><strong>喝水提醒时段边界。</strong> <span class="file">SettingsView</span> 中
+        <code>endHour</code> Stepper 范围依赖 <code>startHour</code>；当前由
+        <code>0…22 / +1…23</code> 约束 + <code>applyReminders</code> 内 <code>endHour&gt;startHour</code>
+        守卫，不会触发非法区间，保留现状。</li>
+      <li><strong>Xcode 工程装配。</strong> 仓库不含 <code>.xcodeproj</code>。务必按 CLAUDE.md 将
+        <code>Shared/</code>(ActivityAttributes+SharedStore) 与 <code>Utils/Extensions.swift</code> 同时加入
+        主 App 与 Widget 两个 Target，并在两端启用同一 App Group，否则 Widget 编译/读数会失败。</li>
+    </ul>
+  </div>
+
+  <p class="muted" style="margin-top:28px;">— 审查完毕。3 处问题已修复，未引入新的编译依赖或行为变更。</p>
+</div>
+</body>
+</html>

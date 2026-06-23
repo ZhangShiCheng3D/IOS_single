@@ -1,0 +1,50 @@
+{
+  "appPolicies" : {
+    "eula" : "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+    "policies" : [
+      {
+        "locale" : "zh_CN",
+        "policyText" : "所有用户数据仅保存在本机，不上传云端。隐私政策亦可在 App 内「设置 › 隐私政策」查看。",
+        "policyURL" : ""
+      }
+    ]
+  },
+  "identifier" : "B3E1F0A2",
+  "nonRenewingSubscriptions" : [],
+  "products" : [
+    {
+      "displayPrice" : "30.00",
+      "familyShareable" : false,
+      "internalID" : "1001",
+      "localizations" : [
+        {
+          "description" : "解锁用药提醒与紧急联系人，一次购买永久使用",
+          "displayName" : "解锁完整版",
+          "locale" : "zh_CN"
+        },
+        {
+          "description" : "Unlock medication reminders and emergency contacts. Buy once, use forever.",
+          "displayName" : "Unlock Full Version",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.seniorhelper.unlock.lifetime",
+      "referenceName" : "Unlock Lifetime",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "",
+    "_developerTeamID" : "",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 0,
+    "_locale" : "zh_CN",
+    "_storefront" : "CHN",
+    "_storeKitErrors" : []
+  },
+  "subscriptionGroups" : [],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

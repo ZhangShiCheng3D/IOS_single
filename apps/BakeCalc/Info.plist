@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Info.plist — BakeCalc
+  说明：使用 Xcode 新建 SwiftUI 工程时通常自动生成 Info.plist。
+  若采用「Generate Info.plist File = YES」，可在 Target 的 Info 标签页中
+  配置以下键值；本文件供手动管理 Info.plist 的工程参考。
+-->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleDisplayName</key>
+    <string>BakeCalc</string>
+    <key>CFBundleName</key>
+    <string>BakeCalc</string>
+    <!-- App Store 分类：餐饮（烘焙换算工具） -->
+    <key>LSApplicationCategoryType</key>
+    <string>public.app-category.food-and-drink</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>LSRequiresIPhoneOS</key>
+    <true/>
+    <!-- 支持的本地化语言：简体中文 + 英文 -->
+    <key>CFBundleDevelopmentRegion</key>
+    <string>zh-Hans</string>
+    <key>CFBundleLocalizations</key>
+    <array>
+        <string>zh-Hans</string>
+        <string>en</string>
+    </array>
+    <!-- 纯本地应用，无需出口合规加密声明 -->
+    <key>ITSAppUsesNonExemptEncryption</key>
+    <false/>
+    <!-- 界面方向 -->
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+    </array>
+    <key>UISupportedInterfaceOrientations~ipad</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+        <string>UIInterfaceOrientationPortraitUpsideDown</string>
+        <string>UIInterfaceOrientationLandscapeLeft</string>
+        <string>UIInterfaceOrientationLandscapeRight</string>
+    </array>
+    <key>UILaunchScreen</key>
+    <dict>
+        <key>UIColorName</key>
+        <string>BCBackground</string>
+    </dict>
+</dict>
+</plist>

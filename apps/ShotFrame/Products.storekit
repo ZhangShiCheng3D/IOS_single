@@ -1,0 +1,39 @@
+{
+  "identifier" : "B1A7F3C2-0001-4A21-9F00-1C0DE5F0A001",
+  "nonRenewingSubscriptions" : [],
+  "products" : [
+    {
+      "displayPrice" : "38.00",
+      "familyShareable" : false,
+      "internalID" : "A0010001-0001-4001-8001-9E0000000001",
+      "localizations" : [
+        {
+          "description" : "Unlock all templates, device frames, batch export, and remove the watermark. One-time purchase.",
+          "displayName" : "ShotFrame Pro",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "解锁全部模板、设备外壳、批量导出，并去除水印。一次性购买。",
+          "displayName" : "ShotFrame 专业版",
+          "locale" : "zh_Hans"
+        }
+      ],
+      "productID" : "com.shotframe.pro.lifetime",
+      "referenceName" : "ShotFrame Pro Lifetime",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "SHOTFRAME",
+    "_developerTeamID" : "TEAMID0000",
+    "_failTransactionsEnabled" : false,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : []
+  },
+  "subscriptionGroups" : [],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

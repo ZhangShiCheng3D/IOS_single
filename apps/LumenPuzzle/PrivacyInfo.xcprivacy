@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- 本作不进行任何形式的用户追踪。 -->
+	<key>NSPrivacyTracking</key>
+	<false/>
+	<!-- 无追踪域名。 -->
+	<key>NSPrivacyTrackingDomains</key>
+	<array/>
+	<!-- 不收集任何数据类型（进度与成就仅存于本机 SwiftData，从不离开设备）。 -->
+	<key>NSPrivacyCollectedDataTypes</key>
+	<array/>
+	<!-- 使用到的「需声明原因」API：仅文件时间戳（SwiftData 持久化），原因码 C617.1。 -->
+	<key>NSPrivacyAccessedAPITypes</key>
+	<array>
+		<dict>
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategoryFileTimestamp</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<string>C617.1</string>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>
