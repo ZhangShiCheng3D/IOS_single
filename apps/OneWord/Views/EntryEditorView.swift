@@ -12,6 +12,7 @@ import SwiftData
 struct EntryEditorView: View {
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
+    @Environment(HealthManager.self) private var health
 
     @State private var model: EntryEditorViewModel
     @FocusState private var textFocused: Bool
@@ -45,6 +46,9 @@ struct EntryEditorView: View {
                     Button("common.save") {
                         if model.save(in: context) {
                             Haptics.success()
+                            let score = model.previewScore
+                            let day = model.date
+                            Task { await health.saveMood(score: score, date: day) }
                             dismiss()
                         }
                     }
@@ -133,5 +137,6 @@ struct EntryEditorView: View {
 
 #Preview {
     EntryEditorView()
+        .environment(HealthManager())
         .modelContainer(PreviewData.container)
 }

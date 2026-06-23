@@ -245,7 +245,7 @@ final class EditorViewModel: ObservableObject {
 
     private func applyFill(at p: (Int, Int)) {
         // 填充对每个镜像起点各做一次泛洪。
-        for (mx, my) in mirroredPoints(p.x, p.y) {
+        for (mx, my) in mirroredPoints(p.0, p.1) {
             activeBuffer.floodFill(x: mx, y: my, with: currentColor)
         }
     }
@@ -264,10 +264,10 @@ final class EditorViewModel: ObservableObject {
     }
 
     private func sampleColor(at p: (Int, Int)) {
-        guard activeBuffer.contains(p.x, p.y) else { return }
+        guard activeBuffer.contains(p.0, p.1) else { return }
         // 自上而下找到第一个非透明像素。
         for layer in currentFrame.layers.reversed() where layer.isVisible {
-            let c = layer.buffer.color(x: p.x, y: p.y)
+            let c = layer.buffer.color(x: p.0, y: p.1)
             if !c.isTransparent {
                 currentColor = PixelColor(r: c.r, g: c.g, b: c.b, a: 255)
                 return

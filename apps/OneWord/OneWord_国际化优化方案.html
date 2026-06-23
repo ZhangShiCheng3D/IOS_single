@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OneWord · 非中国区上架 · 系统性优化方案</title>
+<style>
+  :root{
+    --bg:#0f1115;--card:#171a21;--card2:#1d212b;--line:#2a2f3a;
+    --txt:#e6e8ec;--mut:#9aa3b2;--acc:#e0654f;--acc2:#5b9dff;
+    --good:#3fb950;--warn:#d29922;--bad:#f85149;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font:15px/1.7 -apple-system,"PingFang SC","Microsoft YaHei",Segoe UI,sans-serif}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px 80px}
+  header.hero{padding:54px 22px 34px;background:radial-gradient(900px 360px at 15% -10%,rgba(224,101,79,.20),transparent),radial-gradient(800px 320px at 95% 0%,rgba(91,157,255,.14),transparent);border-bottom:1px solid var(--line)}
+  header.hero .inner{max-width:1080px;margin:0 auto}
+  h1{font-size:29px;margin:0 0 8px}
+  .sub{color:var(--mut);max-width:820px}
+  .meta{margin-top:14px;color:var(--mut);font-size:13px}
+  .meta b{color:var(--txt)}
+  h2{font-size:22px;margin:44px 0 14px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  h3{font-size:17px;margin:26px 0 8px}
+  p{margin:10px 0}
+  a{color:var(--acc2);text-decoration:none}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;background:var(--card);border-radius:10px;overflow:hidden}
+  th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--card2);color:#cdd3dd;font-weight:600;font-size:12.5px}
+  tr:last-child td{border-bottom:none}
+  .badge{display:inline-block;padding:2px 9px;border-radius:20px;font-size:12px;font-weight:600}
+  .b-done{background:rgba(63,185,80,.16);color:#56d364;border:1px solid rgba(63,185,80,.35)}
+  .b-p1{background:rgba(91,157,255,.16);color:#7fb2ff;border:1px solid rgba(91,157,255,.35)}
+  .b-p2{background:rgba(210,153,34,.16);color:#e3b341;border:1px solid rgba(210,153,34,.35)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:18px 0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:760px){.grid2{grid-template-columns:1fr}.tablewrap{overflow-x:auto}}
+  .tablewrap{overflow-x:auto}
+  ul{margin:8px 0;padding-left:20px}li{margin:5px 0}
+  .pro li::marker{color:var(--good)}.con li::marker{color:var(--bad)}
+  nav.toc{position:sticky;top:0;z-index:5;background:rgba(15,17,21,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:10px 0;margin-bottom:8px}
+  nav.toc .inner{max-width:1080px;margin:0 auto;padding:0 22px;display:flex;gap:6px;flex-wrap:wrap}
+  nav.toc a{font-size:12.5px;padding:4px 10px;border-radius:6px;background:var(--card2);border:1px solid var(--line);color:var(--mut)}
+  nav.toc a:hover{color:#fff;border-color:var(--acc)}
+  code{background:var(--card2);border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:12.5px;color:#e3b341}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0}
+  @media(max-width:760px){.kpis{grid-template-columns:repeat(2,1fr)}}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px}
+  .kpi .n{font-size:24px;font-weight:700;color:#fff}.kpi .l{color:var(--mut);font-size:12.5px;margin-top:2px}
+  blockquote{margin:12px 0;padding:10px 16px;border-left:3px solid var(--acc);background:var(--card2);border-radius:0 8px 8px 0;color:var(--mut)}
+  .small{font-size:12.5px;color:var(--mut)}
+  footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);color:var(--mut);font-size:12.5px}
+</style>
+</head>
+<body>
+<header class="hero"><div class="inner">
+  <h1>OneWord · 非中国区上架 · 系统性优化方案</h1>
+  <div class="sub">面向欧美及主流市场的国际化优化：基于竞品分析（Daylio / Day One / Grid Diary / One Diary）与对现有代码的实际审查，覆盖<b>定位、功能、本地化、商业模式、ASO、隐私叙事、上架清单</b>七个维度，并标明本轮已落地实施的部分。</div>
+  <div class="meta">日期 <b>2026-06-23</b> · 商业模式 <b>买断 + 内购解锁 AI 洞察</b> · 首发语言 <b>英 / 中 / 西 / 日 / 德 / 法</b> · 现状基线：工程质量高、已 i18n-ready、端侧 NLP 情绪分析对英文原生支持良好。</div>
+</div></header>
+
+<nav class="toc"><div class="inner">
+  <a href="#pos">定位</a><a href="#done">本轮已实施</a><a href="#roadmap">功能路线图</a>
+  <a href="#l10n">本地化深水区</a><a href="#biz">商业模式与定价</a><a href="#aso">ASO</a>
+  <a href="#privacy">隐私叙事</a><a href="#checklist">上架清单</a>
+</div></nav>
+
+<div class="wrap">
+
+<h2 id="pos">一、定位：在 Daylio 与 Day One 之间，打「隐私 + 端侧 AI + 买断」三角</h2>
+<p>心情/日记赛道竞争激烈度<b>高</b>，双头部已建立强壁垒：<b>Daylio</b>（心情追踪，emoji+活动打卡，统计深度是壁垒，订阅 ~$35.99/年）、<b>Day One</b>（富媒体日记，云优先+端到端加密，订阅 ~$49.99/年）。正面拼统计深度或内容广度都没有胜算。</p>
+<p>OneWord 的可行切口是三者的<b>交集缝隙</b>，且这三点恰好都是头部的结构性软肋：</p>
+<div class="grid2">
+  <div class="card"><h3 style="margin-top:0">差异化三角</h3><ul class="pro">
+    <li><b>端侧 NLP 情绪分析</b>：竞品靠用户手选 mood，OneWord 从一句话自动推断情绪并提取主题——「AI」是欧美 ASO 强词。</li>
+    <li><b>纯本地 / 零上传</b>：在 GDPR 语境下「Nothing leaves your phone」极具说服力，Day One 云优先、Daylio 备份上云都无法正面对标。</li>
+    <li><b>一次性买断</b>：对抗订阅疲劳——双头部全订阅，买断是清晰的反向卖点。</li>
+  </ul></div>
+  <div class="card"><h3 style="margin-top:0">目标用户（英文市场）</h3><ul>
+    <li>「写不下去传统日记」但想坚持记录的人。</li>
+    <li>对隐私敏感、反感订阅、反感账号体系的群体。</li>
+    <li>喜欢极简美学、Year-in-Pixels 这类可晒可视化的年轻用户。</li>
+  </ul>
+  <p class="small">避免正面硬刚 Daylio 的统计深度，主攻「零压力 + 隐私 + 端侧 AI 洞察」的细分人群。</p>
+  </div>
+</div>
+
+<h2 id="done">二、本轮已实施（代码已落地并通过模拟器验证）</h2>
+<div class="kpis">
+  <div class="kpi"><div class="n">6</div><div class="l">支持语言（en/zh/es/ja/de/fr）</div></div>
+  <div class="kpi"><div class="n">8</div><div class="l">新增功能模块</div></div>
+  <div class="kpi"><div class="n">160</div><div class="l">本地化字符串 / 每语言</div></div>
+  <div class="kpi"><div class="n">✅</div><div class="l">BUILD SUCCEEDED + 英文实测</div></div>
+</div>
+<div class="tablewrap"><table>
+<thead><tr><th>项</th><th>内容</th><th>竞品对位 / 价值</th><th>状态</th></tr></thead>
+<tbody>
+<tr><td><b>每日提醒</b></td><td>新增 <code>NotificationManager</code>（@MainActor/@Observable）+ 设置页「Reminders」开关与时间选择器。本地 <code>UNCalendarNotificationTrigger</code> 每日触发，权限被拒时优雅回退并提示。</td><td>习惯类<b>必备</b>留存钩子，此前缺失；纯本地调度延续隐私叙事。</td><td><span class="badge b-done">已实施</span></td></tr>
+<tr><td><b>首启引导</b></td><td>新增 <code>OnboardingView</code>（3 页：零压力记录 / 端侧洞察 / 隐私承诺）+ <code>@AppStorage("hasOnboarded")</code> 首启展示。</td><td>国际冷启动用户需要在首屏「读懂」隐私+AI 价值，提升激活率。</td><td><span class="badge b-done">已实施</span></td></tr>
+<tr><td><b>Year-in-Pixels</b></td><td>新增 <code>YearInPixelsView</code>：12 月 × 31 天像素网格，按当天心情上色，集成进年度回顾。</td><td>Daylio 招牌功能；可截图分享、社交传播获客。</td><td><span class="badge b-done">已实施</span></td></tr>
+<tr><td><b>多语言</b></td><td>en/zh 文案补齐；新增 <b>es / ja / de / fr</b> 全量专业翻译（各 166 键、plutil 校验通过）；<code>Info.plist</code> 声明 <code>CFBundleLocalizations</code>，开发区域改为 <code>en</code>。</td><td>覆盖欧美 + 日本 + 西语拉美高价值市场。</td><td><span class="badge b-done">已实施</span></td></tr>
+<tr><td><b>Apple Health（State of Mind）</b></td><td>新增 <code>HealthManager</code>：保存时把当天情绪分（valence -1…1）写入「健康」的 State of Mind（<b>iOS 18+</b>，iOS 17 自动隐藏）。写入式、纯端侧、设置内可选开关 + HealthKit entitlement + 用途说明。</td><td>借系统级心理健康入口曝光，相对 Daylio 最强差异化增量。</td><td><span class="badge b-done">已实施</span></td></tr>
+<tr><td><b>Widget + Siri/快捷指令</b></td><td>新增 <b>Widget 扩展</b>（小/中尺寸，显示连续天数与今日状态，App Group 共享快照，点按深链 <code>oneword://record</code> 进编辑器）+ <code>RecordTodayIntent</code> App Intent / AppShortcut（"Add today's word"）。</td><td>降低记录摩擦、强化习惯留存。</td><td><span class="badge b-done">已实施</span></td></tr>
+<tr><td><b>可选 iCloud 私有同步</b></td><td>SwiftData <code>cloudKitDatabase</code> 按 <code>icloud.sync</code> 开关切换（默认关，重启生效）；模型已改造为 CloudKit 兼容（去 <code>.unique</code>、属性给默认值）；设置内开关 + iCloud entitlement。</td><td>解决换机/多设备痛点，又不破坏「不上第三方服务器」叙事。</td><td><span class="badge b-done">已实施</span></td></tr>
+<tr><td><b>多语言情绪词库</b></td><td><code>SentimentAnalyzer.lexicon</code> 由中英扩展到 <b>6 语言</b>关键词，非中英用户也能命中主题标签。</td><td>提升非英语市场洞察质量。</td><td><span class="badge b-done">已实施</span></td></tr>
+</tbody>
+</table></div>
+<blockquote>关于 Widget / Siri 的语言：Widget 文案与 Siri 触发短语当前为<b>英文优先</b>（数字/streak 与语言无关）；如需 Widget 多语言，后续给 Widget 扩展单独加 strings catalog、给 App Intent 加本地化短语即可。CloudKit 实际同步需真机登录 iCloud 验证（模拟器无账号，本轮验证为「默认关闭可正常启动 + 开关逻辑」）。State of Mind 写入需 iOS 18+ 真机在「健康」中查看。</blockquote>
+<blockquote>已确认：<code>Date+Extensions</code> 用 <code>Calendar.current</code> + <code>localizedWeekdayIndex</code>，<b>周起始已自动适配美区（周日）</b>，日期/月份格式走 <code>setLocalizedDateFormatFromTemplate</code>，无需改动。情绪分析 <code>NLTagger(.sentimentScore)</code> 对英文原生支持良好。</blockquote>
+
+<h2 id="roadmap">三、功能路线图（下一步）</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>优先级</th><th>功能</th><th>说明与理由</th></tr></thead>
+<tbody>
+<tr><td><span class="badge b-done">已完成</span></td><td><b>Apple Health / Widget+Siri / iCloud 同步</b></td><td>原 P1 三项已在本轮实施（见上节「本轮已实施」）。剩余 P1/P2 见下。</td></tr>
+<tr><td><span class="badge b-p1">P1</span></td><td><b>Widget 与 Siri 短语多语言</b></td><td>给 Widget 扩展单独添加 strings catalog，给 App Intent 短语加 6 语言本地化（当前英文优先）。</td></tr>
+<tr><td><span class="badge b-p2">P2</span></td><td><b>统计深度补强</b></td><td>对标 Daylio：心情×主题关联（「work 日多为 Low」）、周中分布、月环比。在现有 <code>InsightsViewModel</code> 上扩展，纳入内购洞察套件。</td></tr>
+<tr><td><span class="badge b-p2">P2</span></td><td><b>写作提示 / Prompts</b></td><td>当用户对空白迟疑时给一句温和提示（「What made today different?」）。需多语言文案库。降低「写不下去」门槛，正中定位。</td></tr>
+<tr><td><span class="badge b-p2">P2</span></td><td><b>导出增强</b></td><td>现有 Markdown/JSON 之外增加 PDF / 年度图片导出（配合 Year-in-Pixels 截图分享）。</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="l10n">四、本地化深水区</h2>
+<ul>
+  <li><b>已处理</b>：UI 全量 6 语言；周起始与日期格式 locale 自适应；开发区域 <code>en</code>。</li>
+  <li><b>情绪分析多语言</b>：Apple <code>NaturalLanguage</code> sentiment 对 en/zh/es/de/fr 支持较好，ja 亦支持；建议上架前对每种语言用真实短句回归测试（超短文本、纯 emoji、中英/外文混排的鲁棒性）。主题词库 <code>SentimentAnalyzer.lexicon</code> 目前仅中英，<b>建议为 es/ja/de/fr 各补关键词</b>（work/family/friends… 的当地说法），否则非中英用户的主题标签命中率低。</li>
+  <li><b>App 名称</b>：「OneWord」英文直观可用；其余市场可保留英文品牌名，仅本地化副标题与描述。</li>
+  <li><b>法务文案</b>：隐私政策 / 使用条款需提供英文版（应用内 PrivacyPolicyView 已本地化；外链 Terms URL 需指向英文页）。</li>
+</ul>
+
+<h2 id="biz">五、商业模式与定价（保持买断 + 内购）</h2>
+<p>维持「<b>App 买断 + 可选内购解锁 AI 洞察</b>」，把买断作为对抗 Daylio/Day One 订阅的核心叙事。</p>
+<div class="tablewrap"><table>
+<thead><tr><th>层级</th><th>内容</th><th>定价建议（美区锚点）</th></tr></thead>
+<tbody>
+<tr><td>免费（下载即用）</td><td>每日一句话 + 心情 + 照片、日历、连续天数、提醒、引导、导出</td><td>$0</td></tr>
+<tr><td>App 买断价</td><td>解锁基础体验（若采用付费下载）</td><td>$2.99–4.99（或免费下载，全部价值放进内购）</td></tr>
+<tr><td>内购：AI Insights（永久）</td><td>趋势图、Year in Review、Year-in-Pixels、高频主题、关键词、（未来）Health 写入</td><td>$4.99–6.99 一次性</td></tr>
+</tbody>
+</table></div>
+<blockquote>建议：在欧美「免费下载 + 单次内购永久解锁」转化通常优于「付费下载」，且能与 Daylio 的「免费+订阅」直接对打——主打 <b>“Unlock forever. No subscription.”</b>（现 Paywall 文案已是此调性）。定价用 App Store 区域自动梯度即可，无需手工逐区。</blockquote>
+
+<h2 id="aso">六、ASO（英文 App Store）</h2>
+<div class="grid2">
+  <div class="card"><h3 style="margin-top:0">标题 / 副标题（建议）</h3>
+    <p><b>Title</b>：OneWord — One-Line Journal</p>
+    <p><b>Subtitle</b>：Private mood diary &amp; AI insights</p>
+    <p class="small">覆盖核心词：one-line / journal / mood / diary / private / AI。</p>
+  </div>
+  <div class="card"><h3 style="margin-top:0">关键词池（100 字符）</h3>
+    <p class="small">mood tracker, journal, diary, mental health, gratitude, daily, one line, mood, feelings, private, offline, no subscription, wellbeing, self care, reflection</p>
+  </div>
+</div>
+<ul>
+  <li><b>截图叙事</b>（5 张）：① One line a day（编辑器+实时情绪预览）② Insight on device（趋势图）③ Year in pixels（招牌可视化）④ 100% private, no account（隐私）⑤ Buy once, no subscription（对比订阅）。</li>
+  <li><b>差异化卖点前置</b>：第一张截图与副标题就打「private + AI + no subscription」，直接拦截从 Daylio/Day One 比价过来的用户。</li>
+</ul>
+
+<h2 id="privacy">七、隐私叙事（最大杠杆，务必守住）</h2>
+<ul class="pro">
+  <li><b>事实支撑</b>：无网络请求、无账号、无第三方 SDK、端侧 NLP、密码仅存加盐 SHA-256、照片外部存储压缩。这些是真实的、可在 App 隐私标签上声明「Data Not Collected」。</li>
+  <li><b>App Privacy 标签</b>：勾选 <b>Data Not Collected</b>——这是欧美用户极看重的信任信号，也是与多数竞品的硬区别。</li>
+  <li><b>叙事一致性</b>：提醒（本地调度）、Health 写入（端侧）、可选同步（CloudKit 私有库而非自建服务器）——所有新功能都需维持「不上第三方服务器」的统一口径。</li>
+</ul>
+
+<h2 id="checklist">八、上架前清单</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>类别</th><th>项</th><th>状态</th></tr></thead>
+<tbody>
+<tr><td>本地化</td><td>en/zh/es/ja/de/fr UI 全量 + CFBundleLocalizations 声明</td><td><span class="badge b-done">已完成</span></td></tr>
+<tr><td>功能</td><td>每日提醒 / 首启引导 / Year-in-Pixels</td><td><span class="badge b-done">已完成</span></td></tr>
+<tr><td>本地化</td><td>SentimentAnalyzer 词库补 es/ja/de/fr 关键词（6 语言）</td><td><span class="badge b-done">已完成</span></td></tr>
+<tr><td>差异化</td><td>HealthKit State of Mind 集成（entitlement+用途说明，iOS 18+）</td><td><span class="badge b-done">已完成</span></td></tr>
+<tr><td>留存</td><td>Widget + App Intents 快捷指令（深链 oneword://record）</td><td><span class="badge b-done">已完成</span></td></tr>
+<tr><td>同步</td><td>可选 iCloud 私有同步（CloudKit，默认关）+ 模型兼容改造</td><td><span class="badge b-done">已完成</span></td></tr>
+<tr><td>商业</td><td>App Store Connect 配置内购 <code>com.oneword.aiinsights.unlock</code> + 区域定价</td><td><span class="badge b-p2">待办</span></td></tr>
+<tr><td>素材</td><td>英文 5 张截图 + 预览，6 语言元数据，英文 Terms/Privacy 外链</td><td><span class="badge b-p2">待办</span></td></tr>
+<tr><td>合规</td><td>App Privacy 标签勾选 Data Not Collected；ITSAppUsesNonExemptEncryption=false（已设）</td><td><span class="badge b-p2">待办</span></td></tr>
+<tr><td>测试</td><td>各语言 sentiment 回归；提醒触发；卸载重装恢复购买；多设备（若上同步）</td><td><span class="badge b-p2">待办</span></td></tr>
+</tbody>
+</table></div>
+
+<footer>
+  <p>本方案基于对 OneWord 现有代码的实际审查与既有竞品分析报告。「本轮已实施」部分均已写入代码并通过 iOS 26.5 模拟器英文环境验证（BUILD SUCCEEDED + 引导页/英文 UI 实测）。P1/P2 为后续迭代建议。</p>
+  <p class="small">文档格式：HTML（自包含）· 配套：竞品对比分析报告.html</p>
+</footer>
+</div>
+</body>
+</html>

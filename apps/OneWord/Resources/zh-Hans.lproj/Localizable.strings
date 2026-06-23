@@ -181,3 +181,35 @@
 "tag.love" = "爱";
 "tag.weather" = "天气";
 "tag.food" = "美食";
+
+/* 提醒 */
+"settings.reminders" = "提醒";
+"settings.dailyReminder" = "每日提醒";
+"settings.reminderTime" = "提醒时间";
+"settings.reminderFooter" = "每天轻轻提醒你记下一句话。提醒在本机调度，不经过任何服务器。";
+"settings.reminderDenied" = "「一句话」的通知已关闭。请在「设置」中开启，以接收每日提醒。";
+"notification.title" = "今天的一句话 ✍️";
+"notification.body" = "停下来一会儿。一句话，一种心情。";
+
+/* 引导页 */
+"onboarding.skip" = "跳过";
+"onboarding.next" = "下一步";
+"onboarding.start" = "开始记录";
+"onboarding.p1.title" = "每天一句话";
+"onboarding.p1.body" = "没有空白页，没有压力。只需一句话、一个心情，外加一张可选的照片。";
+"onboarding.p2.title" = "端侧洞察";
+"onboarding.p2.body" = "「一句话」用 Apple 端侧智能读懂你字里行间的情绪，并呈现你的心情随时间的变化。";
+"onboarding.p3.title" = "只属于你";
+"onboarding.p3.body" = "没有账号、没有服务器、没有追踪。每一句话都只留在你的 iPhone 上——始终如此。";
+
+/* 像素年历 */
+"year.pixels" = "像素年历";
+"year.pixelsFooter" = "每个方块是一天，按当天心情上色。";
+
+/* 同步与健康 */
+"settings.sync" = "同步与健康";
+"settings.healthSync" = "将心情写入「健康」";
+"settings.icloudSync" = "iCloud 同步";
+"settings.syncFooter" = "可将每日心情写入 Apple「健康」，或通过你的私人 iCloud 在设备间同步记录。两者均为可选，默认关闭。";
+"settings.icloudRestart" = "iCloud 同步已开启。重启「一句话」后生效。记录通过你的私人 iCloud 同步——绝不经过我们的服务器。";
+"settings.healthDenied" = "「健康」访问已关闭。请在「设置 › 健康」中为「一句话」开启，以写入心情。";

@@ -34,7 +34,8 @@ struct PrivacyPolicyView: View {
                         .foregroundStyle(.secondary)
                 }
 
-                ForEach(sections, id: \.titleKey) { section in
+                ForEach(sections.indices, id: \.self) { index in
+                    let section = sections[index]
                     VStack(alignment: .leading, spacing: AppMetrics.spacingXS) {
                         Text(section.titleKey)
                             .font(.headline)

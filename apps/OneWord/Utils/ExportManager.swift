@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum ExportFormat: String, CaseIterable, Identifiable {
     case markdown

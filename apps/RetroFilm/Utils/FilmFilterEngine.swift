@@ -148,7 +148,7 @@ final class FilmFilterEngine: @unchecked Sendable {
         if vignetteAmt > 0.001 {
             let v = CIFilter.vignetteEffect()
             v.inputImage = image
-            v.center = CIVector(x: extent.midX, y: extent.midY)
+            v.center = CGPoint(x: extent.midX, y: extent.midY)
             v.radius = Float(max(extent.width, extent.height) * 0.62)
             v.intensity = Float(vignetteAmt * 1.1)
             v.falloff = 0.7
@@ -278,7 +278,7 @@ final class FilmFilterEngine: @unchecked Sendable {
         let cy = extent.minY + extent.height * corners[idx].1
 
         let grad = CIFilter.radialGradient()
-        grad.center = CIVector(x: cx, y: cy)
+        grad.center = CGPoint(x: cx, y: cy)
         grad.radius0 = 0
         grad.radius1 = Float(max(extent.width, extent.height) * 0.85)
         grad.color0 = leakColors[idx]

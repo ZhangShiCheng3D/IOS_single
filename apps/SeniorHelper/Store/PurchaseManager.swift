@@ -33,7 +33,7 @@ final class PurchaseManager {
     /// 最近一次错误的可读描述，供 UI 提示。
     var errorMessage: String?
 
-    private var updatesTask: Task<Void, Never>?
+    private nonisolated(unsafe) var updatesTask: Task<Void, Never>?
 
     init() {
         // 监听交易更新（如家庭共享、退款、跨设备同步）。

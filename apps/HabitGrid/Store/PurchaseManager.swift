@@ -57,10 +57,6 @@ final class PurchaseManager {
         updatesTask = listenForTransactions()
     }
 
-    deinit {
-        updatesTask?.cancel()
-    }
-
     /// Pro 价格展示文案（本地化货币）。无法加载时返回 nil。
     var proDisplayPrice: String? {
         products.first(where: { $0.id == ProductID.pro })?.displayPrice

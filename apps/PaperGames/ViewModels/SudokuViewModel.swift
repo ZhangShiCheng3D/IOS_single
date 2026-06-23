@@ -46,7 +46,8 @@ final class SudokuViewModel {
 
     private var undoStack: [Move] = []
     /// 计时任务。基于结构化并发，避免 Timer 在 Swift 6 严格并发下的 Sendable 问题。
-    private var timerTask: Task<Void, Never>?
+    /// 标注 nonisolated(unsafe) 以便在非隔离的 deinit 中安全取消（Task.cancel 本身线程安全）。
+    private nonisolated(unsafe) var timerTask: Task<Void, Never>?
 
     // MARK: - 初始化
 

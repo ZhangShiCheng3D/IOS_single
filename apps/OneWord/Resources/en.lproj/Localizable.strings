@@ -181,3 +181,35 @@
 "tag.love" = "love";
 "tag.weather" = "weather";
 "tag.food" = "food";
+
+/* Reminders */
+"settings.reminders" = "Reminders";
+"settings.dailyReminder" = "Daily reminder";
+"settings.reminderTime" = "Reminder time";
+"settings.reminderFooter" = "A gentle daily nudge to capture your one word. Scheduled on your device — no servers involved.";
+"settings.reminderDenied" = "Notifications are off for OneWord. Turn them on in iOS Settings to get your daily reminder.";
+"notification.title" = "Today's word ✍️";
+"notification.body" = "Take a moment. One sentence, one mood.";
+
+/* Onboarding */
+"onboarding.skip" = "Skip";
+"onboarding.next" = "Next";
+"onboarding.start" = "Start journaling";
+"onboarding.p1.title" = "One line a day";
+"onboarding.p1.body" = "No blank pages, no pressure. Just one sentence, one mood, and an optional photo.";
+"onboarding.p2.title" = "Insight, on device";
+"onboarding.p2.body" = "OneWord senses the feeling in your words using Apple's on-device intelligence, and shows how your moods shift over time.";
+"onboarding.p3.title" = "Yours alone";
+"onboarding.p3.body" = "No account, no servers, no tracking. Every word stays on your iPhone — always.";
+
+/* Year in pixels */
+"year.pixels" = "Year in pixels";
+"year.pixelsFooter" = "Each square is a day, colored by your mood.";
+
+/* Sync & Health */
+"settings.sync" = "Sync & Health";
+"settings.healthSync" = "Save mood to Apple Health";
+"settings.icloudSync" = "iCloud Sync";
+"settings.syncFooter" = "Mirror your daily mood to Apple Health, or sync entries across your devices via your private iCloud. Both are optional and off by default.";
+"settings.icloudRestart" = "iCloud Sync is on. Restart OneWord to apply. Your entries sync through your private iCloud — never our servers.";
+"settings.healthDenied" = "Apple Health access is off. Enable it for OneWord in iOS Settings › Health to save your mood.";

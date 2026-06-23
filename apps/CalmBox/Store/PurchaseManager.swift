@@ -39,7 +39,7 @@ final class PurchaseManager {
     /// 商品是否加载完成。
     private(set) var isLoaded = false
 
-    private var updatesTask: Task<Void, Never>?
+    nonisolated(unsafe) private var updatesTask: Task<Void, Never>?
 
     init() {
         // 启动时先读取缓存，保证离线也能维持解锁状态。

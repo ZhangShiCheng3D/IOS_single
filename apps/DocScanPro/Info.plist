@@ -2,6 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<!-- 应用核心标识键：GENERATE_INFOPLIST_FILE=NO，须显式声明（构建时由变量替换填入） -->
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+
 	<!-- 相机用途说明：用于文档扫描。隐私版强调本地处理。 -->
 	<key>NSCameraUsageDescription</key>
 	<string>DocScanPro 需要使用相机来扫描文档。所有图像与文字识别均在本机完成，不会上传任何内容。</string>

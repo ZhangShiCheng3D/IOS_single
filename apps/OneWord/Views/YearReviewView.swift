@@ -35,6 +35,7 @@ struct YearReviewView: View {
                     emptyState
                 } else {
                     narrativeCard
+                    YearInPixelsView(entries: yearEntries, year: year)
                     distributionCard
                     standoutCard
                 }

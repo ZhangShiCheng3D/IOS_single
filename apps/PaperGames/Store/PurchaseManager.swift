@@ -36,7 +36,7 @@ final class PurchaseManager {
     /// 最近一次错误信息（用于 UI 展示）。
     var errorMessage: String?
 
-    private var updatesTask: Task<Void, Never>?
+    private nonisolated(unsafe) var updatesTask: Task<Void, Never>?
 
     init() {
         // 先读取本地缓存，保证离线/启动瞬间 UI 状态正确。
